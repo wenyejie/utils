@@ -1,0 +1,21 @@
+{
+  "version": "0.0.1",
+  "author": {
+    "email": "wenyejie@foxmail.com",
+    "name": "wenyejie"
+  },
+  "license": "ISC",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.9.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "regenerator-runtime": "^0.13.3",
+    "webpack": "^4.41.2"
+  }
+}

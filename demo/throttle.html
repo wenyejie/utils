@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title>throttle</title>
+  <style>
+  body {
+    height: 300vh;
+  }
+  </style>
+</head>
+<body>
+<script type="module">
+import { throttle } from '../src/index.js'
+
+window.onscroll = throttle(($event) => {
+  console.log(this, $event)
+})
+
+</script>
+</body>
+</html>
