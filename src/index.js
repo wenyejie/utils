@@ -1,7 +1,7 @@
 import throttle from './throttle'
+import { isNumber } from './number.js'
 
 export default {
-  throttle
+  throttle,
+  isNumber
 }
-
-export { throttle } from './throttle.js'
