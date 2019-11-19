@@ -20,11 +20,9 @@ export const clone = (obj, deep = true, weakMap = new WeakMap()) => {
   weakMap.set(obj, result)
   const keys = Object.keys(obj)
   let key
-  let temp
   for (let i = 0, length = keys.length; i < length; i++) {
     key = keys[i]
-    temp = obj[key]
-    result[key] = clone(temp, deep, weakMap)
+    result[key] = deep ? clone(obj[key], deep, weakMap) : obj[key]
   }
   return result
 }
