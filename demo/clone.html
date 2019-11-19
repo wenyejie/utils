@@ -2,7 +2,7 @@
 <html lang="zh-cn">
   <head>
     <meta charset="utf-8" />
-    <title>deepCopy</title>
+    <title>clone</title>
   </head>
   <body>
     <script type="module">
@@ -16,6 +16,7 @@
         name: 'Storm',
         test
       }
+      test.data = data
       const copyData = clone(data)
       console.log(data, copyData)
     </script>
