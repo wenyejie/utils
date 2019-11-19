@@ -2,11 +2,11 @@ import { hasOwn, isArray, isObject } from './index.js'
 
 /**
  * 对对象进行拷贝
- * @param obj {*}
- * @param deep? {Boolean}
+ * @param obj {*} 拷贝对象
+ * @param deep? {Boolean} 是否深拷贝, 默认为true
  * @return {*}
  */
-export const clone = (obj, deep) => {
+export const clone = (obj, deep = true) => {
   if (!isObject(obj)) {
     return obj
   }
