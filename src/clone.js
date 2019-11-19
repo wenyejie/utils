@@ -1,4 +1,4 @@
-import { hasOwn, isArray, isObject } from './index.js'
+import { isArray, isObject } from './index.js'
 
 /**
  * 对对象进行拷贝
