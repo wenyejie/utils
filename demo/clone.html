@@ -8,10 +8,16 @@
     <script type="module">
       import clone from '../src/clone.js'
 
+      const test = {
+        age: 24
+      }
+
       const data = {
-        name: 'Storm'
+        name: 'Storm',
+        test
       }
       const copyData = clone(data)
+      console.log(data, copyData)
     </script>
   </body>
 </html>
