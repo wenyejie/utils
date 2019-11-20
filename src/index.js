@@ -8,7 +8,12 @@ const hasOwnProperty = Object.prototype.hasOwnProperty
  * @param key {String}
  * @return {boolean}
  */
-export const hasOwn = (object, key) => hasOwnProperty.call(object, key)
+export const hasOwn = (object, key) => {
+  if (object === null || object === undefined) {
+    return false
+  }
+  return hasOwnProperty.call(object, key)
+}
 
 /**
  * 判断呢一个值是否为空值
@@ -58,6 +63,14 @@ export const isPlainObject = val => toTypeString(val) === '[object Object]'
 
 export const isPromise = obj =>
   isObject(obj) && isFunction(obj.then) && isFunction(obj.catch)
+
+// 缓存执行结果, 使函数或计算只执行一次
+export const cached = fn => {
+  let cached
+  return function() {
+    return cached || (cached = fn.apply(this.arguments))
+  }
+}
 
 export { throttle } from './throttle.js'
 
