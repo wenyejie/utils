@@ -1,7 +1,5 @@
 const hasOwnProperty = Object.prototype.hasOwnProperty
 
-// 1121
-
 /**
  * 判断key是是否是对象自己的属性
  * @param object {Object}
