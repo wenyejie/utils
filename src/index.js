@@ -32,12 +32,6 @@ export const toTypeString = obj => objectToString.call(obj)
 
 export const toRawType = value => toTypeString(value).slice(8, -1)
 
-// 电话号码
-export const phoneNO = /^1\d{10}$/
-
-// 身份证号码
-export const idNO = /^[1-9]\d{7}((0\d)|(1[0-2]))(([012]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([012]\d)|3[0-1])\d{3}([0-9]|X)$/
-
 export const isArray = Array.isArray
 
 export const isFunction = obj => typeof obj === 'function'
