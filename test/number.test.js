@@ -1,4 +1,4 @@
-import { isNumber } from '../src/number.js'
+import { isNumber, preciseCalculation } from '../src/number.js'
 test('isNumber', () => {
   expect(isNumber(-100)).toBe(true)
   expect(isNumber(Infinity)).toBe(true)
@@ -8,4 +8,8 @@ test('isNumber', () => {
   expect(isNumber(null)).toBe(false)
   expect(isNumber({})).toBe(false)
   expect(isNumber(() => {})).toBe(false)
+})
+
+test('preciseCalculation', () => {
+  expect(preciseCalculation(0.2, 0.1, '+')).toBe(0.3)
 })
