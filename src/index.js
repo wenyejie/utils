@@ -53,8 +53,7 @@ export const isPrimitive = obj => {
 
 export const isPlainObject = val => toTypeString(val) === '[object Object]'
 
-export const isPromise = obj =>
-  isObject(obj) && isFunction(obj.then) && isFunction(obj.catch)
+export const isPromise = obj => isObject(obj) && isFunction(obj.then) && isFunction(obj.catch)
 
 // 缓存执行结果, 使函数或计算只执行一次
 export const cached = fn => {
@@ -72,5 +71,5 @@ export {
   isInteger,
   isNaturalNumber,
   isPositiveInteger,
-  preciseCalculation
+  exactCalc
 } from './number.js'

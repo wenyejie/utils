@@ -3,8 +3,7 @@
  * @param value {*} 任意数据
  * @return {boolean}
  */
-export const isNumber = value =>
-  typeof value === 'number' && !Number.isNaN(value)
+export const isNumber = value => typeof value === 'number' && !Number.isNaN(value)
 
 /**
  * 判断是否为纯粹数字(包含NaN)
@@ -40,7 +39,7 @@ export const isNaturalNumber = value => isInteger(value) && value >= 0
 export const isPositiveInteger = value => isInteger(value) && value > 0
 
 // 精准计算
-export const preciseCalculation = (countX, countY, operator, length = 3) => {
+export const exactCalc = (countX, countY, operator, length = 3) => {
   const multiple = Math.pow(10, length)
   countX = Number.parseFloat(countX) * multiple
   countY = Number.parseFloat(countY) * multiple
@@ -53,22 +52,21 @@ export const preciseCalculation = (countX, countY, operator, length = 3) => {
 
   switch (operator) {
     case '+':
-      result = countX + countY
+      result = (countX + countY) / multiple
       break
     case '-':
-      result = countX - countY
+      result = (countX - countY) / multiple
       break
     case '*':
-      result = countX * countY
+      result = (countX * countY) / multiple / multiple
       break
     case '/':
       result = countX / countY
       break
     default:
       console.error('运算符传入有误, 请重新确认!')
-      break
+      return
   }
-  result = result / multiple
   return result
 }
 
@@ -78,5 +76,5 @@ export default {
   isInteger,
   isNaturalNumber,
   isPositiveInteger,
-  preciseCalculation
+  exactCalc
 }

@@ -1,4 +1,4 @@
-import { isNumber, preciseCalculation } from '../src/number.js'
+import { isNumber, exactCalc } from '../src/number.js'
 test('isNumber', () => {
   expect(isNumber(-100)).toBe(true)
   expect(isNumber(Infinity)).toBe(true)
@@ -10,6 +10,12 @@ test('isNumber', () => {
   expect(isNumber(() => {})).toBe(false)
 })
 
-test('preciseCalculation', () => {
-  expect(preciseCalculation(0.2, 0.1, '+')).toBe(0.3)
+test('exactCalc', () => {
+  expect(exactCalc(0.2, 0.1, '+')).toBe(0.3)
+  expect(exactCalc(0.2, 0.1, '-')).toBe(0.1)
+  expect(exactCalc(0.2, 2, '*')).toBe(0.4)
+  expect(exactCalc(0.2, 2, '/')).toBe(0.1)
+  expect(exactCalc(NaN, 2, '/')).toBe()
+  expect(exactCalc(2, 2, '/')).toBe(1)
+  expect(exactCalc(2, 2, '/*-+')).toBe()
 })
