@@ -71,5 +71,6 @@ export {
   isPlainNumber,
   isInteger,
   isNaturalNumber,
-  isPositiveInteger
+  isPositiveInteger,
+  preciseCalculation
 } from './number.js'

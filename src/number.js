@@ -3,18 +3,15 @@
  * @param value {*} 任意数据
  * @return {boolean}
  */
-export function isNumber(value) {
-  return typeof value === 'number' && !Number.isNaN(value)
-}
+export const isNumber = value =>
+  typeof value === 'number' && !Number.isNaN(value)
 
 /**
  * 判断是否为纯粹数字(包含NaN)
  * @param value {*} 任意数据
  * @return {boolean}
  */
-export function isPlainNumber(value) {
-  return typeof value === 'number'
-}
+export const isPlainNumber = value => typeof value === 'number'
 
 /**
  * 判断是否为整数
@@ -33,17 +30,46 @@ export function isInteger(value) {
  * @param value {*}
  * @return {boolean}
  */
-export function isNaturalNumber(value) {
-  return isInteger(value) && value >= 0
-}
+export const isNaturalNumber = value => isInteger(value) && value >= 0
 
 /**
  * 判断是否为正整数(不包括0)
  * @param value {*}
  * @return {boolean}
  */
-export function isPositiveInteger(value) {
-  return isInteger(value) && value > 0
+export const isPositiveInteger = value => isInteger(value) && value > 0
+
+// 精准计算
+export const preciseCalculation = (countX, countY, operator, length = 3) => {
+  const multiple = Math.pow(10, length)
+  countX = Number.parseFloat(countX) * multiple
+  countY = Number.parseFloat(countY) * multiple
+  if (!isNumber(countY) || !isNumber(countX)) {
+    console.error('传入参数有误, 请重新确认!')
+    return
+  }
+
+  let result = 0
+
+  switch (operator) {
+    case '+':
+      result = countX + countY
+      break
+    case '-':
+      result = countX - countY
+      break
+    case '*':
+      result = countX * countY
+      break
+    case '/':
+      result = countX / countY
+      break
+    default:
+      console.error('运算符传入有误, 请重新确认!')
+      break
+  }
+  result = result / multiple
+  return result
 }
 
 export default {
@@ -51,5 +77,6 @@ export default {
   isPlainNumber,
   isInteger,
   isNaturalNumber,
-  isPositiveInteger
+  isPositiveInteger,
+  preciseCalculation
 }
