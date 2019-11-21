@@ -1,3 +1,7 @@
+export const emptyObject = Object.freeze({})
+
+export const nullObject = () => Object.create(null)
+
 const hasOwnProperty = Object.prototype.hasOwnProperty
 
 /**
@@ -76,6 +80,10 @@ export const cached = fn => {
 }
 
 export { throttle } from './throttle.js'
+
+export { clone } from './clone.js'
+
+export { local, session } from './storage.js'
 
 export {
   isNumber,
