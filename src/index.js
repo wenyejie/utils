@@ -55,11 +55,23 @@ export const isPlainObject = val => toTypeString(val) === '[object Object]'
 
 export const isPromise = obj => isObject(obj) && isFunction(obj.then) && isFunction(obj.catch)
 
-// 缓存执行结果, 使函数或计算只执行一次
-export const cached = fn => {
+// 记住执行结果, 使函数或计算只执行一次
+export const once = fn => {
   let cached
   return function() {
     return cached || (cached = fn.apply(this.arguments))
+  }
+}
+
+// 缓存执行结果, 当结果输入相同时, 不再执行
+export const cached = fn => {
+  const cache = {}
+  return function() {
+    const args = Array.prototype.join.call(arguments, ',')
+    if (args in cache) {
+      return cache[args]
+    }
+    return (cache[args] = fn.apply(this, arguments))
   }
 }
 

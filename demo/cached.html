@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>cached</title>
+  </head>
+  <body>
+    <script type="module">
+      import { cached } from '../src/index.js'
+
+      const demo = cached((x, y) => x + y)
+      console.log(demo(1, 2))
+      console.log(demo(1, 2))
+      console.log(demo(NaN, 2))
+      console.log(demo(NaN, 2))
+    </script>
+  </body>
+</html>
