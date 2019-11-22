@@ -8,7 +8,7 @@
     <script type="module">
       import observer from '../src/observer.js'
 
-      const demo = observer()
+      const demo = observer.create()
 
       demo.trigger('coding')
 
@@ -17,12 +17,10 @@
       })
 
       demo.on('offwork', function() {
-        console.log(this)
         console.log('小明offwork')
       })
 
       demo.once('death', function() {
-        console.log(this)
         console.log('小明death')
       })
 

@@ -11,23 +11,13 @@ export class Observer {
       this.#events[key] = []
     }
     this.#events[key].push(fn)
-    debugger
-    if (offline) {
-      this.triggerOffline(key, fn)
+    if (!offline || !this.#messages[key]) {
+      return this
     }
-  }
-  triggerOffline(key, fn) {
-    const msgs = this.#messages[key]
-    if (!isArray(msgs) || msgs.length === 0) {
-      return
-    }
-    msgs.forEach(args => fn.apply(this, args))
+    this.trigger(key, ...this.#messages[key])
   }
   trigger(key, ...rest) {
-    if (!this.#messages[key]) {
-      this.#messages[key] = []
-    }
-    this.#messages[key].push(rest)
+    this.#messages[key] = rest
     const fns = this.#events[key]
     if (!isArray(fns) || fns.length === 0) {
       return false
@@ -70,4 +60,4 @@ export class Observer {
 
 instance = Observer.create()
 
-export default instance
+export default Observer
