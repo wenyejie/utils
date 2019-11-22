@@ -85,6 +85,8 @@ export { clone } from './clone.js'
 
 export { local, session } from './storage.js'
 
+export { Observer } from './observer.js'
+
 export {
   isNumber,
   isPlainNumber,

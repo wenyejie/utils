@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>observer</title>
+  </head>
+  <body>
+    <script type="module">
+      import observer from '../src/observer.js'
+
+      const demo = observer()
+
+      demo.on('coding', () => {
+        console.log('小明coding')
+      })
+
+      demo.on('offwork', function() {
+        console.log(this)
+        console.log('小明offwork')
+      })
+
+      demo.once('death', function() {
+        console.log(this)
+        console.log('小明death')
+      })
+
+      console.log(demo)
+
+      demo.trigger('coding')
+      demo.trigger('coding')
+      demo.trigger('offwork')
+      demo.trigger('death')
+      demo.trigger('death')
+    </script>
+  </body>
+</html>
