@@ -10,6 +10,8 @@
 
       const demo = observer()
 
+      demo.trigger('coding')
+
       demo.on('coding', () => {
         console.log('小明coding')
       })
@@ -25,9 +27,6 @@
       })
 
       console.log(demo)
-
-      demo.trigger('coding')
-      demo.trigger('coding')
       demo.trigger('offwork')
       demo.trigger('death')
       demo.trigger('death')

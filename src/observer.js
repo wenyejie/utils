@@ -5,21 +5,29 @@ let instance
 export class Observer {
   #events = {}
   #messages = {}
-  constructor() {
-    if (!(this instanceof Observer)) {
-      return instance
-    }
-  }
-  on(key, fn, offline) {
+  constructor() {}
+  on(key, fn, offline = true) {
     if (!this.#events[key]) {
       this.#events[key] = []
     }
     this.#events[key].push(fn)
+    debugger
+    if (offline) {
+      this.triggerOffline(key, fn)
+    }
+  }
+  triggerOffline(key, fn) {
+    const msgs = this.#messages[key]
+    if (!isArray(msgs) || msgs.length === 0) {
+      return
+    }
+    msgs.forEach(args => fn.apply(this, args))
   }
   trigger(key, ...rest) {
     if (!this.#messages[key]) {
       this.#messages[key] = []
     }
+    this.#messages[key].push(rest)
     const fns = this.#events[key]
     if (!isArray(fns) || fns.length === 0) {
       return false
@@ -27,7 +35,7 @@ export class Observer {
     fns.forEach(fn => fn.apply(this, rest))
   }
 
-  once(key, fn, offline) {
+  once(key, fn, offline = true) {
     const _this = this
     const _fn = function() {
       fn.apply(this, arguments)
@@ -62,4 +70,4 @@ export class Observer {
 
 instance = Observer.create()
 
-export default Observer
+export default instance
