@@ -1,3 +1,5 @@
+import { randomInteger, randomNumber } from './number'
+
 export const emptyObject = Object.freeze({})
 
 export const nullObject = () => Object.create(null)
@@ -93,5 +95,7 @@ export {
   isInteger,
   isNaturalNumber,
   isPositiveInteger,
-  exactCalc
+  exactCalc,
+  randomInteger,
+  randomNumber
 } from './number.js'
