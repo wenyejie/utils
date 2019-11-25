@@ -1,4 +1,4 @@
-import { emptyObject } from './index.js'
+import { emptyObject } from './common.js'
 import { inBrowser } from './env.js'
 
 const storage = name => {

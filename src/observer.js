@@ -1,4 +1,4 @@
-import { isArray } from './index.js'
+import { isArray } from './common.js'
 
 let instance
 
