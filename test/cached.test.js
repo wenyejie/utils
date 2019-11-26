@@ -1,4 +1,4 @@
-import { cached } from '../src/index.js'
+import { cached } from '../src/common.js'
 
 test('cached', () => {
   const test = cached((a, b) => {

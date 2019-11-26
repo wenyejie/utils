@@ -41,3 +41,5 @@ export { clone } from './clone.js'
 export { local, session } from './storage.js'
 
 export { Observer } from './observer.js'
+
+export { unique } from './array.js'
