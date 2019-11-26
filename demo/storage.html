@@ -6,8 +6,9 @@
   </head>
   <body>
     <script type="module">
-      import { local, session } from '../src/index.js'
+      import { local, session } from '../src/storage.js'
 
+      window.local = local
       local.set('phone', '13480298100')
       console.log(local.get('phone', '13480298100'))
     </script>
