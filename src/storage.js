@@ -39,3 +39,8 @@ const storage = name => {
 export const local = storage('local')
 
 export const session = storage('session')
+
+export default {
+  local,
+  session
+}
