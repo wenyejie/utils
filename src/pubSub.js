@@ -2,7 +2,7 @@ import { isArray } from './common.js'
 
 let instance
 
-export class Observer {
+export class PubSub {
   #events = {}
   #messages = {}
   constructor() {}
@@ -52,12 +52,21 @@ export class Observer {
     }
     return true
   }
-
-  static create() {
-    return new Observer(arguments)
-  }
 }
 
-instance = Observer.create()
+instance = new PubSub()
 
-export default Observer
+const PubSubProxy = function(...rest) {
+  if (this instanceof PubSub) {
+    return new PubSub(...rest)
+  }
+  return instance
+}
+
+PubSubProxy.create = function(...rest) {
+  return new PubSub(...rest)
+}
+
+PubSubProxy.prototype = PubSub.prototype
+
+export default PubSubProxy

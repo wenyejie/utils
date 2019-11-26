@@ -6,9 +6,11 @@
   </head>
   <body>
     <script type="module">
-      import observer from '../src/observer.js'
+      import pubSub from '../src/pubSub.js'
 
-      const demo = observer.create()
+      window.observer = pubSub
+
+      const demo = pubSub()
 
       demo.trigger('coding')
 
