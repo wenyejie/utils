@@ -5,12 +5,7 @@ export const isNumber = value => typeof value === 'number' && !Number.isNaN(valu
 export const isPlainNumber = value => typeof value === 'number'
 
 // 判断是否为整数
-export function isInteger(value) {
-  if (!isNumber(value)) {
-    return false
-  }
-  return value % 1 === 0
-}
+export const isInteger = Number.isInteger
 
 // 判断是否为自然数(包括0)
 export const isNaturalNumber = value => isInteger(value) && value >= 0
