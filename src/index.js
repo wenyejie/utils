@@ -57,6 +57,8 @@ export {
 
 export { throttle } from './throttle.js'
 
+export { debounce } from './debounce.js'
+
 export { clone } from './clone.js'
 
 export { local, session } from './storage.js'
