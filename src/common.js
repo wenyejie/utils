@@ -1,5 +1,9 @@
 export const emptyObject = Object.freeze({})
 
+// 空函数
+export const noop = function() {}
+
+// 没有原型链的空对象
 export const nullObject = () => Object.create(null)
 
 export const hasOwnProperty = Object.prototype.hasOwnProperty
@@ -41,6 +45,8 @@ export const isSymbol = obj => typeof obj === 'symbol'
 
 export const isObject = obj => obj !== null && typeof obj === 'object'
 
+export const isBoolean = obj => obj === true || obj === false
+
 export const isPrimitive = obj => {
   const type = typeof obj
   return type === 'string' || type === 'number' || type === 'boolean'
@@ -49,6 +55,33 @@ export const isPrimitive = obj => {
 export const isPlainObject = val => toTypeString(val) === '[object Object]'
 
 export const isPromise = obj => isObject(obj) && isFunction(obj.then) && isFunction(obj.catch)
+
+/**
+ * 对数据进行遍历
+ * @param data {{} | []}
+ * @param fn {Function}
+ */
+export const each = (data, fn) => {
+  if (!isArray(data) && !isObject(data)) {
+    return
+  }
+  if (isArray(data)) {
+    for (let i = 0; i <= data.length; i++) {
+      if (fn.call(data[i], data[i], i, data) === false) {
+        return
+      }
+    }
+  } else {
+    for (let key in data) {
+      if (!hasOwn(data, key)) {
+        continue
+      }
+      if (fn.call(data[key], data[key], key, data) === false) {
+        return
+      }
+    }
+  }
+}
 
 // 记住执行结果, 使函数或计算只执行一次
 export const once = fn => {
@@ -71,6 +104,7 @@ export const cached = fn => {
 }
 
 export default {
+  noop,
   emptyObject,
   nullObject,
   hasOwnProperty,
@@ -89,6 +123,7 @@ export default {
   isPrimitive,
   isPlainObject,
   isPromise,
+  each,
   once,
   cached
 }
