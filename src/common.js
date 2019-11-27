@@ -54,7 +54,7 @@ export const isPromise = obj => isObject(obj) && isFunction(obj.then) && isFunct
 export const once = fn => {
   let cached
   return function() {
-    return cached || (cached = fn.apply(this.arguments))
+    return cached || (cached = fn.apply(this, arguments))
   }
 }
 
