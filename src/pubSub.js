@@ -1,5 +1,9 @@
 import { isArray, once } from './common.js'
 
+// const defaultOptions = {
+//   offline: true // true|false|'all'
+// }
+
 export class PubSub {
   #events = {}
   #messages = {}
