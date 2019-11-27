@@ -1,6 +1,4 @@
-import { isArray } from './common.js'
-
-let instance
+import { isArray, once } from './common.js'
 
 export class PubSub {
   #events = {}
@@ -54,17 +52,19 @@ export class PubSub {
   }
 }
 
-instance = new PubSub()
+const getInstance = once(function() {
+  return new PubSub(...arguments)
+})
 
-const PubSubProxy = function(...rest) {
+const PubSubProxy = function() {
   if (this instanceof PubSub) {
-    return new PubSub(...rest)
+    return new PubSub(...arguments)
   }
-  return instance
+  return getInstance.apply(this, arguments)
 }
 
-PubSubProxy.create = function(...rest) {
-  return new PubSub(...rest)
+PubSubProxy.create = function() {
+  return new PubSub(...arguments)
 }
 
 PubSubProxy.prototype = PubSub.prototype
