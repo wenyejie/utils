@@ -40,7 +40,7 @@ export { clone } from './clone.js'
 
 export { local, session } from './storage.js'
 
-export pubSub from './pubSub.js'
+export { pubSub } from './pubSub.js'
 
 export { unique, findByProps } from './array.js'
 
