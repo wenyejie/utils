@@ -42,4 +42,6 @@ export { local, session } from './storage.js'
 
 export pubSub from './pubSub.js'
 
-export { unique } from './array.js'
+export { unique, findByProps } from './array.js'
+
+export { ban, pick } from './object.js'
