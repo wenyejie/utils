@@ -1,3 +1,5 @@
+import { dateConvert, isDate, isOneDay, isPlainDate } from './date'
+
 export {
   emptyObject,
   nullObject,
@@ -10,7 +12,6 @@ export {
   isArray,
   isFunction,
   isRegExp,
-  isDate,
   isString,
   isSymbol,
   isObject,
@@ -31,6 +32,8 @@ export {
   randomInteger,
   randomNumber
 } from './number.js'
+
+export { isDate, isPlainDate, isOneDay, dateConvert } from './date.js'
 
 export { throttle } from './throttle.js'
 

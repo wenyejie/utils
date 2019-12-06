@@ -37,8 +37,6 @@ export const isFunction = obj => typeof obj === 'function'
 
 export const isRegExp = obj => toTypeString(obj) === '[object RegExp]'
 
-export const isDate = obj => toTypeString(obj) === '[object Date]'
-
 export const isString = obj => typeof obj === 'string'
 
 export const isSymbol = obj => typeof obj === 'symbol'
@@ -103,6 +101,30 @@ export const cached = fn => {
   }
 }
 
+/**
+ * 补零
+ * @param num {number|string}
+ * @param len {number}
+ * @param isPrepend {boolean}
+ * @return {string}
+ */
+export const zeroize = (num, len = 2, isPrepend = true) => {
+  // 获取当前number长度
+  const l = (num + '').length
+
+  // 如果当前number长度大于目标长度则退出
+  if (l >= len) {
+    return num + ''
+  }
+
+  let temp = ''
+  for (let i = 0; i < len - l; ++i) {
+    temp += '0'
+  }
+
+  return isPrepend ? temp + num : num + temp
+}
+
 export default {
   noop,
   emptyObject,
@@ -116,7 +138,6 @@ export default {
   isArray,
   isFunction,
   isRegExp,
-  isDate,
   isString,
   isSymbol,
   isObject,

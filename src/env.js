@@ -24,6 +24,8 @@ export const isFirefox = ua && ua.match(/firefox\/(\d+)/)
 
 export const isMobile = ua && ua.includes('mobile')
 
+export const isWeChat = ua && ua.includes('micromessenger')
+
 export const isPc = !isMobile
 
 export default {
@@ -40,5 +42,6 @@ export default {
   isPhantom,
   isFirefox,
   isMobile,
-  isPc
+  isPc,
+  isWeChat
 }
