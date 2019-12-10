@@ -10,6 +10,9 @@ export const phone = /(^1\d{10}$)|(^(0\d{2,3}-?)?\d{7,8}(-\d{3,})?$)/
 // 身份证号码
 export const IDCardNumber = /^[1-9][0-9]{5}(19|20)[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|31)|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}([0-9]|X)$/
 
+// 银行卡号
+export const bankCardNumber = /^\d{16,19}$/
+
 // 中文名称
 export const chineseName = /^[\u4E00-\u9FA5|·]{2,}$/
 
@@ -18,5 +21,6 @@ export default {
   mobilePhone,
   telephone,
   IDCardNumber,
-  chineseName
+  chineseName,
+  bankCardNumber
 }
