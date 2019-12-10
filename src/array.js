@@ -1,7 +1,7 @@
 // 数组去重
 import { isArray, isObject } from './common.js'
 
-export const unique = array => Array.from(new Set(array))
+export const arrayUnique = array => Array.from(new Set(array))
 
 /**
  * 根据属性从数组中获取对象
@@ -27,6 +27,6 @@ export const findByProps = (array, props) => {
 }
 
 export default {
-  unique,
+  arrayUnique,
   findByProps
 }

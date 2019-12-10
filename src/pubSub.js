@@ -4,7 +4,7 @@ import { isArray, once } from './common.js'
 //   offline: true // true|false|'all'
 // }
 
-export class PubSub {
+class PubSub {
   #events = {}
   #messages = {}
   constructor() {}
