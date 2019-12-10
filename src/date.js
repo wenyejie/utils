@@ -54,9 +54,50 @@ export const dateConvert = (date, defaultValue = '') => {
   return isDate(date) ? date : defaultValue
 }
 
+export const dateFormat = (date, format = 'YYYY-MM-DD hh:mm:ss') => {
+  date = dateConvert(date)
+  if (!isDate(date)) {
+    return ''
+  }
+
+  return format.replace(
+    // /"[^"]*"|'[^']*'|\b(?:D{1,2}|d{1,3}|m{1,4}|yy(?:yy)?|([hHMstT])\1?|[lLZ])\b/g,
+    /YY(YY)?|MM?|DD?|hh?|mm?|ss?/g,
+    str => {
+      switch (str) {
+        case 'YYYY':
+          return date.getFullYear()
+        case 'YY':
+          return date.getFullYear() % 100
+        case 'MM':
+          return zeroize(date.getMonth() + 1)
+        case 'M':
+          return date.getMonth() + 1
+        case 'DD':
+          return zeroize(date.getDate())
+        case 'D':
+          return date.getDate()
+        case 'hh':
+          return zeroize(date.getHours())
+        case 'h':
+          return date.getHours()
+        case 'mm':
+          return zeroize(date.getMinutes())
+        case 'm':
+          return date.getMinutes()
+        case 'ss':
+          return zeroize(date.getSeconds())
+        case 's':
+          return date.getSeconds()
+      }
+    }
+  )
+}
+
 export default {
   isDate,
   isPlainDate,
   isOneDay,
-  dateConvert
+  dateConvert,
+  dateFormat
 }

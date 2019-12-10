@@ -1,4 +1,4 @@
-import { dateConvert, isOneDay, isDate } from '../src/date.js'
+import { dateConvert, isOneDay, isDate, dateFormat } from '../src/date.js'
 test('isDate', () => {
   expect(isDate(true)).toBe(false)
 })
@@ -21,4 +21,10 @@ test('isOneDay', () => {
   expect(isOneDay(date1, date2)).toBeTruthy()
   expect(isOneDay(date1)).toBeTruthy()
   expect(isOneDay(new Date('aaa'))).toBeFalsy()
+})
+
+test('dateFormat', () => {
+  expect(dateFormat('1575617707799')).toBe('2019-12-06 15:35:07')
+  expect(dateFormat('1575617707799', 'YYYYMM')).toBe('201912')
+  expect(dateFormat('1575617707799', 'YYYMM')).toBe('19Y12')
 })

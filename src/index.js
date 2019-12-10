@@ -1,4 +1,4 @@
-import { dateConvert, isDate, isOneDay, isPlainDate } from './date'
+import { dateConvert, dateFormat, isDate, isOneDay, isPlainDate } from './date'
 
 export {
   emptyObject,
@@ -33,7 +33,7 @@ export {
   randomNumber
 } from './number.js'
 
-export { isDate, isPlainDate, isOneDay, dateConvert } from './date.js'
+export { isDate, isPlainDate, isOneDay, dateConvert, dateFormat } from './date.js'
 
 export { throttle } from './throttle.js'
 

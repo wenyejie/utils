@@ -104,8 +104,8 @@ export const cached = fn => {
 /**
  * 补零
  * @param num {number|string}
- * @param len {number}
- * @param isPrepend {boolean}
+ * @param len {number} 补零长度
+ * @param isPrepend {boolean} 是否前置
  * @return {string}
  */
 export const zeroize = (num, len = 2, isPrepend = true) => {
