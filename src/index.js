@@ -43,8 +43,6 @@ export { clone } from './clone.js'
 
 export { local, session } from './storage.js'
 
-export pubSub from './pubSub.js'
-
 export { arrayUnique, findByProps } from './array.js'
 
 export { ban, pick } from './object.js'
