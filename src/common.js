@@ -54,6 +54,12 @@ export const isPlainObject = val => toTypeString(val) === '[object Object]'
 
 export const isPromise = obj => isObject(obj) && isFunction(obj.then) && isFunction(obj.catch)
 
+export const swap = (obj, i, j) => {
+  const temp = obj[i]
+  obj[i] = obj[j]
+  obj[j] = temp
+}
+
 /**
  * 对数据进行遍历
  * @param data {{} | []}
@@ -146,5 +152,6 @@ export default {
   isPromise,
   each,
   once,
-  cached
+  cached,
+  swap
 }

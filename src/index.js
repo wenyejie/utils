@@ -19,7 +19,8 @@ export {
   isPlainObject,
   isPromise,
   once,
-  cached
+  cached,
+  swap
 } from './common.js'
 
 export {
