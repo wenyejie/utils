@@ -13,6 +13,12 @@ export const isNaturalNumber = value => isInteger(value) && value >= 0
 // 判断是否为正整数(不包括0)
 export const isPositiveInteger = value => isInteger(value) && value > 0
 
+// 判断是否为奇数
+export const isOddNumber = value => value % 2 === 1
+
+// 判断是否为偶数
+export const isEvenNumber = value => value % 2 === 0
+
 // 随机整数
 export const randomInteger = (max, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min
 
