@@ -1,5 +1,6 @@
 import { isString } from './common.js'
 import { isNumber } from './number.js'
+import { IDCardNumber } from './regexp.js'
 
 /**
  * 银行卡格式化
@@ -89,4 +90,27 @@ export const number2cn = n => {
       .replace(/(零.)+/g, '零')
       .replace(/^整$/, '零元整')
   )
+}
+
+/**
+ * 从身份证中查询相关信息
+ * @param cardNumber {string} 身份证号码
+ * @return {{}|{area: string, date: string, address: string, province: string, month: string, city: string, year: string, sex: string, day: string}}
+ */
+export const queryInfoByCardNumber = cardNumber => {
+  if (!IDCardNumber.test(cardNumber)) {
+    console.warn(`参数cardNumber: '${cardNumber}' 身份证号码错误`)
+    return {}
+  }
+  return {
+    province: cardNumber.substring(0, 2),
+    city: cardNumber.substring(2, 4),
+    area: cardNumber.substring(4, 6),
+    address: cardNumber.substring(0, 6),
+    year: cardNumber.substring(6, 10),
+    month: cardNumber.substring(10, 12),
+    day: cardNumber.substring(12, 14),
+    date: cardNumber.substring(6, 14),
+    sex: cardNumber.substring(16, 17) % 2 === 0 ? '女' : '男'
+  }
 }
