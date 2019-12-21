@@ -1,5 +1,5 @@
 import { isString } from './common.js'
-import { isNumber } from './number.js'
+import { isNumber, isOddNumber } from './number.js'
 import { IDCardNumber } from './regexp.js'
 
 /**
@@ -111,6 +111,6 @@ export const queryInfoByCardNumber = cardNumber => {
     month: cardNumber.substring(10, 12),
     day: cardNumber.substring(12, 14),
     date: cardNumber.substring(6, 14),
-    sex: cardNumber.substring(16, 17) % 2 === 0 ? '女' : '男'
+    sex: isOddNumber(+cardNumber.substring(16, 17)) ? '女' : '男'
   }
 }
