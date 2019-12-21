@@ -9,7 +9,7 @@ export const isPlainDate = obj => toTypeString(obj) === '[object Date]'
 /**
  * 判断两个日期是否为同一天
  * @param date1 {Date}
- * @param date2 {Date}
+ * @param date2 {Date} 默认为当天时间
  * @return {boolean}
  */
 export const isOneDay = (date1, date2 = new Date()) => {
