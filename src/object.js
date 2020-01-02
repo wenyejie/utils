@@ -27,6 +27,7 @@ export const ban = (obj, ...rest) => {
   }
   result = { ...obj }
   rest.forEach(key => delete result[key])
+  return result
 }
 
 export default {
