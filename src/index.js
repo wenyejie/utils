@@ -1,4 +1,4 @@
-import { dateConvert, dateFormat, isDate, isOneDay, isPlainDate } from './date'
+import { dateConvert, dateFormat, isDate, isOneDay, isPlainDate } from './date.js'
 
 export {
   emptyObject,
