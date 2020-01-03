@@ -41,6 +41,8 @@ export const isString = obj => typeof obj === 'string'
 
 export const isSymbol = obj => typeof obj === 'symbol'
 
+export const isBigint = obj => typeof obj === 'bigint'
+
 export const isObject = obj => obj !== null && typeof obj === 'object'
 
 export const isBoolean = obj => obj === true || obj === false
