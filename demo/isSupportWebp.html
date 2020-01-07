@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>isSupportWebp</title>
+  </head>
+  <body>
+    <script type="module">
+      import { isSupportWebp } from '../src/isSupportWebp.js'
+
+      isSupportWebp().then(
+        () => {
+          console.log('supported')
+        },
+        () => {
+          console.log('unsupported')
+        }
+      )
+    </script>
+  </body>
+</html>
