@@ -67,7 +67,6 @@ export const number2cn = n => {
     ['元', '万', '亿'],
     ['', '拾', '佰', '仟']
   ]
-  const head = n < 0 ? '欠' : ''
   n = Math.abs(n)
   let s = ''
   for (let i = 0; i < fraction.length; i++) {
@@ -84,7 +83,6 @@ export const number2cn = n => {
     s = p.replace(/(零.)*零$/, '').replace(/^$/, '零') + unit[0][i] + s
   }
   return (
-    head +
     s
       .replace(/(零.)*零元/, '元')
       .replace(/(零.)+/g, '零')
