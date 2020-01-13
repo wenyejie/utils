@@ -1,4 +1,4 @@
-import {once} from './common.js'
+import { once } from './common.js'
 
 export const isSupportWebp = once(() => {
   const webpBase64 = 'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA='
