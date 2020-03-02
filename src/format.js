@@ -18,7 +18,7 @@ export const bankCardFormat = (number, defaultValue = '') => {
 
 /**
  * 金额格式化
- * @param number {number}
+ * @param number {number|string}
  * @param options? {{decimal: 2, symbol: '', default: '', split: ',', length: 3}}
  * @return {string|number}
  */
@@ -44,15 +44,24 @@ export const moneyFormat = (number, options) => {
   }
   let moneySplit = (number + '').split('.')
 
-  return (
-    options.symbol +
-    moneySplit[0].replace(
-      new RegExp(`\(\?\<\=\\d\)\(\\d\{${options.length}\})`, 'g'),
-      `${options.split}$1`
-    ) +
+  let result = options.symbol
+
+  const str = moneySplit[0]
+    .split('')
+    .reverse()
+    .join('')
+  for (let i = 0; i < str.length; i++) {
+    result = str[i] + result
+    if ((i + 1) % options.length === 0 && i < str.length - 1) {
+      result = ',' + result
+    }
+  }
+
+  result +=
     (options.decimal > 0 ? '.' : '') +
     (moneySplit.length === 2 ? moneySplit[1] : '').padEnd(options.decimal, '0')
-  )
+
+  return result
 }
 
 /**
@@ -82,12 +91,10 @@ export const number2cn = n => {
     }
     s = p.replace(/(零.)*零$/, '').replace(/^$/, '零') + unit[0][i] + s
   }
-  return (
-    s
-      .replace(/(零.)*零元/, '元')
-      .replace(/(零.)+/g, '零')
-      .replace(/^整$/, '零元整')
-  )
+  return s
+    .replace(/(零.)*零元/, '元')
+    .replace(/(零.)+/g, '零')
+    .replace(/^整$/, '零元整')
 }
 
 /**
