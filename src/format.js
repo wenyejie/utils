@@ -25,16 +25,11 @@ export const bankCardFormat = (number, defaultValue = '') => {
 export const moneyFormat = (number, options) => {
   options = Object.assign(
     {
-      // 小数点长度
-      decimal: 2,
-      // 钱币符号
-      symbol: '',
-      // 默认值
-      default: '',
-      // 分隔符号
-      split: ',',
-      // 分割长度
-      length: 3
+      decimal: 2, // 小数点长度
+      symbol: '', // 钱币符号
+      default: '', // 默认值
+      split: ',', // 分隔符号
+      length: 3 // 分割长度
     },
     options
   )
