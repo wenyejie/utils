@@ -42,26 +42,18 @@ export const moneyFormat = (number, options) => {
   if (!isNumber(number)) {
     return options.default
   }
-  let moneySplit = (number + '').split('.')
+  const result = number.toFixed(options.decimal)
+  const numberSplit = result.split('.')
 
-  let result = options.symbol
-
-  const str = moneySplit[0]
-    .split('')
-    .reverse()
-    .join('')
-  for (let i = 0; i < str.length; i++) {
-    result = str[i] + result
-    if ((i + 1) % options.length === 0 && i < str.length - 1) {
-      result = ',' + result
-    }
-  }
-
-  result +=
-    (options.decimal > 0 ? '.' : '') +
-    (moneySplit.length === 2 ? moneySplit[1] : '').padEnd(options.decimal, '0')
-
-  return result
+  return (
+    options.symbol +
+    numberSplit[0].replace(
+      new RegExp('\\B(?=(\\d{' + options.length + '})+(?!\\d))', 'g'),
+      options.split
+    ) +
+    '.' +
+    numberSplit[1]
+  )
 }
 
 /**
