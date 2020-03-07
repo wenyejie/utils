@@ -7,16 +7,6 @@ export const isDate = obj =>
 export const isPlainDate = obj => toTypeString(obj) === '[object Date]'
 
 /**
- * 判断两个日期是否为同一天
- * @param date1 {Date}
- * @param date2 {Date} 默认为当天时间
- * @return {boolean}
- */
-export const isOneDay = (date1, date2 = new Date()) => {
-  return date1.toLocaleDateString() === date2.toLocaleDateString()
-}
-
-/**
  * 把其它格式数据转换成日期
  * @param date {*}
  * @param defaultValue {*}
@@ -52,6 +42,21 @@ export const dateConvert = (date, defaultValue = '') => {
 
   date = new Date(date)
   return isDate(date) ? date : defaultValue
+}
+
+/**
+ * 判断两个日期是否为同一天
+ * @param date1 {Date}
+ * @param date2 {Date} 默认为当天时间
+ * @return {boolean}
+ */
+export const isOneDay = (date1, date2 = new Date()) => {
+  date1 = dateConvert(date1)
+  date2 = dateConvert(date2)
+  if (!isDate(date1) || !isDate(date2)) {
+    return false
+  }
+  return date1.toLocaleDateString() === date2.toLocaleDateString()
 }
 
 export const dateFormat = (date, format = 'YYYY-MM-DD hh:mm:ss') => {
