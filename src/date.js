@@ -1,9 +1,11 @@
 import { isString, toTypeString, zeroize } from './common.js'
 import { isNumber } from './number.js'
 
+// 判断对象是否为Date并且有效
 export const isDate = obj =>
   toTypeString(obj) === '[object Date]' && obj.toString() !== 'Invalid Date'
 
+// 判断对象是否为Date类型
 export const isPlainDate = obj => toTypeString(obj) === '[object Date]'
 
 /**
@@ -42,6 +44,20 @@ export const dateConvert = (date, defaultValue = '') => {
 
   date = new Date(date)
   return isDate(date) ? date : defaultValue
+}
+
+/**
+ * 获取月份长度
+ * @param date {Date| any}
+ * @return {number}
+ */
+const monthLength = (date = new Date()) => {
+  date = dateConvert(date)
+  if (isDate(date)) {
+    console.warn('参数错误', date)
+    return 0
+  }
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
 }
 
 /**
