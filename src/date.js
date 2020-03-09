@@ -42,6 +42,11 @@ export const dateConvert = (date, defaultValue = '') => {
     date = isString(date) ? Number.parseInt(date) : date
   }
 
+  // 兼容ios手机
+  if (typeof date === 'string' && /^\d{4}.\d{1,2}.\d{1,2}\s+ \d{1,2}$/.test(date)) {
+    date = date.replace(/\s+/, 'T')
+  }
+
   date = new Date(date)
   return isDate(date) ? date : defaultValue
 }
@@ -73,6 +78,24 @@ export const isOneDay = (date1, date2 = new Date()) => {
     return false
   }
   return date1.toLocaleDateString() === date2.toLocaleDateString()
+}
+
+export const isOneMonth = (date1, date2 = new Date()) => {
+  date1 = dateConvert(date1)
+  date2 = dateConvert(date2)
+  if (!isDate(date1) || !isDate(date2)) {
+    return false
+  }
+  return date1.toLocaleDateString().slice(0, 7) === date2.toLocaleDateString().slice(0, 7)
+}
+
+export const isOneYear = (date1, date2 = new Date()) => {
+  date1 = dateConvert(date1)
+  date2 = dateConvert(date2)
+  if (!isDate(date1) || !isDate(date2)) {
+    return false
+  }
+  return date1.getFullYear() === date2.getFullYear()
 }
 
 export const dateFormat = (date, format = 'YYYY-MM-DD hh:mm:ss') => {
