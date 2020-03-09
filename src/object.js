@@ -30,6 +30,15 @@ export const ban = (obj, ...rest) => {
   return result
 }
 
+/**
+ * 获取对象长度
+ * @param obj {Object}
+ * @return {Number}
+ */
+export const objectLength = obj => {
+  return Object.keys(obj).length
+}
+
 export default {
   ban,
   pick
