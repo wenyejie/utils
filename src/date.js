@@ -51,7 +51,7 @@ export const dateConvert = (date, defaultValue = '') => {
  * @param date {Date| any}
  * @return {number}
  */
-const monthLength = (date = new Date()) => {
+export const monthLength = (date = new Date()) => {
   date = dateConvert(date)
   if (isDate(date)) {
     console.warn('参数错误', date)
