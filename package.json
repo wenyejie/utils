@@ -1,9 +1,12 @@
 {
+  "name": "utils",
+  "description": "基础类库",
   "version": "0.0.1",
   "author": {
     "email": "wenyejie@foxmail.com",
     "name": "wenyejie"
   },
+  "main": "./src",
   "license": "ISC",
   "scripts": {
     "test": "jest"
