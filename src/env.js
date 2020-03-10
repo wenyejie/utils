@@ -22,8 +22,6 @@ export const isPhantom = ua && /phantomjs/.test(ua)
 
 export const isFirefox = ua && ua.match(/firefox\/(\d+)/)
 
-export const isPhantomJs = /phantomjs/.test(ua)
-
 export const isMobile = ua && ua.includes('mobile')
 
 export const isWeChat = ua && ua.includes('micromessenger')

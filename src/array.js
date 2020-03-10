@@ -38,8 +38,3 @@ export const findByProps = (array, props) => {
     return true
   })
 }
-
-export default {
-  arrayUnique,
-  findByProps
-}

@@ -1,4 +1,5 @@
-import { isString, toTypeString, zeroize } from './common.js'
+import { isString } from './string.js'
+import { toTypeString, zeroize } from './common.js'
 import { isNumber } from './number.js'
 
 // 判断对象是否为Date并且有效

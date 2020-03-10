@@ -73,4 +73,6 @@ PubSubProxy.create = function() {
 
 PubSubProxy.prototype = PubSub.prototype
 
+export const pubSub = PubSubProxy
+
 export default PubSubProxy
