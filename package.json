@@ -1,7 +1,7 @@
 {
-  "name": "utils",
+  "name": "wenyejie-utils",
   "description": "基础类库",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": {
     "email": "wenyejie@foxmail.com",
     "name": "wenyejie"
