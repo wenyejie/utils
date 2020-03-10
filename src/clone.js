@@ -1,4 +1,5 @@
-import { isArray, isObject } from './common.js'
+import { isArray } from './array.js'
+import { isObject } from './object.js'
 
 /**
  * 对对象进行拷贝

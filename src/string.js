@@ -1,4 +1,4 @@
-import { isString } from './common.js'
+export const isString = obj => typeof obj === 'string'
 
 /**
  * 获取字符串中的后缀

@@ -1,4 +1,4 @@
-import { isString } from './common.js'
+import { isString } from './string.js'
 import { isNumber, isOddNumber } from './number.js'
 import { IDCardNumber } from './regexp.js'
 

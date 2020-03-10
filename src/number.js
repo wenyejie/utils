@@ -56,14 +56,3 @@ export const exactCalc = (countX, countY, operator, length = 3) => {
   }
   return result
 }
-
-export default {
-  isNumber,
-  isPlainNumber,
-  isInteger,
-  isNaturalNumber,
-  isPositiveInteger,
-  exactCalc,
-  randomInteger,
-  randomNumber
-}

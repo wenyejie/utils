@@ -1,5 +1,5 @@
-import { isArray, once } from './common.js'
-
+import { once } from './common.js'
+import { isArray } from './array.js'
 // const defaultOptions = {
 //   offline: true // true|false|'all'
 // }

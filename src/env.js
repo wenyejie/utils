@@ -29,21 +29,3 @@ export const isMobile = ua && ua.includes('mobile')
 export const isWeChat = ua && ua.includes('micromessenger')
 
 export const isPc = !isMobile
-
-export default {
-  inBrowser,
-  ua,
-  isIE,
-  isIE9,
-  isEdge,
-  isAndroid,
-  isIos,
-  isIPhone,
-  isIPad,
-  isChrome,
-  isPhantom,
-  isFirefox,
-  isMobile,
-  isPc,
-  isWeChat
-}

@@ -44,8 +44,3 @@ class CustomStorage {
 export const local = new CustomStorage('local')
 
 export const session = new CustomStorage('session')
-
-export default {
-  local,
-  session
-}

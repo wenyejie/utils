@@ -1,3 +1,7 @@
+import { toTypeString } from './common.js'
+
+export const isRegExp = obj => toTypeString(obj) === '[object RegExp]'
+
 // 电话号码
 export const mobilePhone = /^1\d{10}$/
 
@@ -24,12 +28,3 @@ export const url = /^https?:\/\/(([a-zA-Z0-9_-])+(\.)?)*(:\d+)?(\/((\.)?(\?)?=?&
 
 // 邮编
 export const postcode = /^[1-9]\d{5}(?!\d)$/
-
-export default {
-  phone,
-  mobilePhone,
-  telephone,
-  IDCardNumber,
-  chineseName,
-  bankCardNumber
-}

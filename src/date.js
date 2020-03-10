@@ -137,11 +137,3 @@ export const dateFormat = (date, format = 'YYYY-MM-DD hh:mm:ss') => {
     }
   )
 }
-
-export default {
-  isDate,
-  isPlainDate,
-  isOneDay,
-  dateConvert,
-  dateFormat
-}

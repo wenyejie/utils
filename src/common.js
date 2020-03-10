@@ -1,3 +1,6 @@
+import { isObject } from './object.js'
+import { isArray } from './array.js'
+
 export const emptyObject = Object.freeze({})
 
 // 空函数
@@ -31,19 +34,11 @@ export const toTypeString = obj => objectToString.call(obj)
 
 export const toRawType = value => toTypeString(value).slice(8, -1)
 
-export const isArray = Array.isArray
-
 export const isFunction = obj => typeof obj === 'function'
-
-export const isRegExp = obj => toTypeString(obj) === '[object RegExp]'
-
-export const isString = obj => typeof obj === 'string'
 
 export const isSymbol = obj => typeof obj === 'symbol'
 
 export const isBigint = obj => typeof obj === 'bigint'
-
-export const isObject = obj => obj !== null && typeof obj === 'object'
 
 export const isBoolean = obj => obj === true || obj === false
 
@@ -51,8 +46,6 @@ export const isPrimitive = obj => {
   const type = typeof obj
   return type === 'string' || type === 'number' || type === 'boolean'
 }
-
-export const isPlainObject = val => toTypeString(val) === '[object Object]'
 
 export const isPromise = obj => isObject(obj) && isFunction(obj.then) && isFunction(obj.catch)
 
@@ -131,29 +124,4 @@ export const zeroize = (num, len = 2, isPrepend = true) => {
   }
 
   return isPrepend ? temp + num : num + temp
-}
-
-export default {
-  noop,
-  emptyObject,
-  nullObject,
-  hasOwnProperty,
-  hasOwn,
-  isEmptyValue,
-  objectToString,
-  toTypeString,
-  toRawType,
-  isArray,
-  isFunction,
-  isRegExp,
-  isString,
-  isSymbol,
-  isObject,
-  isPrimitive,
-  isPlainObject,
-  isPromise,
-  each,
-  once,
-  cached,
-  swap
 }

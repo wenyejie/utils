@@ -1,7 +1,9 @@
-// 数组去重
-import { isArray, isObject } from './common.js'
+import { isObject } from './object.js'
 
+// 数组去重
 export const arrayUnique = array => Array.from(new Set(array))
+
+export const isArray = Array.isArray
 
 // 移除数组子项
 export const arrayRemove = (array, item) => {

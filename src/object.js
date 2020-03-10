@@ -1,4 +1,8 @@
-import { isObject } from './common.js'
+import { toTypeString } from './common'
+
+export const isObject = obj => obj !== null && typeof obj === 'object'
+
+export const isPlainObject = val => toTypeString(val) === '[object Object]'
 
 /**
  * 选中对象中的key值, 返回一个新对象
@@ -6,7 +10,7 @@ import { isObject } from './common.js'
  * @param rest {string[]}
  * @return {{}}
  */
-export const pick = (obj, ...rest) => {
+export const objectPick = (obj, ...rest) => {
   const result = {}
   if (isObject(obj)) {
     rest.forEach(key => (result[key] = obj[key]))
@@ -20,7 +24,7 @@ export const pick = (obj, ...rest) => {
  * @param rest {string[]}
  * @return {{}}
  */
-export const ban = (obj, ...rest) => {
+export const objectBan = (obj, ...rest) => {
   let result = {}
   if (!isObject(obj)) {
     return result
@@ -37,9 +41,4 @@ export const ban = (obj, ...rest) => {
  */
 export const objectLength = obj => {
   return Object.keys(obj).length
-}
-
-export default {
-  ban,
-  pick
 }
