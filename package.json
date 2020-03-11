@@ -6,7 +6,7 @@
     "email": "wenyejie@foxmail.com",
     "name": "wenyejie"
   },
-  "main": "./src/index.js",
+  "main": "./index.js",
   "types": "./types/index.d.ts",
   "license": "ISC",
   "scripts": {
