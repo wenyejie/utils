@@ -1,7 +1,7 @@
 export {
   noop,
   emptyObject,
-  nullObject,
+  nullProtoObject,
   hasOwnProperty,
   hasOwn,
   isEmptyValue,

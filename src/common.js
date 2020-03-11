@@ -11,7 +11,7 @@ export const nullProtoObject = () => Object.create(null)
 
 export const hasOwnProperty = Object.prototype.hasOwnProperty
 
-// 判断key是是否是对象自己的属性
+// 判断key值是否是对象自己的属性
 export const hasOwn = (object, key) => {
   if (object === null || object === undefined) {
     return false
