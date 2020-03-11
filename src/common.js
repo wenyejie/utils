@@ -7,7 +7,7 @@ export const emptyObject = Object.freeze({})
 export const noop = function() {}
 
 // 没有原型链的空对象
-export const nullObject = () => Object.create(null)
+export const nullProtoObject = () => Object.create(null)
 
 export const hasOwnProperty = Object.prototype.hasOwnProperty
 
