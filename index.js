@@ -81,7 +81,7 @@ export { isSupportWebp } from './src/isSupportWebp.js'
 
 export { arrayUnique, findByProps, isArray, arrayRemove } from './src/array.js'
 
-export { pubSub } from './src/pubSub.js'
+// export { pubSub } from './src/pubSub.js'
 
 export {
   isRegExp,
