@@ -1,1 +1,1 @@
-export declare function clone(obj: any, deep?: boolean)
+export declare function clone(obj: any, deep?: boolean): any
