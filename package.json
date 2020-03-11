@@ -2,6 +2,7 @@
   "name": "wenyejie-utils",
   "description": "基础类库",
   "version": "1.0.5",
+  "private": false,
   "author": {
     "email": "wenyejie@foxmail.com",
     "name": "wenyejie"
@@ -10,17 +11,30 @@
   "types": "./types/index.d.ts",
   "license": "ISC",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "regenerator-runtime": "^0.13.3",
-    "webpack": "^4.42.0"
-  }
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wenyejie/wenyejie-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wenyejie/wenyejie-utils/issues"
+  },
+  "homepage": "https://github.com/wenyejie/wenyejie-utils#readme"
 }
