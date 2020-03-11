@@ -1,5 +1,7 @@
-// 数组去重
-export declare function arrayUnique(array: any[]): any[]
+export declare function arrayUnique(array: any[]): array is any[]
 
-// 根据对象从数组中查找子项
+export declare function isArray(arg: any): arg is any[]
+
+export declare function arrayRemove(array: any[], any): any[]
+
 export declare function findByProps(array: any[], prop: object): object | undefined
