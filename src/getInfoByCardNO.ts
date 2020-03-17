@@ -1,6 +1,8 @@
 import isOddNumber from './isOddNumber'
+import { CardNOResponse } from '../types'
+import { IDCardNumber } from './regexp'
 
-const queryInfoByCardNumber = cardNumber => {
+const getInfoByCardNumber = (cardNumber: string): CardNOResponse => {
   if (!IDCardNumber.test(cardNumber)) {
     console.warn(`参数cardNumber: '${cardNumber}' 身份证号码错误`)
     return {}
@@ -17,3 +19,5 @@ const queryInfoByCardNumber = cardNumber => {
     sex: isOddNumber(+cardNumber.substring(16, 17)) ? '女' : '男'
   }
 }
+
+export default getInfoByCardNumber

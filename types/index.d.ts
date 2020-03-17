@@ -11,3 +11,15 @@ export interface MoneyFormatOptions {
   split?: string
   length?: number
 }
+
+export interface CardNOResponse {
+  province?: string
+  city?: string
+  area?: string
+  address?: string
+  year?: string
+  month?: string
+  day?: string
+  date?: string
+  sex?: string
+}
