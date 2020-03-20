@@ -36,10 +36,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wenyejie/wenyejie-utils.git"
+    "url": "git+https://github.com/wenyejie/utils.git"
   },
   "bugs": {
-    "url": "https://github.com/wenyejie/wenyejie-utils/issues"
+    "url": "https://github.com/wenyejie/utils/issues"
   },
-  "homepage": "https://github.com/wenyejie/wenyejie-utils#readme"
+  "homepage": "https://github.com/wenyejie/utils#readme"
 }
