@@ -13,7 +13,7 @@ export interface CardNOResponse {
   sex?: string
 }
 
-export const getInfoByCardNumber = (cardNumber: string): CardNOResponse => {
+export const getInfoByCardNO = (cardNumber: string): CardNOResponse => {
   if (!reIDCardNumber.test(cardNumber)) {
     console.warn(`参数cardNumber: '${cardNumber}' 身份证号码错误`)
     return {}
@@ -31,4 +31,4 @@ export const getInfoByCardNumber = (cardNumber: string): CardNOResponse => {
   }
 }
 
-export default getInfoByCardNumber
+export default getInfoByCardNO
