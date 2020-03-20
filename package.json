@@ -1,14 +1,14 @@
 {
   "name": "wenyejie-utils",
   "description": "基础类库",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": false,
   "author": {
     "email": "wenyejie@foxmail.com",
     "name": "wenyejie"
   },
   "main": "./dist/index.js",
-  "types": "./src/index.ts",
+  "types": "./index.ts",
   "license": "ISC",
   "scripts": {
     "test": "jest",
