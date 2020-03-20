@@ -1,4 +1,7 @@
-import { DOMNodeTypes } from '../types/index'
-export const isComment = (obj: any) => (obj ? obj.nodeType === DOMNodeTypes.COMMENT : false)
+/**
+ * 判断是否为注释
+ * @param obj
+ */
+export const isComment = (obj: any) => (obj ? obj.nodeType === 8 : false)
 
 export default isComment

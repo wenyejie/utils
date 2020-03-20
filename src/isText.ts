@@ -1,4 +1,7 @@
-import { DOMNodeTypes } from '../types/index'
-export const isText = (obj: any) => (obj ? obj.nodeType === DOMNodeTypes.TEXT : false)
+/**
+ * 判断是否为文本
+ * @param obj
+ */
+export const isText = (obj: any) => (obj ? obj.nodeType === 3 : false)
 
 export default isText

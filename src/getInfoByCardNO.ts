@@ -1,6 +1,17 @@
 import isOddNumber from './isOddNumber'
-import { CardNOResponse } from '../types/index'
 import { reIDCardNumber } from './regexp'
+
+export interface CardNOResponse {
+  province?: string
+  city?: string
+  area?: string
+  address?: string
+  year?: string
+  month?: string
+  day?: string
+  date?: string
+  sex?: string
+}
 
 export const getInfoByCardNumber = (cardNumber: string): CardNOResponse => {
   if (!reIDCardNumber.test(cardNumber)) {

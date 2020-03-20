@@ -1,5 +1,12 @@
 import isNumber from './isNumber'
-import { MoneyFormatOptions } from '../types/index'
+
+export interface MoneyFormatOptions {
+  decimal?: number
+  symbol?: string
+  default?: string
+  split?: string
+  length?: number
+}
 
 /**
  * 金额格式化
