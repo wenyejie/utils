@@ -24,8 +24,7 @@ export const exactCalc = (
   countX = Number.parseFloat(countX + '') * multiple
   countY = Number.parseFloat(countY + '') * multiple
   if (!isNumber(countY) || !isNumber(countX)) {
-    console.error('传入参数有误, 请重新确认!')
-    return
+    throw new Error('传入参数有误, 请重新确认!')
   }
 
   let result = 0
@@ -44,8 +43,7 @@ export const exactCalc = (
       result = countX / countY
       break
     default:
-      console.error('运算符传入有误, 请重新确认!')
-      return
+      throw new Error('运算符传入有误, 请重新确认!')
   }
   return result
 }

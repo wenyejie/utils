@@ -28,7 +28,7 @@ export const moneyFormat = (number: string | number, options?: MoneyFormatOption
     options.symbol +
     numberSplit[0].replace(
       new RegExp('\\B(?=(\\d{' + options.length + '})+(?!\\d))', 'g'),
-      options.split
+      <string>options.split
     ) +
     '.' +
     numberSplit[1]

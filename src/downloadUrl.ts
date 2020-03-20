@@ -5,7 +5,7 @@ import isString from './isString'
  * @param url
  * @param filename
  */
-export const downloadUrl = (url: string, filename?: string) => {
+export const downloadUrl = (url: string, filename: string) => {
   if (!isString(url)) {
     throw new Error('参数错误')
   }

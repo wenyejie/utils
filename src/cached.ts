@@ -4,11 +4,12 @@
  */
 export const cached = (fn: Function): Function => {
   const caches: any = {}
-  return function() {
+  return function(): any {
     const args = Array.prototype.join.call(arguments, ',')
     if (args in caches) {
       return caches[args]
     }
+    // @ts-ignore
     return (caches[args] = fn.apply(this, arguments))
   }
 }
