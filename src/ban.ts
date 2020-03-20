@@ -16,3 +16,5 @@ const ban = (data: {}, ...rest): {} => {
   })
   return result
 }
+
+export default ban
