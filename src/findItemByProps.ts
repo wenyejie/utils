@@ -8,7 +8,7 @@ import hasOwn from './hasOwn'
  * @param key
  * @param value
  */
-const findByProps = (data: object[], key: PropertyKey | object, value?: any): object => {
+const findItemByProps = (data: any[], key: PropertyKey | {}, value?: any): any => {
   const props: object = isObject(key) ? <object>key : { [<PropertyKey>key]: value }
   if (!isArray(data) || !isObject(props)) {
     return []
@@ -26,4 +26,4 @@ const findByProps = (data: object[], key: PropertyKey | object, value?: any): ob
   })
 }
 
-export default findByProps
+export default findItemByProps

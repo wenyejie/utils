@@ -6,16 +6,16 @@ import isString from './isString'
  * 把其它格式数据转换成日期
  * @param date
  */
-const toDate = (date): Date => {
+const toDate = (date): Date | void => {
   if (isDate(date)) {
-    return date
+    return <Date>date
   }
   if (!date) {
     return
   }
 
   if (isString(date) && /^\d+$/.test(date)) {
-    date = Number.parseInt(date)
+    date = Number.parseInt(<string>date)
   }
 
   if (isNumber(date)) {
@@ -23,7 +23,7 @@ const toDate = (date): Date => {
       date = Number.parseInt((date + '').substring(0, 13))
     }
 
-    if (Number.isNaN(date)) {
+    if (Number.isNaN(<number>date)) {
       return
     }
 
@@ -31,7 +31,7 @@ const toDate = (date): Date => {
       date = `${date}`.padEnd(13, '0')
     }
 
-    date = isString(date) ? Number.parseInt(date) : date
+    date = isString(date) ? Number.parseInt(<string>date) : date
   }
 
   // 兼容ios手机
@@ -40,7 +40,7 @@ const toDate = (date): Date => {
   }
 
   date = new Date(date)
-  return isDate(date) ? date : undefined
+  return isDate(date) ? <Date>date : undefined
 }
 
 export default toDate

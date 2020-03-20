@@ -13,7 +13,7 @@ import toTypeString from './toTypeString'
  */
 const toRawType = (obj: any): string =>
   toTypeString(obj)
-    .slice(-8, -1)
+    .slice(8, -1)
     .toLocaleLowerCase()
 
 export default toRawType
