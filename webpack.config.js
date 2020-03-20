@@ -40,6 +40,9 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.d.ts']
   },
+  optimization: {
+    usedExports: true
+  },
   plugins: [
     // 清理文件夹
     new CleanWebpackPlugin()
