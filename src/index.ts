@@ -1,3 +1,4 @@
+export const VERSION = '1.0.7'
 export * from './ban'
 export * from './bankCardFormat'
 export * from './cached'
