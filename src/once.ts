@@ -6,7 +6,7 @@ export const once = (fn: Function): Function => {
   let cached: any
   return function() {
     // @ts-ignore
-    return cached || (cached = fn.apply(this.arguments))
+    return cached || (cached = fn.apply(this, arguments))
   }
 }
 
