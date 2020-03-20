@@ -5,13 +5,14 @@ import isObject from './isObject'
  * @param data
  * @param rest
  */
-const ban = (data: {}, ...rest): {} => {
+export const ban = (data: {}, ...rest: any[]): {} => {
   let result = {}
   if (!isObject(data)) {
     return result
   }
   result = { ...data }
   rest.forEach(key => {
+    // @ts-ignore
     delete result[key]
   })
   return result

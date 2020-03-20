@@ -1,12 +1,12 @@
 import isNumber from './isNumber'
-import { MoneyFormatOptions } from '../types'
+import { MoneyFormatOptions } from '../types/index'
 
 /**
  * 金额格式化
  * @param number
  * @param options
  */
-const moneyFormat = (number: string | number, options?: MoneyFormatOptions) => {
+export const moneyFormat = (number: string | number, options?: MoneyFormatOptions) => {
   options = Object.assign(
     {
       decimal: 2, // 小数点长度

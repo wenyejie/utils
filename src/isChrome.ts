@@ -4,6 +4,6 @@ import isEdge from './isEdge'
 /**
  * 判断是不是ipad
  */
-const isChrome = useragent && /chrome\/\d+/.test(useragent) && !isEdge
+export const isChrome = useragent && /chrome\/\d+/.test(useragent) && !isEdge
 
 export default isChrome

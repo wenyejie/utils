@@ -6,7 +6,7 @@ import isString from './isString'
  * 把其它格式数据转换成日期
  * @param date
  */
-const toDate = (date): Date | void => {
+export const toDate = (date: any): Date | void => {
   if (isDate(date)) {
     return <Date>date
   }

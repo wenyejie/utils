@@ -5,7 +5,7 @@ import hasOwnProperty from './hasOwnProperty'
  * @param object
  * @param key
  */
-const hasOwn = (object:{}, key: PropertyKey): boolean => {
+export const hasOwn = (object: {}, key: PropertyKey): boolean => {
   if (object === null || object === undefined) {
     return false
   }

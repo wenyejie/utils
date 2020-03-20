@@ -8,7 +8,7 @@ import isObject from './isObject'
  * @param propKey 查找的属性
  * @param returnKey 返回的属性
  */
-const findValueByProps = (
+export const findValueByProps = (
   data: any[],
   propValue: string | number,
   propKey = 'value',

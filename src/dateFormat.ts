@@ -10,7 +10,7 @@ const padEnd = (number: number): string => {
  * @param date 日期
  * @param format 格式
  */
-const dateFormat = (date: any, format = 'YYYY-MM-DD hh:mm:ss') => {
+export const dateFormat = (date: any, format = 'YYYY-MM-DD hh:mm:ss') => {
   date = toDate(date)
   if (!isDate(date)) {
     return ''

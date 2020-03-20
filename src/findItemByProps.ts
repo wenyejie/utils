@@ -8,12 +8,12 @@ import hasOwn from './hasOwn'
  * @param key
  * @param value
  */
-const findItemByProps = (data: any[], key: PropertyKey | {}, value?: any): any => {
-  const props: object = isObject(key) ? <object>key : { [<PropertyKey>key]: value }
+export const findItemByProps = (data: any[], key: PropertyKey | {}, value?: any): any => {
+  const props: Record<any, any> = isObject(key) ? <object>key : { [<PropertyKey>key]: value }
   if (!isArray(data) || !isObject(props)) {
     return []
   }
-  return data.find((item: object) => {
+  return data.find((item: Record<any, any>) => {
     if (!isObject(item)) {
       return false
     }

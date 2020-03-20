@@ -4,7 +4,7 @@ import isObject from './isObject'
  * 获取对象长度
  * @param obj
  */
-const objectLength = obj => {
+export const objectLength = (obj: any) => {
   if (!isObject(obj)) {
     return 0
   }

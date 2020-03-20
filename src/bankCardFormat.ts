@@ -4,7 +4,7 @@ import isString from './isString'
  * 银行卡格式化
  * @param card 卡号
  */
-const bankCardFormat = (card: string) => {
+export const bankCardFormat = (card: string) => {
   if (!isString(card)) {
     return ''
   }

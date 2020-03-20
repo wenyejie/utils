@@ -4,9 +4,9 @@
  * @param interval 时间间隔
  * @param isFirst 第一次是否立即执行
  */
-const debounce = (fn: Function, interval = 500, isFirst = false): Function => {
-  let timer
-  return function(...rest) {
+export const debounce = (fn: Function, interval = 500, isFirst = false): Function => {
+  let timer: NodeJS.Timeout
+  return function(...rest: any[]) {
     clearTimeout(timer)
     if (isFirst) {
       fn.apply(this, rest)

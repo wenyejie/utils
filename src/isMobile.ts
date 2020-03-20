@@ -1,5 +1,5 @@
 import useragent from './useragent'
 
-const isMobile = useragent && useragent.includes('mobile')
+export const isMobile = useragent && useragent.includes('mobile')
 
 export default isMobile

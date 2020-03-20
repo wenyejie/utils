@@ -1,9 +1,9 @@
 import isOddNumber from './isOddNumber'
-import { CardNOResponse } from '../types'
-import { IDCardNumber } from './regexp'
+import { CardNOResponse } from '../types/index'
+import { reIDCardNumber } from './regexp'
 
-const getInfoByCardNumber = (cardNumber: string): CardNOResponse => {
-  if (!IDCardNumber.test(cardNumber)) {
+export const getInfoByCardNumber = (cardNumber: string): CardNOResponse => {
+  if (!reIDCardNumber.test(cardNumber)) {
     console.warn(`参数cardNumber: '${cardNumber}' 身份证号码错误`)
     return {}
   }

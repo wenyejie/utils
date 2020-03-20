@@ -2,10 +2,10 @@
  * 缓存允许结果, 使方法只允许一次
  * @param fn
  */
-const once = (fn: Function): Function => {
+export const once = (fn: Function): Function => {
   let cached: any
   return function() {
-    return cached || (cached = fn.apply(this. arguments))
+    return cached || (cached = fn.apply(this.arguments))
   }
 }
 

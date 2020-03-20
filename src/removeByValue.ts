@@ -5,7 +5,7 @@ import isArray from './isArray'
  * @param data
  * @param value
  */
-const removeByValue = <T>(data: T[], value: any): T[] => {
+export const removeByValue = <T>(data: T[], value: any): T[] => {
   if (isArray(data) && data.length > 0) {
     const index = data.indexOf(<never>value)
     if (index > -1) {

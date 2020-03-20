@@ -1,5 +1,5 @@
 import toRawType from './toRawType'
 
-export const isRegExp = obj => toRawType(obj) === 'regexp'
+export const isRegExp = (obj: any) => toRawType(obj) === 'regexp'
 
 export default isRegExp

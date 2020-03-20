@@ -5,7 +5,7 @@ import downloadUrl from './downloadUrl'
  * @param blob
  * @param filename
  */
-const downloadBlob = (blob: Blob, filename: string) => {
+export const downloadBlob = (blob: Blob, filename: string) => {
   if (window.navigator.msSaveBlob) {
     window.navigator.msSaveBlob(blob, filename)
     return

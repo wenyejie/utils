@@ -11,7 +11,7 @@ import toTypeString from './toTypeString'
  * 返回数据的类型
  * @param obj 返回类型的对象
  */
-const toRawType = (obj: any): string =>
+export const toRawType = (obj: any): string =>
   toTypeString(obj)
     .slice(8, -1)
     .toLocaleLowerCase()

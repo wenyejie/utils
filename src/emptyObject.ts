@@ -1,5 +1,5 @@
 /**
  * 被冻结的空对象
  */
-const emptyObject = Object.freeze({})
+export const emptyObject = Object.freeze({})
 export default emptyObject

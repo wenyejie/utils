@@ -5,8 +5,8 @@ import isObject from './isObject'
  * @param data
  * @param rest
  */
-const pick = (data: {}, ...rest): {} => {
-  const result = {}
+export const pick = (data: Record<any, any>, ...rest: any[]): {} => {
+  const result: Record<any, any> = {}
   if (isObject(data)) {
     rest.forEach((key: string) => {
       result[key] = data[key]

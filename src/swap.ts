@@ -6,7 +6,11 @@ import hasOwn from './hasOwn'
  * @param i
  * @param j
  */
-const swap = (obj:{} | [], i: number | string | symbol, j: number | string | symbol): {} | [] => {
+export const swap = (
+  obj: Record<string | number, string | number>,
+  i: string | number,
+  j: string | number
+): {} | [] => {
   if (!hasOwn(obj, i) || !hasOwn(obj, j)) {
     return obj
   }

@@ -6,9 +6,9 @@ import isDate from './isDate'
  * @param date1
  * @param date2
  */
-const isOneMonth = (date1: Date | number | string, date2 = new Date()): boolean => {
-  date1 = toDate(date1)
-  date2 = toDate(date2)
+export const isOneMonth = (date1: Date | number | string, date2 = new Date()): boolean => {
+  date1 = <Date>toDate(date1)
+  date2 = <Date>toDate(date2)
   if (!isDate(date1) || !isDate(date2)) {
     return false
   }

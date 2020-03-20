@@ -1,4 +1,4 @@
-import { DOMNodeTypes } from '../types'
-const isComment = obj => (obj ? obj.nodeType === DOMNodeTypes.COMMENT : false)
+import { DOMNodeTypes } from '../types/index'
+export const isComment = (obj: any) => (obj ? obj.nodeType === DOMNodeTypes.COMMENT : false)
 
 export default isComment

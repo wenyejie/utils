@@ -9,7 +9,7 @@ enum StorageName {
  * 解析
  * @param data
  */
-const parse = (data: any): any => {
+export const parse = (data: any): any => {
   return (JSON.parse(data) || emptyObject).v
 }
 
@@ -19,6 +19,7 @@ const parse = (data: any): any => {
 class CustomStorage {
   private storage: Storage
   constructor(name: StorageName) {
+    // @ts-ignore
     this.storage = inBrowser ? window[`${name}Storage`] : emptyObject
   }
 
@@ -68,7 +69,7 @@ class CustomStorage {
    * 返回第index个存储的内容, index从0开始
    * @param index
    */
-  key(index) {
+  key(index: number) {
     return parse(this.storage.key(index))
   }
 

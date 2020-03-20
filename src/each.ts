@@ -2,7 +2,7 @@ import isArray from './isArray'
 import isObject from './isObject'
 import hasOwn from './hasOwn'
 
-const each = (data: {} | [], fn: Function): void => {
+export const each = (data: any, fn: Function): void => {
   if (!isArray(data) && !isObject(data)) {
     return
   }

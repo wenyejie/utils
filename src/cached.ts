@@ -2,8 +2,8 @@
  * 缓存执行结果, 当结果输入相同时, 不再执行
  * @param fn
  */
-const cached = (fn: Function): Function => {
-  const caches: object = {}
+export const cached = (fn: Function): Function => {
+  const caches: any = {}
   return function() {
     const args = Array.prototype.join.call(arguments, ',')
     if (args in caches) {

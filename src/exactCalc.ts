@@ -14,10 +14,15 @@ enum calcOperator {
  * @param operator
  * @param length
  */
-const exactCalc = (countX, countY, operator: calcOperator, length = 3): number => {
+export const exactCalc = (
+  countX: number | string,
+  countY: number | string,
+  operator: calcOperator,
+  length = 3
+): number => {
   const multiple = Math.pow(10, length)
-  countX = Number.parseFloat(countX) * multiple
-  countY = Number.parseFloat(countY) * multiple
+  countX = Number.parseFloat(countX + '') * multiple
+  countY = Number.parseFloat(countY + '') * multiple
   if (!isNumber(countY) || !isNumber(countX)) {
     console.error('传入参数有误, 请重新确认!')
     return

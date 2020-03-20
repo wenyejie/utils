@@ -2,7 +2,7 @@
  * 金额转中文大写
  * @param n
  */
-const money2cn = n => {
+export const money2cn = (n: number) => {
   const fraction = ['角', '分']
   const digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
   const unit = [

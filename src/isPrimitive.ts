@@ -2,9 +2,17 @@
  * 判断是否为原始类型
  * @param obj
  */
-const isPrimitive = (obj) => {
+export const isPrimitive = (obj: any) => {
   const type = typeof obj
-  return type === 'string' || type === 'number' || type === 'boolean' || type === 'bigint' || type === 'symbol' || obj === undefined || obj === null
+  return (
+    type === 'string' ||
+    type === 'number' ||
+    type === 'boolean' ||
+    type === 'bigint' ||
+    type === 'symbol' ||
+    obj === undefined ||
+    obj === null
+  )
 }
 
 export default isPrimitive

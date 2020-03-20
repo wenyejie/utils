@@ -1,5 +1,5 @@
 /**
  * 空函数
  */
-const noop = function():void {}
+export const noop = function(): void {}
 export default noop

@@ -7,7 +7,11 @@ import isArray from './isArray'
  * @param deep 是否需要深度克隆
  * @param weakMap weakMap 避免死循环
  */
-const clone = (obj: any, deep = true, weakMap: WeakMap<object, any> = new WeakMap()): any => {
+export const clone = (
+  obj: any,
+  deep = true,
+  weakMap: WeakMap<object, any> = new WeakMap()
+): any => {
   if (isPrimitive(obj)) {
     return obj
   }
@@ -16,7 +20,7 @@ const clone = (obj: any, deep = true, weakMap: WeakMap<object, any> = new WeakMa
     return weakMap.get(obj)
   }
 
-  const result: [] | {} = isArray(obj) ? [] : {}
+  const result: any = isArray(obj) ? [] : {}
   weakMap.set(obj, result)
   const keys = Object.keys(obj)
   let key: PropertyKey
@@ -26,3 +30,5 @@ const clone = (obj: any, deep = true, weakMap: WeakMap<object, any> = new WeakMa
   }
   return result
 }
+
+export default clone

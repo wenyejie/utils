@@ -1,7 +1,7 @@
 {
   "name": "wenyejie-utils",
   "description": "基础类库",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": false,
   "author": {
     "email": "wenyejie@foxmail.com",
@@ -12,7 +12,8 @@
   "license": "ISC",
   "scripts": {
     "test": "jest",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open"
   },
   "dependencies": {
     "typescript": "^3.8.3"
@@ -28,8 +29,10 @@
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "regenerator-runtime": "^0.13.5",
+    "ts-loader": "^6.2.1",
     "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "repository": {
     "type": "git",
