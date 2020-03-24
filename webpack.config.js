@@ -1,29 +1,26 @@
 const path = require('path')
-const fs = require('fs')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-
-const dir = path.join('./src')
-const files = fs.readdirSync(dir)
-
-const entry = {}
-
-files.forEach(item => {
-  if (!/\.js$/.test(item)) {
-    return
-  }
-  const key = item.replace(/\.js$/, '')
-  entry[key] = './src/' + item
-})
 
 module.exports = {
   mode: 'production',
-  entry,
+  entry: {
+    index: './index.ts'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: '[name].js',
+    chunkFilename: '[name].min.js',
+    library: 'utils',
+    libraryTarget: 'umd'
   },
+  devtool: 'source-map',
   module: {
     rules: [
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -39,6 +36,12 @@ module.exports = {
         ]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.ts', '.js', '.d.ts']
+  },
+  optimization: {
+    usedExports: true
   },
   plugins: [
     // 清理文件夹
