@@ -14,6 +14,7 @@ export const throttle = (
   let timer: number
   return function(...rest: any[]) {
     if (isFirst) {
+      // @ts-ignore
       fn.apply(this, rest)
       isFirst = false
       return
@@ -23,7 +24,7 @@ export const throttle = (
     }
     timer = window.setTimeout(() => {
       clearTimeout(timer)
-      timer = null
+      // @ts-ignore
       fn.apply(this, rest)
     }, interval)
   }
