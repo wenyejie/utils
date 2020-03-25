@@ -35,7 +35,7 @@ export const toDate = (date: any): Date | void => {
   }
 
   // 兼容ios手机
-  if (typeof date === 'string' && /^\d{4}.\d{1,2}.\d{1,2}\s+ \d{1,2}$/.test(date)) {
+  if (typeof date === 'string' && /^\d{4}.\d{1,2}.\d{1,2}\s+(\d{1,2}.)*\d{1,2}?$/.test(date)) {
     date = date.replace(/\s+/, 'T')
   }
 
