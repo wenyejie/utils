@@ -8,10 +8,10 @@ export const rTelephone = /^(\d{3,4}-)?\d{7,8}$/
 export const rPhone = /(^1\d{10}$)|(^(0\d{2,3}-?)?\d{7,8}(-\d{3,})?$)/
 
 // 身份证号码
-export const rIDCardNumber = /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([012]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([012]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/
+export const rIDCardNO = /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([012]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([012]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/
 
 // 银行卡号
-export const rBankCardNumber = /^\d{16,19}$/
+export const rBankCardNO = /^\d{16,19}$/
 
 // 中文名称
 export const rChineseName = /^[\u4E00-\u9FA5|·]{2,}$/
