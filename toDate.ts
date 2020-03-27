@@ -19,24 +19,25 @@ export const toDate = (date: any): Date | void => {
   }
 
   if (isNumber(date)) {
-    if ((date + '').length > 13) {
-      date = Number.parseInt((date + '').substring(0, 13))
+    const dateStr = date + ''
+    if (dateStr.length >= 8) {
+      if (dateStr.length > 13) {
+        date = Number.parseInt((date + '').substring(0, 13))
+      } else {
+        date = dateStr.padEnd(13, '0')
+      }
+      date = isString(date) ? Number.parseInt(<string>date) : date
+      if (Number.isNaN(<number>date)) {
+        return
+      }
+    } else {
+      date = dateStr
     }
-
-    if (Number.isNaN(<number>date)) {
-      return
-    }
-
-    if ((date + '').length < 13) {
-      date = `${date}`.padEnd(13, '0')
-    }
-
-    date = isString(date) ? Number.parseInt(<string>date) : date
   }
 
   // 兼容ios手机
   if (typeof date === 'string' && /^\d{4}.\d{1,2}.\d{1,2}\s+(\d{1,2}.)*\d{1,2}?$/.test(date)) {
-    date = date.replace(/\s+/, 'T')
+    date = date.replace(/-/g, '/')
   }
 
   date = new Date(date)
