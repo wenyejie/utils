@@ -1,4 +1,4 @@
-import { reIDCardNumber } from './regexp'
+import { rIDCardNumber } from './regexp'
 
 /**
  * 检验身份证号码是否正确,
@@ -6,7 +6,7 @@ import { reIDCardNumber } from './regexp'
  */
 export const checkIDNO = (id: string): boolean => {
   const code = (id + '').toLocaleUpperCase()
-  if (!reIDCardNumber.test(code)) {
+  if (!rIDCardNumber.test(code)) {
     return false
   }
   // 加权因子

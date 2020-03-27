@@ -1,5 +1,5 @@
 import isOddNumber from './isOddNumber'
-import { reIDCardNumber } from './regexp'
+import checkIDNO from './checkIDNO'
 
 export interface CardNOResponse {
   province?: string
@@ -14,7 +14,7 @@ export interface CardNOResponse {
 }
 
 export const getInfoByCardNO = (cardNumber: string): CardNOResponse => {
-  if (!reIDCardNumber.test(cardNumber)) {
+  if (!checkIDNO(cardNumber)) {
     console.warn(`参数cardNumber: '${cardNumber}' 身份证号码错误`)
     return {}
   }
