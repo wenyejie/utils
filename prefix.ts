@@ -8,7 +8,7 @@ export const prefix = (string?: string): string => {
   if (!isString(string)) {
     return ''
   }
-  string = string.trim()
+  string = <string>string.trim()
 
   const index = string.search(/^(\w+)+(?=\.)/)
   if (index === -1) {
