@@ -1,7 +1,7 @@
 import toDate from './toDate'
 import isDate from './isDate'
 
-const padEnd = (number: number): string => {
+const padStart = (number: number): string => {
   return `${number}`.padStart(2, '0')
 }
 
@@ -23,23 +23,23 @@ export const dateFormat = (date: any, format = 'YYYY-MM-DD hh:mm:ss') => {
       case 'YY':
         return (date.getFullYear() % 100) + ''
       case 'MM':
-        return padEnd(date.getMonth() + 1)
+        return padStart(date.getMonth() + 1)
       case 'M':
         return date.getMonth() + 1 + ''
       case 'DD':
-        return padEnd(date.getDate())
+        return padStart(date.getDate())
       case 'D':
         return date.getDate() + ''
       case 'hh':
-        return padEnd(date.getHours())
+        return padStart(date.getHours())
       case 'h':
         return date.getHours() + ''
       case 'mm':
-        return padEnd(date.getMinutes())
+        return padStart(date.getMinutes())
       case 'm':
         return date.getMinutes() + ''
       case 'ss':
-        return padEnd(date.getSeconds())
+        return padStart(date.getSeconds())
       case 's':
         return date.getSeconds() + ''
       default:
