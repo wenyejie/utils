@@ -10,7 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     chunkFilename: '[name].min.js',
-    library: 't',
+    library: 's',
     libraryTarget: 'umd'
   },
   devtool: 'source-map',
