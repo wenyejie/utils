@@ -7,11 +7,11 @@ import isString from './isString'
  *
  * @param number
  */
-export const mobilePhoneNOFormat = (number?: string) => {
+export const mobilePhoneFormat = (number?: string) => {
   if (!isString(number)) {
     return ''
   }
   return number.replace(/(?<=\d{3})\w{4}(?=\d{4})/g, '****')
 }
 
-export default mobilePhoneNOFormat
+export default mobilePhoneFormat
