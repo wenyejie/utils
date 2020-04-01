@@ -12,9 +12,9 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].min.js',
     library: {
-      root: 'Storm',
-      amd: 'Storm',
-      commonjs: 'Storm'
+      root: 'storm',
+      amd: 'storm',
+      commonjs: 'storm'
     },
     libraryTarget: 'umd'
   },
