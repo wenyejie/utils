@@ -1,4 +1,5 @@
 import isString from './isString'
+import { rMobilePhone } from './regexp'
 
 /**
  * 手机号码格式化显示
@@ -8,7 +9,7 @@ import isString from './isString'
  * @param number
  */
 export const mobilePhoneFormat = (number?: string) => {
-  if (!isString(number)) {
+  if (!isString(number) || !rMobilePhone.test(number)) {
     return ''
   }
   return number.replace(/(?<=\d{3})\w{4}(?=\d{4})/g, '****')
