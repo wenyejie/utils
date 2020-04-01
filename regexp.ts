@@ -24,3 +24,6 @@ export const rUrl = /^https?:\/\/(([a-zA-Z0-9_-])+(\.)?)*(:\d+)?(\/((\.)?(\?)?=?
 
 // 邮编
 export const rPostcode = /^[1-9]\d{5}(?!\d)$/
+
+// 金额
+export const rAmount = /((^[1-9]\d*)|^0)(\.\d{1,2})?$/
