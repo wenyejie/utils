@@ -6,7 +6,7 @@ import { rBankCardNO } from './regexp'
  * @param card 卡号
  */
 export const bankCardFormat = (card: string) => {
-  if (!isString(card) || rBankCardNO.test(card)) {
+  if (!isString(card) || !rBankCardNO.test(card)) {
     return ''
   }
   card = card.trim()
