@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>debounce - 函数防抖</title>
+    <style>
+      body {
+        height: 1000vh;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../dist/index.js"></script>
+    <script>
+      const debounce = Storm.debounce
+      const handleScroll = debounce($event => {
+        console.log($event)
+      })
+
+      window.addEventListener('scroll', handleScroll)
+    </script>
+  </body>
+</html>
