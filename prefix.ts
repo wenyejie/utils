@@ -4,7 +4,7 @@ import { isString } from './isString'
  * 获取字符串中的前缀
  * @param string 字符串
  */
-export const prefix = (string: string): string => {
+export const prefix = (string?: any): string => {
   if (!isString(string)) {
     return ''
   }
