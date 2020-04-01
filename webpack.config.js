@@ -4,13 +4,18 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   mode: 'production',
   entry: {
-    index: './index.ts'
+    index: './index.ts',
+    storm: './index.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     chunkFilename: '[name].min.js',
-    library: 's',
+    library: {
+      root: 'Storm',
+      amd: 'Storm',
+      commonjs: 'Storm'
+    },
     libraryTarget: 'umd'
   },
   devtool: 'source-map',
