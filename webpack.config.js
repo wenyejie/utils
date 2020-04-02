@@ -16,7 +16,8 @@ module.exports = {
       amd: 'storm',
       commonjs: 'storm'
     },
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   devtool: 'source-map',
   module: {
@@ -43,7 +44,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js', '.d.ts']
+    extensions: ['.ts', '.js']
   },
   optimization: {
     usedExports: true
