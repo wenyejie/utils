@@ -31,6 +31,7 @@ export const rAmount = /((^[1-9]\d*)|^0)(\.\d{1,2})?$/
 /**
  * 限制金额输入, 即匹配到不合法的金额输入
  * 如: 00.11 -> 0.11, 011.11 -> 11.11, 11.110 -> 11.11
- *
+ * 推荐用法, amount.replace(rLimitAmount, '')
+ * 当然可以以此来校验输入是否符合金额规则, !rLimitAmount.test(amount)
  */
 export const rLimitAmount = /([^0-9.])|((?<=\d+\.\d{2})\d+)|((?<=^0)0+)|(^0(?=\d))/g
