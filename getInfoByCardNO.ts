@@ -1,5 +1,6 @@
 import isOddNumber from './isOddNumber'
 import checkIDNO from './checkIDNO'
+import nullProtoObject from './nullProtoObject'
 
 export interface CardNOResponse {
   province?: string
@@ -13,10 +14,10 @@ export interface CardNOResponse {
   sex?: string
 }
 
-export const getInfoByCardNO = (cardNumber: string): CardNOResponse => {
+export const getInfoByCardNO = (cardNumber: string): CardNOResponse | any => {
   if (!checkIDNO(cardNumber)) {
     console.warn(`参数cardNumber: '${cardNumber}' 身份证号码错误`)
-    return {}
+    return nullProtoObject
   }
   return {
     province: cardNumber.substring(0, 2),
