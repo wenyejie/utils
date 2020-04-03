@@ -1,15 +1,17 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-module.exports = {
-  mode: 'production',
+const isProd = process.env.NODE_ENV === 'production'
+
+const webpackConfig = {
+  mode: process.env.NODE_ENV,
   entry: {
     index: './index.ts',
     storm: './index.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: isProd ? '[name].js' : '[name].dev.js',
     chunkFilename: '[name].min.js',
     library: {
       root: 'storm',
@@ -49,8 +51,12 @@ module.exports = {
   optimization: {
     usedExports: true
   },
-  plugins: [
-    // 清理文件夹
-    new CleanWebpackPlugin()
-  ]
+  plugins: []
 }
+
+if (isProd) {
+  // // 清理文件夹
+  webpackConfig.plugins.push(new CleanWebpackPlugin())
+}
+
+module.exports = webpackConfig
