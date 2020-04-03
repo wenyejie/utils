@@ -5,7 +5,7 @@ import isString from './isString'
  * @param url
  * @param filename
  */
-export const downloadUrl = (url: string, filename: string) => {
+export const downloadFile = (url: string, filename: string) => {
   if (!isString(url)) {
     throw new Error('参数错误')
   }
@@ -21,4 +21,4 @@ export const downloadUrl = (url: string, filename: string) => {
   document.body.removeChild($download)
 }
 
-export default downloadUrl
+export default downloadFile

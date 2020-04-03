@@ -1,4 +1,4 @@
-import downloadUrl from './downloadUrl'
+import downloadFile from './downloadFile'
 
 /**
  * 下载blob文件
@@ -11,7 +11,7 @@ export const downloadBlob = (blob: Blob, filename: string) => {
     return
   }
   const url = window.URL.createObjectURL(blob)
-  downloadUrl(url, filename)
+  downloadFile(url, filename)
   window.URL.revokeObjectURL(url)
 }
 
