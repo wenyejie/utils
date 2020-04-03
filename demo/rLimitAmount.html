@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>rLimitAmount</title>
+  </head>
+  <body>
+    <input type="number" id="amount" />
+    <script src="../dist/storm.dev.js"></script>
+    <script>
+      const rLimitAmount = storm.rLimitAmount
+      const $amount = document.querySelector('#amount')
+
+      $amount.addEventListener('input', () => {
+        $amount.value = $amount.value.replace(rLimitAmount, '')
+      })
+    </script>
+  </body>
+</html>

@@ -34,4 +34,4 @@ export const rAmount = /((^[1-9]\d*)|^0)(\.\d{1,2})?$/
  * 推荐用法, amount.replace(rLimitAmount, '')
  * 当然可以以此来校验输入是否符合金额规则, !rLimitAmount.test(amount)
  */
-export const rLimitAmount = /([^0-9.])|((?<=\d+\.\d{2})\d+)|((?<=^0)0+)|(^0(?=\d))/g
+export const rLimitAmount = /([^0-9.])|((?<=\d+\.\d{2})\d+)|((?<=^0)0+)|(^0(?=[1-9]))|((?<=\.\d*)\.)|(^\.)/g
