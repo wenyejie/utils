@@ -456,6 +456,7 @@ var debounce = function (fn, interval, isFirst) {
 
 /**
  * 下载blob文件
+ * 主要用于下载非同源的文件, 采用XMLHttpRequest blob下载方式下载下来或者下载canvas中的图像
  * @param blob
  * @param filename
  */
@@ -465,7 +466,7 @@ var downloadBlob = function (blob, filename) {
     }
     if (!Object(_suffix__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(filename)) {
         filename = filename + '.' + blob.type.replace(/image\//, '');
-        console.error('参数错误: filename没有后缀名');
+        console.warn('参数错误: filename没有后缀名');
     }
     if (window.navigator.msSaveBlob) {
         window.navigator.msSaveBlob(blob, filename);

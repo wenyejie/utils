@@ -21,7 +21,7 @@ const webpackConfig = {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
-  devtool: 'source-map',
+  devtool: isProd ? false : 'source-map',
   module: {
     rules: [
       {
