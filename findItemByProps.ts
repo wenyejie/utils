@@ -1,6 +1,7 @@
 import isArray from './isArray'
 import isObject from './isObject'
 import hasOwn from './hasOwn'
+import nullProtoObject from './nullProtoObject'
 
 /**
  * 根据键值对从数组中查找子项
@@ -8,10 +9,14 @@ import hasOwn from './hasOwn'
  * @param key
  * @param value
  */
-export const findItemByProps = (data: any[], key: PropertyKey | {}, value?: any): any => {
+export const findItemByProps = (
+  data: any[],
+  key: PropertyKey | {},
+  value?: any
+): Record<any, any> => {
   const props: Record<any, any> = isObject(key) ? <object>key : { [<PropertyKey>key]: value }
   if (!isArray(data) || !isObject(props)) {
-    return []
+    return nullProtoObject
   }
   return data.find((item: Record<any, any>) => {
     if (!isObject(item)) {
