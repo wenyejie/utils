@@ -616,16 +616,16 @@ var exactCalc = function (countX, countY, operator, length) {
     }
     var result = 0;
     switch (operator) {
-        case '+':
+        case calcOperator.add:
             result = (countX + countY) / multiple;
             break;
-        case '-':
+        case calcOperator.subtract:
             result = (countX - countY) / multiple;
             break;
-        case '*':
+        case calcOperator.multiply:
             result = (countX * countY) / multiple / multiple;
             break;
-        case '/':
+        case calcOperator.divide:
             result = countX / countY;
             break;
         default:
@@ -662,9 +662,11 @@ var exactCalc = function (countX, countY, operator, length) {
  */
 var findItemByProps = function (data, key, value) {
     var _a;
-    var props = Object(_isObject__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(key) ? key : (_a = {}, _a[key] = value, _a);
+    var props = Object(_isObject__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(key)
+        ? key
+        : (_a = {}, _a[key] = value, _a);
     if (!Object(_isArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(data) || !Object(_isObject__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(props)) {
-        return [];
+        return null;
     }
     return data.find(function (item) {
         if (!Object(_isObject__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(item)) {
