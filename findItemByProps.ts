@@ -14,9 +14,11 @@ export const findItemByProps = (
   key: PropertyKey | {},
   value?: any
 ): Record<any, any> => {
-  const props: Record<any, any> = isObject(key) ? <object>key : { [<PropertyKey>key]: value }
+  const props: Record<any, any> = isObject(key)
+    ? <Record<any, any>>key
+    : { [<PropertyKey>key]: value }
   if (!isArray(data) || !isObject(props)) {
-    return nullProtoObject
+    return null
   }
   return data.find((item: Record<any, any>) => {
     if (!isObject(item)) {
