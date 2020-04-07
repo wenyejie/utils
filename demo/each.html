@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>each</title>
+  </head>
+  <body>
+    <script src="../dist/storm.dev.js"></script>
+    <script>
+      const s = window.storm
+
+      const array = [
+        {
+          name: 'a'
+        },
+        {
+          name: 'b'
+        },
+        {
+          name: 'c'
+        }
+      ]
+
+      s.each(array, (item, index) => {
+        console.log(item, index)
+      })
+
+      const map = {
+        a: 'a',
+        b: 'b',
+        c: 'c'
+      }
+      s.each(map, (item, key) => {
+        console.log(item, key)
+      })
+    </script>
+  </body>
+</html>

@@ -539,7 +539,7 @@ var each = function (data, fn) {
         return;
     }
     if (Object(_isArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(data)) {
-        for (var i = 0; i <= data.length; i++) {
+        for (var i = 0; i < data.length; i++) {
             if (fn.call(data[i], data[i], i, data) === false) {
                 return;
             }
