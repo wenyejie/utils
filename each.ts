@@ -7,7 +7,7 @@ export const each = (data: any, fn: Function): void => {
     return
   }
   if (isArray(data)) {
-    for (let i = 0; i <= data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       if (fn.call(data[i], data[i], i, data) === false) {
         return
       }
