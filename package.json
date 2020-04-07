@@ -14,7 +14,7 @@
     "test": "jest",
     "test:c": "jest --coverage",
     "serve": "cross-env NODE_ENV=development webpack-dev-server --open",
-    "build": "cross-env NODE_ENV=production webpack --modern && cross-env NODE_ENV=development webpack --modern"
+    "build": "npm run test && cross-env NODE_ENV=production webpack --modern && cross-env NODE_ENV=development webpack --modern"
   },
   "dependencies": {},
   "devDependencies": {
