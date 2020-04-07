@@ -1,7 +1,6 @@
 import isArray from './isArray'
 import isObject from './isObject'
 import hasOwn from './hasOwn'
-import nullProtoObject from './nullProtoObject'
 
 /**
  * 根据键值对从数组中查找子项
