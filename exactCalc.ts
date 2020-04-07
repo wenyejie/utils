@@ -17,7 +17,7 @@ enum calcOperator {
 export const exactCalc = (
   countX: number | string,
   countY: number | string,
-  operator: calcOperator,
+  operator: string,
   length = 3
 ): number => {
   const multiple = Math.pow(10, length)
@@ -30,16 +30,16 @@ export const exactCalc = (
   let result = 0
 
   switch (operator) {
-    case '+':
+    case calcOperator.add:
       result = (countX + countY) / multiple
       break
-    case '-':
+    case calcOperator.subtract:
       result = (countX - countY) / multiple
       break
-    case '*':
+    case calcOperator.multiply:
       result = (countX * countY) / multiple / multiple
       break
-    case '/':
+    case calcOperator.divide:
       result = countX / countY
       break
     default:
