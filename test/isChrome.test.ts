@@ -1,4 +1,4 @@
-import isChrome from '../isChrome'
+import { isChrome } from '../env'
 
 test('isChrome', () => {
   expect(isChrome()).toBeFalsy()

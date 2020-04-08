@@ -1,5 +1,4 @@
-import inBrowser from '../inBrowser'
-import isAndroid from '../isAndroid'
+import { inBrowser } from '../env'
 
 test('inBrowser', () => {
   expect(inBrowser()).toBeTruthy()

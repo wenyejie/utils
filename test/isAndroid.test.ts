@@ -1,4 +1,4 @@
-import isAndroid from '../isAndroid'
+import { isAndroid } from '../env'
 
 test('isAndroid', () => {
   expect(isAndroid()).toBeFalsy()
