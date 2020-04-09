@@ -1188,7 +1188,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isLinux", function() { return _env__WEBPACK_IMPORTED_MODULE_74__["k"]; });
 
-var VERSION = '1.0.19';
+var VERSION = '1.0.20';
 
 
 
