@@ -6,7 +6,10 @@ import isDate from './isDate'
  * @param date1
  * @param date2
  */
-export const isOneDay = (date1: Date | number | string, date2 = new Date()): boolean => {
+export const isSameDay = (
+  date1: Date | number | string,
+  date2: Date | number | string = new Date()
+): boolean => {
   date1 = <Date>toDate(date1)
   date2 = <Date>toDate(date2)
   if (!isDate(date1) || !isDate(date2)) {
@@ -15,4 +18,4 @@ export const isOneDay = (date1: Date | number | string, date2 = new Date()): boo
   return date1.toLocaleDateString() === date2.toLocaleDateString()
 }
 
-export default isOneDay
+export default isSameDay

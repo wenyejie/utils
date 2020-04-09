@@ -5,7 +5,7 @@ import isString from './isString'
  * @param urlA
  * @param urlB
  */
-export const isOneHost = (urlA: string, urlB = window.location.href) => {
+export const isSameHost = (urlA: string, urlB = window.location.href) => {
   if (!isString(urlA)) {
     return false
   }
@@ -16,4 +16,4 @@ export const isOneHost = (urlA: string, urlB = window.location.href) => {
   return $a.host === $b.host
 }
 
-export default isOneHost
+export default isSameHost

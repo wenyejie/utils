@@ -6,7 +6,7 @@ import isDate from './isDate'
  * @param date1
  * @param date2
  */
-export const isOneYear = (date1: Date | number | string, date2 = new Date()): boolean => {
+export const isSameYear = (date1: Date | number | string, date2 = new Date()): boolean => {
   date1 = <Date>toDate(date1)
   date2 = <Date>toDate(date2)
   if (!isDate(date1) || !isDate(date2)) {
@@ -15,4 +15,4 @@ export const isOneYear = (date1: Date | number | string, date2 = new Date()): bo
   return date1.getFullYear() === date2.getFullYear()
 }
 
-export default isOneYear
+export default isSameYear

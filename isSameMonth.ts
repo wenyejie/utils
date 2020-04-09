@@ -6,7 +6,7 @@ import isDate from './isDate'
  * @param date1
  * @param date2
  */
-export const isOneMonth = (date1: Date | number | string, date2 = new Date()): boolean => {
+export const isSameMonth = (date1: Date | number | string, date2 = new Date()): boolean => {
   date1 = <Date>toDate(date1)
   date2 = <Date>toDate(date2)
   if (!isDate(date1) || !isDate(date2)) {
@@ -15,4 +15,4 @@ export const isOneMonth = (date1: Date | number | string, date2 = new Date()): b
   return date1.toLocaleDateString().slice(0, 7) === date2.toLocaleDateString().slice(0, 7)
 }
 
-export default isOneMonth
+export default isSameMonth
