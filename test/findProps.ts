@@ -1,4 +1,4 @@
-import findValueByProps from '../findValueByProps'
+import findProps from '../findProps'
 
 test('findValueByProps', () => {
   const data = [
@@ -11,5 +11,5 @@ test('findValueByProps', () => {
       value: '11'
     }
   ]
-  expect(findValueByProps(data, '44')).toBe('广东省')
+  expect(findProps(data, '44')).toBe('广东省')
 })

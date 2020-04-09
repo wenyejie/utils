@@ -1,4 +1,4 @@
-import findItemByProps from './findItemByProps'
+import find from './find'
 import isObject from './isObject'
 
 /**
@@ -8,14 +8,14 @@ import isObject from './isObject'
  * @param propKey 查找的属性
  * @param returnKey 返回的属性
  */
-export const findValueByProps = (
+export const findProps = (
   data: any[],
   propValue: string | number,
   propKey = 'value',
   returnKey = 'label'
 ): any => {
-  const item: any = findItemByProps(data, propKey, propValue)
+  const item: any = find(data, propKey, propValue)
   return isObject(item) ? item[returnKey] : ''
 }
 
-export default findValueByProps
+export default findProps
