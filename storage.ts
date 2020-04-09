@@ -1,4 +1,4 @@
-import inBrowser from './inBrowser'
+import { inBrowser } from './env'
 import emptyObject from './emptyObject'
 
 enum StorageName {
@@ -20,7 +20,7 @@ class CustomStorage {
   private storage: Storage
   constructor(name: StorageName) {
     // @ts-ignore
-    this.storage = inBrowser ? window[`${name}Storage`] : emptyObject
+    this.storage = inBrowser() ? window[`${name}Storage`] : emptyObject
   }
 
   /**
