@@ -1,14 +1,23 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const fs = require('fs')
 
 const isProd = process.env.NODE_ENV === 'production'
 
+const entry = {}
+const files = fs.readdirSync(path.join('./'))
+
+files.forEach(filename => {
+  if (!/\.ts$/.test(filename)) {
+    return
+  }
+  const key = filename.replace(/\.ts$/, '')
+  entry[key] = './' + filename
+})
+
 const webpackConfig = {
   mode: process.env.NODE_ENV,
-  entry: {
-    index: './index.ts',
-    storm: './index.ts'
-  },
+  entry,
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: isProd ? '[name].js' : '[name].dev.js',
