@@ -5,6 +5,7 @@
     <title>base642file</title>
   </head>
   <body>
+    <img src="" id="img" alt="test" />
     <script src="../dist/base642file.dev.js"></script>
     <script>
       const file = storm.base642file(
@@ -13,6 +14,12 @@
       )
 
       console.log(file)
+      const reader = new FileReader()
+      reader.onload = () => {
+        console.log(this, reader)
+        document.querySelector('#img').src = reader.result
+      }
+      reader.readAsDataURL(file)
     </script>
   </body>
 </html>
