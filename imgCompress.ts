@@ -1,7 +1,7 @@
 import file2base64 from './file2base64'
 import load from './load'
 
-interface ImgCompressOptions {
+export interface ImgCompressOptions {
   noCompressIfLarger?: boolean
   maxWidth?: number
   maxHeight?: number
@@ -9,7 +9,7 @@ interface ImgCompressOptions {
   quality?: number
 }
 
-interface CreateCanvasResult {
+export interface CreateCanvasResult {
   context: CanvasRenderingContext2D
   $canvas: HTMLCanvasElement
 }
@@ -18,12 +18,12 @@ const createImg = (url: string): Promise<HTMLImageElement> => {
   return load('img', url)
 }
 
-const file2img = async (file: File): Promise<HTMLImageElement> => {
+export const file2img = async (file: File): Promise<HTMLImageElement> => {
   const base64 = await file2base64(file)
   return await createImg(base64)
 }
 
-const createCanvas = (
+export const createCanvas = (
   $img: HTMLImageElement,
   options: ImgCompressOptions
 ): Promise<CreateCanvasResult> => {
@@ -35,7 +35,7 @@ const createCanvas = (
     resolve({ context, $canvas })
   })
 }
-const calcDrawSize = ($img: HTMLImageElement, options: ImgCompressOptions) => {
+export const calcDrawSize = ($img: HTMLImageElement, options: ImgCompressOptions) => {
   const proportion = $img.naturalWidth / $img.naturalHeight
   let dw = 0
   let dh = 0
@@ -62,7 +62,7 @@ const calcDrawSize = ($img: HTMLImageElement, options: ImgCompressOptions) => {
   }
   return { dw, dh, dx, dy, sx, sy, sw, sh }
 }
-const canvas2file = (
+export const canvas2file = (
   $canvas: HTMLCanvasElement,
   file: File,
   options: ImgCompressOptions
@@ -78,6 +78,11 @@ const canvas2file = (
   })
 }
 
+/**
+ * 图片压缩: 利用canvas对图片进行压缩
+ * @param file
+ * @param options
+ */
 const imgCompress = async (file: File, options?: ImgCompressOptions) => {
   options = Object.assign(
     {
