@@ -8,7 +8,7 @@ import hasOwn from './hasOwn'
  * @param options
  */
 
-export const load = (tagName: string, url: string, options: Record<any, any>) => {
+export const load = (tagName: string, url: string, options?: Record<any, any>): Promise<any> => {
   options = Object.assign(
     {
       before: null,
