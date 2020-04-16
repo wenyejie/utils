@@ -95,8 +95,13 @@ const imgCompress = async (file: File, options?: ImgCompressOptions) => {
     options
   )
   const $img = await file2img(file)
-  const { dw, dh, dx, dy, sx, sy, sw, sh } = await calcDrawSize($img, options)
   const { context, $canvas } = await createCanvas($img, options)
+  // 如果低端版本不支持toBlob则无法使用图片压缩功能直接返回原图
+  // 详见: https://caniuse.com/#feat=mdn-api_htmlcanvaselement_toblob
+  if (!$canvas.toBlob) {
+    return file
+  }
+  const { dw, dh, dx, dy, sx, sy, sw, sh } = await calcDrawSize($img, options)
   $canvas.width = dw
   $canvas.height = dh
   context.drawImage($img, sx, sy, sw, sh, dx, dy, dw, dh)

@@ -15,7 +15,9 @@ export const downloadFile = (url: string, filename: string = '') => {
   $download.href = url
   $download.setAttribute('download', filename)
   // 当不允许下载或者下载失败时, 在新页面打开, 而不是当前页面
-  $download.setAttribute('target', '_blank')
+  if (!$download.download) {
+    $download.setAttribute('target', '_blank')
+  }
   document.body.appendChild($download)
   $download.click()
   document.body.removeChild($download)
