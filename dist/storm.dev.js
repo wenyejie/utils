@@ -510,6 +510,7 @@ __webpack_require__.r(__webpack_exports__);
  * @param filename
  */
 var downloadFile = function (url, filename) {
+    if (filename === void 0) { filename = ''; }
     if (!Object(_isString__WEBPACK_IMPORTED_MODULE_0__["default"])(url)) {
         throw new Error('参数错误');
     }
@@ -518,7 +519,9 @@ var downloadFile = function (url, filename) {
     $download.href = url;
     $download.setAttribute('download', filename);
     // 当不允许下载或者下载失败时, 在新页面打开, 而不是当前页面
-    $download.setAttribute('target', '_blank');
+    if (!$download.download) {
+        $download.setAttribute('target', '_blank');
+    }
     document.body.appendChild($download);
     $download.click();
     document.body.removeChild($download);

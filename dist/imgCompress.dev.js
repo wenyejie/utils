@@ -296,7 +296,7 @@ var canvas2file = function ($canvas, file, options) {
  * @param options
  */
 var imgCompress = function (file, options) { return __awaiter(void 0, void 0, void 0, function () {
-    var $img, _a, dw, dh, dx, dy, sx, sy, sw, sh, _b, context, $canvas, compressFile;
+    var $img, _a, context, $canvas, _b, dw, dh, dx, dy, sx, sy, sw, sh, compressFile;
     return __generator(this, function (_c) {
         switch (_c.label) {
             case 0:
@@ -310,12 +310,20 @@ var imgCompress = function (file, options) { return __awaiter(void 0, void 0, vo
                 return [4 /*yield*/, file2img(file)];
             case 1:
                 $img = _c.sent();
-                return [4 /*yield*/, calcDrawSize($img, options)];
+                return [4 /*yield*/, createCanvas($img, options)
+                    // 如果低端版本不支持toBlob则无法使用图片压缩功能直接返回原图
+                    // 详见: https://caniuse.com/#feat=mdn-api_htmlcanvaselement_toblob
+                ];
             case 2:
-                _a = _c.sent(), dw = _a.dw, dh = _a.dh, dx = _a.dx, dy = _a.dy, sx = _a.sx, sy = _a.sy, sw = _a.sw, sh = _a.sh;
-                return [4 /*yield*/, createCanvas($img, options)];
+                _a = _c.sent(), context = _a.context, $canvas = _a.$canvas;
+                // 如果低端版本不支持toBlob则无法使用图片压缩功能直接返回原图
+                // 详见: https://caniuse.com/#feat=mdn-api_htmlcanvaselement_toblob
+                if (!$canvas.toBlob) {
+                    return [2 /*return*/, file];
+                }
+                return [4 /*yield*/, calcDrawSize($img, options)];
             case 3:
-                _b = _c.sent(), context = _b.context, $canvas = _b.$canvas;
+                _b = _c.sent(), dw = _b.dw, dh = _b.dh, dx = _b.dx, dy = _b.dy, sx = _b.sx, sy = _b.sy, sw = _b.sw, sh = _b.sh;
                 $canvas.width = dw;
                 $canvas.height = dh;
                 context.drawImage($img, sx, sy, sw, sh, dx, dy, dw, dh);
