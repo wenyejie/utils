@@ -2497,7 +2497,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "remove", function() { return _remove__WEBPACK_IMPORTED_MODULE_73__["remove"]; });
 
-var VERSION = '1.1.1';
+var VERSION = '1.1.2';
 
 
 
