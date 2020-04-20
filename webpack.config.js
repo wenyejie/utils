@@ -22,11 +22,7 @@ const webpackConfig = {
     path: path.resolve(__dirname, 'dist'),
     filename: isProd ? '[name].js' : '[name].dev.js',
     chunkFilename: '[name].min.js',
-    library: {
-      root: 'storm',
-      amd: 'storm',
-      commonjs: 'storm'
-    },
+    library: 'storm',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
