@@ -17,7 +17,7 @@ import {
   isWeChat,
   isWindows,
   useragent
-} from '../env'
+} from '../src/env'
 
 const setUa = (value: string) => {
   Object.defineProperty(navigator, 'userAgent', {

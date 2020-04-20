@@ -1,4 +1,4 @@
-import isSameDay from '../isSameDay'
+import isSameDay from '../src/isSameDay'
 
 test('isSameDay', () => {
   const date = new Date('2020-02-02')

@@ -1,4 +1,4 @@
-import isArray from '../isArray'
+import isArray from '../src/isArray'
 
 test('isArray', () => {
   const data: any[] = []

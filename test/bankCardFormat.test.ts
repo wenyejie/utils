@@ -1,4 +1,4 @@
-import bankCardFormat from '../bankCardFormat'
+import bankCardFormat from '../src/bankCardFormat'
 
 // 银行卡号
 const CARD_NO = '6228481269040908170'

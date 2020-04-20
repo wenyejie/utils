@@ -1,4 +1,4 @@
-import isBlob from '../isBlob'
+import isBlob from '../src/isBlob'
 
 test('isBlob', () => {
   const blob = new Blob()

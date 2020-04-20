@@ -1,4 +1,4 @@
-import isEmptyValue from '../isEmptyValue'
+import isEmptyValue from '../src/isEmptyValue'
 
 test('isEmptyValue', () => {
   expect(isEmptyValue('')).toBeTruthy()

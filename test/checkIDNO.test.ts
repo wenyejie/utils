@@ -1,4 +1,4 @@
-import checkIDNO from '../checkIDNO'
+import checkIDNO from '../src/checkIDNO'
 
 const cardNO = '110101199003071196'
 

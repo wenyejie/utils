@@ -1,4 +1,4 @@
-import ban from '../ban'
+import ban from '../src/ban'
 
 const obj = {
   name: 'test',

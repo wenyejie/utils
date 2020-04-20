@@ -1,4 +1,4 @@
-import isPlainDate from '../isPlainDate'
+import isPlainDate from '../src/isPlainDate'
 
 test('isPlainDate', () => {
   expect(isPlainDate(new Date())).toBeTruthy()

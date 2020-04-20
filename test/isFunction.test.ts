@@ -1,4 +1,4 @@
-import isFunction from '../isFunction'
+import isFunction from '../src/isFunction'
 
 test('isFunction', () => {
   const demo = () => {}

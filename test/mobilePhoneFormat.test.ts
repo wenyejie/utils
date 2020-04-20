@@ -1,4 +1,4 @@
-import mobilePhoneFormat from '../mobilePhoneFormat'
+import mobilePhoneFormat from '../src/mobilePhoneFormat'
 
 const mobileNO = '13412345678'
 

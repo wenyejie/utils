@@ -1,4 +1,4 @@
-import isElement from '../isElement'
+import isElement from '../src/isElement'
 
 test('isElement', () => {
   const $img = document.createElement('img')

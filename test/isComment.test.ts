@@ -1,4 +1,4 @@
-import isComment from '../isComment'
+import isComment from '../src/isComment'
 
 test('isComment', () => {
   const $comment = document.createComment('TEST')

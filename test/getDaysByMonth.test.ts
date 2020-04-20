@@ -1,4 +1,4 @@
-import getDaysByMonth from '../getDaysByMonth'
+import getDaysByMonth from '../src/getDaysByMonth'
 
 test('getDaysByMonth', () => {
   const date = new Date('2020-02-02')

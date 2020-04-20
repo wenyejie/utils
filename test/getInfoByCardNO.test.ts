@@ -1,4 +1,4 @@
-import { getInfoByCardNO, CardNOResponse } from '../getInfoByCardNO'
+import { getInfoByCardNO, CardNOResponse } from '../src/getInfoByCardNO'
 
 test('getInfoByCardNO', () => {
   const CARDNO = '110101199003072391'

@@ -1,4 +1,4 @@
-import prefix from '../prefix'
+import prefix from '../src/prefix'
 
 const NAME = 'aaaa.jpg'
 

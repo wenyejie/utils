@@ -1,4 +1,4 @@
-import isNumber from '../isNumber'
+import isNumber from '../src/isNumber'
 
 test('isNumber', () => {
   expect(isNumber(0)).toBeTruthy()

@@ -1,4 +1,4 @@
-import findProps from '../findProps'
+import findProps from '../src/findProps'
 
 test('findValueByProps', () => {
   const data = [

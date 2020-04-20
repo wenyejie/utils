@@ -1,4 +1,4 @@
-import isObject from '../isObject'
+import isObject from '../src/isObject'
 
 test('isObject', () => {
   expect(isObject({})).toBeTruthy()

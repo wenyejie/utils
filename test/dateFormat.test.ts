@@ -1,4 +1,4 @@
-import dateFormat from '../dateFormat'
+import dateFormat from '../src/dateFormat'
 
 test('dateFormat', () => {
   const dateString = '2002-02-02 02:02:02'

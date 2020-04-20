@@ -1,4 +1,4 @@
-import isDate from '../isDate'
+import isDate from '../src/isDate'
 
 test('isDate', () => {
   expect(isDate(new Date())).toBeTruthy()

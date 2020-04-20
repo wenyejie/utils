@@ -1,4 +1,4 @@
-import isNaturalNumber from '../isNaturalNumber'
+import isNaturalNumber from '../src/isNaturalNumber'
 
 test('isNaturalNumber', () => {
   expect(isNaturalNumber(0)).toBeTruthy()

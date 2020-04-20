@@ -1,4 +1,4 @@
-import cached from '../cached'
+import cached from '../src/cached'
 
 const add = cached((a: number, b: number): number => {
   return a + b

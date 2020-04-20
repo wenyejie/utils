@@ -1,4 +1,4 @@
-import base642file from '../base642file'
+import base642file from '../src/base642file'
 
 test('base642file', () => {
   const file = base642file(

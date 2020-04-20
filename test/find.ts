@@ -1,4 +1,4 @@
-import find from '../find'
+import find from '../src/find'
 
 test('findItemByProps', () => {
   const data = [

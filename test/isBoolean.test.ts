@@ -1,4 +1,4 @@
-import isBoolean from '../isBoolean'
+import isBoolean from '../src/isBoolean'
 
 test('isBoolean', () => {
   expect(isBoolean(true)).toBeTruthy()

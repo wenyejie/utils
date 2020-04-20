@@ -1,4 +1,4 @@
-import toDate from '../toDate'
+import toDate from '../src/toDate'
 
 test('toDate---datetime string(2020-03-25 17:50:48)', () => {
   expect(toDate('2020-03-25 17:50:48')).toStrictEqual(new Date('2020-03-25 17:50:48'))

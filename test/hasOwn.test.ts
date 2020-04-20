@@ -1,4 +1,4 @@
-import hasOwn from '../hasOwn'
+import hasOwn from '../src/hasOwn'
 
 test('hasOwn', () => {
   const obj = { name: 'storm' }
