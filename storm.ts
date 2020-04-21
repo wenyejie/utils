@@ -1,4 +1,4 @@
-export const VERSION = '1.1.4'
+export const VERSION = '1.1.5'
 export * from './src/ban'
 export * from './src/bankCardFormat'
 export * from './src/base642file'
