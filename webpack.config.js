@@ -1,23 +1,25 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const fs = require('fs')
+const packageJson = require('./package.json')
+
+let stormContent = `export const VERSION = '${packageJson.version}'\r`
+const files = fs.readdirSync(path.join('./src'))
+
+files.forEach(filename => {
+  const key = filename.replace(/\.ts$/, '')
+  stormContent += `export * from './src/${filename.replace(/\.ts$/, '')}'\r`
+})
+
+fs.writeFile('./storm.ts', stormContent, () => {})
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const entry = {}
-const files = fs.readdirSync(path.join('./'))
-
-files.forEach(filename => {
-  if (!/\.ts$/.test(filename)) {
-    return
-  }
-  const key = filename.replace(/\.ts$/, '')
-  entry[key] = './' + filename
-})
-
 const webpackConfig = {
   mode: process.env.NODE_ENV,
-  entry,
+  entry: {
+    storm: './storm.ts'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: isProd ? '[name].js' : '[name].dev.js',
@@ -26,7 +28,7 @@ const webpackConfig = {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
-  devtool: isProd ? false : 'source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {

@@ -9,7 +9,7 @@ enum StorageName {
  * 解析
  * @param data
  */
-export const parse = (data: any): any => {
+const parse = (data: any): any => {
   return (JSON.parse(data) || emptyObject).v
 }
 
