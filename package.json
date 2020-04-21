@@ -13,7 +13,7 @@
     "util"
   ],
   "main": "./dist/storm.js",
-  "module": "storm-backup-2020421104802.ts",
+  "module": "./storm.ts",
   "types": "./storm.ts",
   "license": "ISC",
   "scripts": {
