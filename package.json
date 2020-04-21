@@ -8,6 +8,10 @@
     "email": "wenyejie@foxmail.com",
     "name": "wenyejie"
   },
+  "keywords": [
+    "modules",
+    "util"
+  ],
   "main": "./dist/storm.js",
   "module": "./storm.ts",
   "types": "./storm.ts",
