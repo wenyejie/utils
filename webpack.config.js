@@ -8,7 +8,7 @@ const files = fs.readdirSync(path.join('./src'))
 
 files.forEach(filename => {
   const key = filename.replace(/\.ts$/, '')
-  stormContent += `export * from './src/${filename.replace(/\.ts$/, '')}'\r`
+  stormContent += `export * from './src/${key}'\r`
 })
 
 fs.writeFile('./storm.ts', stormContent, () => {})
