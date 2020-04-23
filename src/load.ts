@@ -22,7 +22,8 @@ export const load = (tagName: string, url: string, options?: any): Promise<any> 
     const $body = document.body
     // @ts-ignore
     $element[options.mode] = url
-    const attrs = options?.attrs
+    // @ts-ignore
+    const attrs = options.attrs
     if (isObject(attrs)) {
       for (let key in attrs) {
         if (hasOwn(attrs, key)) {
