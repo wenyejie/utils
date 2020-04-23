@@ -8,7 +8,7 @@ import hasOwn from './hasOwn'
  * @param options
  */
 
-export const load = (tagName: string, url: string, options: any): Promise<any> => {
+export const load = (tagName: string, url: string, options?: any): Promise<any> => {
   options = Object.assign(
     {
       before: null,
@@ -22,7 +22,7 @@ export const load = (tagName: string, url: string, options: any): Promise<any> =
     const $body = document.body
     // @ts-ignore
     $element[options.mode] = url
-    const attrs = options.attrs
+    const attrs = options?.attrs
     if (isObject(attrs)) {
       for (let key in attrs) {
         if (hasOwn(attrs, key)) {

@@ -11,11 +11,6 @@ export interface ImgCompressOptions {
   quality?: number
 }
 
-export interface CreateCanvasResult {
-  context: CanvasRenderingContext2D
-  $canvas: HTMLCanvasElement
-}
-
 const createImg = (url: string): Promise<HTMLImageElement> => {
   return load('img', url)
 }
@@ -25,10 +20,7 @@ export const file2img = async (file: File): Promise<HTMLImageElement> => {
   return await createImg(base64)
 }
 
-export const createCanvas = (
-  $img: HTMLImageElement,
-  options: ImgCompressOptions
-): Promise<CreateCanvasResult> => {
+export const createCanvas = ($img: HTMLImageElement, options: ImgCompressOptions): Promise<any> => {
   return new Promise(resolve => {
     const $canvas = document.createElement('canvas')
     const context = $canvas.getContext('2d')
@@ -51,14 +43,18 @@ export const calcDrawSize = ($img: HTMLImageElement, options: ImgCompressOptions
   let sw = $img.naturalWidth
   let sh = $img.naturalHeight
   if (proportion >= 1) {
+    // @ts-ignore
     if (options.maxWidth > 0) {
+      // @ts-ignore
       dw = $img.naturalWidth > options.maxWidth ? options.maxWidth : $img.naturalWidth
     } else {
       dw = $img.naturalWidth
     }
     dh = dw / proportion
   } else {
+    // @ts-ignore
     if (options.maxHeight > 0) {
+      // @ts-ignore
       dh = $img.naturalHeight > options.maxHeight ? options.maxHeight : $img.naturalHeight
     } else {
       dh = $img.naturalHeight
@@ -75,6 +71,7 @@ export const canvas2file = (
   return new Promise(resolve => {
     $canvas.toBlob(
       blob => {
+        // @ts-ignore
         resolve(new File([blob], file.name, { type: file.type }))
       },
       file.type,
