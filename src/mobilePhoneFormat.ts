@@ -8,7 +8,7 @@ import { rMobilePhone } from './regexp'
  *
  * @param number
  */
-export const mobilePhoneFormat = (number?: string) => {
+export const mobilePhoneFormat = (number: any) => {
   if (!isString(number) || !rMobilePhone.test(number)) {
     return ''
   }

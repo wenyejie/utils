@@ -5,6 +5,7 @@
  */
 export const base642file = (base64: string, filename: string) => {
   const array: string[] = base64.split(',')
+  // @ts-ignore
   const type = array[0].match(/:(.*?);/)[1]
   const decodedData = window.atob(array[1])
   let length = decodedData.length

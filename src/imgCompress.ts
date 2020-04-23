@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 import file2base64 from './file2base64'
 import load from './load'
 
@@ -30,8 +32,11 @@ export const createCanvas = (
   return new Promise(resolve => {
     const $canvas = document.createElement('canvas')
     const context = $canvas.getContext('2d')
+    // @ts-ignore
     context.fillStyle = options.fillStyle
+    // @ts-ignore
     context.fillRect(0, 0, $canvas.width, $canvas.height)
+    // @ts-ignore
     resolve({ context, $canvas })
   })
 }
