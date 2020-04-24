@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>catchRequest</title>
+  </head>
+  <body>
+    <script src="../dist/storm.js"></script>
+    <script>
+      const CatchRequest = window.storm.CatchRequest
+
+      function request() {
+        console.log('------ I`m in ------')
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve({ name: 'storm', version: '1.1.8' })
+          }, 500)
+        })
+      }
+
+      const authorInfo = CatchRequest.create({
+        request,
+        storageName: 's-authorInfo',
+        immediate: true,
+        success(data) {
+          console.log('success', data)
+        }
+      })
+
+      authorInfo.get().then(data => {
+        console.log(data)
+      })
+    </script>
+  </body>
+</html>

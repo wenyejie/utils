@@ -1,7 +1,7 @@
 import { inBrowser } from './env'
 import emptyObject from './emptyObject'
 
-enum StorageName {
+export enum StorageName {
   local = 'local',
   session = 'session'
 }
