@@ -2,17 +2,6 @@ import { local, session, StorageName } from './storage'
 import isFunction from './isFunction'
 import { inBrowser } from './env'
 
-/**
- * CatchRequest的选项
- */
-export interface CatchRequestOptions {
-  storageName: string
-  request: Promise<any>
-  success?: Function
-  immediate?: boolean
-  storageMode?: string
-}
-
 // storage name 前缀
 const STORAGE_NAME_PREFIX = 's-catch-request-'
 
@@ -51,11 +40,27 @@ const removeStorage = (storageMode: string = StorageName.local): void => {
 }
 
 /**
+ * CatchRequest的选项
+ */
+export interface CatchRequestOptions {
+  storageName: string // 存储名称
+  method: Promise<any> // 请求的动作
+  success?: Function
+  immediate?: boolean
+  storageMode?: string
+
+  // 0表示永不超时
+  timeout?: number
+}
+
+/**
  * 默认的请求参数
  */
 const defaultCatchRequestOptions = {
   storageMode: StorageName.local,
-  immediate: false
+  immediate: false,
+  // 0表示永不超时
+  timeout: 0
 }
 
 /**
@@ -65,8 +70,9 @@ export class CatchRequest {
   private loading: number = 0
   private data: any
   private promise: Promise<any>
-  private options: Record<string, any> = {}
+  private options: Record<string, any>
   private storage: Function
+  private timestamp: number = -1
   constructor(options: CatchRequestOptions) {
     this.options = Object.assign(defaultCatchRequestOptions, options)
     this.storage = getStorage(this.options.storageMode)
@@ -82,7 +88,10 @@ export class CatchRequest {
    */
   public get(disableCache: boolean = false) {
     if (disableCache !== true) {
-      if (this.loading === 2) {
+      if (
+        this.loading === 2 &&
+        (this.options.timeout === 0 || Date.now() - this.timestamp < this.options.timeout)
+      ) {
         return Promise.resolve(this.data)
       }
       if (this.loading === 1) {
@@ -92,18 +101,25 @@ export class CatchRequest {
       const data = local(this.getStorageName())
 
       if (data !== undefined) {
-        this.data = data
-        this.loading = 2
-        return Promise.resolve(this.data)
+        this.timestamp = data.timestamp
+        if (this.options.timeout === 0 || Date.now() - this.timestamp < this.options.timeout) {
+          this.data = data.value
+          this.loading = 2
+          return Promise.resolve(this.data)
+        }
       }
     }
     this.loading = 1
-    this.promise = this.options.request().then((data: any) => {
+    this.promise = this.options.method().then((data: any) => {
       if (isFunction(this.options.success)) {
         this.options.success(data)
       }
       this.data = data
-      local(this.getStorageName(), this.data)
+      this.timestamp = Date.now()
+      local(this.getStorageName(), {
+        value: this.data,
+        timestamp: this.timestamp
+      })
       return data
     })
     return this.promise
