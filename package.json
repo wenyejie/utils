@@ -2,7 +2,7 @@
   "name": "wenyejie-utils",
   "sideEffects": false,
   "description": "基础类库",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "private": false,
   "author": {
     "email": "wenyejie@foxmail.com",
