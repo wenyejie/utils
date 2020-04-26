@@ -67,15 +67,28 @@ const defaultCatchRequestOptions = {
  * 缓存请求
  */
 export class CatchRequest {
+  // 请求状态
   private loading: number = 0
+  // 数据
   private data: any
+  // 请求返回的promise
   private promise: Promise<any>
+  // 选项
   private options: Record<string, any>
+  // storage
   private storage: Function
-  private timestamp: number = -1
+  // 时间戳
+  private timestamp: number = 0
+
+  /**
+   * 构造函数
+   * @param options 选项
+   */
   constructor(options: CatchRequestOptions) {
     this.options = Object.assign(defaultCatchRequestOptions, options)
-    this.storage = getStorage(this.options.storageMode)
+    if (this.options.storageMode !== 'none') {
+      this.storage = getStorage(this.options.storageMode)
+    }
 
     if (this.options.immediate) {
       this.get()
@@ -87,42 +100,62 @@ export class CatchRequest {
    * @param disableCache 是否禁用缓存
    */
   public get(disableCache: boolean = false) {
-    if (disableCache !== true) {
-      if (
-        this.loading === 2 &&
-        (this.options.timeout === 0 || Date.now() - this.timestamp < this.options.timeout)
-      ) {
+    // 禁用缓存
+    if (!disableCache) {
+      // 已经加载完成数据, 并且没有超时
+      if (this.loading === 2 && !this.isTimeout()) {
         return Promise.resolve(this.data)
       }
+
+      // 正在请求中
       if (this.loading === 1) {
         return this.promise
       }
 
-      const data = local(this.getStorageName())
+      // 没有禁用存储
+      if (this.options.storageMode !== 'none') {
+        // 从storage中获取到数据
+        const data = this.storage(this.getStorageName())
 
-      if (data !== undefined) {
-        this.timestamp = data.timestamp
-        if (this.options.timeout === 0 || Date.now() - this.timestamp < this.options.timeout) {
-          this.data = data.value
-          this.loading = 2
-          return Promise.resolve(this.data)
+        // 存在数据
+        if (data !== undefined) {
+          this.timestamp = data.timestamp
+          // 没有超时
+          if (!this.isTimeout()) {
+            this.data = data.value
+            this.loading = 2
+            return Promise.resolve(this.data)
+          }
         }
       }
     }
+    // 设置请求状态
     this.loading = 1
+    // 开始请求数据
     this.promise = this.options.method().then((data: any) => {
+      // 如果请求成功, 则回调成功的钩子, 主要用于数据处理
       if (isFunction(this.options.success)) {
         this.options.success(data)
       }
       this.data = data
       this.timestamp = Date.now()
-      local(this.getStorageName(), {
-        value: this.data,
-        timestamp: this.timestamp
-      })
+      // 如果没有禁用存储, 则缓存数据
+      if (this.options.storageMode !== 'none') {
+        this.storage(this.getStorageName(), {
+          value: this.data,
+          timestamp: this.timestamp
+        })
+      }
       return data
     })
     return this.promise
+  }
+
+  /**
+   * 判断缓存的数据有没有超时, 即: 没有设置超时, 或者没有超时
+   */
+  private isTimeout() {
+    return this.options.timeout > 0 && Date.now() - this.timestamp > this.options.timeout
   }
 
   /**
@@ -136,7 +169,9 @@ export class CatchRequest {
    * 移除存储的信息
    */
   public remove() {
-    this.storage(this.getStorageName(), null)
+    if (this.storage) {
+      this.storage(this.getStorageName(), null)
+    }
   }
 
   /**
