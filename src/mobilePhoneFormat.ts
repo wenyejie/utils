@@ -12,7 +12,9 @@ export const mobilePhoneFormat = (number: any) => {
   if (!isString(number) || !rMobilePhone.test(number)) {
     return ''
   }
-  return number.replace(/(?<=\d{3})\w{4}(?=\d{4})/g, '****')
+  // 避免兼容性问题
+  // return number.replace(/(?<=\d{3})\w{4}(?=\d{4})/g, '****')
+  return number.replace(/(\d{3})\d*(\d{4})/, '$1****$2')
 }
 
 export default mobilePhoneFormat

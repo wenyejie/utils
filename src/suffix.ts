@@ -10,11 +10,14 @@ export const suffix = (string: string): string => {
   }
   string = string.trim()
 
-  const index = string.search(/(?<=\.)(\w+)+$/)
+  // 避免兼容性
+  // const index = string.search(/(?<=\.)(\w+)+$/)
+  const index = string.search(/\.(\w+)+$/)
   if (index === -1) {
     return ''
   }
-  return string.substring(index, string.length)
+  // return string.substring(index, string.length)
+  return RegExp.$1
 }
 
 export default suffix
