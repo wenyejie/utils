@@ -5,8 +5,9 @@
     <title>moneyFormat</title>
   </head>
   <body>
+    <script src="../dist/storm.js"></script>
     <script type="module">
-      import { moneyFormat } from '../src/format.js'
+      const moneyFormat = storm.moneyFormat
 
       console.log(moneyFormat(1500))
     </script>
