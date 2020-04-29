@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>randomInteger</title>
+  </head>
+  <body>
+    <script src="../dist/storm.js"></script>
+    <script>
+      const randomInteger = storm.randomInteger
+      const randomInteger = (max, min = 0) => {
+        const cMax = Math.max(max, min)
+        const cMin = Math.min(max, min)
+        return Math.floor(Math.random() * (cMax - cMin + 1)) + cMin
+      }
+
+      console.log(randomInteger(1, 10))
+
+      const map = {}
+      for (let i = 0; i < 100; i++) {
+        const key = randomInteger(1, 10)
+        const oldValue = map[key]
+        const value = oldValue ? oldValue + 1 : 1
+        map[key] = value
+      }
+      console.dir(map)
+    </script>
+  </body>
+</html>

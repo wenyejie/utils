@@ -5,14 +5,32 @@
     <title>rLimitAmount</title>
   </head>
   <body>
-    <input type="number" id="amount" />
+    <input type="text" id="amount" />
     <script src="../dist/storm.js"></script>
     <script>
-      const rLimitAmount = storm.rLimitAmount
+      // const rLimitAmount = storm.rLimitAmount
+      // const rLimitAmount = /([^0-9.])|((?<=\d+\.\d{2})\d+)|((?<=^0)0+)|(^0(?=[1-9]))|((?<=\.\d*)\.)|(^\.)/g
+      const rLimitAmount = /([^0-9.])|(^0(?=\d))|(^\.)/g
       const $amount = document.querySelector('#amount')
 
+      const limitAmount = value => {
+        if (storm.isNumber(value)) {
+          value += ''
+        }
+        if (!storm.isString(value)) {
+          return ''
+        }
+        value = value.replace(/([^0-9.])|(^0(?=\d))/g, '')
+        value = value.replace(/(\d+\.\d{2}).*/g, '$1')
+        value = value.replace(/(\..*)\./g, '$1')
+        return value
+      }
+
       $amount.addEventListener('input', () => {
-        $amount.value = $amount.value.replace(rLimitAmount, '')
+        $amount.value = limitAmount($amount.value)
+      })
+      $amount.addEventListener('change', () => {
+        $amount.value = $amount.value.replace(/\.$/, '')
       })
     </script>
   </body>
