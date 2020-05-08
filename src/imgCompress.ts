@@ -111,7 +111,7 @@ const imgCompress = async (file: File, options?: ImgCompressOptions) => {
   const compressFile = await canvas2file($canvas, file, options)
 
   // 如果压缩之后质量没有减少, 反而变大了, 则返回原图, 这样做是因为图片转化成base64之后质量会变大,
-  if (options.noCompressIfLarger && file.size <= compressFile.size) {
+  if ((options.noCompressIfLarger && file.size <= compressFile.size) || compressFile.size < 1024) {
     return file
   }
 
