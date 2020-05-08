@@ -39,7 +39,7 @@ export const load = (tagName: string, url: string, options?: any): Promise<any> 
       reject($element)
       $body.removeChild($element)
     }
-    isFunction(options.before) && options.before()
+    isFunction(options.before) && options.before($element)
     $body.appendChild($element)
   })
 }
