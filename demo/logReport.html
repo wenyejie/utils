@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>logReport</title>
+  </head>
+  <body>
+    <script src="../dist/storm.js"></script>
+    <script>
+      const storm = window.storm
+
+      const report = data => {
+        data = Object.assign(data, {
+          userAgent: navigator.userAgent,
+          language: navigator.language,
+          url: location.href,
+          cookieEnabled: navigator.cookieEnabled,
+          outerHeight: window.outerHeight,
+          outerWidth: window.outerWidth,
+          lastModified: document.lastModified,
+          onLine: navigator.onLine,
+          platform: navigator.platform
+        })
+        console.log('report: ', data)
+      }
+
+      const getPath = path => {
+        return path.map(item => {
+          if (item.localName) {
+            return item.localName
+          } else if (item instanceof Document) {
+            return 'document'
+          } else if (item instanceof Window) {
+            return 'window'
+          }
+        })
+      }
+
+      const resourceCatch = event => {
+        const target = event.target
+        if (!target || !'img,link,script,video,audio'.includes(target.localName)) {
+          return false
+        }
+        const data = storm.pick(target, 'outerHTML', 'localName')
+        if (data.localName === 'link') {
+          data.href = target.href
+        } else {
+          data.src = target.src
+        }
+        data.type = 'ResourceError'
+        return data
+      }
+
+      const defaultCatch = event => {
+        const data = storm.pick(event, 'colno', 'filename', 'lineno', 'message', 'type')
+        if (event.error && event.error.message) {
+          data.message = event.error.message
+          data.stack = event.error.stack
+        }
+        if (/^([A-z]+Error)/.test(data.stack)) {
+          data.type = RegExp.$1
+        }
+        return data
+      }
+
+      const methods = [
+        () => {
+          window.addEventListener(
+            'error',
+            event => {
+              const queues = [resourceCatch, defaultCatch]
+
+              for (let i = 0; i < queues.length; i++) {
+                const result = queues[i](event)
+                if (result) {
+                  report(result)
+                  break
+                }
+              }
+            },
+            true
+          )
+        },
+        () => {
+          window.addEventListener('unhandledrejection', event => {
+            report(storm.pick(event, 'type', 'reason'))
+            event.preventDefault()
+          })
+        }
+      ]
+
+      const start = () => {
+        if (!storm.inBrowser()) {
+          return
+        }
+
+        methods.forEach(method => method())
+      }
+
+      const logReport = {
+        start,
+        methods
+      }
+
+      logReport.start()
+
+      const demo = () => {
+        return new Promise((resolve, reject) => {
+          reject('21212')
+        })
+      }
+      demo().then(() => {})
+    </script>
+  </body>
+</html>
