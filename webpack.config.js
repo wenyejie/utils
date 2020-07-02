@@ -10,8 +10,7 @@ files.forEach(filename => {
   if (!/\.js$/.test(filename)) {
     return
   }
-  const key = filename.replace(/\.js$/, '')
-  utilsContent += `export * from './src/${key}'\r`
+  utilsContent += `export * from './src/${filename}'\r`
 })
 
 fs.writeFile('./wenyejie.js', utilsContent, () => {})
