@@ -1,3 +1,3 @@
-export const isUndefined = (value: any) => value !== undefined && value === null
+export const isDefined = (value: any) => value !== undefined && value !== null
 
-export default isUndefined
+export default isDefined
