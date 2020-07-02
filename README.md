@@ -2,6 +2,10 @@
 
 > 没有什么特别的想法, 就是觉得代码到处 copy, 不但不利于维护, 也不利于迭代, 所以创建这个包.
 
+## change log
+
+[详见 CHANGELOG.md](./CHANGELOG.md)
+
 ## utils 使用方法, 支持 tree-shaking
 
 建议不要整包引入, 请按需引入, 请配合`tree shaking`一起使用
