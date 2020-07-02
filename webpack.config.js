@@ -3,28 +3,31 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const fs = require('fs')
 const packageJson = require('./package.json')
 
-let stormContent = `export const VERSION = '${packageJson.version}'\r`
+let utilsContent = `export const VERSION = '${packageJson.version}'\r`
 const files = fs.readdirSync(path.join('./src'))
 
 files.forEach(filename => {
-  const key = filename.replace(/\.ts$/, '')
-  stormContent += `export * from './src/${key}'\r`
+  if (!/\.js$/.test(filename)) {
+    return
+  }
+  const key = filename.replace(/\.js$/, '')
+  utilsContent += `export * from './src/${key}'\r`
 })
 
-fs.writeFile('./storm.ts', stormContent, () => {})
+fs.writeFile('./wenyejie.js', utilsContent, () => {})
 
 const isProd = process.env.NODE_ENV === 'production'
 
 const webpackConfig = {
   mode: process.env.NODE_ENV,
   entry: {
-    storm: './storm.ts'
+    wenyejie: './wenyejie.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: isProd ? '[name].js' : '[name].dev.js',
     chunkFilename: '[name].min.js',
-    library: 'storm',
+    library: 'wenyejie',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },

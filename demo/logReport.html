@@ -5,9 +5,9 @@
     <title>logReport</title>
   </head>
   <body>
-    <script src="../dist/storm.js"></script>
+    <script src="../dist/wenyejie.js"></script>
     <script>
-      const storm = window.storm
+      const wenyejie = window.wenyejie
 
       const report = data => {
         data = Object.assign(data, {
@@ -41,7 +41,7 @@
         if (!target || !'img,link,script,video,audio'.includes(target.localName)) {
           return false
         }
-        const data = storm.pick(target, 'outerHTML', 'localName')
+        const data = wenyejie.pick(target, 'outerHTML', 'localName')
         if (data.localName === 'link') {
           data.href = target.href
         } else {
@@ -52,7 +52,7 @@
       }
 
       const defaultCatch = event => {
-        const data = storm.pick(event, 'colno', 'filename', 'lineno', 'message', 'type')
+        const data = wenyejie.pick(event, 'colno', 'filename', 'lineno', 'message', 'type')
         if (event.error && event.error.message) {
           data.message = event.error.message
           data.stack = event.error.stack
@@ -83,14 +83,14 @@
         },
         () => {
           window.addEventListener('unhandledrejection', event => {
-            report(storm.pick(event, 'type', 'reason'))
+            report(wenyejie.pick(event, 'type', 'reason'))
             event.preventDefault()
           })
         }
       ]
 
       const start = () => {
-        if (!storm.inBrowser()) {
+        if (!wenyejie.inBrowser()) {
           return
         }
 
