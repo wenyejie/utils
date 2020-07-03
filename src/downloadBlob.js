@@ -1,6 +1,6 @@
-import downloadFile from './downloadFile'
-import isBlob from './isBlob'
-import suffix from './suffix'
+import downloadFile from './downloadFile.js'
+import isBlob from './isBlob.js'
+import suffix from './suffix.js'
 
 /**
  * 下载blob文件

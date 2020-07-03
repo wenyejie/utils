@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import toRawType from './toRawType.js'
 
 export const isBlob = obj => {
   return toRawType(obj) === 'blob'

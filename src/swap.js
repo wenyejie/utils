@@ -1,4 +1,4 @@
-import hasOwn from './hasOwn'
+import hasOwn from './hasOwn.js'
 
 /**
  * 交换对象中的两个属性值

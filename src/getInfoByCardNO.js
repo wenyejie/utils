@@ -1,6 +1,6 @@
-import isOddNumber from './isOddNumber'
-import checkIDNO from './checkIDNO'
-import nullProtoObject from './nullProtoObject'
+import isOddNumber from './isOddNumber.js'
+import checkIDNO from './checkIDNO.js'
+import nullProtoObject from './nullProtoObject.js'
 
 export const getInfoByCardNO = cardNumber => {
   if (!checkIDNO(cardNumber)) {

@@ -1,5 +1,5 @@
-import find from './find'
-import isObject from './isObject'
+import find from './find.js'
+import isObject from './isObject.js'
 
 /**
  * 通过属性查找对应属性值

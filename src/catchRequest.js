@@ -1,6 +1,6 @@
-import { local, session } from './storage'
-import isFunction from './isFunction'
-import { inBrowser } from './env'
+import { local, session } from './storage.js'
+import isFunction from './isFunction.js'
+import { inBrowser } from './env.js'
 
 // storage name 前缀
 const STORAGE_NAME_PREFIX = 's-catch-request-'

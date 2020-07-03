@@ -1,7 +1,7 @@
 /* tslint:disable */
 
-import file2base64 from './file2base64'
-import load from './load'
+import file2base64 from './file2base64.js'
+import load from './load.js'
 
 const createImg = url => {
   return load('img', url)

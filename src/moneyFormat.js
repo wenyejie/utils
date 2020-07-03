@@ -1,4 +1,4 @@
-import isNumber from './isNumber'
+import isNumber from './isNumber.js'
 
 /**
  * 金额格式化

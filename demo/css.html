@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>css</title>
+  </head>
+  <body>
+    <button>BUTTON</button>
+    <script type="module">
+      import { getCSS, setCSS, supportCSS } from '../src/css.js'
+
+      const $button = document.querySelector('button')
+
+      console.log(getCSS($button, 'width'))
+      setCSS($button, 'background-color', 'red')
+
+      setCSS($button, {
+        height: '36px'
+      })
+      console.log(supportCSS('border-width', '10px'))
+    </script>
+  </body>
+</html>

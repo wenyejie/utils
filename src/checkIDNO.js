@@ -1,4 +1,4 @@
-import { rIDCardNO } from './regexp'
+import { rIDCardNO } from './regexp.js'
 
 /**
  * 检验身份证号码是否正确,

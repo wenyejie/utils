@@ -1,5 +1,5 @@
-import toDate from './toDate'
-import isDate from './isDate'
+import toDate from './toDate.js'
+import isDate from './isDate.js'
 
 const padStart = number => {
   return `${number}`.padStart(2, '0')

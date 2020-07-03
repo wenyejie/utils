@@ -1,5 +1,5 @@
-import { inBrowser } from './env'
-import emptyObject from './emptyObject'
+import { inBrowser } from './env.js'
+import emptyObject from './emptyObject.js'
 
 /**
  * 解析

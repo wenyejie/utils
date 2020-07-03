@@ -1,4 +1,4 @@
-import { isString } from './isString'
+import { isString } from './isString.js'
 
 /**
  * 获取字符串中的后缀

@@ -1,5 +1,5 @@
-import isPrimitive from './isPrimitive'
-import isArray from './isArray'
+import isPrimitive from './isPrimitive.js'
+import isArray from './isArray.js'
 
 /**
  * 克隆一个对象

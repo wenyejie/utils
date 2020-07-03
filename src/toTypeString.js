@@ -1,4 +1,4 @@
-import objectToString from './objectToString'
+import objectToString from './objectToString.js'
 
 /**
  * 返回对象的类型

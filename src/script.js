@@ -1,4 +1,4 @@
-import load from './load'
+import load from './load.js'
 /**
  * 载入script
  * @param url

@@ -1,5 +1,5 @@
-import isString from './isString'
-import { rBankCardNO } from './regexp'
+import isString from './isString.js'
+import { rBankCardNO } from './regexp.js'
 
 /**
  * 银行卡格式化

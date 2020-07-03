@@ -1,4 +1,4 @@
-import hasOwnProperty from './hasOwnProperty'
+import hasOwnProperty from './hasOwnProperty.js'
 
 /**
  * 判断key是否是对象自己的属性

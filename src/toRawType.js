@@ -1,4 +1,4 @@
-import toTypeString from './toTypeString'
+import toTypeString from './toTypeString.js'
 
 /**
  * 返回数据的类型

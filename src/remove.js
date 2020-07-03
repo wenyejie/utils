@@ -1,4 +1,4 @@
-import isArray from './isArray'
+import isArray from './isArray.js'
 
 /**
  * 移除数组中的元素, 会改变原数组

@@ -1,4 +1,4 @@
-import isString from './isString'
+import isString from './isString.js'
 
 /**
  * 判断两个链接地址是否为同一个域名, 是否会跨域

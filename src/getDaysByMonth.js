@@ -1,5 +1,5 @@
-import toDate from './toDate'
-import isDate from './isDate'
+import toDate from './toDate.js'
+import isDate from './isDate.js'
 
 /**
  * 获取当前月份的天数

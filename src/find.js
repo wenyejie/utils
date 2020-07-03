@@ -1,6 +1,6 @@
-import isArray from './isArray'
-import isObject from './isObject'
-import hasOwn from './hasOwn'
+import isArray from './isArray.js'
+import isObject from './isObject.js'
+import hasOwn from './hasOwn.js'
 
 /**
  * 根据键值对从数组中查找子项

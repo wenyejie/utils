@@ -1,4 +1,4 @@
-import isArray from './isArray'
+import isArray from './isArray.js'
 
 /**
  * 判断一个值是否为空值

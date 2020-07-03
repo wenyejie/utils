@@ -1,4 +1,4 @@
-import isInteger from './isInteger'
+import isInteger from './isInteger.js'
 
 /**
  * 判断是否为偶数

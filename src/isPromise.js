@@ -1,5 +1,5 @@
-import isFunction from './isFunction'
-import isObject from './isObject'
+import isFunction from './isFunction.js'
+import isObject from './isObject.js'
 
 /**
  * 判断是否为promise

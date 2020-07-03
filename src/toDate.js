@@ -1,6 +1,6 @@
-import isDate from './isDate'
-import isNumber from './isNumber'
-import isString from './isString'
+import isDate from './isDate.js'
+import isNumber from './isNumber.js'
+import isString from './isString.js'
 
 /**
  * 把其它格式数据转换成日期

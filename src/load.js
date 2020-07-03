@@ -1,6 +1,6 @@
-import isFunction from './isFunction'
-import isObject from './isObject'
-import hasOwn from './hasOwn'
+import isFunction from './isFunction.js'
+import isObject from './isObject.js'
+import hasOwn from './hasOwn.js'
 /**
  * 载入script
  * @param tagName

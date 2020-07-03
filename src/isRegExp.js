@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import toRawType from './toRawType.js'
 
 export const isRegExp = obj => toRawType(obj) === 'regexp'
 

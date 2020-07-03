@@ -1,5 +1,5 @@
-import isString from './isString'
-import { rMobilePhone } from './regexp'
+import isString from './isString.js'
+import { rMobilePhone } from './regexp.js'
 
 /**
  * 手机号码格式化显示

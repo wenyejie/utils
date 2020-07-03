@@ -1,4 +1,4 @@
-import once from './once'
+import once from './once.js'
 
 /**
  * 判断浏览器是否支持webp

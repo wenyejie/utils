@@ -1,4 +1,4 @@
-import isObject from './isObject'
+import isObject from './isObject.js'
 
 /**
  * 获取对象长度

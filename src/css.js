@@ -1,8 +1,8 @@
-import camelize from './camelize'
-import isElement from './isElement'
-import isString from './isString'
-import isUndefined from './isUndefined'
-import isJson from './isJson'
+import camelize from './camelize.js'
+import hyphenate from './hyphenate.js'
+import isElement from './isElement.js'
+import isString from './isString.js'
+import isJson from './isJson.js'
 
 const ELEMENT_ERROR_MESSAGE = '请传入正确的参数elt: HTMLElement'
 
@@ -53,16 +53,14 @@ export const setCSS = (elt, name, value) => {
  */
 export const supportCSS = (name, value, tagName = 'div') => {
   if (window.CSS && window.CSS.supports) {
-    if (isUndefined(value)) {
-      return window.CSS.supports(name)
-    }
+    return window.CSS.supports(hyphenate(name), value)
   }
 
   const $el = document.createElement(tagName)
 
   if (name in $el.style) {
-    $el.style[name] = value
-    return $el.style[name] === value
+    $el.style[camelize(name)] = value
+    return $el.style[camelize(name)] === value
   }
   return false
 }

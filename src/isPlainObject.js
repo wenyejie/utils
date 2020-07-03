@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import toRawType from './toRawType.js'
 
 /**
  * 判断是否为对象
