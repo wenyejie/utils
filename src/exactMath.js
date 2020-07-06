@@ -1,8 +1,13 @@
 import isNumber from './isNumber.js'
 import isInteger from './isInteger.js'
 
+const INTEGER_BIT = /^\d+\.?/
+
 const decimalLength = n => {
-  return ((n % 1) + '').replace('0.', '').length
+  if (isInteger(n)) {
+    return 0
+  }
+  return n.toString().replace(INTEGER_BIT, '').length
 }
 
 const maxDecimalLength = (x, y) => {
@@ -17,6 +22,9 @@ const maxDecimalLength = (x, y) => {
  * @return {*|number}
  */
 const displacement = (n, length, operator) => {
+  if (length === 0) {
+    return n
+  }
   if (isInteger(n)) {
     n += '.'
   }
@@ -68,8 +76,7 @@ const calculation = (countX, countY, operator) => {
       result = countX / countY
       break
     default:
-      console.error('运算符传入有误, 请重新确认!')
-      return
+      throw console.error('运算符传入有误, 请重新确认!')
   }
   return result
 }
