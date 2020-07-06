@@ -9,6 +9,13 @@ const maxDecimalLength = (x, y) => {
   return Math.max(decimalLength(x), decimalLength(y))
 }
 
+/**
+ * 通过乘法和和除法对数字的小数点进行移动, 避免计算出现的精度丢失
+ * @param n
+ * @param length
+ * @param operator
+ * @return {*|number}
+ */
 const displacement = (n, length, operator) => {
   if (isInteger(n)) {
     n += '.'
@@ -30,6 +37,13 @@ const displacement = (n, length, operator) => {
   return Number.parseFloat(n)
 }
 
+/**
+ *
+ * @param countX
+ * @param countY
+ * @param operator
+ * @return {*}
+ */
 const calculation = (countX, countY, operator) => {
   if (!isNumber(Number.parseFloat(countY)) || !isNumber(Number.parseFloat(countX))) {
     throw console.error('传入参数有误, 请重新确认!', countX, countY)
