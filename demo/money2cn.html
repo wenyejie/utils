@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>money2cn</title>
+  </head>
+  <body>
+    <script type="module">
+      import money2cn from '../src/money2cn.js'
+
+      console.log(money2cn(697.74))
+
+      let test = ''
+      for (let i = 0; i <= 10; i++) {
+        test += i
+        console.log(test, money2cn(Number.parseFloat(test + '.12')))
+      }
+    </script>
+  </body>
+</html>
