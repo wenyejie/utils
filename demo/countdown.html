@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <div></div>
+    <script type="module">
+      import countdown from '../src/countdown.js'
+
+      const $div = document.querySelector('div')
+      countdown(10, count => {
+        $div.innerHTML = count
+      })
+    </script>
+  </body>
+</html>

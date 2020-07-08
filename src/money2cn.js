@@ -9,7 +9,7 @@ const unit = ['', '万', '亿']
 const rNumberDigit = /零[拾佰仟]/g
 const rUnit = /零+([万亿])/g
 const rZero = /零{2,}/
-const money2cn = n => {
+export const money2cn = n => {
   let result = ''
   const integerAry = n
     .toString()
