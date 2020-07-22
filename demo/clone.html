@@ -6,11 +6,26 @@
   </head>
   <body>
     <script type="module">
-      import clone from '../src/clone.js'
+      // import clone from '../src/clone.js'
+      // import isJson from '../src/isJson.js'
+      import toRawType from '../src/toRawType.js'
 
-      const data = [0, 1, 2, 3, 4, 5, 6]
-      const copyData = clone(data)
-      console.log(data, copyData)
+      const cloneMap = map => {
+        console.log(map)
+        return new Map(map)
+      }
+
+      const data = new Map([
+        ['a', 1],
+        ['b', 2],
+        ['c', 3]
+      ])
+      // const copyData = clone(data)
+      // console.log(data, copyData, JSON.stringify(data))
+      // console.log(toRawType(new Map()))
+      const copySet = cloneMap(data)
+      console.log(copySet)
+      console.log(toRawType(null))
     </script>
   </body>
 </html>

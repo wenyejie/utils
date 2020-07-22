@@ -1,5 +1,12 @@
 import isPrimitive from './isPrimitive.js'
 import isArray from './isArray.js'
+import isFunction from './isFunction.js'
+import isSymbol from './isSymbol.js'
+import isSet from './isSet.js'
+import isMap from './isMap.js'
+import isJson from './isJson.js'
+import isWeakMap from './isWeakMap.js'
+import isWeakSet from './isWeakSet.js'
 
 /**
  * 克隆一个对象
@@ -8,7 +15,27 @@ import isArray from './isArray.js'
  * @param weakMap weakMap 避免死循环
  */
 export const clone = (obj, deep = true, weakMap = new WeakMap()) => {
-  if (isPrimitive(obj)) {
+  if (isPrimitive(obj) || isFunction(obj)) {
+    return obj
+  }
+
+  if (isSet(obj)) {
+    return new Set(obj)
+  }
+
+  if (isWeakSet(obj)) {
+    return new WeakSet(obj)
+  }
+
+  if (isMap(obj)) {
+    return new Map(obj)
+  }
+
+  if (isWeakMap(obj)) {
+    return new WeakMap(obj)
+  }
+
+  if (!isJson(obj)) {
     return obj
   }
 
