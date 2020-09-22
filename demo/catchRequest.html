@@ -5,15 +5,15 @@
     <title>catchRequest</title>
   </head>
   <body>
-    <script src="../dist/storm.js"></script>
+    <script src="../dist/wenyejie.js"></script>
     <script>
-      const CatchRequest = window.storm.CatchRequest
+      const CatchRequest = window.wenyejie.CatchRequest
 
       function request() {
         console.log('------ I`m in ------')
         return new Promise(resolve => {
           setTimeout(() => {
-            resolve({ name: 'storm', version: '1.1.8' })
+            resolve({ name: 'wenyejie', version: '1.1.8' })
           }, 500)
         })
       }

@@ -6,18 +6,18 @@
   </head>
   <body>
     <input type="text" id="amount" />
-    <script src="../dist/storm.js"></script>
+    <script src="../dist/wenyejie.js"></script>
     <script>
-      // const rLimitAmount = storm.rLimitAmount
+      // const rLimitAmount = wenyejie.rLimitAmount
       // const rLimitAmount = /([^0-9.])|((?<=\d+\.\d{2})\d+)|((?<=^0)0+)|(^0(?=[1-9]))|((?<=\.\d*)\.)|(^\.)/g
       const rLimitAmount = /([^0-9.])|(^0(?=\d))|(^\.)/g
       const $amount = document.querySelector('#amount')
 
       const limitAmount = value => {
-        if (storm.isNumber(value)) {
+        if (wenyejie.isNumber(value)) {
           value += ''
         }
-        if (!storm.isString(value)) {
+        if (!wenyejie.isString(value)) {
           return ''
         }
         value = value.replace(/([^0-9.])|(^0(?=\d))/g, '')

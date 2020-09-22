@@ -12,11 +12,11 @@
       <img src="https://img03.sc115.com/hb1/yl2/10/881812421593340.jpg" />
       <img src="./assets/mm.jpg" />
     </div>
-    <script src="../dist/storm.js"></script>
+    <script src="../dist/wenyejie.js"></script>
     <script>
-      // const downloadUrl = storm.downloadUrl
-      const isString = storm.isString
-      const isOneHost = storm.isOneHost
+      // const downloadUrl = wenyejie.downloadUrl
+      const isString = wenyejie.isString
+      const isOneHost = wenyejie.isOneHost
 
       const downloadFile = (url, filename) => {
         if (!isString(url)) {
@@ -54,7 +54,7 @@
           if (xhr.status === 200) {
             const blob = new Blob([xhr.response], { type: 'image/jpg' })
             console.log('downloadBlob before')
-            storm.downloadBlob(blob, 'mm')
+            wenyejie.downloadBlob(blob, 'mm')
             console.log('downloadBlob after')
           }
         }
