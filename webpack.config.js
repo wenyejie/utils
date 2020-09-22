@@ -55,7 +55,7 @@ const webpackConfig = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.js']
   },
   optimization: {
     usedExports: true
