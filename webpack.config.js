@@ -33,11 +33,11 @@ const webpackConfig = {
   devtool: 'source-map',
   module: {
     rules: [
-      {
-        test: /\.ts$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
-      },
+      // {
+      //   test: /\.ts$/,
+      //   use: 'ts-loader',
+      //   exclude: /node_modules/
+      // },
       {
         test: /\.js$/,
         exclude: /node_modules/,
