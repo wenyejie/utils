@@ -3,6 +3,7 @@ import isInteger from './isInteger.js'
 
 const INTEGER_BIT = /^\d+\.?/
 
+// 获取小数点长度
 const decimalLength = n => {
   if (isInteger(n)) {
     return 0
@@ -10,6 +11,7 @@ const decimalLength = n => {
   return n.toString().replace(INTEGER_BIT, '').length
 }
 
+// 获取两个数的最大小数点长度
 const maxDecimalLength = (x, y) => {
   return Math.max(decimalLength(x), decimalLength(y))
 }
