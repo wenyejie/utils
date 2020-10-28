@@ -1,8 +1,12 @@
 import isFunction from './isFunction.js'
 
 const defaultOptions = {
+  // 计时间隔
   timeout: 1000,
-  autostart: true
+  // 是否自动开始
+  autostart: true,
+  // 是否前置补零
+  padStart: true
 }
 
 /**
@@ -27,7 +31,8 @@ class Countdown {
 
   callback(cbName) {
     if (isFunction(this.options[cbName])) {
-      this.options[cbName](this.count, this)
+      const count = this.options.padStart ? `${this.count}`.padStart(2, '0') : `${this.count}`
+      this.options[cbName](count, this)
     }
   }
 

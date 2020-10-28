@@ -1,5 +1,9 @@
 # 版本记录
 
+## 1.16
+
+- 新增 `isMap`, `isSet`, `isWeakMap`, `isWeakSet`, `removeSpace`, `toNumber` 方法
+
 ## 1.15
 
 - 新增 `countdown`方法

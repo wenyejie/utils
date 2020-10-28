@@ -1,8 +1,8 @@
 {
   "name": "wenyejie",
   "sideEffects": false,
-  "description": "基础类库",
-  "version": "1.15.0",
+  "description": "基础工具类",
+  "version": "1.16.0",
   "private": false,
   "author": {
     "email": "wenyejie@foxmail.com",

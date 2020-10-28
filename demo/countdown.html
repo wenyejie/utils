@@ -10,7 +10,8 @@
       import countdown from '../src/countdown.js'
 
       const $div = document.querySelector('div')
-      countdown(10, count => {
+      countdown(10, (count, instance) => {
+        console.log(instance)
         $div.innerHTML = count
       })
     </script>
