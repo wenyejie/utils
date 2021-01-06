@@ -64,7 +64,7 @@ const webpackConfig = {
 }
 
 if (isProd) {
-  // // 清理文件夹
+  // 清理文件夹
   webpackConfig.plugins.push(new CleanWebpackPlugin())
 }
 
