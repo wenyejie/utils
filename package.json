@@ -12,8 +12,8 @@
     "modules",
     "util"
   ],
-  "main": "./dist/wenyejie.js",
-  "module": "wenyejie.js",
+  "main": "./dist/wyjutils.js",
+  "module": "wyjutils.js",
   "license": "ISC",
   "scripts": {
     "test": "jest",
