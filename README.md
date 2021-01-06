@@ -1,6 +1,6 @@
 # utils
 
-> 没有什么特别的想法, 就是觉得代码到处 copy, 不但不利于维护, 也不利于迭代, 所以创建这个包.
+> 工具类
 
 ## change log
 
@@ -16,7 +16,7 @@
 
 ## issue
 
-~~有些正则使用了, 后视断言, 所以不支持相关浏览器, [详见](https://caniuse.com/#feat=mdn-javascript_builtins_regexp_lookbehind_assertion)  
+~~有些正则使用了, 后视断言, 所以不支持相关浏览器, [详见](https://caniuse.com/#feat=mdn-javascript_builtins_regexp_lookbehind_assertion)
 所以不要整包引入, 而是按需引入, 并使用 tree-shaking~~
 
 ~~使用`dev`模式下, `webpack`会整包引入, 所以不要担心.~~
