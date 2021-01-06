@@ -3,30 +3,36 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const fs = require('fs')
 const packageJson = require('./package.json')
 
-let utilsContent = `export const VERSION = '${packageJson.version}'\r`
-const files = fs.readdirSync(path.join('./src'))
+const buildIndex = () => {
+  let utilsContent = `export const VERSION = '${packageJson.version}'\r`
+  const files = fs.readdirSync(path.join('./src'))
 
-files.forEach(filename => {
-  if (!/\.js$/.test(filename)) {
-    return
-  }
-  utilsContent += `export * from './src/${filename}'\r`
-})
+  files.forEach(filename => {
+    if (!/\.js$/.test(filename)) {
+      return
+    }
+    utilsContent += `export * from './src/${filename}'\r`
+  })
 
-fs.writeFile('./wenyejie.js', utilsContent, () => {})
+  fs.writeFile('./index.js', utilsContent, () => {})
+}
 
 const isProd = process.env.NODE_ENV === 'production'
+
+if (isProd) {
+  buildIndex()
+}
 
 const webpackConfig = {
   mode: process.env.NODE_ENV,
   entry: {
-    wenyejie: './wenyejie.js'
+    wyjutils: './index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: isProd ? '[name].js' : '[name].dev.js',
     chunkFilename: '[name].min.js',
-    library: 'wenyejie',
+    library: 'wyjutils',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
