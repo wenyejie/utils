@@ -13,6 +13,9 @@ export const rIDCardNO = /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([012]\d)|3[0-1])\d{3}$)
 // 银行卡号
 export const rBankCardNO = /^\d{16,19}$/
 
+// 中文
+export const rChinese = /^[\u4E00-\u9FA5]+$/
+
 // 中文名称
 export const rChineseName = /^[\u4E00-\u9FA5]{2,}(·[\u4E00-\u9FA5]{2,})*$/
 
