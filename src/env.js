@@ -1,6 +1,10 @@
+import globalThis from './globalThis.js'
+
 export const inBrowser = () => typeof window !== 'undefined'
 
-export const useragent = () => (inBrowser() ? window.navigator.userAgent.toLocaleLowerCase() : '')
+export const inNode = () => typeof global !== 'undefined'
+
+export const useragent = () => (inBrowser() ? globalThis.navigator.userAgent.toLocaleLowerCase() : '')
 
 export const isAndroid = () => useragent().includes('android')
 

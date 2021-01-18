@@ -33,6 +33,7 @@ const webpackConfig = {
     filename: isProd ? '[name].js' : '[name].dev.js',
     chunkFilename: '[name].min.js',
     library: 'wyjutils',
+    globalObject: "this",
     libraryTarget: 'umd',
     umdNamedDefine: true
   },

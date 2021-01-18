@@ -1,6 +1,7 @@
 import downloadFile from './downloadFile.js'
 import isBlob from './isBlob.js'
 import suffix from './suffix.js'
+import globalThis from './globalThis.js'
 
 /**
  * 下载blob文件
@@ -16,13 +17,13 @@ export const downloadBlob = (blob, filename) => {
     filename = filename + '.' + blob.type.replace(/image\//, '')
     console.warn('参数错误: filename没有后缀名')
   }
-  if (window.navigator.msSaveBlob) {
-    window.navigator.msSaveBlob(blob, filename)
+  if (globalThis.navigator.msSaveBlob) {
+    globalThis.navigator.msSaveBlob(blob, filename)
     return
   }
-  const url = window.URL.createObjectURL(blob)
+  const url = globalThis.URL.createObjectURL(blob)
   downloadFile(url, filename)
-  window.URL.revokeObjectURL(url)
+  globalThis.URL.revokeObjectURL(url)
 }
 
 export default downloadBlob

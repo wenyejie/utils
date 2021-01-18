@@ -1,3 +1,5 @@
+import globalThis from './globalThis.js'
+
 /**
  * 函数节流 - 间隔一定时间后执行, 地铁
  * @param fn {Function} 函数
@@ -17,7 +19,7 @@ export const throttle = (fn, interval = 500, isFirst = true) => {
     if (timer) {
       return
     }
-    timer = window.setTimeout(() => {
+    timer = globalThis.setTimeout(() => {
       clearTimeout(timer)
 
       fn.apply(this, rest)

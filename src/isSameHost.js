@@ -1,11 +1,12 @@
 import isString from './isString.js'
+import globalThis from './globalThis.js'
 
 /**
  * 判断两个链接地址是否为同一个域名, 是否会跨域
  * @param urlA
  * @param urlB
  */
-export const isSameHost = (urlA, urlB = window.location.href) => {
+export const isSameHost = (urlA, urlB = globalThis.location.href) => {
   if (!isString(urlA)) {
     return false
   }

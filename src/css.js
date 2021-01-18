@@ -3,6 +3,7 @@ import hyphenate from './hyphenate.js'
 import isElement from './isElement.js'
 import isString from './isString.js'
 import isJson from './isJson.js'
+import globalThis from './globalThis.js'
 
 const ELEMENT_ERROR_MESSAGE = '请传入正确的参数elt: HTMLElement'
 
@@ -52,8 +53,8 @@ export const setCSS = (elt, name, value) => {
  * @param tagName
  */
 export const supportCSS = (name, value, tagName = 'div') => {
-  if (window.CSS && window.CSS.supports) {
-    return window.CSS.supports(hyphenate(name), value)
+  if (globalThis.CSS && globalThis.CSS.supports) {
+    return globalThis.CSS.supports(hyphenate(name), value)
   }
 
   const $el = document.createElement(tagName)

@@ -1,5 +1,6 @@
 import { inBrowser } from './env.js'
 import emptyObject from './emptyObject.js'
+import globalThis from './globalThis.js'
 
 /**
  * 解析
@@ -14,7 +15,7 @@ const parse = data => {
  */
 class CustomStorage {
   constructor(name) {
-    this.storage = inBrowser() ? window[`${name}Storage`] : emptyObject
+    this.storage = inBrowser() ? globalThis[`${name}Storage`] : emptyObject
   }
 
   /**

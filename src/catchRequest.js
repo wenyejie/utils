@@ -1,6 +1,7 @@
 import { local, session } from './storage.js'
 import isFunction from './isFunction.js'
 import { inBrowser } from './env.js'
+import globalThis from './globalThis.js'
 
 // storage name 前缀
 const STORAGE_NAME_PREFIX = 's-catch-request-'
@@ -30,7 +31,7 @@ const removeStorage = (storageMode = 'local') => {
     return
   }
 
-  const storage = window[storageMode + 'Storage']
+  const storage = globalThis[storageMode + 'Storage']
 
   for (let name in storage) {
     if (name.indexOf(STORAGE_NAME_PREFIX) >= 0) {
