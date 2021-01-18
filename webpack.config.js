@@ -26,13 +26,13 @@ if (isProd) {
 const webpackConfig = {
   mode: process.env.NODE_ENV,
   entry: {
-    wyjutils: './index.js'
+    wenyejie: './index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: isProd ? '[name].js' : '[name].dev.js',
     chunkFilename: '[name].min.js',
-    library: 'wyjutils',
+    library: 'wenyejie',
     globalObject: "this",
     libraryTarget: 'umd',
     umdNamedDefine: true
