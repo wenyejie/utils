@@ -13,7 +13,7 @@
     "util"
   ],
   "main": "./dist/wenyejie.js",
-  "module": "wenyejie.js",
+  "module": "index.js",
   "license": "ISC",
   "scripts": {
     "test": "jest",
