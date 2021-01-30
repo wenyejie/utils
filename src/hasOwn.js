@@ -2,8 +2,8 @@ import hasOwnProperty from './hasOwnProperty.js'
 
 /**
  * 判断key是否是对象自己的属性
- * @param object
- * @param key
+ * @param object { Object }
+ * @param key { string }
  */
 export const hasOwn = (object, key) => {
   if (object === null || object === undefined) {

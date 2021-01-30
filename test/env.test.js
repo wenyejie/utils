@@ -19,7 +19,7 @@ import {
   useragent
 } from '../src/env'
 
-const setUa = (value: string) => {
+const setUa = (value) => {
   Object.defineProperty(navigator, 'userAgent', {
     writable: true,
     value

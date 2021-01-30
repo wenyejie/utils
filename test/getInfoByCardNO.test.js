@@ -1,8 +1,8 @@
-import { getInfoByCardNO, CardNOResponse } from '../src/getInfoByCardNO'
+import { getInfoByCardNO } from '../src/getInfoByCardNO'
 
 test('getInfoByCardNO', () => {
   const CARDNO = '110101199003072391'
-  const INFO: CardNOResponse = {
+  const INFO = {
     province: '11',
     city: '01',
     area: '01',
