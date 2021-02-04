@@ -14,7 +14,7 @@ const buildIndex = () => {
     utilsContent += `export * from './src/${filename}'\r`
   })
 
-  fs.writeFile('./index.js', utilsContent, () => {})
+  fs.writeFile('./wenyejie.js', utilsContent, () => {})
 }
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -26,7 +26,7 @@ if (isProd) {
 const webpackConfig = {
   mode: process.env.NODE_ENV,
   entry: {
-    wenyejie: './index.js'
+    wenyejie: './wenyejie.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
