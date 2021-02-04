@@ -33,7 +33,7 @@ const webpackConfig = {
     filename: isProd ? '[name].js' : '[name].dev.js',
     chunkFilename: '[name].min.js',
     library: 'wenyejie',
-    globalObject: "this",
+    globalObject: 'this',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },

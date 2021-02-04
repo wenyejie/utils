@@ -22,3 +22,12 @@
 ~~使用`dev`模式下, `webpack`会整包引入, 所以不要担心.~~
 
 已移出相关兼容性 `bug` 的后视断言
+
+
+## Prettier
+
+program: $ProjectFileDir$/node_modules/.bin/prettier
+
+arguments: --write $FilePathRelativeToProjectRoot$
+
+output: $FilePathRelativeToProjectRoot$
