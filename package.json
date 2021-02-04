@@ -2,7 +2,7 @@
   "name": "wenyejie",
   "sideEffects": false,
   "description": "基础工具类",
-  "version": "1.18.0",
+  "version": "1.18.1",
   "private": false,
   "author": {
     "email": "wenyejie@foxmail.com",
@@ -13,7 +13,7 @@
     "util"
   ],
   "main": "./dist/wenyejie.js",
-  "module": "index.js",
+  "module": "wenyejie.js",
   "license": "ISC",
   "scripts": {
     "test": "jest",
