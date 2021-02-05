@@ -5,7 +5,7 @@
 export const cachedOne = fn => {
   let cached = null
   return function() {
-    if (caches !== null) {
+    if (cached !== null) {
       return cached
     }
     return (cached = fn.apply(this, arguments))

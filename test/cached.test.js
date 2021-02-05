@@ -1,6 +1,6 @@
 import cached from '../src/cached'
 
-const add = cached((a: number, b: number): number => {
+const add = cached((a, b) => {
   return a + b
 })
 
