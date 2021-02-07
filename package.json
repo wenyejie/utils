@@ -5,6 +5,7 @@
   "version": "1.18.2",
   "private": false,
   "type": "module",
+  "types": "./types/index.d.ts",
   "author": {
     "email": "wenyejie@foxmail.com",
     "name": "wenyejie"
