@@ -4,6 +4,7 @@
   "description": "基础工具类",
   "version": "1.18.2",
   "private": false,
+  "type": "module",
   "author": {
     "email": "wenyejie@foxmail.com",
     "name": "wenyejie"
@@ -23,9 +24,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.12.15",
+    "@babel/preset-env": "^7.12.13",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
