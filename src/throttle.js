@@ -7,7 +7,7 @@ import globalThis from './globalThis.js'
  * @param isFirst {boolean} 第一次是否立即执行
  * @return {Function}
  */
-export const throttle = (fn, interval = 500, isFirst = true) => {
+export const throttle = (fn, interval = 500, isFirst = false) => {
   // 定时器
   let timer
   return function(...rest) {
