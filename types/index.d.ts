@@ -1,4 +1,11 @@
+type anyFunction = (...args: any[]) => void
+
+interface AnyObject {
+  [propName: string]: any
+}
+
 declare namespace Wenyejie {
+
   /**
    * 移除相关属性, 包括数组和对象
    * @param data 移除队形
@@ -24,13 +31,13 @@ declare namespace Wenyejie {
    * 根据输入参数缓存执行结果
    * @param fn 执行方法
    */
-  export function cached(fn: Function): Function
+  export function cached(fn: anyFunction): Function
 
   /**
    * 缓存一个执行结果
    * @param fn 执行方法
    */
-  export function cachedOne(fn: Function): Function
+  export function cachedOne(fn: anyFunction): Function
 
   /**
    * 把横杠命名转化为驼峰命名
@@ -106,4 +113,42 @@ declare namespace Wenyejie {
     value?: string | number | null,
     tagName?: string
   ): boolean
+
+  /**
+   * 把相关数据转换成
+   * @param date 日期
+   * @param format 格式
+   */
+  export function dateFormat(date: any, format: string): string
+
+  /**
+   * 函数防抖 - 当一定时间之后没有重新调用则执行, 电梯
+   * @param fn
+   * @param interval 时间间隔
+   * @param isFirst 第一次是否立即执行
+   */
+  export function debounce(fn:anyFunction, interval: number, isFirst:boolean)
+
+  /**
+   * 下载blob文件
+   * 主要用于下载非同源的文件, 采用XMLHttpRequest blob下载方式下载下来或者下载canvas中的图像
+   * @param blob
+   * @param filename
+   */
+  export function downloadBlob(blob:Blob, filename?: string): void
+
+  /**
+   * 通过url下载
+   * PS: 只能下载同源的链接, 如果不是同源的文件请使用downloadBlob方法
+   * @param url
+   * @param filename
+   */
+  export function downloadFile(url: string, filename?: string):void
+
+  /**
+   * 遍历数组或对象
+   * @param data 数据
+   * @param fn 回调函数
+   */
+  export function each(data: AnyObject | any[], fn: anyFunction): void
 }
