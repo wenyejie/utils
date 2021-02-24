@@ -60,6 +60,10 @@ export const supportCSS = (name, value, tagName = 'div') => {
   const $el = document.createElement(tagName)
 
   if (name in $el.style) {
+    if (value === undefined) {
+      return true
+    }
+
     $el.style[camelize(name)] = value
     return $el.style[camelize(name)] === value
   }

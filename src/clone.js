@@ -1,7 +1,6 @@
 import isPrimitive from './isPrimitive.js'
 import isArray from './isArray.js'
 import isFunction from './isFunction.js'
-import isSymbol from './isSymbol.js'
 import isSet from './isSet.js'
 import isMap from './isMap.js'
 import isJson from './isJson.js'
