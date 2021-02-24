@@ -23,7 +23,6 @@
     "serve": "cross-env NODE_ENV=development webpack-dev-server --open",
     "build": "cross-env NODE_ENV=production webpack --modern"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.12.13",
     "@babel/plugin-transform-runtime": "^7.12.15",
