@@ -151,4 +151,69 @@ declare namespace Wenyejie {
    * @param fn 回调函数
    */
   export function each(data: AnyObject | any[], fn: anyFunction): void
+
+  // 被冻结的对象
+  export const emptyObject:AnyObject
+
+  // 判断是否在浏览器中
+  export function inBrowser():boolean
+
+  // 判断是否在NODE环境
+  export function inNode(): boolean
+
+  // 返回小写的ua
+  export function useragent(): string
+
+  // 是否android
+  export function isAndroid(): boolean
+
+  export function isEdge(): boolean
+
+  export function isChrome(): boolean
+
+  export function isFirefox():boolean
+
+  export function isIE():boolean
+
+  export function isIE9():boolean
+
+  export function isIOS():boolean
+
+  export function isIPad():boolean
+
+  export function isIPhone():boolean
+
+  export function isMobile():boolean
+
+  export function isPC():boolean
+
+  export function isPhantom():boolean
+
+  export function isWeChat():boolean
+
+  export function isWindows():boolean
+
+  export function isMac():boolean
+
+  export function isUbuntu():boolean
+
+  export function isLinux():boolean
+
+  // 加法
+  export function add(x:number | string, y:number | string):number
+
+  // 减法
+  export function subtract(x:number | string, y:number | string):number
+
+  // 乘法
+  export function multiply(x:number | string, y:number | string):number
+
+  // 除法
+  export function divide(x:number | string, y:number | string):number
+
+  /**
+   * 把文件转换成base64
+   * @param file
+   */
+  export function file2base64(file:File):string
 }
