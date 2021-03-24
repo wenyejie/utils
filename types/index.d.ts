@@ -216,4 +216,11 @@ declare namespace Wenyejie {
    * @param file
    */
   export function file2base64(file:File):string
+
+  /**
+   * 把输入转换为css长度单位
+   * @param number
+   * @param defaultUnit
+   */
+  export function toCSSUnit(number: string | number | undefined, defaultUnit: string): string
 }
