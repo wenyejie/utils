@@ -18,3 +18,5 @@ export const toCSSUnit = (number, defaultUnit = 'px') => {
     return ''
   }
 }
+
+export default toCSSUnit
