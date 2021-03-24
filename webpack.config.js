@@ -8,7 +8,7 @@ const buildIndex = () => {
   const files = fs.readdirSync(path.join('./src'))
 
   files.forEach(filename => {
-    if (!/\.js$/.test(filename)) {
+    if (!/^[a-zA-Z]+\.js$/.test(filename)) {
       return
     }
     utilsContent += `export * from './src/${filename}'\r`
