@@ -9,7 +9,7 @@ import hasOwn from './hasOwn.js'
  * @param value
  */
 export const find = (data, key, value) => {
-  const props = isObject(key) ? key : { key: value }
+  const props = isObject(key) ? key : { [key]: value }
   if (!isArray(data) || !isObject(props)) {
     return null
   }
