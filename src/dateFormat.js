@@ -1,8 +1,8 @@
 import toDate from './toDate.js'
 import isDate from './isDate.js'
 
-const padStart = number => {
-  return `${number}`.padStart(2, '0')
+const padStart = (number, length = 2) => {
+  return `${number}`.padStart(length, '0')
 }
 
 /**
@@ -16,7 +16,7 @@ export const dateFormat = (date, format = 'YYYY-MM-DD hh:mm:ss') => {
     return ''
   }
 
-  return format.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?/g, str => {
+  return format.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, str => {
     switch (str) {
       case 'YYYY':
         return date.getFullYear() + ''
@@ -42,6 +42,12 @@ export const dateFormat = (date, format = 'YYYY-MM-DD hh:mm:ss') => {
         return padStart(date.getSeconds())
       case 's':
         return date.getSeconds() + ''
+      case 'SSS':
+        return padStart(date.getMilliseconds(), 3)
+      case 'SS':
+        return padStart(Math.floor(date.getMilliseconds() / 10))
+      case 'S':
+        return Math.floor(date.getMilliseconds() / 100)
       default:
         return ''
     }
