@@ -5,6 +5,10 @@
 - 移除`isSameDay`, `isSameMonth`, `isSameYear`的第二个参数的默认值
 - dateFormat 加入毫秒`S`, `SS`, `SSS`
 
+## 1.8.4
+
+- 新增`monthRange`方法
+
 ## 1.16
 
 - 新增 `isMap`, `isSet`, `isWeakMap`, `isWeakSet`, `removeSpace`, `toNumber` 方法

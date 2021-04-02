@@ -2,7 +2,7 @@
   "name": "wenyejie",
   "sideEffects": false,
   "description": "基础工具类",
-  "version": "1.18.3",
+  "version": "1.18.4",
   "private": false,
   "types": "./types/index.d.ts",
   "author": {
@@ -20,7 +20,7 @@
     "test": "jest",
     "test:c": "jest --coverage",
     "serve": "cross-env NODE_ENV=development webpack-dev-server --open",
-    "build": "cross-env NODE_ENV=production webpack --modern"
+    "build": "npm run test:c && cross-env NODE_ENV=production webpack --modern"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",

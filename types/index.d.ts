@@ -4,6 +4,11 @@ interface AnyObject {
   [propName: string]: any
 }
 
+interface MonthRange {
+  start: Date | null
+  end: Date | null
+}
+
 declare namespace Wenyejie {
 
   /**
@@ -216,6 +221,13 @@ declare namespace Wenyejie {
    * @param file
    */
   export function file2base64(file:File):string
+
+  /**
+   * 获取月份的起始范围
+   * @param date 日期
+   * @param type 类型
+   */
+  export function monthRange(date: Date, type?:string):MonthRange | Date | null
 
   /**
    * 把输入转换为css长度单位
