@@ -5,6 +5,11 @@
 - 移除`isSameDay`, `isSameMonth`, `isSameYear`的第二个参数的默认值
 - dateFormat 加入毫秒`S`, `SS`, `SSS`
 
+## 1.8.5
+
+- 新增`padStart`方法
+- 新增 `padEnd`方法
+
 ## 1.8.4
 
 - 新增`monthRange`方法

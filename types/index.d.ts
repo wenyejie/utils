@@ -235,4 +235,20 @@ declare namespace Wenyejie {
    * @param defaultUnit
    */
   export function toCSSUnit(number: string | number | undefined, defaultUnit: string): string
+
+  /**
+   * 前置填充
+   * @param string 被填充内容
+   * @param maxLength 填充之后总长度
+   * @param fillString 填充的字符串
+   */
+  export function padStart(string: string | number | undefined | null, maxLength: number, fillString: string)
+
+  /**
+   * 后置填充
+   * @param string 被填充内容
+   * @param maxLength 填充之后总长度
+   * @param fillString 填充的字符串
+   */
+  export function padEnd(string: string | number | undefined | null, maxLength: number, fillString: string)
 }
