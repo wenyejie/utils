@@ -8,7 +8,8 @@
 ## 1.8.5
 
 - 新增`padStart`方法
-- 新增 `padEnd`方法
+- 新增`padEnd`方法
+- 新增`dateObj`方法
 
 ## 1.8.4
 
