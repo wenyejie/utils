@@ -9,6 +9,18 @@ interface MonthRange {
   end: Date | null
 }
 
+interface DateObj {
+  year?: number
+  month?: number
+  day?: number
+  week?: number
+  hour?: number
+  minute?: number
+  second?: number
+  millisecond?: number
+  time?: number
+}
+
 declare namespace Wenyejie {
 
   /**
@@ -242,7 +254,7 @@ declare namespace Wenyejie {
    * @param maxLength 填充之后总长度
    * @param fillString 填充的字符串
    */
-  export function padStart(string: string | number | undefined | null, maxLength: number, fillString: string)
+  export function padStart(string: string | number | undefined | null, maxLength: number, fillString: string): string
 
   /**
    * 后置填充
@@ -250,5 +262,11 @@ declare namespace Wenyejie {
    * @param maxLength 填充之后总长度
    * @param fillString 填充的字符串
    */
-  export function padEnd(string: string | number | undefined | null, maxLength: number, fillString: string)
+  export function padEnd(string: string | number | undefined | null, maxLength: number, fillString: string): string
+
+  /**
+   * 获取日期对象
+   * @param date
+   */
+  export function dateObj(date: Date):DateObj
 }
