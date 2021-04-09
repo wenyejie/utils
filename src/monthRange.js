@@ -19,18 +19,18 @@ export const monthRange = (date, type = 'range') => {
   }
 
   const start = new Date(date)
-  start.setDate(1)
-  start.setHours(0, 0, 0, 0)
 
-  if (type === 'start') {
+  if (type !== 'end') {
+    start.setDate(1)
+    start.setHours(0, 0, 0, 0)
     return start
   }
 
   const end = new Date(date)
-  end.setMonth(end.getMonth() + 1, 0)
-  end.setHours(23, 59, 59, 999)
 
-  if (type === 'end') {
+  if (type !== 'start') {
+    end.setMonth(end.getMonth() + 1, 0)
+    end.setHours(23, 59, 59, 999)
     return end
   }
 
