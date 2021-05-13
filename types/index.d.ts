@@ -269,4 +269,45 @@ declare namespace Wenyejie {
    * @param date
    */
   export function dateObj(date: Date):DateObj
+
+  // 百分比格式化选项
+  interface PercentageOptions {
+    fractionDigits?: number, // 保留小数位
+    padEnd?: boolean, // 是否需要后续补零
+    defaultValue?: string, // 默认值, 即当输入值无法被转化时显示的值
+    onePercent?: number, // 百分之一的数值, 0.01 * 100 = 1, 1 * 100 = 100
+    symbol?: string, // 百分比符号
+  }
+
+  /**
+   * 格式化百分比
+   * @param value 数值
+   * @param options 选项
+   */
+  export function percentage(value: number | string, options?: PercentageOptions)
+
+  interface DatetimeSpanOptions {
+    hasYear?: boolean,
+    year?: number,
+    hasMonth?: boolean,
+    month?: number,
+    hasDay?: boolean,
+    day?: number,
+    hasHour?: boolean,
+    hour?: number,
+    hasMinute?: boolean,
+    minute?: number,
+    hasSecond?: boolean,
+    second?: number,
+    hasMillisecond?: boolean,
+    millisecond?: number,
+    defaultValue?: string
+  }
+
+  /**
+   * 获取时间的剩余年月日时分秒
+   * @param date 时间或者时间戳
+   * @param options 选项
+   */
+  export function datetimeSpan(date: number | string | Date, options?: DatetimeSpanOptions)
 }
