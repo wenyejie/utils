@@ -5,13 +5,68 @@
     <title>index</title>
   </head>
   <body>
-    <script src="../dist/index.js"></script>
-    <script>
-      // console.log(t.toDate('2020'))
-      const test = (...rest) => {
-        console.log(rest.flat())
+    <script type='module'>
+      import isNumber from '../src/isNumber.js'
+      import isInteger from '../src/isInteger.js'
+
+      // console.log(isNumber(111))
+
+      const INTEGER_BIT = /^\d+\.?/
+
+      // 获取小数点长度
+      const decimalLength = (value) => {
+        if (!isNumber(value)) {
+          return 0
+        }
+        return (`${value}`.replace(INTEGER_BIT, '')).length
       }
-      test(0, 1, 2, 3, 4, [5, 6, 7, 8, 9])
+
+      const maxDecimalLength = (num1, num2) => {
+        return Math.max(decimalLength(num1), decimalLength(num2))
+      }
+
+      const toNumber = (num) => {
+        num = Number.parseFloat(num)
+        return isNumber(num) ? num : 0
+      }
+
+      const add = (num1, num2) => {
+        num1 = toNumber(num1)
+        num2 = toNumber(num2)
+        const raise = Math.pow(10, maxDecimalLength(num1,num2))
+        return (num1 * raise + num2 * raise) / raise
+      }
+
+      const multiAdd = (...rest) => rest.reduce((accumulator, currentValue) => add(accumulator, currentValue))
+
+      const subtract = (num1, num2) => {
+        num1 = toNumber(num1)
+        num2 = toNumber(num2)
+        const raise = Math.pow(10, maxDecimalLength(num1,num2))
+        return (num1 * raise - num2 * raise) / raise
+      }
+
+      const multiSubtract = (...rest) => rest.reduce((accumulator, currentValue) => subtract(accumulator, currentValue))
+
+      const multiply = (num1, num2) => {
+        num1 = toNumber(num1)
+        num2 = toNumber(num2)
+        const raise = Math.pow(10, maxDecimalLength(num1,num2))
+        return ((num1 * raise) * (num2 * raise)) / Math.pow(raise, 2)
+      }
+
+      const multiMultiply = (...rest) => rest.reduce((accumulator, currentValue) => multiply(accumulator, currentValue), 1)
+
+      const divide = (num1, num2) => {
+        num1 = toNumber(num1)
+        num2 = toNumber(num2)
+        const raise = Math.pow(10, maxDecimalLength(num1,num2))
+        return (num1 * raise) / (num2 * raise)
+      }
+
+      const multiDivide = (...rest) => rest.reduce((accumulator, currentValue) => divide(accumulator, currentValue))
+
+      console.log(multiDivide(3, 2, 2, 2, 2, 2))
     </script>
   </body>
 </html>

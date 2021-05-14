@@ -91,7 +91,7 @@ declare namespace Wenyejie {
    * @param deep
    * @param weakMap
    */
-  export function clone<T>(obj: T, deep?: boolean, weakMap?: Map<any, any>): T
+  export function clone<T>(obj: T, deep?: boolean, weakMap?: WeakMap<any, any>): T
 
   export namespace Countdown {}
 

@@ -1,91 +1,53 @@
-import isNumber from './isNumber.js'
-import isInteger from './isInteger.js'
+import decimalLength from './decimalLength.js'
+import toNumber from './toNumber.js'
 
-const INTEGER_BIT = /^\d+\.?/
-
-// 获取小数点长度
-const decimalLength = n => {
-  if (isInteger(n)) {
-    return 0
-  }
-  return n.toString().replace(INTEGER_BIT, '').length
+const maxDecimalLength = (num1, num2) => {
+  return Math.max(decimalLength(num1), decimalLength(num2))
 }
 
-// 获取两个数的最大小数点长度
-const maxDecimalLength = (x, y) => {
-  return Math.max(decimalLength(x), decimalLength(y))
+export const add = (num1, num2) => {
+  num1 = toNumber(num1)
+  num2 = toNumber(num2)
+  const raise = Math.pow(10, maxDecimalLength(num1,num2))
+  return (num1 * raise + num2 * raise) / raise
 }
 
-/**
- * 通过乘法和和除法对数字的小数点进行移动, 避免计算出现的精度丢失
- * @param n
- * @param length
- * @param operator
- * @return {*|number}
- */
-const displacement = (n, length, operator) => {
-  if (length === 0) {
-    return n
-  }
-  if (isInteger(n)) {
-    n += '.'
-  }
-  if (operator === '*') {
-    n += '0'.padEnd(length, '0')
-  } else {
-    n = '0'.padEnd(length, '0') + n
-  }
-  const index = n.indexOf('.')
+export const multiAdd = (...rest) => rest.reduce((accumulator, currentValue) => add(accumulator, currentValue))
 
-  n = n.replace('.', '')
-
-  if (operator === '*') {
-    n = n.slice(0, index + length) + '.' + n.slice(index + length)
-  } else {
-    n = n.slice(0, index - length) + '.' + n.slice(index - length)
-  }
-  return Number.parseFloat(n)
+export const subtract = (num1, num2) => {
+  num1 = toNumber(num1)
+  num2 = toNumber(num2)
+  const raise = Math.pow(10, maxDecimalLength(num1,num2))
+  return (num1 * raise - num2 * raise) / raise
 }
 
-/**
- *
- * @param countX
- * @param countY
- * @param operator
- * @return {*}
- */
-const calculation = (countX, countY, operator) => {
-  if (!isNumber(Number.parseFloat(countY)) || !isNumber(Number.parseFloat(countX))) {
-    throw console.error('传入参数有误, 请重新确认!', countX, countY)
-  }
-  const length = maxDecimalLength(countX, countY)
-  countX = displacement(countX, length, '*')
-  countY = displacement(countY, length, '*')
+export const multiSubtract = (...rest) => rest.reduce((accumulator, currentValue) => subtract(accumulator, currentValue))
 
-  let result = 0
-
-  switch (operator) {
-    case '+':
-      result = displacement(countX + countY, length, '/')
-      break
-    case '-':
-      result = displacement(countX - countY, length, '/')
-      break
-    case '*':
-      result = displacement(countX * countY, length * 2, '/')
-      break
-    case '/':
-      result = countX / countY
-      break
-    default:
-      throw console.error('运算符传入有误, 请重新确认!')
-  }
-  return result
+export const multiply = (num1, num2) => {
+  num1 = toNumber(num1)
+  num2 = toNumber(num2)
+  const raise = Math.pow(10, maxDecimalLength(num1,num2))
+  return ((num1 * raise) * (num2 * raise)) / Math.pow(raise, 2)
 }
 
-export const add = (x, y) => calculation(x, y, '+')
-export const subtract = (x, y) => calculation(x, y, '-')
-export const multiply = (x, y) => calculation(x, y, '*')
-export const divide = (x, y) => calculation(x, y, '/')
+export const multiMultiply = (...rest) => rest.reduce((accumulator, currentValue) => multiply(accumulator, currentValue), 1)
 
-export default { add, subtract, multiply, divide }
+export const divide = (num1, num2) => {
+  num1 = toNumber(num1)
+  num2 = toNumber(num2)
+  const raise = Math.pow(10, maxDecimalLength(num1,num2))
+  return (num1 * raise) / (num2 * raise)
+}
+
+export const multiDivide = (...rest) => rest.reduce((accumulator, currentValue) => divide(accumulator, currentValue))
+
+export default {
+  add,
+  multiAdd,
+  subtract,
+  multiSubtract,
+  multiply,
+  multiMultiply,
+  divide,
+  multiDivide
+}
