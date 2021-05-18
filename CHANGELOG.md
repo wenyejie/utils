@@ -9,6 +9,8 @@
 
 - 新增`percentage`方法
 - 新增`datetimeSpan`方法
+- 调整`exactMath`方法
+- 新增`decimalLength`方法
 
 ## 1.8.5
 

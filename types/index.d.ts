@@ -310,4 +310,31 @@ declare namespace Wenyejie {
    * @param options 选项
    */
   export function datetimeSpan(date: number | string | Date, options?: DatetimeSpanOptions)
+
+  type exactMathNum = number | string
+
+  type exactMathFn = (num1:exactMathNum, num2:exactMathNum) => number
+  type exactMathMultiFn = (...nums:exactMathNum[]) => number
+
+  export type add = exactMathFn
+  export type multiAdd = exactMathMultiFn
+  export type subtract = exactMathFn
+  export type multiSubtract = exactMathMultiFn
+  export type multiply = exactMathFn
+  export type multiMultiply = exactMathMultiFn
+  export type divide = exactMathFn
+  export type multiDivide = exactMathMultiFn
+
+  interface ExactMath {
+    add: add,
+    multiAdd: multiAdd,
+    subtract: subtract,
+    multiSubtract: multiSubtract,
+    multiply: multiply,
+    multiMultiply: multiMultiply,
+    divide: divide,
+    multiDivide: multiDivide,
+  }
+
+  export const exactMath: ExactMath
 }
