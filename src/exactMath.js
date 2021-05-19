@@ -14,7 +14,7 @@ const maxDecimalLength = (num1, num2) => {
 export const add = (num1, num2) => {
   num1 = toNumber(num1)
   num2 = toNumber(num2)
-  const raise = Math.pow(10, maxDecimalLength(num1,num2))
+  const raise = Math.pow(10, maxDecimalLength(num1, num2))
   return (num1 * raise + num2 * raise) / raise
 }
 
@@ -23,7 +23,7 @@ export const multiAdd = (...nums) => nums.reduce((accumulator, currentValue) => 
 export const subtract = (num1, num2) => {
   num1 = toNumber(num1)
   num2 = toNumber(num2)
-  const raise = Math.pow(10, maxDecimalLength(num1,num2))
+  const raise = Math.pow(10, maxDecimalLength(num1, num2))
   return (num1 * raise - num2 * raise) / raise
 }
 
@@ -32,7 +32,7 @@ export const multiSubtract = (...nums) => nums.reduce((accumulator, currentValue
 export const multiply = (num1, num2) => {
   num1 = toNumber(num1)
   num2 = toNumber(num2)
-  const raise = Math.pow(10, maxDecimalLength(num1,num2))
+  const raise = Math.pow(10, maxDecimalLength(num1, num2))
   return ((num1 * raise) * (num2 * raise)) / Math.pow(raise, 2)
 }
 
@@ -41,7 +41,7 @@ export const multiMultiply = (...nums) => nums.reduce((accumulator, currentValue
 export const divide = (num1, num2) => {
   num1 = toNumber(num1)
   num2 = toNumber(num2)
-  const raise = Math.pow(10, maxDecimalLength(num1,num2))
+  const raise = Math.pow(10, maxDecimalLength(num1, num2))
   return (num1 * raise) / (num2 * raise)
 }
 
