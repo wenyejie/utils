@@ -33,6 +33,8 @@
   const arithmetic = (expression) => {
     // 用空格拆分表达式
     expression = expression.replace(/(?<=\d|\.)([%*/+-])/g, ' $1 ')
+    // 移除冗余空格
+    expression = expression.replace(/\s{2,}/, ' ')
     // 移除首尾空格
     expression = expression.trim()
     // 把表达式拆分成数组
@@ -55,6 +57,8 @@
     } while (true)
 
     result = 0
+
+    console.log(expression, arr)
 
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] === '+' || arr[i] === '-') {
@@ -80,7 +84,7 @@
     return arithmetic(arithmeticStr)
   }
 
-  console.log(exactMath('10-(3)'))
+  console.log(exactMath('+10 - -3 + +4'))
 
 </script>
 </body>

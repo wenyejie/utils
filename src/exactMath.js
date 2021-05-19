@@ -1,50 +1,48 @@
 import decimalLength from './decimalLength.js'
 import toNumber from './toNumber.js'
 
-// 匹配包括花括号的表达式
-const rBracketsAndCon = /\([^()]+\)/g
-const rBrackets = /[()]/g
-const rSymbols = /(?<=\d|\.)([%*/+-])/g
-const rSpace = /\s+/g
-
-const maxDecimalLength = (num1, num2) => {
-  return Math.max(decimalLength(num1), decimalLength(num2))
+const operationInit = (num1, num2) => {
+  return {
+    n1: toNumber(num1),
+    n2: toNumber(num2),
+    raise: Math.pow(10, Math.max(decimalLength(num1), decimalLength(num2)))
+  }
 }
 
+// 加
 export const add = (num1, num2) => {
-  num1 = toNumber(num1)
-  num2 = toNumber(num2)
-  const raise = Math.pow(10, maxDecimalLength(num1, num2))
-  return (num1 * raise + num2 * raise) / raise
+  const { n1, n2, raise } = operationInit(num1, num2)
+  return (n1 * raise + n2 * raise) / raise
 }
 
+// 累加
 export const multiAdd = (...nums) => nums.reduce((accumulator, currentValue) => add(accumulator, currentValue))
 
+// 减
 export const subtract = (num1, num2) => {
-  num1 = toNumber(num1)
-  num2 = toNumber(num2)
-  const raise = Math.pow(10, maxDecimalLength(num1, num2))
-  return (num1 * raise - num2 * raise) / raise
+  const { n1, n2, raise } = operationInit(num1, num2)
+  return (n1 * raise - n2 * raise) / raise
 }
 
+// 累减
 export const multiSubtract = (...nums) => nums.reduce((accumulator, currentValue) => subtract(accumulator, currentValue))
 
+// 乘
 export const multiply = (num1, num2) => {
-  num1 = toNumber(num1)
-  num2 = toNumber(num2)
-  const raise = Math.pow(10, maxDecimalLength(num1, num2))
-  return ((num1 * raise) * (num2 * raise)) / Math.pow(raise, 2)
+  const { n1, n2, raise } = operationInit(num1, num2)
+  return ((n1 * raise) * (n2 * raise)) / Math.pow(raise, 2)
 }
 
+// 累乘
 export const multiMultiply = (...nums) => nums.reduce((accumulator, currentValue) => multiply(accumulator, currentValue), 1)
 
+// 除
 export const divide = (num1, num2) => {
-  num1 = toNumber(num1)
-  num2 = toNumber(num2)
-  const raise = Math.pow(10, maxDecimalLength(num1, num2))
-  return (num1 * raise) / (num2 * raise)
+  const { n1, n2, raise } = operationInit(num1, num2)
+  return (n1 * raise) / (n2 * raise)
 }
 
+// 累除
 export const multiDivide = (...nums) => nums.reduce((accumulator, currentValue) => divide(accumulator, currentValue))
 
 // 求余
@@ -63,6 +61,12 @@ const operates = {
   '/': divide,
   '%': remain
 }
+
+// 匹配包括花括号的表达式
+const rBracketsAndCon = /\([^()]+\)/g
+const rBrackets = /[()]/g
+const rSymbols = /(?<=\d|\.)([%*/+-])/g
+const rSpace = /\s+/g
 
 // 简单的四则运算不包括括号
 export const arithmetic = (expression) => {
