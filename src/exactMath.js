@@ -1,18 +1,49 @@
 import decimalLength from './decimalLength.js'
 import toNumber from './toNumber.js'
+import spliceString from './spliceString.js'
+import isString from './isString.js'
+
+const rightPad = (n, len) => {
+  if (len === 0) {
+    return n
+  }
+  const dl = decimalLength(+n)
+  n = n.toString()
+  if (dl === 0) {
+    n += ''.padEnd(len, '0')
+  } else {
+    n = n.replace('.', '')
+    n += ''.padEnd(len - dl, '0')
+  }
+  return Number.parseFloat(n)
+}
+
+const leftPad = (n, len) => {
+  if (len === 0) {
+    return  n
+  }
+  n = n.toString()
+  const il = n.length
+  if (len - il + 1 > 0) {
+    n = ''.padEnd(len - il, '0') + n
+  }
+  n = spliceString(n, Math.abs(il - len), '.')
+  return Number.parseFloat(n)
+}
 
 const operationInit = (num1, num2) => {
+  const raise = Math.max(decimalLength(+num1), decimalLength(+num2))
   return {
-    n1: toNumber(num1),
-    n2: toNumber(num2),
-    raise: Math.pow(10, Math.max(decimalLength(num1), decimalLength(num2)))
+    n1: rightPad(toNumber(num1), raise),
+    n2: rightPad(toNumber(num2), raise),
+    raise,
   }
 }
 
 // 加
 export const add = (num1, num2) => {
   const { n1, n2, raise } = operationInit(num1, num2)
-  return (n1 * raise + n2 * raise) / raise
+  return leftPad(n1 + n2, raise)
 }
 
 // 累加
@@ -21,7 +52,7 @@ export const multiAdd = (...nums) => nums.reduce((accumulator, currentValue) => 
 // 减
 export const subtract = (num1, num2) => {
   const { n1, n2, raise } = operationInit(num1, num2)
-  return (n1 * raise - n2 * raise) / raise
+  return leftPad(n1 - n2, raise)
 }
 
 // 累减
@@ -30,7 +61,7 @@ export const multiSubtract = (...nums) => nums.reduce((accumulator, currentValue
 // 乘
 export const multiply = (num1, num2) => {
   const { n1, n2, raise } = operationInit(num1, num2)
-  return ((n1 * raise) * (n2 * raise)) / Math.pow(raise, 2)
+  return leftPad(n1 * n2, raise * 2)
 }
 
 // 累乘
@@ -38,8 +69,8 @@ export const multiMultiply = (...nums) => nums.reduce((accumulator, currentValue
 
 // 除
 export const divide = (num1, num2) => {
-  const { n1, n2, raise } = operationInit(num1, num2)
-  return (n1 * raise) / (n2 * raise)
+  const { n1, n2 } = operationInit(num1, num2)
+  return n1 / n2
 }
 
 // 累除
@@ -92,9 +123,9 @@ export const arithmetic = (expression) => {
     arr.splice(index - 1, 3, result)
   } while (true)
 
-  result = 0
+  result = +arr[0]
 
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 1; i < arr.length; i++) {
     if (arr[i] === '+' || arr[i] === '-') {
       continue
     }
@@ -106,7 +137,15 @@ export const arithmetic = (expression) => {
   return result
 }
 
-const exactMath = (arithmeticStr) => {
+/**
+ * 解析表达式并返回计算结果
+ * @param arithmeticStr
+ * @returns {number}
+ */
+export const exactMath = (arithmeticStr) => {
+  if (!isString(arithmeticStr)) {
+    return 0
+  }
   try {
     while (rBracketsAndCon.test(arithmeticStr)) {
       arithmeticStr = arithmeticStr.replace(rBracketsAndCon, (express) => {
@@ -115,7 +154,7 @@ const exactMath = (arithmeticStr) => {
     }
     return arithmetic(arithmeticStr)
   } catch (err) {
-    throw new Error(err)
+    return 0
   }
 }
 

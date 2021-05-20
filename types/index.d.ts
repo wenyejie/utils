@@ -304,12 +304,22 @@ declare namespace Wenyejie {
     defaultValue?: string
   }
 
+  interface DatetimeSpanResult {
+    year?: number,
+    month?: number,
+    day?: number,
+    hour?: number,
+    minute?: number,
+    second?: number,
+    millisecond?: number
+  }
+
   /**
    * 获取时间的剩余年月日时分秒
    * @param date 时间或者时间戳
    * @param options 选项
    */
-  export function datetimeSpan(date: number | string | Date, options?: DatetimeSpanOptions)
+  export function datetimeSpan(date: number | string | Date, options?: DatetimeSpanOptions): DatetimeSpanResult
 
   type exactMathNum = number | string
 
@@ -324,17 +334,20 @@ declare namespace Wenyejie {
   export type multiMultiply = exactMathMultiFn
   export type divide = exactMathFn
   export type multiDivide = exactMathMultiFn
+  export type remain = exactMathMultiFn
 
-  interface ExactMath {
-    add: add,
-    multiAdd: multiAdd,
-    subtract: subtract,
-    multiSubtract: multiSubtract,
-    multiply: multiply,
-    multiMultiply: multiMultiply,
-    divide: divide,
-    multiDivide: multiDivide,
-  }
+  /**
+   * 解析表达式并返回计算结果
+   * @param arithmeticStr 表达式
+   */
+  export function exactMath(arithmeticStr: string): number
 
-  export const exactMath: ExactMath
+  /**
+   * 模仿Array.prototype.splice方法
+   * @param string
+   * @param start
+   * @param deleteCount
+   * @param insertString
+   */
+  export function spliceString(string: string, start: number, deleteCount: number | string, insertString: string): string
 }
