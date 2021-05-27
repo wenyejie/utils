@@ -5,19 +5,16 @@
 - 移除`isSameDay`, `isSameMonth`, `isSameYear`的第二个参数的默认值
 - dateFormat 加入毫秒`S`, `SS`, `SSS`
 
-## 1.8.6
-
-- 新增`percentage`方法
-- 新增`datetimeSpan`方法
-- 调整`exactMath`方法
-- 新增`decimalLength`方法
-- 新增`spliceString`方法
-
 ## 1.8.5
 
 - 新增`padStart`方法
 - 新增`padEnd`方法
 - 新增`dateObj`方法
+- 新增`percentage`方法
+- 新增`datetimeSpan`方法
+- 调整`exactMath`方法
+- 新增`decimalLength`方法
+- 新增`spliceString`方法
 
 ## 1.8.4
 
