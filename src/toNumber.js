@@ -1,6 +1,6 @@
 import isNumber from './isNumber.js'
 
-const toNumber = (num, defaultValue = 0) => {
+export const toNumber = (num, defaultValue = 0) => {
   num = Number.parseFloat(num)
 
   if (isNumber(num)) {
