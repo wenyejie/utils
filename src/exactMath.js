@@ -25,7 +25,7 @@ const leftPad = (n, len) => {
   n = n.toString()
   const il = n.length
   if (len - il + 1 > 0) {
-    n = ''.padEnd(len - il, '0') + n
+    n = ''.padEnd(len > il ? (len - il + 1) : len - il, '0') + n
   }
   n = spliceString(n, Math.abs(il - len), '.')
   return Number.parseFloat(n)
