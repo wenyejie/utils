@@ -14,7 +14,5 @@ test('dateObj', () => {
     time: 1602295810100
   }
 
-  expect(dateObj(date)).toStrictEqual({
-
-  })
+  expect(dateObj(date)).toStrictEqual(result)
 })
