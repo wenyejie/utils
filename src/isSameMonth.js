@@ -12,7 +12,7 @@ export const isSameMonth = (date1, date2 = new Date()) => {
   if (!isDate(date1) || !isDate(date2)) {
     return false
   }
-  return date1.toLocaleDateString().slice(0, 7) === date2.toLocaleDateString().slice(0, 7)
+  return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth()
 }
 
 export default isSameMonth

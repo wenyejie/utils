@@ -1,4 +1,5 @@
 import hasOwnProperty from './hasOwnProperty.js'
+import isUndefined from './isUndefined.js'
 
 /**
  * 判断key是否是对象自己的属性
@@ -6,7 +7,7 @@ import hasOwnProperty from './hasOwnProperty.js'
  * @param key { string }
  */
 export const hasOwn = (object, key) => {
-  if (object === null || object === undefined) {
+  if (isUndefined(object)) {
     return false
   }
   return hasOwnProperty.call(object, key)

@@ -5,6 +5,10 @@
 - 移除`isSameDay`, `isSameMonth`, `isSameYear`的第二个参数的默认值
 - dateFormat 加入毫秒`S`, `SS`, `SSS`
 
+## 1.20
+
+- 新增`freezeObj`方法
+
 ## 1.18.5
 
 - 新增`padStart`方法

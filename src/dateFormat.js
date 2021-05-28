@@ -9,11 +9,12 @@ const padStart = (number, length = 2) => {
  * 把相关数据转换成
  * @param date 日期
  * @param format 格式
+ * @param defaultValue string
  */
-export const dateFormat = (date, format = 'YYYY-MM-DD hh:mm:ss') => {
+export const dateFormat = (date, format = 'YYYY-MM-DD hh:mm:ss', defaultValue = '') => {
   date = toDate(date)
   if (!isDate(date)) {
-    return ''
+    return defaultValue
   }
 
   return format.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, str => {

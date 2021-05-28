@@ -1,5 +1,9 @@
 type anyFunction = (...args: any[]) => void
 
+type definedProp = number | string | Date | Array<any> | RegExp | Function | Object
+
+type linkDateType = Date | number | string
+
 interface AnyObject {
   [propName: string]: any
 }
@@ -71,7 +75,8 @@ declare namespace Wenyejie {
   /**
    * 缓存请求
    */
-  export namespace CatchRequest {}
+  export namespace CatchRequest {
+  }
 
   /**
    * 检查身份整号码是否正确, 即是否符合尾号码的验证规则
@@ -93,7 +98,8 @@ declare namespace Wenyejie {
    */
   export function clone<T>(obj: T, deep?: boolean, weakMap?: WeakMap<any, any>): T
 
-  export namespace Countdown {}
+  export namespace Countdown {
+  }
 
   /**
    * 读取css属性
@@ -135,8 +141,9 @@ declare namespace Wenyejie {
    * 把相关数据转换成
    * @param date 日期
    * @param format 格式
+   * @param defaultValue 默认值
    */
-  export function dateFormat(date: any, format: string): string
+  export function dateFormat(date: linkDateType, format: string, defaultValue?:string): string
 
   /**
    * 函数防抖 - 当一定时间之后没有重新调用则执行, 电梯
@@ -144,7 +151,7 @@ declare namespace Wenyejie {
    * @param interval 时间间隔
    * @param isFirst 第一次是否立即执行
    */
-  export function debounce(fn:anyFunction, interval: number, isFirst:boolean)
+  export function debounce(fn: anyFunction, interval: number, isFirst: boolean)
 
   /**
    * 下载blob文件
@@ -152,7 +159,7 @@ declare namespace Wenyejie {
    * @param blob
    * @param filename
    */
-  export function downloadBlob(blob:Blob, filename?: string): void
+  export function downloadBlob(blob: Blob, filename?: string): void
 
   /**
    * 通过url下载
@@ -160,7 +167,7 @@ declare namespace Wenyejie {
    * @param url
    * @param filename
    */
-  export function downloadFile(url: string, filename?: string):void
+  export function downloadFile(url: string, filename?: string): void
 
   /**
    * 遍历数组或对象
@@ -170,10 +177,10 @@ declare namespace Wenyejie {
   export function each(data: AnyObject | any[], fn: anyFunction): void
 
   // 被冻结的对象
-  export const emptyObject:AnyObject
+  export const emptyObject: Readonly<Object>
 
   // 判断是否在浏览器中
-  export function inBrowser():boolean
+  export function inBrowser(): boolean
 
   // 判断是否在NODE环境
   export function inNode(): boolean
@@ -188,58 +195,58 @@ declare namespace Wenyejie {
 
   export function isChrome(): boolean
 
-  export function isFirefox():boolean
+  export function isFirefox(): boolean
 
-  export function isIE():boolean
+  export function isIE(): boolean
 
-  export function isIE9():boolean
+  export function isIE9(): boolean
 
-  export function isIOS():boolean
+  export function isIOS(): boolean
 
-  export function isIPad():boolean
+  export function isIPad(): boolean
 
-  export function isIPhone():boolean
+  export function isIPhone(): boolean
 
-  export function isMobile():boolean
+  export function isMobile(): boolean
 
-  export function isPC():boolean
+  export function isPC(): boolean
 
-  export function isPhantom():boolean
+  export function isPhantom(): boolean
 
-  export function isWeChat():boolean
+  export function isWeChat(): boolean
 
-  export function isWindows():boolean
+  export function isWindows(): boolean
 
-  export function isMac():boolean
+  export function isMac(): boolean
 
-  export function isUbuntu():boolean
+  export function isUbuntu(): boolean
 
-  export function isLinux():boolean
+  export function isLinux(): boolean
 
   // 加法
-  export function add(x:number | string, y:number | string):number
+  export function add(x: number | string, y: number | string): number
 
   // 减法
-  export function subtract(x:number | string, y:number | string):number
+  export function subtract(x: number | string, y: number | string): number
 
   // 乘法
-  export function multiply(x:number | string, y:number | string):number
+  export function multiply(x: number | string, y: number | string): number
 
   // 除法
-  export function divide(x:number | string, y:number | string):number
+  export function divide(x: number | string, y: number | string): number
 
   /**
    * 把文件转换成base64
    * @param file
    */
-  export function file2base64(file:File):string
+  export function file2base64(file: File): string
 
   /**
    * 获取月份的起始范围
    * @param date 日期
    * @param type 类型
    */
-  export function monthRange(date: Date, type?:string):MonthRange | Date | null
+  export function monthRange(date: linkDateType, type?: string): MonthRange | Date | null
 
   /**
    * 把输入转换为css长度单位
@@ -268,7 +275,7 @@ declare namespace Wenyejie {
    * 获取日期对象
    * @param date
    */
-  export function dateObj(date: Date):DateObj
+  export function dateObj(date: linkDateType): DateObj
 
   // 百分比格式化选项
   interface PercentageOptions {
@@ -321,19 +328,67 @@ declare namespace Wenyejie {
    */
   export function datetimeSpan(date: number | string | Date, options?: DatetimeSpanOptions): DatetimeSpanResult
 
+  /**
+   * 防抖函数
+   * @param fn 执行函数
+   * @param interval 时间间隔
+   * @param isFirst 是否第一次即立即执行
+   */
+  export function debounce(fn: Function, interval: number, isFirst: boolean): Function
+
+  /**
+   * 获取小数点的长度
+   * @param number
+   */
+  export function decimalLength(number: number): number
+
+  /**
+   * 下载blob文件
+   * @param blob
+   * @param filename
+   */
+  export function downloadBlob(blob: Blob, filename?: string): File
+
+  /**
+   * 下载链接
+   * @param url
+   * @param filename 文件名称
+   */
+  export function downloadFile(url, filename?: string): void
+
+  /**
+   * 遍历循环
+   * @param data
+   * @param fn
+   */
+  export function each(data: any[] | AnyObject, fn: Function): void
+
+  // 精确计算数字
   type exactMathNum = number | string
 
-  type exactMathFn = (num1:exactMathNum, num2:exactMathNum) => number
-  type exactMathMultiFn = (...nums:exactMathNum[]) => number
+  // 精确计算执行函数
+  type exactMathFn = (num1: exactMathNum, num2: exactMathNum) => number
 
+  // 精确计算多参数执行函数
+  type exactMathMultiFn = (...nums: exactMathNum[]) => number
+
+  // 加
   export type add = exactMathFn
+  // 累加
   export type multiAdd = exactMathMultiFn
+  // 减
   export type subtract = exactMathFn
+  // 累减
   export type multiSubtract = exactMathMultiFn
+  // 乘
   export type multiply = exactMathFn
+  // 累乘
   export type multiMultiply = exactMathMultiFn
+  // 除
   export type divide = exactMathFn
+  // 累除
   export type multiDivide = exactMathMultiFn
+  // 求余
   export type remain = exactMathMultiFn
 
   /**
@@ -341,6 +396,117 @@ declare namespace Wenyejie {
    * @param arithmeticStr 表达式
    */
   export function exactMath(arithmeticStr: string): number
+
+  /**
+   * File转base64
+   * @param file
+   */
+  export function file2base64(file: File): Promise<string>
+
+  /**
+   * 数据中查找子项
+   * @param data
+   * @param key
+   * @param value
+   */
+  export function find<T>(data: T[], key: PropertyKey, value: any): T
+  export function find<T>(data: T[], key: Object): T
+  export function find<T, K>(data: { K: T }, key: K, value: any): T
+  export function find<T, K>(data: { K: T }, key: Object): T
+
+  /**
+   * 查找某个子项中的具体属性
+   * @param data
+   * @param propValue
+   * @param propKey
+   * @param returnKey
+   */
+  export function findProps<T>(data: T[], propValue: definedProp, propKey: PropertyKey, returnKey: string): any
+  export function findProps<T, K>(data: { T: K }, propValue: definedProp, propKey: PropertyKey, returnKey: string): any
+
+  export const freezeObj: Readonly<Object>
+
+  /**
+   * 获取月份天数
+   * @param date
+   */
+  export function getDaysByMonth(date: linkDateType): number
+
+  // 身份证号码对象
+  interface CardNumberObj {
+    province: number
+    city: number
+    area: number
+    address: number
+    year: number
+    day: number
+    date: number
+    sex: string
+  }
+
+  // 获取身份证号码中的具体信息
+  export function getInfoByCardNO(cardNumber: string): CardNumberObj
+
+  // 全局对象
+  export const globalThis: Window | NodeJS.Global | undefined
+
+  // 判断属性是不是对象本身所有
+  export function hasOwn(object: Object, key: PropertyKey): boolean
+
+  export function hasOwnProperty(v: PropertyKey): boolean
+
+  // 驼峰命名转横杠命名
+  export function hyphenate(str: string): string
+
+  interface ImgCompressOptions {
+    noCompressIfLarger?: boolean
+    maxWidth?: number
+    maxHeight?: number
+    fillStyle?: string
+    quality?: number
+  }
+
+  // 图片压缩
+  export const imgCompress: (file: File, options?: ImgCompressOptions) => Promise<File>
+
+  type typeJudge = (obj: any) => boolean
+
+  export const isArray: typeJudge
+  export const isBigint: typeJudge
+  export const isBlob: typeJudge
+  export const isBoolean: typeJudge
+  export const isComment: typeJudge
+  export const isDate: typeJudge
+  export const isDefined: typeJudge
+  export const isElement: typeJudge
+  export const isEmptyValue: typeJudge
+  export const isEvenNumber: typeJudge
+  export const isFunction: typeJudge
+  export const isInteger: typeJudge
+  export const isJson: typeJudge
+  export const isJsonString: typeJudge
+  export const isMap: typeJudge
+  export const isNaturalNumber: typeJudge
+  export const isNumber: typeJudge
+  export const isObject: typeJudge
+  export const isOddNumber: typeJudge
+  export const isPlainDate: typeJudge
+  export const isPlainNumber: typeJudge
+  export const isPlainObject: typeJudge
+  export const isPlainString: typeJudge
+  export const isPositiveInteger: typeJudge
+  export const isPrimitive: typeJudge
+  export const isPromise: typeJudge
+  export const isRegExp: typeJudge
+
+  // 判断两个日期是否为同一天
+  export const isSameDay: (date1: linkDateType, date2?: linkDateType) => boolean
+
+  // 判断是否为同域
+  export const isSameHost: (urlA: string, urlB?: string) => boolean
+
+  // 判断是否为同域
+  export const isSameMonth: (urlA: linkDateType, urlB?: linkDateType) => boolean
 
   /**
    * 模仿Array.prototype.splice方法
