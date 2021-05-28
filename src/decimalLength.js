@@ -3,11 +3,11 @@ import isNumber from './isNumber.js'
 const INTEGER_BIT = /^\d+\.?/
 
 // 获取小数点长度
-export const decimalLength = (value) => {
-  if (!isNumber(value)) {
+export const decimalLength = (number) => {
+  if (!isNumber(number)) {
     return 0
   }
-  return (`${value}`.replace(INTEGER_BIT, '')).length
+  return (`${number}`.replace(INTEGER_BIT, '')).length
 }
 
 export default decimalLength
