@@ -143,7 +143,7 @@ declare namespace Wenyejie {
    * @param format 格式
    * @param defaultValue 默认值
    */
-  export function dateFormat(date: linkDateType, format: string, defaultValue?:string): string
+  export function dateFormat(date: linkDateType, format: string, defaultValue?: string): string
 
   /**
    * 函数防抖 - 当一定时间之后没有重新调用则执行, 电梯
@@ -498,6 +498,13 @@ declare namespace Wenyejie {
   export const isPrimitive: typeJudge
   export const isPromise: typeJudge
   export const isRegExp: typeJudge
+  export const isSet: typeJudge
+  export const isString: typeJudge
+  export const isSymbol: typeJudge
+  export const isText: typeJudge
+  export const isUndefined: typeJudge
+  export const isWeakMap: typeJudge
+  export const isWeakSet: typeJudge
 
   // 判断两个日期是否为同一天
   export const isSameDay: (date1: linkDateType, date2?: linkDateType) => boolean
@@ -505,8 +512,86 @@ declare namespace Wenyejie {
   // 判断是否为同域
   export const isSameHost: (urlA: string, urlB?: string) => boolean
 
-  // 判断是否为同域
+  // 判断是否同一个月
   export const isSameMonth: (urlA: linkDateType, urlB?: linkDateType) => boolean
+
+  // 判断是否同一年
+  export const isSameYear: (urlA: linkDateType, urlB?: linkDateType) => boolean
+
+  export const isSupportWebp: () => Promise<void>
+
+  interface LoadOptions {
+    before: Function
+    mode: string
+    attrs: AnyObject
+  }
+
+  // 加载资源
+  export const load: (tagName: string, url: string, options?: LoadOptions) => Promise<HTMLElement>
+
+  // 手机号码格式化
+  export const mobilePhoneFormat: (number: string) => string
+
+  // 金钱转中文大写
+  export const money2cn: (n: string | number) => string
+
+  // 空函数
+  export function noop(): void
+
+  // 没有原型链的空对象
+  export const nullProtoObject: () => Object
+
+  // 获取对象的属性个数
+  export const objectLength: (obj: AnyObject) => number
+
+  export const objectToString: () => string
+
+  // 缓存执行结果, 让函数只执行一次
+  export const once: (fn: Function) => Function
+
+  // 手机号码格式化
+  export const phoneNumFormat: (phone: string) => string
+
+  // 从对象中选取一些属性, 返回一个新对象
+  export const pick: (data: Object, ...reset: PropertyKey[]) => Object
+
+  // 获取前缀
+  export const prefix: (string: string) => string
+
+  // 随机整数
+  export const randomInteger: (max: number, min?: number) => number
+
+  // 随机数
+  export const randomNumber: (max, min?: number) => number
+
+  export const rMobilePhone: RegExp
+  export const rTelephone: RegExp
+  export const rPhone: RegExp
+  export const rIDCardNO: RegExp
+  export const rBankCardNO: RegExp
+  export const rChinese: RegExp
+  export const rChineseName: RegExp
+  export const rEmail: RegExp
+  export const rUrl: RegExp
+  export const rEmoji: RegExp
+  export const rPostcode: RegExp
+  export const rAmount: RegExp
+
+  // 根据属性移除子项
+  export function removeItemByProp<T>(data: T[], key: string, value: definedProp): T[]
+  export function removeItemByProp<T>(data: T[], key: AnyObject): T[]
+
+  // 移除数组中的值
+  export const removeVal: <T>(array: T[], value: definedProp) => T[]
+
+  // 批量已移除数组中的值
+  export const remove: <T>(array, ...values: any[]) => T[]
+
+  // 移除字符串中的空格
+  export const removeSpace: (string: string) => string
+
+  // 加载script
+  export const script: (url: string, options?: LoadOptions) => Promise<HTMLScriptElement>
 
   /**
    * 模仿Array.prototype.splice方法
@@ -516,4 +601,34 @@ declare namespace Wenyejie {
    * @param insertString
    */
   export function spliceString(string: string, start: number, deleteCount: number | string, insertString: string): string
+
+  // session
+  export function session (name: string): any
+  export function session (name: string, value: any): void
+
+  // local
+  export function local (name: string): any
+  export function local (name: string, value: any): void
+
+  export const suffix: (string: string) => string
+
+  export const swap: (obj: Object, i: PropertyKey, j: PropertyKey) => Object
+
+  // 节流函数
+  export const throttle: (fn:Function, interval?: number, isFirst?: boolean) => Function
+
+  // 转换为date类型
+  export const toDate: (date: any) => Date | undefined
+
+  // to number
+  export const toNumber: (num: number | string, defaultValue?: number) => number
+
+  export const toRawType: (obj: any) => string
+
+  export const toTypeString: (obj: any) => string
+
+  export const unique: <T>(array: T[]) => T[]
+
+  export const url2http: (url: string) => string
+  export const url2https: (url: string) => string
 }
