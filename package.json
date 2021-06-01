@@ -2,7 +2,7 @@
   "name": "wenyejie",
   "sideEffects": false,
   "description": "基础工具类",
-  "version": "1.19.2",
+  "version": "1.19.3",
   "private": false,
   "types": "./types/index.d.ts",
   "author": {

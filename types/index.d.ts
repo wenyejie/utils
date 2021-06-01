@@ -25,7 +25,7 @@ interface DateObj {
   time?: number
 }
 
-declare namespace Wenyejie {
+declare module 'wenyejie' {
 
   /**
    * 移除相关属性, 包括数组和对象
@@ -632,5 +632,3 @@ declare namespace Wenyejie {
   export const url2http: (url: string) => string
   export const url2https: (url: string) => string
 }
-
-export default Wenyejie
