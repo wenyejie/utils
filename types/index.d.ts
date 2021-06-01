@@ -632,3 +632,5 @@ declare namespace Wenyejie {
   export const url2http: (url: string) => string
   export const url2https: (url: string) => string
 }
+
+export default Wenyejie
