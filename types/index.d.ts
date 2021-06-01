@@ -143,7 +143,7 @@ declare module 'wenyejie' {
    * @param format 格式
    * @param defaultValue 默认值
    */
-  export function dateFormat(date: linkDateType, format: string, defaultValue?: string): string
+  export function dateFormat(date: linkDateType, format?: string, defaultValue?: string): string
 
   /**
    * 函数防抖 - 当一定时间之后没有重新调用则执行, 电梯
@@ -151,7 +151,7 @@ declare module 'wenyejie' {
    * @param interval 时间间隔
    * @param isFirst 第一次是否立即执行
    */
-  export function debounce(fn: anyFunction, interval: number, isFirst: boolean)
+  export function debounce(fn: anyFunction, interval?: number, isFirst?: boolean)
 
   /**
    * 下载blob文件
@@ -253,7 +253,7 @@ declare module 'wenyejie' {
    * @param number
    * @param defaultUnit
    */
-  export function toCSSUnit(number: string | number | undefined, defaultUnit: string): string
+  export function toCSSUnit(number: string | number | undefined, defaultUnit?: string): string
 
   /**
    * 前置填充
@@ -261,7 +261,7 @@ declare module 'wenyejie' {
    * @param maxLength 填充之后总长度
    * @param fillString 填充的字符串
    */
-  export function padStart(string: string | number | undefined | null, maxLength: number, fillString: string): string
+  export function padStart(string: string | number | undefined | null, maxLength?: number, fillString?: string): string
 
   /**
    * 后置填充
@@ -269,7 +269,7 @@ declare module 'wenyejie' {
    * @param maxLength 填充之后总长度
    * @param fillString 填充的字符串
    */
-  export function padEnd(string: string | number | undefined | null, maxLength: number, fillString: string): string
+  export function padEnd(string: string | number | undefined | null, maxLength?: number, fillString?: string): string
 
   /**
    * 获取日期对象
@@ -327,14 +327,6 @@ declare module 'wenyejie' {
    * @param options 选项
    */
   export function datetimeSpan(date: number | string | Date, options?: DatetimeSpanOptions): DatetimeSpanResult
-
-  /**
-   * 防抖函数
-   * @param fn 执行函数
-   * @param interval 时间间隔
-   * @param isFirst 是否第一次即立即执行
-   */
-  export function debounce(fn: Function, interval: number, isFirst: boolean): Function
 
   /**
    * 获取小数点的长度
@@ -521,9 +513,9 @@ declare module 'wenyejie' {
   export const isSupportWebp: () => Promise<void>
 
   interface LoadOptions {
-    before: Function
-    mode: string
-    attrs: AnyObject
+    before?: Function
+    mode?: string
+    attrs?: AnyObject
   }
 
   // 加载资源
@@ -536,7 +528,7 @@ declare module 'wenyejie' {
   export const money2cn: (n: string | number) => string
 
   // 空函数
-  export function noop(): void
+  export function noop(...rest: any[]): void
 
   // 没有原型链的空对象
   export const nullProtoObject: () => Object
@@ -562,20 +554,20 @@ declare module 'wenyejie' {
   export const randomInteger: (max: number, min?: number) => number
 
   // 随机数
-  export const randomNumber: (max, min?: number) => number
+  export const randomNumber: (max: number, min?: number) => number
 
-  export const rMobilePhone: RegExp
-  export const rTelephone: RegExp
-  export const rPhone: RegExp
-  export const rIDCardNO: RegExp
-  export const rBankCardNO: RegExp
-  export const rChinese: RegExp
-  export const rChineseName: RegExp
-  export const rEmail: RegExp
-  export const rUrl: RegExp
-  export const rEmoji: RegExp
-  export const rPostcode: RegExp
-  export const rAmount: RegExp
+  export const rMobilePhone: Readonly<RegExp>
+  export const rTelephone: Readonly<RegExp>
+  export const rPhone: Readonly<RegExp>
+  export const rIDCardNO: Readonly<RegExp>
+  export const rBankCardNO: Readonly<RegExp>
+  export const rChinese: Readonly<RegExp>
+  export const rChineseName: Readonly<RegExp>
+  export const rEmail: Readonly<RegExp>
+  export const rUrl: Readonly<RegExp>
+  export const rEmoji: Readonly<RegExp>
+  export const rPostcode: Readonly<RegExp>
+  export const rAmount: Readonly<RegExp>
 
   // 根据属性移除子项
   export function removeItemByProp<T>(data: T[], key: string, value: definedProp): T[]
@@ -600,15 +592,13 @@ declare module 'wenyejie' {
    * @param deleteCount
    * @param insertString
    */
-  export function spliceString(string: string, start: number, deleteCount: number | string, insertString: string): string
+  export function spliceString(string: string, start: number, deleteCount?: number | string, insertString?: string): string
 
   // session
-  export function session (name: string): any
-  export function session (name: string, value: any): void
+  export function session (name: string, value?:any): any
 
   // local
-  export function local (name: string): any
-  export function local (name: string, value: any): void
+  export function local (name: string, value?: any): any
 
   export const suffix: (string: string) => string
 
