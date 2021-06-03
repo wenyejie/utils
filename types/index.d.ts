@@ -499,16 +499,16 @@ declare module 'wenyejie' {
   export const isWeakSet: typeJudge
 
   // 判断两个日期是否为同一天
-  export const isSameDay: (date1: linkDateType, date2?: linkDateType) => boolean
+  export const isSameDay: (date1: linkDateType, date2: linkDateType) => boolean
 
   // 判断是否为同域
   export const isSameHost: (urlA: string, urlB?: string) => boolean
 
   // 判断是否同一个月
-  export const isSameMonth: (urlA: linkDateType, urlB?: linkDateType) => boolean
+  export const isSameMonth: (date1: linkDateType, date2: linkDateType) => boolean
 
   // 判断是否同一年
-  export const isSameYear: (urlA: linkDateType, urlB?: linkDateType) => boolean
+  export const isSameYear: (date1: linkDateType, date2: linkDateType) => boolean
 
   export const isSupportWebp: () => Promise<void>
 

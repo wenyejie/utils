@@ -11,7 +11,7 @@ export const toDate = date => {
     return date
   }
   if (!date) {
-    return
+    return null
   }
 
   if (isString(date) && /^\d+$/.test(date)) {
@@ -41,7 +41,19 @@ export const toDate = date => {
   }
 
   date = new Date(date)
-  return isDate(date) ? date : undefined
+  return isDate(date) ? date : null
+}
+
+/**
+ * 返回一个跟旧对象不同的日期对象
+ * @param date
+ * @returns {*|Date|Date}
+ */
+export const toNewDate = (date) => {
+  if (isDate(date)) {
+    return new Date(date)
+  }
+  return toDate(date)
 }
 
 export default toDate

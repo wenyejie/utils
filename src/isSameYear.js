@@ -6,7 +6,7 @@ import isDate from './isDate.js'
  * @param date1
  * @param date2
  */
-export const isSameYear = (date1, date2 = new Date()) => {
+export const isSameYear = (date1, date2) => {
   date1 = toDate(date1)
   date2 = toDate(date2)
   if (!isDate(date1) || !isDate(date2)) {

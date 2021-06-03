@@ -1,9 +1,19 @@
 # 版本记录
 
-## 2.0
+## 1.20.0
 
 - 移除`isSameDay`, `isSameMonth`, `isSameYear`的第二个参数的默认值
 - dateFormat 加入毫秒`S`, `SS`, `SSS`
+- 完善`ts`
+- 新增`isInvalidDate`方法
+- 移除dateFormat中的`padStart`函数, 改用全局方法
+
+## 1.19.5
+## 1.19.4
+## 1.19.3
+## 1.19.2
+
+- 完善`ts`
 
 ## 1.19.1
 

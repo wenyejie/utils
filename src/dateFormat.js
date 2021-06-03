@@ -1,9 +1,6 @@
 import toDate from './toDate.js'
 import isDate from './isDate.js'
-
-const padStart = (number, length = 2) => {
-  return `${number}`.padStart(length, '0')
-}
+import padStart from './padStart.js'
 
 /**
  * 把相关数据转换成
