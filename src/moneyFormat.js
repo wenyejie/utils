@@ -1,4 +1,13 @@
 import isNumber from './isNumber.js'
+import { nullProtoObject } from './nullProtoObject.js'
+
+const defaultOptions = {
+  decimal: 2, // 小数点长度
+  symbol: '', // 钱币符号
+  default: '', // 默认值
+  split: ',', // 分隔符号
+  length: 3 // 分割长度
+}
 
 /**
  * 金额格式化
@@ -7,13 +16,8 @@ import isNumber from './isNumber.js'
  */
 export const moneyFormat = (number, options) => {
   options = Object.assign(
-    {
-      decimal: 2, // 小数点长度
-      symbol: '', // 钱币符号
-      default: '', // 默认值
-      split: ',', // 分隔符号
-      length: 3 // 分割长度
-    },
+    nullProtoObject(),
+    defaultOptions,
     options
   )
   number = Number.parseFloat(number + '')

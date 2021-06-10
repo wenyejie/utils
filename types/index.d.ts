@@ -195,6 +195,8 @@ declare module 'wenyejie' {
 
   export function isChrome(): boolean
 
+  export function isSafari(): boolean
+
   export function isFirefox(): boolean
 
   export function isIE(): boolean
@@ -247,6 +249,16 @@ declare module 'wenyejie' {
    * @param type 类型
    */
   export function monthRange(date: linkDateType, type?: string): MonthRange | Date | null
+
+  interface MoneyFormatOptions {
+    decimal?: number, // 小数点长度
+    symbol?: string, // 钱币符号
+    default?: string, // 默认值
+    split?: string, // 分隔符号
+    length?: string // 分割长度
+  }
+
+  export const moneyFormat: (number: number | string, options?: MoneyFormatOptions) => string
 
   /**
    * 把输入转换为css长度单位

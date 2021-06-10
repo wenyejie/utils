@@ -13,6 +13,8 @@ export const isEdge = () => useragent().includes('edge')
 
 export const isChrome = () => /chrome\/\d+/.test(useragent()) && !isEdge()
 
+export const isSafari = () => /safari/.test(useragent()) && !isChrome()
+
 export const isFirefox = () => /firefox\/(\d+)/.test(useragent())
 
 export const isIE = () => /msie|trident/.test(useragent())

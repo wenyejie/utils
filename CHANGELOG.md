@@ -4,9 +4,11 @@
 
 - 移除`isSameDay`, `isSameMonth`, `isSameYear`的第二个参数的默认值
 - dateFormat 加入毫秒`S`, `SS`, `SSS`
-- 完善`ts`
+- 继续完善`ts`
 - 新增`isInvalidDate`方法
 - 移除dateFormat中的`padStart`函数, 改用全局方法
+- 新增`isSafari`
+- 完善`moneyFormat`的ts声明
 
 ## 1.19.5
 ## 1.19.4
