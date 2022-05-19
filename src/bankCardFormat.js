@@ -3,7 +3,8 @@ import removeSpace from './removeSpace.js'
 
 /**
  * 银行卡格式化
- * @param card 卡号
+ * @param card {string} 卡号
+ * @returns { string }
  */
 export const bankCardFormat = card => {
   if (!isString(card)) {

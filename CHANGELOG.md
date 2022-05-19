@@ -1,5 +1,10 @@
 # 版本记录
 
+## 1.21.0 `dev`
+
+- 优化`moneyFormat`, 新增是否尾部填充功能
+- 新增`dayStart`, `dayEnd`, `arrUpItem`, `isTrulyArrInx`, `arrDownItem`, `arrDelItem`
+
 ## 1.20.0
 
 - 移除`isSameDay`, `isSameMonth`, `isSameYear`的第二个参数的默认值

@@ -1,4 +1,4 @@
-import isUndefined from '../src/isUndefined'
+import isUndefined from '../src/isUndefined.js'
 
 test('isUndefined', () => {
   expect(isUndefined(new Date())).toBeFalsy()

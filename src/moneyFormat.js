@@ -1,4 +1,5 @@
 import isNumber from './isNumber.js'
+import toNumber from './toNumber.js'
 import { nullProtoObject } from './nullProtoObject.js'
 
 const defaultOptions = {
@@ -6,7 +7,8 @@ const defaultOptions = {
   symbol: '', // 钱币符号
   default: '', // 默认值
   split: ',', // 分隔符号
-  length: 3 // 分割长度
+  length: 3, // 分割长度
+  padEnd: true // 是否尾部填充
 }
 
 /**
@@ -20,12 +22,16 @@ export const moneyFormat = (number, options) => {
     defaultOptions,
     options
   )
-  number = Number.parseFloat(number + '')
+  number = toNumber(number)
   if (!isNumber(number)) {
     return options.default
   }
   const result = number.toFixed(options.decimal)
   const numberSplit = result.split('.')
+
+  if (!options.padEnd && numberSplit[1]) {
+    numberSplit[1] = numberSplit[1].replace(/0+$/, '')
+  }
 
   return (
     options.symbol +
@@ -33,8 +39,7 @@ export const moneyFormat = (number, options) => {
       new RegExp('\\B(?=(\\d{' + options.length + '})+(?!\\d))', 'g'),
       options.split
     ) +
-    '.' +
-    numberSplit[1]
+    (numberSplit[1] ? '.' + numberSplit[1] : '')
   )
 }
 

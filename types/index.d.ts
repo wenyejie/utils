@@ -320,7 +320,8 @@ declare module 'wenyejie' {
     second?: number,
     hasMillisecond?: boolean,
     millisecond?: number,
-    defaultValue?: string
+    defaultValue?: string,
+    compare?: linkDateType,
   }
 
   interface DatetimeSpanResult {
@@ -452,6 +453,7 @@ declare module 'wenyejie' {
   export function getInfoByCardNO(cardNumber: string): CardNumberObj
 
   // 全局对象
+  // @ts-ignore
   export const globalThis: Window | NodeJS.Global | undefined
 
   // 判断属性是不是对象本身所有
@@ -622,6 +624,8 @@ declare module 'wenyejie' {
   // 转换为date类型
   export const toDate: (date: any) => Date | undefined
 
+  export const toNewDate: (date: any) => Date | undefined
+
   // to number
   export const toNumber: (num: number | string, defaultValue?: number) => number
 
@@ -633,4 +637,21 @@ declare module 'wenyejie' {
 
   export const url2http: (url: string) => string
   export const url2https: (url: string) => string
+
+  export const dayStart: (date: Date) => Date
+  export const dayEnd: (date: Date) => Date
+  export const isTrulyArrInx: (arr: any[], inx: number) => boolean
+  export const arrUpItem: <T>(arr: T[], item: any, inx: number) => T[]
+  export const arrDownItem: <T>(arr: T[], item: any, inx: number) => T[]
+  export const arrDelItem: <T>(arr: T[], inx: number) => T
+  export const timeDistance: (date: linkDateType, options?: {
+    yearFormat?: string;
+    dayFormat?: string;
+    hoursAgo?: string;
+    minutesAgo?: string;
+    daysAgo?: string;
+    days?: string;
+    just?: string;
+    compare?: Date;
+  }) => string
 }

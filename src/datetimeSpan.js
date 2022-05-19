@@ -22,13 +22,15 @@ const defOpts = {
 /**
  * 获取时间戳的年月日,
  * 比如: 剩余1年28天6时30分
- * @param date
- * @param options
+ * @param date {Date}
+ * @param options? {{}}
  * @returns {{}}
  */
-export const datetimeSpan = (date, options) => {
-  const opts = Object.assign({}, defOpts, options)
-  let timestamp = isDate(date) ? date.getTime() - Date.now() : Number.parseInt(date)
+export const datetimeSpan = (date, options = {}) => {
+  const opts = Object.assign({
+    compare: new Date()
+  }, defOpts, options)
+  let timestamp = isDate(date) ? Math.abs(date.getTime() - opts.compare.getTime()) : Number.parseInt(date)
   const result = {}
   ;['year', 'month', 'day', 'hour', 'minute', 'second', 'millisecond'].forEach(name => {
     if (opts[camelize(`has-${name}`)]) {
