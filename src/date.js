@@ -22,6 +22,7 @@ export const timeDistance = (date, options = {}) => {
     daysAgo: '天前',
     days: 31,
     just: '刚刚',
+    compare: new Date()
   }, options)
 
   const span = datetimeSpan(date, { compare: options.compare })

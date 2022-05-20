@@ -1,5 +1,10 @@
 # 版本记录
 
+## 1.22.1 `dev`
+
+- 优化type文件
+- 优化`timeDistance`方法, 给予`compare`默认参数
+
 ## 1.21.0 `online`
 
 - 优化`moneyFormat`, 新增是否尾部填充功能

@@ -636,14 +636,21 @@ declare module 'wenyejie' {
   export const unique: <T>(array: T[]) => T[]
 
   export const url2http: (url: string) => string
+
   export const url2https: (url: string) => string
 
   export const dayStart: (date: Date) => Date
+
   export const dayEnd: (date: Date) => Date
+
   export const isTrulyArrInx: (arr: any[], inx: number) => boolean
+
   export const arrUpItem: <T>(arr: T[], item: any, inx: number) => T[]
+
   export const arrDownItem: <T>(arr: T[], item: any, inx: number) => T[]
+
   export const arrDelItem: <T>(arr: T[], inx: number) => T
+
   export const timeDistance: (date: linkDateType, options?: {
     yearFormat?: string;
     dayFormat?: string;
