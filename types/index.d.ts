@@ -228,14 +228,29 @@ declare module 'wenyejie' {
   // 加法
   export function add(x: number | string, y: number | string): number
 
+  // 累加
+  export function multiAdd(...nums: (string | number)[]): number
+
   // 减法
   export function subtract(x: number | string, y: number | string): number
+
+  // 累减
+  export function multiSubtract(...nums: (string | number)[]): number
 
   // 乘法
   export function multiply(x: number | string, y: number | string): number
 
+  // 累乘
+  export function multiMultiply(...nums: (string | number)[]): number
+
   // 除法
   export function divide(x: number | string, y: number | string): number
+
+  // 累除
+  export function multiDivide(...nums: (string | number)[]):number
+
+  // 求余
+  export function remain(x: number | string, y: number | string):number
 
   /**
    * 把文件转换成base64
@@ -367,34 +382,6 @@ declare module 'wenyejie' {
    * @param fn
    */
   export function each(data: any[] | AnyObject, fn: Function): void
-
-  // 精确计算数字
-  type exactMathNum = number | string
-
-  // 精确计算执行函数
-  type exactMathFn = (num1: exactMathNum, num2: exactMathNum) => number
-
-  // 精确计算多参数执行函数
-  type exactMathMultiFn = (...nums: exactMathNum[]) => number
-
-  // 加
-  export type add = exactMathFn
-  // 累加
-  export type multiAdd = exactMathMultiFn
-  // 减
-  export type subtract = exactMathFn
-  // 累减
-  export type multiSubtract = exactMathMultiFn
-  // 乘
-  export type multiply = exactMathFn
-  // 累乘
-  export type multiMultiply = exactMathMultiFn
-  // 除
-  export type divide = exactMathFn
-  // 累除
-  export type multiDivide = exactMathMultiFn
-  // 求余
-  export type remain = exactMathMultiFn
 
   /**
    * 解析表达式并返回计算结果
@@ -609,17 +596,17 @@ declare module 'wenyejie' {
   export function spliceString(string: string, start: number, deleteCount?: number | string, insertString?: string): string
 
   // session
-  export function session (name: string, value?:any): any
+  export function session(name: string, value?: any): any
 
   // local
-  export function local (name: string, value?: any): any
+  export function local(name: string, value?: any): any
 
   export const suffix: (string: string) => string
 
   export const swap: (obj: Object, i: PropertyKey, j: PropertyKey) => Object
 
   // 节流函数
-  export const throttle: (fn:Function, interval?: number, isFirst?: boolean) => Function
+  export const throttle: (fn: Function, interval?: number, isFirst?: boolean) => Function
 
   // 转换为date类型
   export const toDate: (date: any) => Date | undefined

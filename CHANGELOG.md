@@ -1,6 +1,10 @@
 # 版本记录
 
-## 1.22.1 `dev`
+## 1.22.2 `dev`
+
+- 优化type文件
+
+## 1.22.1 `online`
 
 - 优化type文件
 - 优化`timeDistance`方法, 给予`compare`默认参数
