@@ -4,7 +4,6 @@
   "description": "基础工具类",
   "version": "1.22.2",
   "private": false,
-  "type": "module",
   "types": "./types/index.d.ts",
   "author": {
     "email": "wenyejie@foxmail.com",
@@ -21,7 +20,7 @@
     "test": "jest",
     "test:c": "jest --coverage",
     "serve": "cross-env NODE_ENV=development webpack-dev-server --open",
-    "build": "npm run test:c && cross-env NODE_ENV=production webpack --modern"
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "devDependencies": {
     "@babel/core": "^7.22.10",

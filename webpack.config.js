@@ -38,7 +38,7 @@ const webpackConfig = {
     chunkFilename: '[name].min.js',
     library: 'wenyejie',
     globalObject: 'this',
-    libraryTarget: 'module',
+    libraryTarget: 'umd',
     umdNamedDefine: true
   },
   devtool: 'source-map',
