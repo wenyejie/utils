@@ -14,7 +14,11 @@ const buildIndex = () => {
     utilsContent += `export * from './src/${filename}'\r`
   })
 
-  fs.writeFile('./wenyejie.js', utilsContent, () => {})
+  fs.writeFile('./wenyejie.js', utilsContent, (error) => {
+    if (error) {
+      console.error(error)
+    }
+  })
 }
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -34,7 +38,7 @@ const webpackConfig = {
     chunkFilename: '[name].min.js',
     library: 'wenyejie',
     globalObject: 'this',
-    libraryTarget: 'umd',
+    libraryTarget: 'module',
     umdNamedDefine: true
   },
   devtool: 'source-map',

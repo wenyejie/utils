@@ -1,5 +1,5 @@
-import { isArray } from './isArray'
-import { isNaturalNumber } from './isNaturalNumber'
+import { isArray } from './isArray.js'
+import { isNaturalNumber } from './isNaturalNumber.js'
 
 /**
  * 是否正确的数组下标

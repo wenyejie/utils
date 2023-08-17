@@ -1,8 +1,17 @@
 # 版本记录
 
-## 1.22.2 `dev`
+## 1.23
+
+- 使用`vite`重构
+- 使用`typescript`重构
+
+## 1.22.2 `online`
 
 - 优化type文件
+- 所有引用文件加上后缀`.js`
+- 新增`getTsByStr`获取跟进字符串时间戳
+- 新增`isNumberString`判断是否为数字的字符串即: '111', '123.11'
+- 新增`toMultiKeyOneValue`方法生成一个多key一值的键值对数据
 
 ## 1.22.1 `online`
 

@@ -1,4 +1,4 @@
-import emptyObject from './emptyObject'
+import emptyObject from './emptyObject.js'
 /**
  * 被冻结的空对象
  */

@@ -648,4 +648,13 @@ declare module 'wenyejie' {
     just?: string;
     compare?: Date;
   }) => string
+
+  // 判断是否为
+  export const isNumberString: (obj: any) => boolean
+
+  // 根据字符串返回一个时间戳 1d, 1m, 1h, 1w, 1y
+  export const getTsByStr: (str: number | string, rtnType:'second' | 'millisecond') => number | null
+
+  // 生成一个多个键一个值的数据
+  export const toMultiKeyOneValue: (data: any[][]) => AnyObject
 }
