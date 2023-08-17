@@ -24,7 +24,7 @@ const strMap = toMultiKeyOneValue([
 ])
 
 // 时间单位正则
-const rTsStr = /^(?<num>\d+)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(ay)?|w(eek)?|y(ear)?)$/i
+const rTsStr = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(ay)?|w(eek)?|y(ear)?)$/i
 
 /**
  * 跟进字符串获取时间戳;默认返回毫秒级时间戳
@@ -53,9 +53,9 @@ export const getTsByStr = (str, rtnType = 'millisecond') => {
   let { num, unit } = result.groups
   const rtnValue = +num * strMap[unit.toLowerCase()]
   if (rtnType === 'second') {
-    return rtnValue / 1e3
+    return Math.floor(rtnValue / 1e3) // 此处不允许出现小数, 时间戳只能是小数, 如果需要毫秒级时间戳, 请变更rtnType
   }
-  return rtnValue
+  return Math.floor(rtnValue) // 时间戳不能为小数
 }
 
-console.log(getTsByStr('2m', 'second'))
+export default getTsByStr
