@@ -17,9 +17,9 @@ const DEFAULT_OPTIONS:LoadOptions = {
 
 /**
  * 载入script
- * @param tagName
- * @param url
- * @param options
+ * @param tagName 标签名称
+ * @param url url地址
+ * @param options 选项
  */
 export const load = (tagName: keyof HTMLElementTagNameMap, url: string, options?:LoadOptions):Promise<HTMLElement> => {
   options = Object.assign( {}, DEFAULT_OPTIONS, options)

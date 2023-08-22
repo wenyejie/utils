@@ -1,5 +1,5 @@
-/// <reference path="wenyejie.d.ts" />
+/// <reference path="../src/wenyejie.ts" />
 declare module 'wenyejie' {
-  // @ts-ignore
-  export * from './wenyejie.d.ts'
+  import * as wenyejie from 'wenyejie'
+  export default wenyejie
 }

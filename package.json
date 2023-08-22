@@ -4,6 +4,7 @@
   "description": "utils tools",
   "version": "2.0.0",
   "private": false,
+  "type": "module",
   "license": "ISC",
   "author": {
     "email": "wenyejie@foxmail.com",
@@ -13,13 +14,13 @@
     "modules",
     "util"
   ],
-  "main": "./dist/wenyejie.cjs",
-  "module": "./dist/wenyejie.js",
-  "types": "./src/wenyejie.ts",
+  "main": "./dist/wenyejie.cjs.js",
+  "module": "./dist/wenyejie.es.js",
+  "types": "./types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/wenyejie.js",
-      "require": "./dist/wenyejie.cjs"
+      "import": "./dist/wenyejie.es.js",
+      "require": "./dist/wenyejie.cjs.js"
     }
   },
   "scripts": {
@@ -34,13 +35,14 @@
     "eslint": "^8.47.0",
     "jsdom": "^22.1.0",
     "prettier": "^3.0.2",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
     "vitest": "^0.34.2"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wenyejie/utils.git"
+    "url": "https://github.com/wenyejie/utils.git"
   },
   "bugs": {
     "url": "https://github.com/wenyejie/utils/issues"

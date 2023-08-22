@@ -10,7 +10,7 @@ const rZero = /零{2,}/
 
 /**
  * 金额转中文大写
- * @param n
+ * @param n 金额
  */
 export const money2cn = (n: number | string) => {
   n = toNumber(n)

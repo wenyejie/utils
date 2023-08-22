@@ -2,6 +2,11 @@ import isArray from './isArray'
 import isObject from './isObject'
 import hasOwn from './hasOwn'
 
+/**
+ * 遍历
+ * @param data 数据
+ * @param fn 回调
+ */
 export const each = (data: any[] | Record<any, any>, fn: (...rest: any[]) => any) => {
   if (!isArray(data) && !isObject(data)) {
     return

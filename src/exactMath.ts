@@ -40,25 +40,43 @@ const operationInit = (num1: number | string, num2: number | string) => {
   }
 }
 
-// 加
+/**
+ * 加
+ * @param num1 加数
+ * @param num2 被加数
+ */
 export const add = (num1: number | string, num2: number | string) => {
   const { n1, n2, raise } = operationInit(num1, num2)
   return leftPad(n1 + n2, raise)
 }
 
-// 累加
+/**
+ * 累加
+ * @param nums 加数和被加数
+ */
 export const multiAdd = (...nums: (number | string)[]) => nums.reduce((accumulator, currentValue) => add(accumulator, currentValue)) as number
 
-// 减
+/**
+ * 减
+ * @param num1 减数
+ * @param num2 被减数
+ */
 export const subtract = (num1: number | string, num2: number | string) => {
   const { n1, n2, raise } = operationInit(num1, num2)
   return leftPad(n1 - n2, raise)
 }
 
-// 累减
+/**
+ * 累减
+ * @param nums 减数和被减数
+ */
 export const multiSubtract = (...nums: (number | string)[]) => nums.reduce((accumulator, currentValue) => subtract(accumulator, currentValue)) as number
 
-// 乘
+/**
+ * 乘
+ * @param num1 乘数
+ * @param num2 被乘数
+ */
 export const multiply = (num1: number | string, num2: number | string) => {
   const { n1, n2, raise } = operationInit(num1, num2)
   return leftPad(n1 * n2, raise * 2)
@@ -66,20 +84,31 @@ export const multiply = (num1: number | string, num2: number | string) => {
 
 /**
  * 累乘
- * @param nums
+ * @param nums 乘数和被乘数
  */
 export const multiMultiply = (...nums: (number | string)[]) => nums.reduce((accumulator, currentValue) => multiply(accumulator, currentValue), 1) as number
 
-// 除
+/**
+ * 除
+ * @param num1 除数
+ * @param num2 被除数
+ */
 export const divide = (num1: number | string, num2: number | string) => {
   const { n1, n2 } = operationInit(num1, num2)
   return n1 / n2
 }
 
-// 累除
+/**
+ * 累除
+ * @param nums 除数和被除数
+ */
 export const multiDivide = (...nums:(number | string)[]) => nums.reduce((accumulator, currentValue) => divide(accumulator, currentValue)) as number
 
-// 求余
+/**
+ * 求余
+ * @param num1 除数
+ * @param num2 被除数
+ */
 export const remain = (num1: number | string, num2: number | string) => {
   const result = divide(num1, num2)
   const r1 = multiply(result - Math.floor(result), num2)

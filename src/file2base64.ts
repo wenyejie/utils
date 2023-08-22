@@ -1,6 +1,6 @@
 /**
  * File转base64
- * @param file
+ * @param file 文件对象
  */
 export const file2base64 = (file:File):Promise<string> => {
   return new Promise((resolve, reject) => {

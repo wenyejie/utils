@@ -4,6 +4,8 @@
 
 - 使用`vite`重构
 - 使用`typescript`重构
+- 重构`catchRequest`
+- 重构`countdown`
 
 ## 1.22.2 `online`
 

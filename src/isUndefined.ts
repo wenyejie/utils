@@ -1,7 +1,7 @@
 /**
- * 判断一个值是否为undefined, 包含undefined和null
- * @param value
+ * 判断一个对象是否为undefined, 包含undefined和null
+ * @param obj 对象
  */
-export const isUndefined = (value: unknown) => value === undefined  || value === null
+export const isUndefined = (obj: unknown) => obj === undefined  || obj === null
 
 export default isUndefined

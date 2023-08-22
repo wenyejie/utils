@@ -22,8 +22,8 @@ const defaultOptions: MoneyFormatOptions = {
 
 /**
  * 金额格式化
- * @param number
- * @param options
+ * @param number 金额
+ * @param options 选项
  */
 export const moneyFormat = (number: number | string, options?: MoneyFormatOptions) => {
   options = Object.assign(

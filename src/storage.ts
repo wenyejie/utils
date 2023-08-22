@@ -87,6 +87,10 @@ export type StorageMethod = {
   (name: string, value: any): void
 }
 
+/**
+ * 存储
+ * @param customStorage
+ */
 const storage = (customStorage:CustomStorage) => {
   return ((name: string, value: any) => {
     if (!name) {

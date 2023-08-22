@@ -5,6 +5,10 @@ const createImg = (url: string) => {
   return load('img', url) as Promise<HTMLImageElement>
 }
 
+/**
+ * File转图片
+ * @param file File对象
+ */
 export const file2img = async (file: File) => {
   const base64 = await file2base64(file)
   return await createImg(base64)
@@ -31,6 +35,10 @@ const DEFAULT_OPTIONS:ImgCompressOptions = {
   quality: 0.75
 }
 
+/**
+ * 创建画板
+ * @param options 选项
+ */
 export const createCanvas = (options:ImgCompressOptions):Promise<CreateCanvasResult> => {
   return new Promise(resolve => {
     const $canvas = document.createElement('canvas')
@@ -42,6 +50,12 @@ export const createCanvas = (options:ImgCompressOptions):Promise<CreateCanvasRes
     resolve({ context, $canvas })
   })
 }
+
+/**
+ * 计算画板大小
+ * @param $img 图片
+ * @param options 选项
+ */
 export const calcDrawSize = ($img:HTMLImageElement, options:ImgCompressOptions) => {
   const proportion = $img.naturalWidth / $img.naturalHeight
   let dw: number
@@ -69,6 +83,13 @@ export const calcDrawSize = ($img:HTMLImageElement, options:ImgCompressOptions) 
   }
   return { dw, dh, dx, dy, sx, sy, sw, sh }
 }
+
+/**
+ * 画板转File
+ * @param $canvas 画板元素
+ * @param file 文件对象
+ * @param options 选项
+ */
 export const canvas2file = ($canvas:HTMLCanvasElement, file:File, options:ImgCompressOptions):Promise<File> => {
   return new Promise(resolve => {
     $canvas.toBlob(
@@ -83,8 +104,8 @@ export const canvas2file = ($canvas:HTMLCanvasElement, file:File, options:ImgCom
 
 /**
  * 图片压缩: 利用canvas对图片进行压缩
- * @param file
- * @param options
+ * @param file 文件对象
+ * @param options 选项
  */
 const imgCompress = async (file:File, options:ImgCompressOptions) => {
   options = Object.assign(

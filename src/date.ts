@@ -16,8 +16,8 @@ interface TimeDistanceOptions {
 
 /**
  * 返回日期与当前时间的距离
- * @param date
- * @param options
+ * @param date 日期
+ * @param options 选项
  */
 export const timeDistance = (date: Date | string | number, options?:TimeDistanceOptions) => {
   date = toDate(date)

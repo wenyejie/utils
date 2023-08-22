@@ -20,7 +20,7 @@ const handler:ProxyHandler<targetType> = {
 
 /**
  * 返回一个类, 多个key对应一个value, 其实就是共用一个引用地址
- * @param data
+ * @param data 数据
  */
 export const toMultiKeyOneValue = (data: any[][]) => {
   const target:targetType = {}

@@ -2,13 +2,18 @@ import isArray from './isArray'
 import isObject from './isObject'
 import hasOwn from './hasOwn'
 
+type Find = {
+  <P extends PropertyKey, T extends Record<P, any>>(obj: T[], key: T): T | null
+  <P extends PropertyKey, T extends Record<P, any>>(obj: T[], key: P, value: any): T | null
+}
+
 /**
  * 根据键值对从数组中查找子项
- * @param obj
- * @param key
- * @param value
+ * @param obj 对象数组
+ * @param key 关键字
+ * @param value 值
  */
-export const find = <P extends PropertyKey, T extends Record<P, any>>(obj: T[], key:P | T, value: any) => {
+export const find = (<P extends PropertyKey, T extends Record<P, any>>(obj: T[], key:P | T, value: any) => {
   const props = isObject(key) ? (key as T) : { [key as P]: value }
   if (!isArray(obj) || !isObject(props)) {
     return null
@@ -24,6 +29,6 @@ export const find = <P extends PropertyKey, T extends Record<P, any>>(obj: T[], 
     }
     return true
   })
-}
+}) as Find
 
 export default find
