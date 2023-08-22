@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "sourceMap": true,
+    "lib": [
+      "ESNext",
+      "DOM",
+    ],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "outDir": "types",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationDir": "types",
+
+    /* fix vite alias 无法识别的问题 */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "./src/*.ts",
+    "./types/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
