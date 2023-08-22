@@ -55,7 +55,7 @@ const defaultCatchRequestOptions = {
 /**
  * 缓存请求
  */
-export class CatchRequest {
+export class CacheRequest {
   private loading: number
   private timestamp: number
   private options: any
@@ -166,7 +166,7 @@ export class CatchRequest {
    * @param options
    */
   static create(options) {
-    return new CatchRequest(options)
+    return new CacheRequest(options)
   }
 
   /**
@@ -192,4 +192,4 @@ export class CatchRequest {
   }
 }
 
-export default CatchRequest
+export default CacheRequest

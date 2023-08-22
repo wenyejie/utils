@@ -2,7 +2,7 @@ import isString from './isString'
 import isNumber from './isNumber'
 import { divide } from './exactMath'
 
-interface PercentageOptions {
+export interface PercentageOptions {
   fractionDigits?: number
   padEnd?: boolean
   defaultValue?: string

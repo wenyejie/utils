@@ -9,7 +9,6 @@
     ],
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "outFile": "./types/wenyejie.d.ts",
     "emitDeclarationOnly": true,
     "declaration": true,
     "extendedDiagnostics": true,

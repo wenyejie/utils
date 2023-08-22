@@ -2,14 +2,14 @@ import isObject from './isObject'
 
 /**
  * 从一个对象中选中一些属性并返回一个新函数,不影响原有对象
- * @param data
- * @param rest
+ * @param obj 对象
+ * @param rest 选中key
  */
-export const pick = (data:Record<PropertyKey, any>, ...rest: any[]):Record<PropertyKey, any> => {
-  const result = {}
-  if (isObject(data)) {
+export const pick = <P extends PropertyKey, T extends Record<P, any>>(obj:T, ...rest: P[]) => {
+  const result:Record<PropertyKey, any> = {}
+  if (isObject(obj)) {
     rest.forEach(key => {
-      result[key] = data[key]
+      result[key] = obj[key]
     })
   }
   return result

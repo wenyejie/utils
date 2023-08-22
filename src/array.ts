@@ -1,5 +1,7 @@
-import { isArray } from './isArray'
-import { isNaturalNumber } from './isNaturalNumber'
+import isArray from './isArray'
+import isNaturalNumber from './isNaturalNumber'
+import isObject from './isObject'
+import hasOwn from './hasOwn'
 
 /**
  * 是否正确的数组下标
@@ -39,6 +41,61 @@ export const arrDownItem = <T>(arr:T[], item:T, inx:number) => {
  * @param arr 数组
  * @param inx 下标
  */
-export const arrDelItem = <T>(arr:T[], inx:number) => {
+export const arrDelItemByInx = <T>(arr:T[], inx:number) => {
   return arr.splice(inx, 1)
 }
+
+/**
+ * 通过属性移除子项
+ * @param array 数组
+ * @param key 属性
+ * @param value 值
+ */
+export const arrDelItemByProp = <T>(array:T[], key: PropertyKey | Record<PropertyKey, any>, value:any):T[] => {
+  const props = isObject(key) ? (key as Record<PropertyKey, any>) : { [key as PropertyKey]: value }
+  if (!isArray(array) || !isObject(props)) {
+    return array
+  }
+  return array.filter(item => {
+    for (let key in props) {
+      if (hasOwn(item, key) && item[key] !== props[key]) {
+        return true
+      }
+    }
+    return false
+  })
+}
+
+/**
+ * 移除数组中的元素, 会改变原数组
+ *
+ * @param array 数组
+ * @param value 值
+ */
+export const arrDelItemByVal = <T>(array:T[], value:any) => {
+  if (!isArray(array) || array.length <= 0) {
+    return array
+  }
+  const index = array.indexOf(value)
+  if (index >= 0) {
+    array.splice(index, 1)
+  }
+  return array
+}
+
+/**
+ * 移除数组中的元素, 会改变原数组
+ *
+ * @param array 数组
+ * @param values 值
+ */
+export const arrDelManyItemByVal = <T>(array:T[], ...values: any[]) => {
+  if (!isArray(array) || values.length === 0) {
+    return array
+  }
+  for (let i = 0; i < values.length; i++) {
+    arrDelItemByVal(array, values[i])
+  }
+  return array
+}
+

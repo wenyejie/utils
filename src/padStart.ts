@@ -1,17 +1,16 @@
 import isUndefined from './isUndefined'
-import isNull from './isNull'
 
 /**
  * 前置填充
- * @param string
- * @param maxLength
- * @param fillString
+ * @param obj 对象
+ * @param maxLength 最大长度
+ * @param fillString 填充字符
  */
-export const padStart = (string: string | number, maxLength = 2, fillString = '0') => {
-  if (isUndefined(string) || isNull(string) || Number.isNaN(string)) {
-    string = ''
+export const padStart = (obj: string | number, maxLength = 2, fillString = '0') => {
+  if (isUndefined(obj) || Number.isNaN(obj)) {
+    obj = ''
   }
-  return `${string}`.padStart(maxLength, fillString)
+  return `${obj}`.padStart(maxLength, fillString)
 }
 
 export default padStart

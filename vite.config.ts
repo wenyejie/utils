@@ -56,7 +56,11 @@ const build:BuildOptions = {
 
 const test = {
   include: ['./tests/*.test.ts'],
-  environment: 'jsdom'
+  environment: 'happy-dom',
+  /*browser: {
+    enabled: true,
+    name: 'chrome',
+  },*/
 }
 
 const server:ServerOptions = {

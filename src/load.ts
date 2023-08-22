@@ -2,7 +2,7 @@ import isFunction from './isFunction'
 import isObject from './isObject'
 import hasOwn from './hasOwn'
 
-interface LoadOptions {
+export interface LoadOptions {
   before?: (...rest: any[]) => void,
   mode?: string,
   attrs?: Record<string, any>
@@ -13,7 +13,6 @@ const DEFAULT_OPTIONS:LoadOptions = {
   mode: 'src',
   attrs: null
 }
-
 
 /**
  * 载入script
