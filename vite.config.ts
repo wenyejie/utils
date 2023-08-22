@@ -49,7 +49,7 @@ const build:BuildOptions = {
     entry,
     name: 'wenyejie',
     fileName: (format, entryName) => {
-      return `${entryName}.${format}.js`
+      return `${entryName}.${format === 'es' ? 'js' : 'cjs'}`
     }
   }
 }
