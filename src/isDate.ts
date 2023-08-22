@@ -2,7 +2,7 @@ import toRawType from './toRawType'
 
 /**
  * 判断一个数据是否为正确的date类型
- * @param obj
+ * @param obj 对象
  */
 export const isDate = (obj: any) => toRawType(obj) === 'date' && obj.toString() !== 'Invalid Date'
 

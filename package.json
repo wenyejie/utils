@@ -16,7 +16,7 @@
   ],
   "main": "./dist/wenyejie.cjs.js",
   "module": "./dist/wenyejie.es.js",
-  "types": "./types/index.d.ts",
+  "types": "./src/wenyejie.ts",
   "exports": {
     ".": {
       "import": "./dist/wenyejie.es.js",

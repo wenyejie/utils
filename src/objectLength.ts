@@ -2,7 +2,7 @@ import isObject from './isObject'
 
 /**
  * 获取对象长度
- * @param obj
+ * @param obj 对象
  */
 export const objectLength = (obj: Record<PropertyKey, any>) => {
   if (!isObject(obj)) {
