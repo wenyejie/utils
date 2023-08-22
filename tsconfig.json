@@ -9,10 +9,13 @@
     ],
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "outDir": "types",
+//    "outDir": "types",
+    "outFile": "./types/wenyejie.d.ts",
     "emitDeclarationOnly": true,
     "declaration": true,
-    "declarationDir": "types",
+//    "declarationDir": "types",
+    "extendedDiagnostics": true,
+//    "locale": "zh-CN",
 
     /* fix vite alias 无法识别的问题 */
     "baseUrl": ".",
@@ -21,8 +24,7 @@
     }
   },
   "include": [
-    "./src/*.ts",
-    "./types/*.d.ts"
+    "./src/*.ts"
   ],
   "exclude": [
     "node_modules"

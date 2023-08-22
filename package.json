@@ -16,7 +16,7 @@
   ],
   "main": "./dist/wenyejie.cjs.js",
   "module": "./dist/wenyejie.es.js",
-  "types": "./src/wenyejie.ts",
+  "types": "./types/wenyejie.d.ts",
   "exports": {
     ".": {
       "import": "./dist/wenyejie.es.js",
@@ -26,7 +26,7 @@
   "scripts": {
     "test": "vitest",
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "tsc": "tsc"
   },
   "devDependencies": {
