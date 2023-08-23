@@ -6,3 +6,4 @@
 /coverage
 /.editorconfig
 /.prettierrc
+/yarn.lock
