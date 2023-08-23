@@ -2,6 +2,8 @@
 
 Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
 
+const isArray = require('./isArray.cjs');
+
 const handler = {
   get: (target, prop) => {
     return target[prop]?.value;
@@ -11,7 +13,7 @@ const handler = {
     if (keys.includes(",")) {
       keys = prop.split(",");
     }
-    keys = Array.isArray(keys) ? keys : [prop];
+    keys = isArray.isArray(keys) ? keys : [prop];
     const pkgVal = obj[keys.find((key) => obj[key])] || { value };
     for (const key of keys) {
       obj[key] = pkgVal;
@@ -22,7 +24,7 @@ const handler = {
 const toMultiKeyOneValue = (data) => {
   const target = {};
   const proxy = new Proxy(target, handler);
-  if (!Array.isArray(data)) {
+  if (!isArray.isArray(data)) {
     console.error("Error parameter", data);
   }
   for (const [keys, value] of data) {

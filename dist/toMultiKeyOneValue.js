@@ -1,3 +1,5 @@
+import { isArray } from './isArray.js';
+
 const handler = {
   get: (target, prop) => {
     return target[prop]?.value;
@@ -7,7 +9,7 @@ const handler = {
     if (keys.includes(",")) {
       keys = prop.split(",");
     }
-    keys = Array.isArray(keys) ? keys : [prop];
+    keys = isArray(keys) ? keys : [prop];
     const pkgVal = obj[keys.find((key) => obj[key])] || { value };
     for (const key of keys) {
       obj[key] = pkgVal;
@@ -18,7 +20,7 @@ const handler = {
 const toMultiKeyOneValue = (data) => {
   const target = {};
   const proxy = new Proxy(target, handler);
-  if (!Array.isArray(data)) {
+  if (!isArray(data)) {
     console.error("Error parameter", data);
   }
   for (const [keys, value] of data) {
