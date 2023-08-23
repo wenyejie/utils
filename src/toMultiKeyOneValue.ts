@@ -1,3 +1,4 @@
+import isArray from './isArray'
 type ToMultiKeyOneValueTargetType = Record<string, any>
 
 const handler:ProxyHandler<ToMultiKeyOneValueTargetType> = {
@@ -9,7 +10,7 @@ const handler:ProxyHandler<ToMultiKeyOneValueTargetType> = {
     if (keys.includes(',')) {
       keys = (prop as string).split(',')
     }
-    keys = Array.isArray(keys) ? keys : [prop as string]
+    keys = isArray(keys) ? keys : [prop as string]
     const pkgVal = obj[keys.find(key => obj[key])] || { value }
     for (const key of keys) {
       obj[key] = pkgVal
@@ -25,7 +26,7 @@ const handler:ProxyHandler<ToMultiKeyOneValueTargetType> = {
 export const toMultiKeyOneValue = (data: any[][]) => {
   const target:ToMultiKeyOneValueTargetType = {}
   const proxy = new Proxy(target, handler)
-  if (!Array.isArray(data)) {
+  if (!isArray(data)) {
     console.error('Error parameter', data)
   }
   for (const [keys, value] of data) {
