@@ -1,6 +1,6 @@
 /**
  * 校验纳税人识别号, 是否正确
- * @param taxId
+ * @param taxId 纳税识别号
  */
 export const checkTaxpayerIDNO = (taxId: string) => {
   const regArr = [
