@@ -26,7 +26,8 @@
   "scripts": {
     "test": "vitest",
     "dev": "vite",
-    "build": "vitest run && vite build"
+    "build": "vitest run && vite build",
+    "publish": "npm run build && npm publish"
   },
   "devDependencies": {
     "@types/node": "^20.5.3",
