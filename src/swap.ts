@@ -2,9 +2,9 @@ import hasOwn from './hasOwn'
 
 /**
  * 交换对象中的两个属性值
- * @param obj
- * @param i
- * @param j
+ * @param obj 对象
+ * @param i key值
+ * @param j key值
  */
 export const swap = <T extends PropertyKey, K extends  any>(obj:Record<T, K>, i:T, j:T) => {
   if (!hasOwn(obj, i) || !hasOwn(obj, j)) {

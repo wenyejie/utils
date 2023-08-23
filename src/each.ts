@@ -7,7 +7,10 @@ import hasOwn from './hasOwn'
  * @param data 数据
  * @param fn 回调
  */
-export const each = (data: any[] | Record<any, any>, fn: (...rest: any[]) => any) => {
+export const each: {
+  (data: any[], fn: (...rest: any[]) => any): void
+  (data: Record<any, any>, fn: (...rest: any[]) => any): void
+} = (data: any[] | Record<any, any>, fn: (...rest: any[]) => any) => {
   if (!isArray(data) && !isObject(data)) {
     return
   }

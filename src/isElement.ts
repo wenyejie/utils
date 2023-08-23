@@ -1,7 +1,7 @@
 /**
  * 判断是否为元素
- * @param obj
+ * @param obj 对象
  */
-export const isElement = (obj: HTMLElement) => (obj ? obj.nodeType === 1 : false)
+export const isElement = (obj: any) => obj?.nodeType === 1
 
 export default isElement

@@ -1,6 +1,6 @@
-type targetType = Record<string, any>
+type ToMultiKeyOneValueTargetType = Record<string, any>
 
-const handler:ProxyHandler<targetType> = {
+const handler:ProxyHandler<ToMultiKeyOneValueTargetType> = {
   get: (target, prop) => {
     return target[prop as string]?.value
   },
@@ -23,7 +23,7 @@ const handler:ProxyHandler<targetType> = {
  * @param data 数据
  */
 export const toMultiKeyOneValue = (data: any[][]) => {
-  const target:targetType = {}
+  const target:ToMultiKeyOneValueTargetType = {}
   const proxy = new Proxy(target, handler)
   if (!Array.isArray(data)) {
     console.error('Error parameter', data)

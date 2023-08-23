@@ -1,25 +1,30 @@
 /**
  * 获取globalThis
  */
-export const getGlobalThis = () => {
+export const getGlobalThis = ():Window & typeof globalThis => {
   if (typeof self !== "undefined") {
-    return self;
+    return self as Window & typeof globalThis;
   }
   if (typeof window !== "undefined") {
-    return window;
+    return window as Window & typeof globalThis
   }
   if (typeof global !== "undefined") {
-    return global;
+    return global as Window & typeof globalThis
   }
   throw new Error("unable to locate global object");
 };
 
-let gt
+let gt:Window & typeof globalThis
 
 try {
-  gt = globalThis
+  gt = <Window & typeof globalThis>globalThis
 } catch (e) {
   gt = getGlobalThis()
+}
+
+
+export {
+  gt as globalThis
 }
 
 export default gt as Window & typeof globalThis

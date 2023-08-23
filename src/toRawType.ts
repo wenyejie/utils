@@ -2,7 +2,7 @@ import toTypeString from './toTypeString'
 
 /**
  * 返回数据的类型 ex. string, number, boolean
- * @param obj
+ * @param obj 对象
  */
 export const toRawType = (obj:unknown) => {
   return toTypeString(obj)

@@ -3,7 +3,7 @@ import datetimeSpan from './datetimeSpan'
 import dateFormat from './dateFormat'
 import isDate from './isDate'
 
-interface TimeDistanceOptions {
+export interface TimeDistanceOptions {
   yearFormat?: string,
   dayFormat?: string,
   hoursAgo?: string,

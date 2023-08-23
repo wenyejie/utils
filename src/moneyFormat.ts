@@ -2,7 +2,7 @@ import isNumber from './isNumber.js'
 import toNumber from './toNumber.js'
 import nullProtoObject from './nullProtoObject'
 
-interface MoneyFormatOptions {
+export interface MoneyFormatOptions {
   decimal?: number, // 小数点长度
   symbol?: string, // 钱币符号
   default?: string, // 默认值

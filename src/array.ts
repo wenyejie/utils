@@ -77,7 +77,7 @@ export const arrDelItemByVal = <T>(array:T[], value:any) => {
     return array
   }
   const index = array.indexOf(value)
-  if (index >= 0) {
+  if (index >= 0 && index < array.length) {
     array.splice(index, 1)
   }
   return array

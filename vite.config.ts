@@ -57,10 +57,10 @@ const build:BuildOptions = {
 const test = {
   include: ['./tests/*.test.ts'],
   environment: 'happy-dom',
-  /*browser: {
-    enabled: true,
+  browser: {
+    enabled: false,
     name: 'chrome',
-  },*/
+  },
 }
 
 const server:ServerOptions = {

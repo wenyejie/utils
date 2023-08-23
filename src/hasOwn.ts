@@ -1,15 +1,16 @@
 import hasOwnProperty from './hasOwnProperty'
 import isUndefined from './isUndefined'
+import isNull from './isNull'
 
 /**
  * 判断key是否是对象自己的属性
- * @param object { Object }
- * @param key { string }
+ * @param obj 对象
+ * @param prop 属性
  */
-export const hasOwn = (object:Record<PropertyKey, any>, key:string | number | symbol) => {
-  if (isUndefined(object)) {
+export const hasOwn = (obj:Record<PropertyKey, any>, prop:string | number | symbol) => {
+  if (isUndefined(obj) || isNull(obj)) {
     return false
   }
-  return hasOwnProperty.call(object, key) as boolean
+  return hasOwnProperty.call(obj, prop) as boolean
 }
 export default hasOwn

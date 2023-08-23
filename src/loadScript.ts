@@ -8,6 +8,4 @@ export const loadScript = (url: string, options:LoadOptions) => {
   return load('script', url, options)
 }
 
-export const script = loadScript
-
 export default loadScript
