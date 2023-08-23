@@ -1,6 +1,6 @@
 # 版本记录
 
-## 2.0.0 `dev`
+## 2.0.0 `online`
 
 - 使用`vite`重构
 - 使用`typescript`重构
