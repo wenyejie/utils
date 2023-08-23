@@ -2,7 +2,7 @@ import toRawType from './toRawType'
 
 /**
  * 判断是否为原始类型
- * @param obj
+ * @param obj 对象
  */
 export const isPrimitive = (obj: unknown) => {
   const type = toRawType(obj)

@@ -3,7 +3,7 @@ const rSpace = /\s+/g
 
 /**
  * 移除字符串中的空格
- * @param string
+ * @param string 字符串
  */
 export const removeSpace = (string: string) => {
   if (!isString(string)) {
