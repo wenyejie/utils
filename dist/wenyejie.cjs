@@ -121,7 +121,7 @@ const unique = require('./unique.cjs');
 const url2http = require('./url2http.cjs');
 const url2https = require('./url2https.cjs');
 
-const VERSION = "2.0.0";
+const VERSION = "2.0.1";
 
 exports.arrDelItemByInx = array.arrDelItemByInx;
 exports.arrDelItemByProp = array.arrDelItemByProp;
