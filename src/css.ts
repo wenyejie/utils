@@ -1,26 +1,24 @@
 import camelize from './camelize'
 import hyphenate from './hyphenate'
-import isElement from './isElement'
 import isString from './isString'
 import isJson from './isJson'
 import globalThis from './globalThis'
 
-const ELEMENT_ERROR_MESSAGE = '请传入正确的参数elt: HTMLElement'
-
-/**
- * 读取css属性
- * @param elt 元素
- * @param prop 属性名称
- * @param pseudoElt 伪元素 'before' | 'after'
- */
-export const getCSS:{
+export const getCSS: {
+  /**
+   * 读取所有的css属性
+   * @param elt 元素
+   * @param pseudoElt 伪元素 'before' | 'after'
+   */
   (elt: HTMLElement, pseudoElt?: 'before' | 'after' | null): CSSStyleDeclaration,
+  /**
+   * 读取css属性
+   * @param elt 元素
+   * @param prop 属性名称
+   * @param pseudoElt 伪元素 'before' | 'after'
+   */
   (elt: HTMLElement, prop: string, pseudoElt?: 'before' | 'after' | null): any
-} = (elt:HTMLElement, prop?:string, pseudoElt?: 'before' | 'after' | null) => {
-  if (!isElement(elt)) {
-    console.error(ELEMENT_ERROR_MESSAGE)
-    return
-  }
+} = (elt: HTMLElement, prop?: string, pseudoElt?: 'before' | 'after' | null) => {
   if (!isString(prop)) {
     return document.defaultView.getComputedStyle(elt, pseudoElt)
   }
@@ -43,12 +41,8 @@ export const setCSS: {
    * @param value 值
    */
   (elt: HTMLElement, prop: string, value: any): void
-} = (elt:HTMLElement, prop?:string | Record<string, any>, value?: any) => {
-  if (!isElement(elt)) {
-    console.error(ELEMENT_ERROR_MESSAGE)
-    return
-  }
-  let styles:Record<string, any> = {}
+} = (elt: HTMLElement, prop?: string | Record<string, any>, value?: any) => {
+  let styles: Record<string, any> = {}
   if (isString(prop)) {
     styles[camelize(<string>prop)] = value
   } else if (isJson(prop)) {
@@ -73,7 +67,7 @@ type SupportCSS = {
    */
   (prop: string, value: string): boolean
 }
-export const supportCSS:SupportCSS = (prop:string, value?:any) => {
+export const supportCSS: SupportCSS = (prop: string, value?: any) => {
   return globalThis.CSS?.supports?.(hyphenate(prop), value)
 }
 

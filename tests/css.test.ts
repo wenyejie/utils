@@ -17,7 +17,6 @@ test('getCSS', () => {
   expect(getCSS($div)).toBeTypeOf('object')
   expect(getCSS($div)).toBeInstanceOf(CSSStyleDeclaration)
   expect(getCSS($div, 'display')).toBe('block')
-  expect(getCSS({})).toBeUndefined()
 })
 
 test('setCSS', () => {
@@ -29,7 +28,6 @@ test('setCSS', () => {
   })
   expect(getCSS($div, 'display')).toBe('block')
   expect(getCSS($div, 'margin')).toBe('1px')
-  expect(setCSS({}, 'display', 'block')).toBeUndefined()
 })
 
 test('supportCSS', () => {
