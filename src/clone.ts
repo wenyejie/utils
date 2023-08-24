@@ -7,7 +7,7 @@ import isJson from './isJson'
 import isWeakMap from './isWeakMap'
 import isWeakSet from './isWeakSet'
 
-type ArrayOrObject = any[] | Record<PropertyKey, any>
+type ArrayOrObject = any[] | PropObj
 
 /**
  * 克隆一个对象

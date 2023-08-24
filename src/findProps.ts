@@ -8,7 +8,7 @@ import isObject from './isObject'
  * @param propKey 查找的属性
  * @param returnKey 返回的属性
  */
-export const findProps = <T extends Record<PropertyKey, any>>(data: T[], propValue: any, propKey:PropertyKey = 'value', returnKey:PropertyKey = 'label') => {
+export const findProps = <T extends PropObj>(data: T[], propValue: any, propKey:PropKey = 'value', returnKey:PropKey = 'label') => {
   const item = find(data, propKey, propValue)
   return isObject(item) ? item[returnKey] : ''
 }

@@ -7,7 +7,7 @@ import isNull from './isNull'
  * @param obj 对象
  * @param prop 属性
  */
-export const hasOwn = (obj:Record<PropertyKey, any>, prop:string | number | symbol) => {
+export const hasOwn = (obj:PropObj, prop:string | number | symbol) => {
   if (isUndefined(obj) || isNull(obj)) {
     return false
   }

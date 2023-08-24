@@ -5,8 +5,8 @@ import isObject from './isObject'
  * @param data 数据
  * @param rest 移除key
  */
-export const ban = <T extends Record<PropertyKey, any>>(data: T, ...rest: PropertyKey[]) => {
-  let result: Record<PropertyKey, any> = {}
+export const ban = <T extends PropObj>(data: T, ...rest: PropKey[]) => {
+  let result: PropObj = {}
   if (!isObject(data)) {
     return result
   }

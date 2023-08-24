@@ -5,8 +5,8 @@ import isObject from './isObject'
  * @param obj 对象
  * @param rest 选中key
  */
-export const pick = <P extends PropertyKey, T extends Record<P, any>>(obj:T, ...rest: P[]) => {
-  const result:Record<PropertyKey, any> = {}
+export const pick = <P extends PropKey, T extends Record<P, any>>(obj:T, ...rest: P[]) => {
+  const result:PropObj = {}
   if (isObject(obj)) {
     rest.forEach(key => {
       result[key] = obj[key]
