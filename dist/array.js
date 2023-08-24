@@ -1,63 +1,66 @@
-import { isArray } from './isArray.js';
-import { isNaturalNumber } from './isNaturalNumber.js';
 import { isObject } from './isObject.js';
-import { hasOwn } from './hasOwn.js';
-import './isInteger.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
-import './hasOwnProperty.js';
-import './isUndefined.js';
-import './isNull.js';
 
-const isTrulyArrInx = (arr, inx) => {
-  return isArray(arr) && isNaturalNumber(inx) && arr.length > inx;
+const isArrInx = (arr, inx) => {
+  return inx >= 0 && inx < arr.length;
 };
-const arrUpItem = (arr, item, inx) => {
-  arr.splice(inx, 1);
-  arr.splice(inx - 1, 0, item);
+const arrUpItem = (arr, inx) => {
+  const delArr = arr.splice(inx, 1);
+  arr.splice(inx - 1, 0, delArr?.[0]);
   return arr;
 };
-const arrDownItem = (arr, item, inx) => {
-  arr.splice(inx, 1);
-  arr.splice(inx + 1, 0, item);
+const arrDownItem = (arr, inx) => {
+  const delArr = arr.splice(inx, 1);
+  arr.splice(inx + 1, 0, delArr?.[0]);
   return arr;
 };
-const arrDelItemByInx = (arr, inx) => {
-  return arr.splice(inx, 1);
-};
-const arrDelItemByProp = (array, key, value) => {
-  const props = isObject(key) ? key : { [key]: value };
-  if (!isArray(array) || !isObject(props)) {
-    return array;
-  }
-  return array.filter((item) => {
-    for (let key2 in props) {
-      if (hasOwn(item, key2) && item[key2] !== props[key2]) {
-        return true;
-      }
-    }
-    return false;
-  });
-};
-const arrDelItemByVal = (array, value) => {
-  if (!isArray(array) || array.length <= 0) {
-    return array;
-  }
-  const index = array.indexOf(value);
-  if (index >= 0 && index < array.length) {
+const arrDelItemByVal = (array, ...values) => {
+  for (const value of values) {
+    const index = array.indexOf(value);
     array.splice(index, 1);
   }
   return array;
 };
-const arrDelManyItemByVal = (array, ...values) => {
-  if (!isArray(array) || values.length === 0) {
-    return array;
-  }
-  for (let i = 0; i < values.length; i++) {
-    arrDelItemByVal(array, values[i]);
+const arrDelItemByProp = (array, propKey, propValue) => {
+  const propObj = isObject(propKey) ? propKey : { [propKey]: propValue };
+  const propEntries = Object.entries(propObj);
+  const index = array.findIndex((item) => {
+    for (const [key, value] of propEntries) {
+      if (item[key] !== value) {
+        return false;
+      }
+    }
+    return true;
+  });
+  if (index >= 0) {
+    array.splice(index, 1);
   }
   return array;
 };
+const arrFindItemByProp = (array, prop, value) => {
+  const props = isObject(prop) ? prop : { [prop]: value };
+  const propEntries = Object.entries(props);
+  return array.find((item) => {
+    for (const [prop2, value2] of propEntries) {
+      if (item[prop2] !== value2) {
+        return false;
+      }
+    }
+    return true;
+  });
+};
+const arrFindValByProp = (array, propKey, propValue, rtnPropKey) => {
+  let props;
+  if (isObject(propKey)) {
+    props = propKey;
+    rtnPropKey = propValue;
+  } else {
+    props = { [propKey]: propValue };
+  }
+  const item = arrFindItemByProp(array, props);
+  return item?.[rtnPropKey];
+};
 
-export { arrDelItemByInx, arrDelItemByProp, arrDelItemByVal, arrDelManyItemByVal, arrDownItem, arrUpItem, isTrulyArrInx };
+export { arrDelItemByProp, arrDelItemByVal, arrDownItem, arrFindItemByProp, arrFindValByProp, arrUpItem, isArrInx };

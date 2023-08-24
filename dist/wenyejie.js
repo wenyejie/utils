@@ -1,4 +1,4 @@
-export { arrDelItemByInx, arrDelItemByProp, arrDelItemByVal, arrDelManyItemByVal, arrDownItem, arrUpItem, isTrulyArrInx } from './array.js';
+export { arrDelItemByProp, arrDelItemByVal, arrDownItem, arrFindItemByProp, arrFindValByProp, arrUpItem, isArrInx } from './array.js';
 export { ban } from './ban.js';
 export { bankCardFormat } from './bankCardFormat.js';
 export { base642file } from './base642file.js';

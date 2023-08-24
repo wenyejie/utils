@@ -123,13 +123,13 @@ const url2https = require('./url2https.cjs');
 
 const VERSION = "2.0.1";
 
-exports.arrDelItemByInx = array.arrDelItemByInx;
 exports.arrDelItemByProp = array.arrDelItemByProp;
 exports.arrDelItemByVal = array.arrDelItemByVal;
-exports.arrDelManyItemByVal = array.arrDelManyItemByVal;
 exports.arrDownItem = array.arrDownItem;
+exports.arrFindItemByProp = array.arrFindItemByProp;
+exports.arrFindValByProp = array.arrFindValByProp;
 exports.arrUpItem = array.arrUpItem;
-exports.isTrulyArrInx = array.isTrulyArrInx;
+exports.isArrInx = array.isArrInx;
 exports.ban = ban.ban;
 exports.bankCardFormat = bankCardFormat.bankCardFormat;
 exports.base642file = base642file.base642file;
