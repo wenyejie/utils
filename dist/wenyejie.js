@@ -26,8 +26,6 @@ export { emptyObject } from './emptyObject.js';
 export { inBrowser, inNode, isAndroid, isChrome, isEdge, isFirefox, isIE, isIE9, isIOS, isIPad, isIPhone, isLinux, isMac, isMobile, isPC, isPhantom, isSafari, isUbuntu, isWeChat, isWindows, useragent } from './env.js';
 export { add, arithmetic, divide, exactMath, multiAdd, multiDivide, multiMultiply, multiSubtract, multiply, remain, subtract } from './exactMath.js';
 export { file2base64 } from './file2base64.js';
-export { find } from './find.js';
-export { findProps } from './findProps.js';
 export { freezeObj } from './freezeObj.js';
 export { getDaysByMonth } from './getDaysByMonth.js';
 export { getInfoByCardNO } from './getInfoByCardNO.js';
@@ -117,6 +115,6 @@ export { unique } from './unique.js';
 export { url2http } from './url2http.js';
 export { url2https } from './url2https.js';
 
-const VERSION = "2.0.1";
+const VERSION = "2.0.2";
 
 export { VERSION };

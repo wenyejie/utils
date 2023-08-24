@@ -30,8 +30,6 @@ const emptyObject = require('./emptyObject.cjs');
 const env = require('./env.cjs');
 const exactMath = require('./exactMath.cjs');
 const file2base64 = require('./file2base64.cjs');
-const find = require('./find.cjs');
-const findProps = require('./findProps.cjs');
 const freezeObj = require('./freezeObj.cjs');
 const getDaysByMonth = require('./getDaysByMonth.cjs');
 const getInfoByCardNO = require('./getInfoByCardNO.cjs');
@@ -121,7 +119,7 @@ const unique = require('./unique.cjs');
 const url2http = require('./url2http.cjs');
 const url2https = require('./url2https.cjs');
 
-const VERSION = "2.0.1";
+const VERSION = "2.0.2";
 
 exports.arrDelItemByProp = array.arrDelItemByProp;
 exports.arrDelItemByVal = array.arrDelItemByVal;
@@ -191,8 +189,6 @@ exports.multiply = exactMath.multiply;
 exports.remain = exactMath.remain;
 exports.subtract = exactMath.subtract;
 exports.file2base64 = file2base64.file2base64;
-exports.find = find.find;
-exports.findProps = findProps.findProps;
 exports.freezeObj = freezeObj.freezeObj;
 exports.getDaysByMonth = getDaysByMonth.getDaysByMonth;
 exports.getInfoByCardNO = getInfoByCardNO.getInfoByCardNO;
