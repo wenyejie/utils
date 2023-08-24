@@ -1,14 +1,11 @@
-import { inBrowser } from './env.js';
-import { emptyObject } from './emptyObject.js';
 import globalThis from './globalThis.js';
 
-const parse = (data) => {
-  return (JSON.parse(data) || emptyObject).v;
-};
 class CustomStorage {
   storage;
-  constructor(name) {
-    this.storage = inBrowser() ? globalThis[`${name}Storage`] : emptyObject;
+  key;
+  constructor(name, key = "v") {
+    this.storage = globalThis[`${name}Storage`];
+    this.key = key;
   }
   /**
    * 获取存储内容
@@ -17,7 +14,7 @@ class CustomStorage {
   get(key) {
     let result;
     try {
-      result = parse(this.storage.getItem(key));
+      result = JSON.parse(this.storage?.getItem(key))?.[this.key];
     } catch (e) {
       throw new Error(e);
     }
@@ -30,7 +27,7 @@ class CustomStorage {
    */
   set(key, value) {
     try {
-      this.storage.setItem(key, JSON.stringify({ v: value }));
+      this.storage?.setItem(key, JSON.stringify({ [this.key]: value }));
     } catch (e) {
       throw new Error(e);
     }
@@ -40,26 +37,13 @@ class CustomStorage {
    * @param key
    */
   remove(key) {
-    this.storage.removeItem(key);
+    this.storage?.removeItem(key);
   }
   /**
    * 清空所有存储
    */
   clear() {
-    this.storage.clear();
-  }
-  /**
-   * 返回第index个存储的内容, index从0开始
-   * @param index
-   */
-  key(index) {
-    return parse(this.storage.key(index));
-  }
-  /**
-   * 返回存储内容长度
-   */
-  length() {
-    return this.storage.length;
+    this.storage?.clear();
   }
 }
 const localCustomStorage = new CustomStorage("local");

@@ -2,7 +2,6 @@ import { local, session } from './storage.js';
 import { isFunction } from './isFunction.js';
 import { inBrowser } from './env.js';
 import globalThis from './globalThis.js';
-import './emptyObject.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';

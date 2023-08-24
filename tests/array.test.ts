@@ -1,13 +1,11 @@
 import { expect, test } from 'vitest'
-import {
-  arrDelItemByProp,
-  arrDelItemByVal,
-  arrDownItem,
-  arrUpItem,
-  arrFindItemByProp,
-  arrFindValByProp,
-  isArrInx
-} from '../src/array'
+import arrDelItemByProp from '../src/arrDelItemByProp'
+import arrDelItemByVal from '../src/arrDelItemByVal'
+import arrDownItem from '../src/arrDownItem'
+import arrUpItem from '../src/arrUpItem'
+import arrFindItemByProp from '../src/arrFindItemByProp'
+import isArrayIndex from '../src/isArrayIndex'
+import arrFindValByProp from '../src/arrFindValByProp'
 
 test('arrFindItemByProps', () => {
   const arr = [
@@ -65,11 +63,11 @@ test('arrUpItem', () => {
   expect(arrUpItem(arr, 2)).toStrictEqual([0, 2, 1])
 })
 
-test('isArrInx', () => {
+test('isArrayIndex', () => {
   const arr = [0, 1, 2]
-  expect(isArrInx(arr, 0)).toBeTruthy()
-  expect(isArrInx(arr, 1)).toBeTruthy()
-  expect(isArrInx(arr, 2)).toBeTruthy()
-  expect(isArrInx(arr, -1)).toBeFalsy()
-  expect(isArrInx(arr, 3)).toBeFalsy()
+  expect(isArrayIndex(arr, 0)).toBeTruthy()
+  expect(isArrayIndex(arr, 1)).toBeTruthy()
+  expect(isArrayIndex(arr, 2)).toBeTruthy()
+  expect(isArrayIndex(arr, -1)).toBeFalsy()
+  expect(isArrayIndex(arr, 3)).toBeFalsy()
 })

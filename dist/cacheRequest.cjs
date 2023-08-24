@@ -6,7 +6,6 @@ const storage = require('./storage.cjs');
 const isFunction = require('./isFunction.cjs');
 const env = require('./env.cjs');
 const globalThis = require('./globalThis.cjs');
-require('./emptyObject.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');

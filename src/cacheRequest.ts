@@ -1,4 +1,4 @@
-import { local, session, StorageMethod } from './storage'
+import { local, session } from './storage'
 import isFunction from './isFunction'
 import { inBrowser } from './env'
 import globalThis from './globalThis'
@@ -59,7 +59,7 @@ export class CacheRequest {
   private loading: number
   private timestamp: number
   private options: any
-  private readonly storage: StorageMethod
+  private readonly storage: any
   private data: number
   private promise: Promise<any>
   /**
@@ -119,7 +119,7 @@ export class CacheRequest {
     // 设置请求状态
     this.loading = 1
     // 开始请求数据
-    this.promise = this.options.method().then(data => {
+    this.promise = this.options.method().then((data) => {
       // 如果请求成功, 则回调成功的钩子, 主要用于数据处理
       if (isFunction(this.options.success)) {
         this.options.success(data)
@@ -130,7 +130,7 @@ export class CacheRequest {
       if (this.options.storageMode !== 'none') {
         this.storage(this.getStorageName(), {
           value: this.data,
-          timestamp: this.timestamp
+          timestamp: this.timestamp,
         })
       }
       return data
