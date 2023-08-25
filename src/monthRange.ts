@@ -6,11 +6,11 @@ import isDate from './isDate'
  * @param date 可以被new Date转换的数据
  * @param type 范围 range | start | end
  */
-export const monthRange = (date: Date | string | number, type = 'range') => {
+export const monthRange = (date: LikeDate, type = 'range') => {
   date = toDate(date)
   const result = {
     start: null,
-    end: null
+    end: null,
   }
   if (!isDate(date)) {
     console.error('参数错误', date)

@@ -2,16 +2,16 @@ import isObject from './isObject'
 
 /**
  * 从对象中选中一些属性移除, 剩下的属性组成新的对象并返回,不影响原有对象
- * @param data 数据
+ * @param obj 数据
  * @param rest 移除key
  */
-export const ban = <T extends PropObj>(data: T, ...rest: PropKey[]) => {
+export const ban = <T extends PropObj>(obj: T, ...rest: PropKey[]) => {
   let result: PropObj = {}
-  if (!isObject(data)) {
+  if (!isObject(obj)) {
     return result
   }
-  result = { ...data }
-  rest.forEach(key => {
+  result = { ...obj }
+  rest.forEach((key) => {
     delete result[key]
   })
   return result

@@ -5,9 +5,9 @@ import globalThis from './globalThis'
  * @param interval 时间间隔
  * @param isFirst 第一次是否立即执行
  */
-export const debounce = (fn:(...rest: any[]) => void, interval = 500, isFirst = false) => {
-  let timer:any
-  return function(...rest: any[]) {
+export const debounce = (fn: (...rest: any[]) => void, interval = 500, isFirst = false) => {
+  let timer: number
+  return function (...rest: any[]) {
     clearTimeout(timer)
     if (isFirst) {
       fn.apply(this, rest)

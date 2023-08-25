@@ -1,13 +1,15 @@
 import isPrimitive from './isPrimitive'
-import isArray from './isArray'
-import isFunction from './isFunction'
-import isSet from './isSet'
-import isMap from './isMap'
 import isJson from './isJson'
-import isWeakMap from './isWeakMap'
-import isWeakSet from './isWeakSet'
+import toRawType from '@/toRawType'
 
 type ArrayOrObject = any[] | PropObj
+
+const linkIterableObj = {
+  set: Set,
+  map: Map,
+  weakSet: WeakSet,
+  weakMap: WeakMap,
+}
 
 /**
  * 克隆一个对象
@@ -16,24 +18,13 @@ type ArrayOrObject = any[] | PropObj
  * @param weakMap weakMap 避免死循环
  */
 export const clone = <T>(obj: T, deep = true, weakMap = new WeakMap()): T => {
-  if (isPrimitive(obj) || isFunction(obj)) {
+  const type = toRawType(obj)
+  if (isPrimitive(obj) || type === 'function') {
     return obj
   }
 
-  if (isSet(obj)) {
-    return new Set(obj as Iterable<any>) as T
-  }
-
-  if (isWeakSet(obj)) {
-    return new WeakSet(obj as Iterable<any>) as T
-  }
-
-  if (isMap(obj)) {
-    return new Map(obj as Iterable<any>) as T
-  }
-
-  if (isWeakMap(obj)) {
-    return new WeakMap(obj as Iterable<any>) as T
+  if (type in linkIterableObj) {
+    return new linkIterableObj[type](obj)
   }
 
   if (!isJson(obj)) {
@@ -44,7 +35,7 @@ export const clone = <T>(obj: T, deep = true, weakMap = new WeakMap()): T => {
     return weakMap.get(obj as ArrayOrObject)
   }
 
-  const result = isArray(obj) ? [] : {}
+  const result = type === 'array' ? [] : {}
   weakMap.set(obj as ArrayOrObject, result)
   const keys = Object.keys(obj)
   let key: string

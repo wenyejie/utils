@@ -11,7 +11,7 @@ export const toNumber = (num: string | number, defaultValue = 0) => {
     num = Number.parseFloat(<string>num)
   }
   if (isNumber(num)) {
-    return num
+    return <number>num
   }
   return defaultValue
 }

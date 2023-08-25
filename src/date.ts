@@ -4,13 +4,13 @@ import dateFormat from './dateFormat'
 import isDate from './isDate'
 
 export interface TimeDistanceOptions {
-  yearFormat?: string,
-  dayFormat?: string,
-  hoursAgo?: string,
-  minutesAgo?: string,
-  daysAgo?: string,
-  days?: number,
-  just?: string,
+  yearFormat?: string
+  dayFormat?: string
+  hoursAgo?: string
+  minutesAgo?: string
+  daysAgo?: string
+  days?: number
+  just?: string
   compare?: Date
 }
 
@@ -19,21 +19,24 @@ export interface TimeDistanceOptions {
  * @param date 日期
  * @param options 选项
  */
-export const timeDistance = (date: Date | string | number, options?:TimeDistanceOptions) => {
+export const timeDistance = (date: LikeDate, options?: TimeDistanceOptions) => {
   date = toDate(date)
   if (!isDate(date)) {
     return ''
   }
-  options = Object.assign({
-    yearFormat: 'YYYY-MM-DD',
-    dayFormat: 'MM-DD',
-    hoursAgo: '小时前',
-    minutesAgo: '分前',
-    daysAgo: '天前',
-    days: 31,
-    just: '刚刚',
-    compare: new Date(),
-  }, options)
+  options = Object.assign(
+    {
+      yearFormat: 'YYYY-MM-DD',
+      dayFormat: 'MM-DD',
+      hoursAgo: '小时前',
+      minutesAgo: '分前',
+      daysAgo: '天前',
+      days: 31,
+      just: '刚刚',
+      compare: new Date(),
+    },
+    options,
+  )
 
   const span = datetimeSpan(date, { compare: options.compare })
 
@@ -54,7 +57,6 @@ export const timeDistance = (date: Date | string | number, options?:TimeDistance
   }
 
   return options.just
-
 }
 
 export default timeDistance

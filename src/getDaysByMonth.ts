@@ -5,7 +5,7 @@ import isDate from './isDate'
  * 获取当前月份的天数
  * @param date
  */
-export const getDaysByMonth = (date: Date | string | number) => {
+export const getDaysByMonth = (date: LikeDate) => {
   date = toDate(date)
   if (!isDate(date)) {
     console.error('参数错误', date)

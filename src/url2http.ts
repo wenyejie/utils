@@ -3,7 +3,7 @@ import { rHttps, rHttp } from './regexp'
 
 /**
  * url2https
- * @param url
+ * @param url url
  */
 export const url2http = (url: string) => {
   if (!isString(url)) {

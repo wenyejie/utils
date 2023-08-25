@@ -9,7 +9,7 @@ import isInvalidDate from './isInvalidDate'
  * @param date 对象
  * @param isNew 是否为新对象
  */
-export const toDate = (date: Date | string | number, isNew = false) => {
+export const toDate = (date: LikeDate, isNew = false) => {
   if (!date || isInvalidDate(date)) {
     return null
   }
@@ -43,14 +43,6 @@ export const toDate = (date: Date | string | number, isNew = false) => {
 
   date = new Date(date)
   return isDate(date) ? date : null
-}
-
-/**
- * 返回一个跟旧对象不同的日期对象
- * @param date
- */
-export const toNewDate = (date: Date | string | number) => {
-  return toDate(date, true)
 }
 
 export default toDate

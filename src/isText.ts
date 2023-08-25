@@ -1,7 +1,7 @@
 /**
  * 判断是否为文本
- * @param obj
+ * @param obj 对象
  */
-export const isText = (obj: HTMLElement) => (obj ? obj.nodeType === 3 : false)
+export const isText = (obj: any) => obj?.nodeType === 3
 
 export default isText

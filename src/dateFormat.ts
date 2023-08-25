@@ -8,13 +8,13 @@ import padStart from './padStart'
  * @param format 格式
  * @param defaultValue string
  */
-export const dateFormat = (date: Date | string | number, format = 'YYYY-MM-DD hh:mm:ss', defaultValue = '') => {
+export const dateFormat = (date: LikeDate, format = 'YYYY-MM-DD hh:mm:ss', defaultValue = '') => {
   date = toDate(date)
   if (!isDate(date)) {
     return defaultValue
   }
 
-  return format.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, str => {
+  return format.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (str) => {
     switch (str) {
       case 'YYYY':
         return (date as Date).getFullYear() + ''

@@ -1,17 +1,11 @@
 import { expect, test } from 'vitest'
-import { CSSStyleDeclaration, Window } from 'happy-dom'
+import { CSSStyleDeclaration } from 'happy-dom'
 import { getCSS, setCSS, supportCSS } from '../src/css'
 import globalThis from '../src/globalThis'
+import { window, document } from './utils'
 
-
-const window = new Window({
-    url: 'http://localhost:8081/examples/',
-    width: 1024,
-    height: 768
-})
-
-const $div = window.document.createElement('div')
-window.document.body.appendChild($div)
+const $div = document.createElement('div')
+document.body.appendChild($div)
 
 test('getCSS', () => {
   expect(getCSS($div)).toBeTypeOf('object')

@@ -17,8 +17,8 @@ interface DateObjResult {
  * 获取获取日期对象
  * @param date
  */
-export const dateObj = (date: Date | string | number = new Date()) => {
-  let result:DateObjResult = {}
+export const dateObj = (date: LikeDate = new Date()) => {
+  let result: DateObjResult = {}
   date = toDate(date)
   if (!isDate(date)) {
     return result
@@ -32,7 +32,7 @@ export const dateObj = (date: Date | string | number = new Date()) => {
     minute: date.getMinutes(),
     second: date.getSeconds(),
     millisecond: date.getMilliseconds(),
-    time: date.getTime()
+    time: date.getTime(),
   }
   return result
 }

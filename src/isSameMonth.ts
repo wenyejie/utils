@@ -6,7 +6,7 @@ import isDate from './isDate'
  * @param date1
  * @param date2
  */
-export const isSameMonth = (date1:Date | string | number, date2: Date | string | number) => {
+export const isSameMonth = (date1: LikeDate, date2: LikeDate) => {
   date1 = toDate(date1)
   date2 = toDate(date2)
   if (!isDate(date1) || !isDate(date2)) {

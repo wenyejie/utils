@@ -2,31 +2,31 @@ import isDate from './isDate'
 import camelize from './camelize'
 
 interface DatetimeSpanOptions {
-  hasYear?: boolean,
-  year?: number,
-  hasMonth?: boolean,
-  month?: number,
-  hasDay?: boolean,
-  day?: number,
-  hasHour?: boolean,
-  hour?: number,
-  hasMinute?: boolean,
-  minute?: number,
-  hasSecond?: boolean,
-  second?: number,
-  hasMillisecond?: boolean,
-  millisecond?: number,
-  defaultValue?: string,
+  hasYear?: boolean
+  year?: number
+  hasMonth?: boolean
+  month?: number
+  hasDay?: boolean
+  day?: number
+  hasHour?: boolean
+  hour?: number
+  hasMinute?: boolean
+  minute?: number
+  hasSecond?: boolean
+  second?: number
+  hasMillisecond?: boolean
+  millisecond?: number
+  defaultValue?: string
   compare?: Date
 }
 
 interface DatetimeSpanResult {
-  year?: number,
-  month?: number,
-  day?: number,
-  hour?: number,
-  minute?: number,
-  second?: number,
+  year?: number
+  month?: number
+  day?: number
+  hour?: number
+  minute?: number
+  second?: number
   millisecond?: number
 }
 
@@ -56,13 +56,19 @@ const typeArr = ['year', 'month', 'day', 'hour', 'minute', 'second', 'millisecon
  * @param date
  * @param options
  */
-export const datetimeSpan = (date: Date | string | number, options: DatetimeSpanOptions = {}) => {
-  const opts = Object.assign({
-    compare: new Date(),
-  }, defOpts, options)
-  let timestamp = isDate(date) ? Math.abs((date as Date).getTime() - opts.compare.getTime()) : Number.parseInt(date as string)
-  const result:DatetimeSpanResult = {}
-  typeArr.forEach(name => {
+export const datetimeSpan = (date: LikeDate, options: DatetimeSpanOptions = {}) => {
+  const opts = Object.assign(
+    {
+      compare: new Date(),
+    },
+    defOpts,
+    options,
+  )
+  let timestamp = isDate(date)
+    ? Math.abs((date as Date).getTime() - opts.compare.getTime())
+    : Number.parseInt(date as string)
+  const result: DatetimeSpanResult = {}
+  typeArr.forEach((name) => {
     if (opts[camelize(`has-${name}`)]) {
       result[name] = Math.floor(timestamp / opts[name])
       timestamp %= opts[name]

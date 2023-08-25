@@ -6,15 +6,18 @@ import toRawType from './toRawType'
  */
 export const isPrimitive = (obj: unknown) => {
   const type = toRawType(obj)
-  return (
-    type === 'string' ||
-    type === 'number' ||
-    type === 'boolean' ||
-    type === 'bigint' ||
-    type === 'symbol' ||
-    type === 'undefined' ||
-    type === 'null'
-  )
+  switch (type) {
+    case 'string':
+    case 'number':
+    case 'boolean':
+    case 'bigint':
+    case 'symbol':
+    case 'undefined':
+    case 'null':
+      return true
+    default:
+      return false
+  }
 }
 
 export default isPrimitive
