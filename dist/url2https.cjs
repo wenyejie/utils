@@ -7,6 +7,7 @@ const regexp = require('./regexp.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const url2https = (url) => {
   if (!isString.isString(url)) {

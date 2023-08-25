@@ -1,7 +1,3 @@
-import { toRawType } from './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-
-const isBoolean = (obj) => toRawType(obj) === "boolean";
+const isBoolean = (obj) => obj === true || obj === false;
 
 export { isBoolean as default, isBoolean };

@@ -6,6 +6,7 @@ const isObject = require('./isObject.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const arrFindItemByProp = (array, prop, value) => {
   const props = isObject.isObject(prop) ? prop : { [prop]: value };

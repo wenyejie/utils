@@ -1,3 +1,3 @@
-const isText = (obj) => obj ? obj.nodeType === 3 : false;
+const isText = (obj) => obj?.nodeType === 3;
 
 export { isText as default, isText };

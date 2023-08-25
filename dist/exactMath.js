@@ -6,6 +6,7 @@ import './isNumber.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const rightPad = (n, len) => {
   if (len === 0) {

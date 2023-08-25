@@ -4,6 +4,7 @@ import { nullProtoObject } from './nullProtoObject.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 import './isString.js';
 
 const defaultOptions = {

@@ -8,6 +8,7 @@ const hasOwn = require('./hasOwn.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 require('./hasOwnProperty.cjs');
 require('./isUndefined.cjs');
 require('./isNull.cjs');

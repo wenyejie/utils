@@ -3,6 +3,7 @@ import { arrFindItemByProp } from './arrFindItemByProp.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const arrFindValByProp = (array, propKey, propValue, rtnPropKey) => {
   let props;

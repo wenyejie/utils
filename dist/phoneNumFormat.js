@@ -3,6 +3,7 @@ import { isInteger } from './isInteger.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const phoneNumFormat = (phone) => {
   if (isInteger(phone)) {

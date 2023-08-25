@@ -3,6 +3,7 @@ import { isString } from './isString.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const INTEGER_BIT = /^\d+\.?/;
 const decimalLength = (number) => {

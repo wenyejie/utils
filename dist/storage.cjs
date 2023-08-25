@@ -1,19 +1,17 @@
 'use strict';
 
-Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-
-const globalThis = require('./globalThis.cjs');
+Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
 
 class CustomStorage {
   storage;
   key;
-  constructor(name, key = "v") {
-    this.storage = globalThis.default[`${name}Storage`];
+  constructor(storage2, key = "v") {
+    this.storage = storage2;
     this.key = key;
   }
   /**
    * 获取存储内容
-   * @param key
+   * @param key 保存key
    */
   get(key) {
     let result;
@@ -26,8 +24,8 @@ class CustomStorage {
   }
   /**
    * 保存键值到存储空间
-   * @param key
-   * @param value
+   * @param key key
+   * @param value value
    */
   set(key, value) {
     try {
@@ -43,36 +41,25 @@ class CustomStorage {
   remove(key) {
     this.storage?.removeItem(key);
   }
-  /**
-   * 清空所有存储
-   */
-  clear() {
-    this.storage?.clear();
-  }
 }
-const localCustomStorage = new CustomStorage("local");
-const sessionCustomStorage = new CustomStorage("session");
-const storage = (customStorage) => {
+const storage = (storage2, key) => {
+  const instance = new CustomStorage(storage2, key);
   return (name, value) => {
     if (!name) {
       return;
     }
     switch (value) {
       case void 0:
-        return customStorage.get(name);
+        return instance.get(name);
       case null:
-        customStorage.remove(name);
+        instance.remove(name);
         break;
       default:
-        customStorage.set(name, value);
+        instance.set(name, value);
         break;
     }
   };
 };
-const session = storage(sessionCustomStorage);
-const local = storage(localCustomStorage);
 
-exports.local = local;
-exports.localCustomStorage = localCustomStorage;
-exports.session = session;
-exports.sessionCustomStorage = sessionCustomStorage;
+exports.default = storage;
+exports.storage = storage;

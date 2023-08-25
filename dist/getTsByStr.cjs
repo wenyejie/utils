@@ -9,6 +9,7 @@ const toMultiKeyOneValue = require('./toMultiKeyOneValue.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 require('./isArray.cjs');
 
 const strMap = toMultiKeyOneValue.toMultiKeyOneValue([

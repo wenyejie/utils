@@ -4,6 +4,7 @@ import './isNumber.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 import './isString.js';
 import './regexp.js';
 import './isInvalidDate.js';

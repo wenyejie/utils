@@ -8,6 +8,7 @@ const objectLength = require('./objectLength.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const isEmptyValue = (value) => {
   return value === void 0 || value === null || value === "" || Number.isNaN(value) || isArray.isArray(value) && value.length === 0 || isObject.isObject(value) && objectLength.objectLength(value) === 0;

@@ -3,6 +3,7 @@ import { rHttp, rHttps } from './regexp.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const url2http = (url) => {
   if (!isString(url)) {

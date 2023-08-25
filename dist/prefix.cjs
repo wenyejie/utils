@@ -6,6 +6,7 @@ const isString = require('./isString.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const prefix = (string) => {
   if (!isString.isString(string)) {

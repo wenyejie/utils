@@ -3,6 +3,7 @@ import globalThis from './globalThis.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const defaultOptions = {
   // 计时间隔

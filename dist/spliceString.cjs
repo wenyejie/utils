@@ -7,6 +7,7 @@ const isNumber = require('./isNumber.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const spliceString = (string, start, deleteCount = 0, insertString = "") => {
   if (!isString.isString(string)) {

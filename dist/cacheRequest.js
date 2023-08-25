@@ -1,10 +1,13 @@
-import { local, session } from './storage.js';
+import { local } from './local.js';
+import { session } from './session.js';
 import { isFunction } from './isFunction.js';
 import { inBrowser } from './env.js';
 import globalThis from './globalThis.js';
+import './storage.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const STORAGE_NAME_PREFIX = "s-catch-request-";
 const getStorageName = (name) => {

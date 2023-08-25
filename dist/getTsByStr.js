@@ -5,6 +5,7 @@ import { toMultiKeyOneValue } from './toMultiKeyOneValue.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 import './isArray.js';
 
 const strMap = toMultiKeyOneValue([

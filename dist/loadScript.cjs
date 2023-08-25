@@ -7,6 +7,7 @@ require('./isFunction.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 require('./isObject.cjs');
 require('./hasOwn.cjs');
 require('./hasOwnProperty.cjs');

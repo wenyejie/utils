@@ -1,4 +1,5 @@
-import { local, session } from './storage'
+import local from './local'
+import session from './session'
 import isFunction from './isFunction'
 import { inBrowser } from './env'
 import globalThis from './globalThis'
@@ -49,7 +50,7 @@ const defaultCatchRequestOptions = {
   storageMode: 'local',
   immediate: false,
   // 0表示永不超时
-  timeout: 0
+  timeout: 0,
 }
 
 /**

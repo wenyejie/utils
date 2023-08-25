@@ -5,6 +5,7 @@ Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toString
 const toRawType = require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const isNumber = (obj) => toRawType.toRawType(obj) === "number" && !Number.isNaN(obj);
 

@@ -6,13 +6,14 @@ const isObject = require('./isObject.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
-const ban = (data, ...rest) => {
+const ban = (obj, ...rest) => {
   let result = {};
-  if (!isObject.isObject(data)) {
+  if (!isObject.isObject(obj)) {
     return result;
   }
-  result = { ...data };
+  result = { ...obj };
   rest.forEach((key) => {
     delete result[key];
   });

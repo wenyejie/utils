@@ -7,6 +7,7 @@ const globalThis = require('./globalThis.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const defaultOptions = {
   // 计时间隔

@@ -7,6 +7,7 @@ const globalThis = require('./globalThis.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const isSameHost = (urlA, urlB = globalThis.default.location.href) => {
   if (!isString.isString(urlA)) {

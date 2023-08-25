@@ -7,6 +7,7 @@ require('./isNumber.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 require('./isString.cjs');
 
 const fraction = ["角", "分"];

@@ -6,6 +6,7 @@ const isString = require('./isString.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const downloadFile = (url, filename = "") => {
   if (!isString.isString(url)) {

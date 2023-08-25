@@ -3,6 +3,7 @@ import './isFunction.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 import './isObject.js';
 import './hasOwn.js';
 import './hasOwnProperty.js';

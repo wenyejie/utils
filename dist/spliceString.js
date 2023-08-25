@@ -3,6 +3,7 @@ import { isNumber } from './isNumber.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const spliceString = (string, start, deleteCount = 0, insertString = "") => {
   if (!isString(string)) {

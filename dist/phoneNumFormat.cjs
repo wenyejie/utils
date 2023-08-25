@@ -7,6 +7,7 @@ const isInteger = require('./isInteger.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const phoneNumFormat = (phone) => {
   if (isInteger.isInteger(phone)) {

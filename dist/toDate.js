@@ -6,6 +6,7 @@ import { isInvalidDate } from './isInvalidDate.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const toDate = (date, isNew = false) => {
   if (!date || isInvalidDate(date)) {
@@ -37,8 +38,5 @@ const toDate = (date, isNew = false) => {
   date = new Date(date);
   return isDate(date) ? date : null;
 };
-const toNewDate = (date) => {
-  return toDate(date, true);
-};
 
-export { toDate as default, toDate, toNewDate };
+export { toDate as default, toDate };

@@ -2,20 +2,23 @@
 
 Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
 
-const storage = require('./storage.cjs');
+const local = require('./local.cjs');
+const session = require('./session.cjs');
 const isFunction = require('./isFunction.cjs');
 const env = require('./env.cjs');
 const globalThis = require('./globalThis.cjs');
+require('./storage.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const STORAGE_NAME_PREFIX = "s-catch-request-";
 const getStorageName = (name) => {
   return STORAGE_NAME_PREFIX + name;
 };
 const getStorage = (storageMode) => {
-  return storageMode === "local" ? storage.local : storage.session;
+  return storageMode === "local" ? local.local : session.session;
 };
 const removeStorage = (storageMode = "local") => {
   if (!env.inBrowser()) {

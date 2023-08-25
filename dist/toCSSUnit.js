@@ -4,12 +4,13 @@ import { rInteger } from './regexp.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
-const toCSSUnit = (number, defaultUnit = "px") => {
-  if (isNumber(number) || rInteger.test(number)) {
-    return number + defaultUnit;
-  } else if (isString(number)) {
-    return number;
+const toCSSUnit = (value, unit = "px") => {
+  if (isNumber(value) || rInteger.test(value)) {
+    return value + unit;
+  } else if (isString(value)) {
+    return value;
   } else {
     return "";
   }

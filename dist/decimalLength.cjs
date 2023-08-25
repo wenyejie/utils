@@ -7,6 +7,7 @@ const isString = require('./isString.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const INTEGER_BIT = /^\d+\.?/;
 const decimalLength = (number) => {

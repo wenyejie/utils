@@ -5,10 +5,22 @@ Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toString
 const toRawType = require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const isPrimitive = (obj) => {
   const type = toRawType.toRawType(obj);
-  return type === "string" || type === "number" || type === "boolean" || type === "bigint" || type === "symbol" || type === "undefined" || type === "null";
+  switch (type) {
+    case "string":
+    case "number":
+    case "boolean":
+    case "bigint":
+    case "symbol":
+    case "undefined":
+    case "null":
+      return true;
+    default:
+      return false;
+  }
 };
 
 exports.default = isPrimitive;

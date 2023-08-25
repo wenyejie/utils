@@ -10,6 +10,7 @@ require('./isString.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const downloadBlob = (blob, filename) => {
   if (!isBlob.isBlob(blob)) {

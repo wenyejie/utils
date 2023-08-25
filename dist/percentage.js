@@ -4,6 +4,7 @@ import { divide } from './exactMath.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 import './decimalLength.js';
 import './toNumber.js';
 import './spliceString.js';

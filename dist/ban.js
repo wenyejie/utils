@@ -2,13 +2,14 @@ import { isObject } from './isObject.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
-const ban = (data, ...rest) => {
+const ban = (obj, ...rest) => {
   let result = {};
-  if (!isObject(data)) {
+  if (!isObject(obj)) {
     return result;
   }
-  result = { ...data };
+  result = { ...obj };
   rest.forEach((key) => {
     delete result[key];
   });

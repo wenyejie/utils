@@ -10,6 +10,7 @@ const globalThis = require('./globalThis.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const getCSS = (elt, prop, pseudoElt) => {
   if (!isString.isString(prop)) {

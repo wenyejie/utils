@@ -3,6 +3,7 @@ import { toDate } from './toDate.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 import './isNumber.js';
 import './isString.js';
 import './regexp.js';

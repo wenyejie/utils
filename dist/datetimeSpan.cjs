@@ -7,6 +7,7 @@ const camelize = require('./camelize.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const defOpts = {
   hasYear: true,
@@ -27,9 +28,13 @@ const defOpts = {
 };
 const typeArr = ["year", "month", "day", "hour", "minute", "second", "millisecond"];
 const datetimeSpan = (date, options = {}) => {
-  const opts = Object.assign({
-    compare: /* @__PURE__ */ new Date()
-  }, defOpts, options);
+  const opts = Object.assign(
+    {
+      compare: /* @__PURE__ */ new Date()
+    },
+    defOpts,
+    options
+  );
   let timestamp = isDate.isDate(date) ? Math.abs(date.getTime() - opts.compare.getTime()) : Number.parseInt(date);
   const result = {};
   typeArr.forEach((name) => {

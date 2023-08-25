@@ -8,6 +8,7 @@ const nullProtoObject = require('./nullProtoObject.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 require('./isString.cjs');
 
 const defaultOptions = {

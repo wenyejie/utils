@@ -4,6 +4,7 @@ import { hasOwn } from './hasOwn.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 import './hasOwnProperty.js';
 import './isUndefined.js';
 import './isNull.js';

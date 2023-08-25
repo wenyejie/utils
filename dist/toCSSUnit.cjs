@@ -8,12 +8,13 @@ const regexp = require('./regexp.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
-const toCSSUnit = (number, defaultUnit = "px") => {
-  if (isNumber.isNumber(number) || regexp.rInteger.test(number)) {
-    return number + defaultUnit;
-  } else if (isString.isString(number)) {
-    return number;
+const toCSSUnit = (value, unit = "px") => {
+  if (isNumber.isNumber(value) || regexp.rInteger.test(value)) {
+    return value + unit;
+  } else if (isString.isString(value)) {
+    return value;
   } else {
     return "";
   }

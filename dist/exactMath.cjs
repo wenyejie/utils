@@ -10,6 +10,7 @@ require('./isNumber.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const rightPad = (n, len) => {
   if (len === 0) {

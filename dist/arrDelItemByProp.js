@@ -2,6 +2,7 @@ import { isObject } from './isObject.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const arrDelItemByProp = (array, propKey, propValue) => {
   const propObj = isObject(propKey) ? propKey : { [propKey]: propValue };

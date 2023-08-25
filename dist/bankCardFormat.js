@@ -3,6 +3,7 @@ import { removeSpace } from './removeSpace.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const bankCardFormat = (card) => {
   if (!isString(card)) {

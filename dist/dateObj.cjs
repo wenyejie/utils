@@ -7,6 +7,7 @@ const toDate = require('./toDate.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 require('./isNumber.cjs');
 require('./isString.cjs');
 require('./regexp.cjs');

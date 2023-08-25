@@ -10,6 +10,7 @@ const isInvalidDate = require('./isInvalidDate.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const toDate = (date, isNew = false) => {
   if (!date || isInvalidDate.isInvalidDate(date)) {
@@ -41,10 +42,6 @@ const toDate = (date, isNew = false) => {
   date = new Date(date);
   return isDate.isDate(date) ? date : null;
 };
-const toNewDate = (date) => {
-  return toDate(date, true);
-};
 
 exports.default = toDate;
 exports.toDate = toDate;
-exports.toNewDate = toNewDate;

@@ -3,6 +3,7 @@ import { rHttps, rHttp } from './regexp.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const url2https = (url) => {
   if (!isString(url)) {

@@ -3,6 +3,7 @@ import { camelize } from './camelize.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const defOpts = {
   hasYear: true,
@@ -23,9 +24,13 @@ const defOpts = {
 };
 const typeArr = ["year", "month", "day", "hour", "minute", "second", "millisecond"];
 const datetimeSpan = (date, options = {}) => {
-  const opts = Object.assign({
-    compare: /* @__PURE__ */ new Date()
-  }, defOpts, options);
+  const opts = Object.assign(
+    {
+      compare: /* @__PURE__ */ new Date()
+    },
+    defOpts,
+    options
+  );
   let timestamp = isDate(date) ? Math.abs(date.getTime() - opts.compare.getTime()) : Number.parseInt(date);
   const result = {};
   typeArr.forEach((name) => {

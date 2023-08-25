@@ -6,6 +6,7 @@ const isObject = require('./isObject.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const arrDelItemByProp = (array, propKey, propValue) => {
   const propObj = isObject.isObject(propKey) ? propKey : { [propKey]: propValue };

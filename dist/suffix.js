@@ -2,6 +2,7 @@ import { isString } from './isString.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const suffix = (string) => {
   if (!isString(string)) {

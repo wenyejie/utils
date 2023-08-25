@@ -6,6 +6,7 @@ import globalThis from './globalThis.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 
 const getCSS = (elt, prop, pseudoElt) => {
   if (!isString(prop)) {

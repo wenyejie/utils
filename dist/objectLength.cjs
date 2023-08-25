@@ -6,6 +6,7 @@ const isObject = require('./isObject.cjs');
 require('./toRawType.cjs');
 require('./toTypeString.cjs');
 require('./objectToString.cjs');
+require('./decapitalize.cjs');
 
 const objectLength = (obj) => {
   if (!isObject.isObject(obj)) {

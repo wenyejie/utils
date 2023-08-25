@@ -3,6 +3,7 @@ import './isNumber.js';
 import './toRawType.js';
 import './toTypeString.js';
 import './objectToString.js';
+import './decapitalize.js';
 import './isString.js';
 
 const fraction = ["角", "分"];
