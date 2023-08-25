@@ -125,6 +125,6 @@ export { unique } from './unique.js';
 export { url2http } from './url2http.js';
 export { url2https } from './url2https.js';
 
-const VERSION = "2.0.2";
+const VERSION = "2.0.3";
 
 export { VERSION };

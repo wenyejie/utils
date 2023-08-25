@@ -129,7 +129,7 @@ const unique = require('./unique.cjs');
 const url2http = require('./url2http.cjs');
 const url2https = require('./url2https.cjs');
 
-const VERSION = "2.0.2";
+const VERSION = "2.0.3";
 
 exports.arrDelItemByProp = arrDelItemByProp.arrDelItemByProp;
 exports.arrDelItemByVal = arrDelItemByVal.arrDelItemByVal;
