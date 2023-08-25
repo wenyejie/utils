@@ -1,21 +1,22 @@
 const getGlobalThis = () => {
-  if (typeof self !== "undefined") {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  } else if (typeof self !== "undefined") {
     return self;
-  }
-  if (typeof window !== "undefined") {
+  } else if (typeof window !== "undefined") {
     return window;
-  }
-  if (typeof global !== "undefined") {
+  } else if (typeof global !== "undefined") {
     return global;
+  } else {
+    return Function("return this")();
   }
-  throw new Error("unable to locate global object");
 };
 let gt;
 try {
   gt = globalThis;
-} catch (e) {
+} catch {
   gt = getGlobalThis();
 }
 const globalThis$1 = gt;
 
-export { globalThis$1 as default, getGlobalThis, gt as globalThis };
+export { globalThis$1 as default, gt as globalThis };

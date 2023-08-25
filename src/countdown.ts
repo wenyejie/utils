@@ -1,90 +1,113 @@
-import isFunction from './isFunction'
 import globalThis from './globalThis'
+import isFunction from '@/isFunction'
 
-interface CountdownOptions {
-  timeout?: number
-  autostart?: boolean
-  padStart?: boolean
-  change?(...rest: any[]): any
-  start?(...rest: any[]): any
-  stop?(...rest: any[]): any
-  restart?(...rest: any[]): any
-  end?(...rest: any[]): any
-}
-
-const defaultOptions:CountdownOptions = {
-  // 计时间隔
-  timeout: 1000,
-  // 是否自动开始
+const DEFAULT_OPTIONS: CountdownOptions = {
+  delay: 1000,
+  decrement: 1,
   autostart: true,
-  // 是否前置补零
-  padStart: true
+  end: 0,
 }
 
-/**
- * 倒计时
- * @param second
- * @param options
- */
-export class Countdown {
-  private readonly second: number
+class Countdown {
+  // 倒计时的值
+  private value: number
+  // 倒计时计时器ID
+  private intervalId: number
+  // 选项
   private readonly options: CountdownOptions
-  private count: number
-  private timer: number
-  constructor(second: number, options?:CountdownOptions | CountdownOptions['change']) {
-    this.second = second
-    this.count = 0
+  // 回调队列
+  private readonly callbackQueues: Record<string, CountdownCallback[]> = {}
+
+  constructor(value: number | CountdownOptions, options?: CountdownOptions | CountdownCallback) {
     if (isFunction(options)) {
-      options = { change: options as CountdownOptions['change'] }
+      this.on('change', <CountdownCallback>options)
     }
-
-    this.options = Object.assign({ ...defaultOptions }, options)
-
+    this.options = Object.assign({ ...DEFAULT_OPTIONS }, options, typeof value === 'number' ? { value } : value)
+    this.value = this.options.value
     if (this.options.autostart) {
       this.start()
     }
   }
 
-  private callback(cbName: string) {
-    if (isFunction(this.options[cbName])) {
-      const count = this.options.padStart ? `${this.count}`.padStart(2, '0') : `${this.count}`
-      this.options[cbName](count, this)
+  /**
+   * 监听事件
+   * @param eventName 事件名称
+   * @param callback // 事件回调
+   */
+  on(eventName: CountdownEventName, callback: CountdownCallback) {
+    const queue = this.callbackQueues[eventName] ?? []
+    queue.push(callback)
+    this.callbackQueues[eventName] = queue
+  }
+
+  /**
+   * 触发事件
+   * @param eventName 事件名称
+   */
+  trigger(eventName: CountdownEventName) {
+    const queue = this.callbackQueues[eventName]
+    if (!Array.isArray(queue)) {
+      return
     }
+    queue.forEach((cb) => cb.call(this, this.value))
   }
 
-  loop() {
-    this.callback('change')
-    this.timer = globalThis.setInterval(() => {
-      this.count--
-      this.callback('change')
-      if (this.count === 0) {
-        clearInterval(this.timer)
-        this.callback('end')
-      }
-    }, this.options.timeout)
+  // 倒计时
+  private decrease() {
+    this.value = this.value - this.options.decrement
+    if (this.value <= this.options.end) {
+      clearInterval(this.intervalId)
+      this.trigger('finish')
+    }
+    this.trigger('change')
   }
 
-  restart() {
-    this.count = this.second
-    this.callback('restart')
-    this.loop()
+  // 循环
+  private loop() {
+    this.clear()
+    this.intervalId = globalThis.setInterval(this.decrease.bind(this), this.options.delay)
   }
 
+  // 清除倒计时
+  private clear() {
+    clearInterval(this.intervalId)
+    this.intervalId = 0
+  }
+
+  // 开始
   start() {
-    if (this.count <= 0) {
-      this.count = this.second
+    if (this.options.value > this.value) {
+      return
     }
-    this.callback('start')
     this.loop()
+    this.trigger('start')
   }
 
+  // 停止
   stop() {
-    clearInterval(this.timer)
-    this.callback('stop')
+    if (this.intervalId === 0) {
+      return
+    }
+    this.clear()
+    this.trigger('stop')
   }
 
-  static create(second: number, options: CountdownOptions | CountdownOptions['change']) {
-    return new Countdown(second, options)
+  // 继续
+  continue() {
+    if (this.intervalId !== 0) {
+      return
+    }
+    this.loop()
+    this.trigger('continue')
+  }
+
+  /**
+   * 创建倒计时实例
+   * @param value 倒计时
+   * @param options 选项
+   */
+  static create(value: number, options?: CountdownOptions) {
+    return new Countdown(value, options)
   }
 }
 

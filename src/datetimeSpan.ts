@@ -2,10 +2,11 @@ import isDate from './isDate'
 import camelize from './camelize'
 
 interface DatetimeSpanOptions {
+  types?: string[]
   hasYear?: boolean
   year?: number
-  hasMonth?: boolean
-  month?: number
+  hasWeek?: boolean
+  week?: number
   hasDay?: boolean
   day?: number
   hasHour?: boolean
@@ -22,7 +23,7 @@ interface DatetimeSpanOptions {
 
 interface DatetimeSpanResult {
   year?: number
-  month?: number
+  week?: number
   day?: number
   hour?: number
   minute?: number
@@ -31,24 +32,23 @@ interface DatetimeSpanResult {
 }
 
 const defOpts: DatetimeSpanOptions = {
-  hasYear: true,
+  types: ['year', 'week', 'day', 'hour', 'minute', 'second'],
+  hasYear: false,
   year: 31536e6,
-  hasMonth: false,
-  month: 2592e6,
+  hasWeek: false,
+  week: 6048e5,
   hasDay: true,
   day: 864e5,
   hasHour: true,
   hour: 36e5,
   hasMinute: true,
   minute: 6e4,
-  hasSecond: false,
+  hasSecond: true,
   second: 1e3,
   hasMillisecond: false,
   millisecond: 1,
   defaultValue: '',
 }
-
-const typeArr = ['year', 'month', 'day', 'hour', 'minute', 'second', 'millisecond']
 
 /**
  * 获取时间戳的年月日,
@@ -68,7 +68,7 @@ export const datetimeSpan = (date: LikeDate, options: DatetimeSpanOptions = {}) 
     ? Math.abs((date as Date).getTime() - opts.compare.getTime())
     : Number.parseInt(date as string)
   const result: DatetimeSpanResult = {}
-  typeArr.forEach((name) => {
+  opts.types.forEach((name) => {
     if (opts[camelize(`has-${name}`)]) {
       result[name] = Math.floor(timestamp / opts[name])
       timestamp %= opts[name]

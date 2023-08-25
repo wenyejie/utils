@@ -3,24 +3,24 @@
 Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
 
 const getGlobalThis = () => {
-  if (typeof self !== "undefined") {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  } else if (typeof self !== "undefined") {
     return self;
-  }
-  if (typeof window !== "undefined") {
+  } else if (typeof window !== "undefined") {
     return window;
-  }
-  if (typeof global !== "undefined") {
+  } else if (typeof global !== "undefined") {
     return global;
+  } else {
+    return Function("return this")();
   }
-  throw new Error("unable to locate global object");
 };
 exports.globalThis = void 0;
 try {
   exports.globalThis = globalThis;
-} catch (e) {
+} catch {
   exports.globalThis = getGlobalThis();
 }
 const globalThis$1 = exports.globalThis;
 
 exports.default = globalThis$1;
-exports.getGlobalThis = getGlobalThis;

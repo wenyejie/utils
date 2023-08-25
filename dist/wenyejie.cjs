@@ -148,7 +148,6 @@ exports.capitalize = capitalize.capitalize;
 exports.checkIDNO = checkIDNO.checkIDNO;
 exports.checkTaxpayerIDNO = checkTaxpayerIDNO.checkTaxpayerIDNO;
 exports.clone = clone.clone;
-exports.Countdown = countdown.Countdown;
 exports.countdown = countdown.countdown;
 exports.getCSS = css.getCSS;
 exports.setCSS = css.setCSS;
@@ -203,7 +202,6 @@ exports.freezeObj = freezeObj.freezeObj;
 exports.getDaysByMonth = getDaysByMonth.getDaysByMonth;
 exports.getInfoByCardNO = getInfoByCardNO.getInfoByCardNO;
 exports.getTsByStr = getTsByStr.getTsByStr;
-exports.getGlobalThis = globalThis.getGlobalThis;
 Object.defineProperty(exports, 'globalThis', {
 	enumerable: true,
 	get: () => globalThis.globalThis
