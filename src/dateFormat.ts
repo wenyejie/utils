@@ -1,5 +1,5 @@
 import toDate from './toDate'
-import isDate from './isDate'
+import isInvalidDate from './isInvalidDate'
 import padStart from './padStart'
 
 /**
@@ -9,43 +9,43 @@ import padStart from './padStart'
  * @param defaultValue string
  */
 export const dateFormat = (date: LikeDate, format = 'YYYY-MM-DD hh:mm:ss', defaultValue = '') => {
-  date = toDate(date)
-  if (!isDate(date)) {
+  const newDate = toDate(date)
+  if (isInvalidDate(newDate)) {
     return defaultValue
   }
 
   return format.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (str) => {
     switch (str) {
       case 'YYYY':
-        return (date as Date).getFullYear() + ''
+        return newDate.getFullYear() + ''
       case 'YY':
-        return ((date as Date).getFullYear() % 100) + ''
+        return (newDate.getFullYear() % 100) + ''
       case 'MM':
-        return padStart((date as Date).getMonth() + 1)
+        return padStart(newDate.getMonth() + 1)
       case 'M':
-        return (date as Date).getMonth() + 1 + ''
+        return newDate.getMonth() + 1 + ''
       case 'DD':
-        return padStart((date as Date).getDate())
+        return padStart(newDate.getDate())
       case 'D':
-        return (date as Date).getDate() + ''
+        return newDate.getDate() + ''
       case 'hh':
-        return padStart((date as Date).getHours())
+        return padStart(newDate.getHours())
       case 'h':
-        return (date as Date).getHours() + ''
+        return newDate.getHours() + ''
       case 'mm':
-        return padStart((date as Date).getMinutes())
+        return padStart(newDate.getMinutes())
       case 'm':
-        return (date as Date).getMinutes() + ''
+        return newDate.getMinutes() + ''
       case 'ss':
-        return padStart((date as Date).getSeconds())
+        return padStart(newDate.getSeconds())
       case 's':
-        return (date as Date).getSeconds() + ''
+        return newDate.getSeconds() + ''
       case 'SSS':
-        return padStart((date as Date).getMilliseconds(), 3)
+        return padStart(newDate.getMilliseconds(), 3)
       case 'SS':
-        return padStart(Math.floor((date as Date).getMilliseconds() / 10))
+        return padStart(Math.floor(newDate.getMilliseconds() / 10))
       case 'S':
-        return Math.floor((date as Date).getMilliseconds() / 100) + ''
+        return Math.floor(newDate.getMilliseconds() / 100) + ''
       default:
         return ''
     }
