@@ -50,3 +50,16 @@ interface PublishSubscribeCallbackMapItem {
 interface PublishSubscribeCallbackMap {
   [key: string]: PublishSubscribeCallbackMapItem
 }
+
+// 日期对象返回结果
+interface DateObjResult {
+  year?: number
+  month?: number
+  day?: number
+  week?: number
+  hour?: number
+  minute?: number
+  second?: number
+  millisecond?: number
+  time?: number
+}
