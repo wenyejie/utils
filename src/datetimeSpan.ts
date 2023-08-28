@@ -53,11 +53,11 @@ const defOpts: DatetimeSpanOptions = {
 /**
  * 获取时间戳的年月日,
  * 比如: 剩余1年28天6时30分
- * @param date
- * @param options
+ * @param date 日期
+ * @param options 选项
  */
-export const datetimeSpan = (date: LikeDate, options: DatetimeSpanOptions = {}) => {
-  const opts = Object.assign(
+export const datetimeSpan = (date: LikeDate, options?: DatetimeSpanOptions) => {
+  const opts: DatetimeSpanOptions = Object.assign(
     {
       compare: new Date(),
     },

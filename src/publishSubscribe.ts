@@ -1,6 +1,29 @@
 import isFunction from './isFunction'
 import arrDelItemByProp from './arrDelItemByProp'
 
+// 发布订阅的订阅选项
+interface PublishSubscribeOnOptions {
+  immediate?: boolean
+  once?: boolean
+}
+
+// 发布订阅回调Map队列
+interface PublishSubscribeCallbackMapQueue {
+  once?: boolean
+  callback: AnyFn
+}
+
+//发布订阅的回调Map子项
+interface PublishSubscribeCallbackMapItem {
+  data?: any
+  queue: PublishSubscribeCallbackMapQueue[]
+}
+
+// 发布订阅的回调Map
+interface PublishSubscribeCallbackMap {
+  [key: string]: PublishSubscribeCallbackMapItem
+}
+
 export class PublishSubscribe {
   private readonly callbackMap: PublishSubscribeCallbackMap = {}
 

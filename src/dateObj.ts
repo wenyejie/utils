@@ -1,6 +1,19 @@
 import isDate from './isDate'
 import toDate from './toDate'
 
+// 日期对象返回结果
+interface DateObjResult {
+  year?: number
+  month?: number
+  day?: number
+  week?: number
+  hour?: number
+  minute?: number
+  second?: number
+  millisecond?: number
+  time?: number
+}
+
 /**
  * 获取获取日期对象
  * @param date 日期
