@@ -3,7 +3,7 @@ import isDate from './isDate'
 
 /**
  * 获取当前月份的天数
- * @param date
+ * @param date 日期
  */
 export const getDaysByMonth = (date: LikeDate) => {
   date = toDate(date)
