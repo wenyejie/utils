@@ -1,5 +1,5 @@
 import globalThis from './globalThis'
-import isFunction from '@/isFunction'
+import isFunction from './isFunction'
 
 const DEFAULT_OPTIONS: CountdownOptions = {
   delay: 1000,
