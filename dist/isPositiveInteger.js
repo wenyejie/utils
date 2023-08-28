@@ -1,5 +1,6 @@
-import { isInteger } from './isInteger.js';
-
-const isPositiveInteger = (obj) => isInteger(obj) && obj > 0;
-
-export { isPositiveInteger as default, isPositiveInteger };
+import { isInteger as t } from "./isInteger.js";
+const r = (e) => t(e) && e > 0;
+export {
+  r as default,
+  r as isPositiveInteger
+};

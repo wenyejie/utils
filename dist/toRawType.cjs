@@ -1,14 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const toTypeString = require('./toTypeString.cjs');
-const decapitalize = require('./decapitalize.cjs');
-require('./objectToString.cjs');
-
-const toRawType = (obj) => {
-  return decapitalize.decapitalize(toTypeString.toTypeString(obj).slice(8, -1));
-};
-
-exports.default = toRawType;
-exports.toRawType = toRawType;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./toTypeString.cjs"),i=require("./decapitalize.cjs");require("./objectToString.cjs");const e=t=>i.decapitalize(r.toTypeString(t).slice(8,-1));exports.default=e;exports.toRawType=e;

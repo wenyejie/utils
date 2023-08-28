@@ -1,15 +1,10 @@
-import { isString } from './isString.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const rSpace = /\s+/g;
-const removeSpace = (string) => {
-  if (!isString(string)) {
-    return "";
-  }
-  return string.replace(rSpace, "");
+import { isString as t } from "./isString.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const e = /\s+/g, c = (r) => t(r) ? r.replace(e, "") : "";
+export {
+  c as default,
+  c as removeSpace
 };
-
-export { removeSpace as default, removeSpace };

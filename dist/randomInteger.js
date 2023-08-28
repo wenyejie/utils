@@ -1,7 +1,8 @@
-const randomInteger = (max, min = 0) => {
-  const cMax = Math.max(max, min);
-  const cMin = Math.min(max, min);
-  return Math.floor(Math.random() * (cMax - cMin + 1)) + cMin;
+const r = (t, a = 0) => {
+  const o = Math.max(t, a), n = Math.min(t, a);
+  return Math.floor(Math.random() * (o - n + 1)) + n;
 };
-
-export { randomInteger as default, randomInteger };
+export {
+  r as default,
+  r as randomInteger
+};

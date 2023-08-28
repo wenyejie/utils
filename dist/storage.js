@@ -1,60 +1,59 @@
-class CustomStorage {
+class a {
   storage;
   key;
-  constructor(storage2, key = "v") {
-    this.storage = storage2;
-    this.key = key;
+  constructor(e, t = "v") {
+    this.storage = e, this.key = t;
   }
   /**
    * 获取存储内容
    * @param key 保存key
    */
-  get(key) {
-    let result;
+  get(e) {
+    let t;
     try {
-      result = JSON.parse(this.storage?.getItem(key))?.[this.key];
-    } catch (e) {
-      throw new Error(e);
+      t = JSON.parse(this.storage?.getItem(e))?.[this.key];
+    } catch (r) {
+      throw new Error(r);
     }
-    return result;
+    return t;
   }
   /**
    * 保存键值到存储空间
    * @param key key
    * @param value value
    */
-  set(key, value) {
+  set(e, t) {
     try {
-      this.storage?.setItem(key, JSON.stringify({ [this.key]: value }));
-    } catch (e) {
-      throw new Error(e);
+      this.storage?.setItem(e, JSON.stringify({ [this.key]: t }));
+    } catch (r) {
+      throw new Error(r);
     }
   }
   /**
    * 移除存储值
    * @param key
    */
-  remove(key) {
-    this.storage?.removeItem(key);
+  remove(e) {
+    this.storage?.removeItem(e);
   }
 }
-const storage = (storage2, key) => {
-  const instance = new CustomStorage(storage2, key);
-  return (name, value) => {
-    if (!name) {
-      return;
-    }
-    switch (value) {
-      case void 0:
-        return instance.get(name);
-      case null:
-        instance.remove(name);
-        break;
-      default:
-        instance.set(name, value);
-        break;
-    }
+const c = (s, e) => {
+  const t = new a(s, e);
+  return (r, o) => {
+    if (r)
+      switch (o) {
+        case void 0:
+          return t.get(r);
+        case null:
+          t.remove(r);
+          break;
+        default:
+          t.set(r, o);
+          break;
+      }
   };
 };
-
-export { storage as default, storage };
+export {
+  c as default,
+  c as storage
+};

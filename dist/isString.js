@@ -1,8 +1,9 @@
-import { toRawType } from './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const isString = (obj) => toRawType(obj) === "string" && obj.trim().length > 0;
-
-export { isString as default, isString };
+import { toRawType as r } from "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const e = (t) => r(t) === "string" && t.trim().length > 0;
+export {
+  e as default,
+  e as isString
+};

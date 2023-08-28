@@ -1,8 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isPromise = (obj) => obj instanceof Promise;
-
-exports.default = isPromise;
-exports.isPromise = isPromise;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=s=>s instanceof Promise;exports.default=e;exports.isPromise=e;

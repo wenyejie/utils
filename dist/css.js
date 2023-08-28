@@ -1,37 +1,25 @@
-import { camelize } from './camelize.js';
-import { hyphenate } from './hyphenate.js';
-import { isString } from './isString.js';
-import { isJson } from './isJson.js';
-import globalThis from './globalThis.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const getCSS = (elt, prop, pseudoElt) => {
-  if (!isString(prop)) {
-    return document.defaultView.getComputedStyle(elt, pseudoElt);
-  }
-  return document.defaultView.getComputedStyle(elt, pseudoElt)[camelize(prop)];
+import { camelize as i } from "./camelize.js";
+import { hyphenate as n } from "./hyphenate.js";
+import { isString as m } from "./isString.js";
+import { isJson as f } from "./isJson.js";
+import u from "./globalThis.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const S = (e, t, o) => m(t) ? document.defaultView.getComputedStyle(e, o)[i(t)] : document.defaultView.getComputedStyle(e, o), l = (e, t, o) => {
+  let r = {};
+  m(t) ? r[i(t)] = o : f(t) && (r = t);
+  for (const s in r)
+    e.style[s] = r[s];
+}, p = (e, t) => u.CSS?.supports?.(n(e), t), b = {
+  get: S,
+  set: l,
+  support: p
 };
-const setCSS = (elt, prop, value) => {
-  let styles = {};
-  if (isString(prop)) {
-    styles[camelize(prop)] = value;
-  } else if (isJson(prop)) {
-    styles = prop;
-  }
-  for (const key in styles) {
-    elt.style[key] = styles[key];
-  }
+export {
+  b as default,
+  S as getCSS,
+  l as setCSS,
+  p as supportCSS
 };
-const supportCSS = (prop, value) => {
-  return globalThis.CSS?.supports?.(hyphenate(prop), value);
-};
-const css = {
-  get: getCSS,
-  set: setCSS,
-  support: supportCSS
-};
-
-export { css as default, getCSS, setCSS, supportCSS };

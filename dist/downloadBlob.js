@@ -1,28 +1,23 @@
-import { downloadFile } from './downloadFile.js';
-import { isBlob } from './isBlob.js';
-import { suffix } from './suffix.js';
-import globalThis from './globalThis.js';
-import './isString.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const downloadBlob = (blob, filename) => {
-  if (!isBlob(blob)) {
+import { downloadFile as m } from "./downloadFile.js";
+import { isBlob as a } from "./isBlob.js";
+import { suffix as e } from "./suffix.js";
+import t from "./globalThis.js";
+import "./isString.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const B = (r, o) => {
+  if (!a(r))
     throw new Error("参数错误: blob不是Blob类型");
-  }
-  if (!suffix(filename)) {
-    filename = filename + "." + blob.type.replace(/image\//, "");
-    console.warn("参数错误: filename没有后缀名");
-  }
-  if (globalThis.navigator?.["msSaveBlob"]) {
-    globalThis.navigator?.["msSaveBlob"](blob, filename);
+  if (e(o) || (o = o + "." + r.type.replace(/image\//, ""), console.warn("参数错误: filename没有后缀名")), t.navigator?.msSaveBlob) {
+    t.navigator?.msSaveBlob(r, o);
     return;
   }
-  const url = globalThis.URL.createObjectURL(blob);
-  downloadFile(url, filename);
-  globalThis.URL.revokeObjectURL(url);
+  const i = t.URL.createObjectURL(r);
+  m(i, o), t.URL.revokeObjectURL(i);
 };
-
-export { downloadBlob as default, downloadBlob };
+export {
+  B as default,
+  B as downloadBlob
+};

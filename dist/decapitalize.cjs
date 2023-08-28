@@ -1,10 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const decapitalize = (str) => {
-  return str.charAt(0).toLowerCase() + str.slice(1);
-};
-
-exports.decapitalize = decapitalize;
-exports.default = decapitalize;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=e=>e.charAt(0).toLowerCase()+e.slice(1);exports.decapitalize=t;exports.default=t;

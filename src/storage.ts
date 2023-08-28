@@ -45,6 +45,12 @@ class CustomStorage {
   }
 }
 
+type StorageFn = {
+  (name: string): any
+  (name: string, value: null): void
+  (name: string, value: any): void
+}
+
 /**
  * 存储
  * @param storage 存储

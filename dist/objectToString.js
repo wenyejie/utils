@@ -1,3 +1,5 @@
-const objectToString = Object.prototype.toString;
-
-export { objectToString as default, objectToString };
+const t = Object.prototype.toString;
+export {
+  t as default,
+  t as objectToString
+};

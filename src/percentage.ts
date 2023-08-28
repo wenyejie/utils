@@ -10,7 +10,7 @@ export interface PercentageOptions {
   symbol?: string
 }
 
-const defaultOptions:PercentageOptions = {
+const defaultOptions: PercentageOptions = {
   fractionDigits: 2, // 保留小数位
   padEnd: false, // 是否需要后续补零
   defaultValue: '', // 默认值, 即当输入值无法被转化时显示的值
@@ -24,13 +24,13 @@ const defaultOptions:PercentageOptions = {
  * @param value 数据
  * @param options 选项
  */
-export const percentage = (value: number | string, options:PercentageOptions = {}) => {
+export const percentage = (value: number | string, options: PercentageOptions = {}) => {
   options = Object.assign({}, defaultOptions, options)
   if (isString(value)) {
-    if ((value as string).includes(options.symbol)) {
-      return value as string
+    if ((<string>value).includes(options.symbol)) {
+      return <string>value
     }
-    value = Number.parseFloat(value as string)
+    value = Number.parseFloat(<string>value)
   }
 
   if (!isNumber(value)) {
@@ -45,7 +45,6 @@ export const percentage = (value: number | string, options:PercentageOptions = {
   }
 
   return `${value}${options.symbol}`
-
 }
 
 export default percentage

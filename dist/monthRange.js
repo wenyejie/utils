@@ -1,43 +1,28 @@
-import { toDate } from './toDate.js';
-import { isDate } from './isDate.js';
-import './isNumber.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-import './isString.js';
-import './regexp.js';
-import './isInvalidDate.js';
-
-const monthRange = (date, type = "range") => {
-  date = toDate(date);
-  const result = {
+import { toDate as s } from "./toDate.js";
+import { isDate as i } from "./isDate.js";
+import "./isNumber.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+import "./isString.js";
+import "./regexp.js";
+import "./isInvalidDate.js";
+const w = (t, r = "range") => {
+  t = s(t);
+  const n = {
     start: null,
     end: null
   };
-  if (!isDate(date)) {
-    console.error("参数错误", date);
-    return type === "range" ? result : null;
-  }
-  const start = new Date(date);
-  if (type !== "end") {
-    start.setDate(1);
-    start.setHours(0, 0, 0, 0);
-    if (type === "start") {
-      return start;
-    }
-  }
-  const end = new Date(date);
-  if (type !== "start") {
-    end.setMonth(end.getMonth() + 1, 0);
-    end.setHours(23, 59, 59, 999);
-    if (type === "end") {
-      return end;
-    }
-  }
-  result.start = start;
-  result.end = end;
-  return result;
+  if (!i(t))
+    return console.error("参数错误", t), r === "range" ? n : null;
+  const e = new Date(t);
+  if (r !== "end" && (e.setDate(1), e.setHours(0, 0, 0, 0), r === "start"))
+    return e;
+  const o = new Date(t);
+  return r !== "start" && (o.setMonth(o.getMonth() + 1, 0), o.setHours(23, 59, 59, 999), r === "end") ? o : (n.start = e, n.end = o, n);
 };
-
-export { monthRange as default, monthRange };
+export {
+  w as default,
+  w as monthRange
+};

@@ -1,15 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isUndefined = require('./isUndefined.cjs');
-
-const padStart = (obj, maxLength = 2, fillString = "0") => {
-  if (isUndefined.isUndefined(obj) || Number.isNaN(obj)) {
-    obj = "";
-  }
-  return `${obj}`.padStart(maxLength, fillString);
-};
-
-exports.default = padStart;
-exports.padStart = padStart;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const d=require("./isUndefined.cjs"),t=(e,r=2,a="0")=>((d.isUndefined(e)||Number.isNaN(e))&&(e=""),`${e}`.padStart(r,a));exports.default=t;exports.padStart=t;

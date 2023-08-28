@@ -1,39 +1,26 @@
-import { local } from './local.js';
-import { session } from './session.js';
-import { isFunction } from './isFunction.js';
-import { inBrowser } from './env.js';
-import globalThis from './globalThis.js';
-import './storage.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const STORAGE_NAME_PREFIX = "s-catch-request-";
-const getStorageName = (name) => {
-  return STORAGE_NAME_PREFIX + name;
-};
-const getStorage = (storageMode) => {
-  return storageMode === "local" ? local : session;
-};
-const removeStorage = (storageMode = "local") => {
-  if (!inBrowser()) {
+import { local as n } from "./local.js";
+import { session as h } from "./session.js";
+import { isFunction as l } from "./isFunction.js";
+import { inBrowser as p } from "./env.js";
+import g from "./globalThis.js";
+import "./storage.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const r = "s-catch-request-", o = (s) => r + s, e = (s) => s === "local" ? n : h, a = (s = "local") => {
+  if (!p())
     return;
-  }
-  const storage = globalThis[storageMode + "Storage"];
-  for (let name in storage) {
-    if (name.indexOf(STORAGE_NAME_PREFIX) >= 0) {
-      storage.removeItem(name);
-    }
-  }
-};
-const defaultCatchRequestOptions = {
+  const t = g[s + "Storage"];
+  for (let i in t)
+    i.indexOf(r) >= 0 && t.removeItem(i);
+}, c = {
   storageMode: "local",
-  immediate: false,
+  immediate: !1,
   // 0表示永不超时
   timeout: 0
 };
-class CacheRequest {
+class m {
   loading;
   timestamp;
   options;
@@ -44,57 +31,29 @@ class CacheRequest {
    * 构造函数
    * @param options 选项
    */
-  constructor(options) {
-    this.loading = 0;
-    this.timestamp = 0;
-    this.options = Object.assign(defaultCatchRequestOptions, options);
-    if (this.options.storageMode !== "none") {
-      this.storage = getStorage(this.options.storageMode);
-    }
-    if (this.options.immediate) {
-      this.get();
-    }
+  constructor(t) {
+    this.loading = 0, this.timestamp = 0, this.options = Object.assign(c, t), this.options.storageMode !== "none" && (this.storage = e(this.options.storageMode)), this.options.immediate && this.get();
   }
   /**
    * 获取数据
    * @param disableCache 是否禁用缓存
    */
-  get(disableCache = false) {
-    if (!disableCache) {
-      if (this.loading === 2 && !this.isTimeout()) {
+  get(t = !1) {
+    if (!t) {
+      if (this.loading === 2 && !this.isTimeout())
         return Promise.resolve(this.data);
-      }
-      if (this.loading === 1) {
+      if (this.loading === 1)
         return this.promise;
-      }
       if (this.options.storageMode !== "none") {
-        const data = this.storage(this.getStorageName());
-        if (data !== void 0) {
-          this.timestamp = data.timestamp;
-          if (!this.isTimeout()) {
-            this.data = data.value;
-            this.loading = 2;
-            return Promise.resolve(this.data);
-          }
-        }
+        const i = this.storage(this.getStorageName());
+        if (i !== void 0 && (this.timestamp = i.timestamp, !this.isTimeout()))
+          return this.data = i.value, this.loading = 2, Promise.resolve(this.data);
       }
     }
-    this.loading = 1;
-    this.promise = this.options.method().then((data) => {
-      if (isFunction(this.options.success)) {
-        this.options.success(data);
-      }
-      this.data = data;
-      this.timestamp = Date.now();
-      if (this.options.storageMode !== "none") {
-        this.storage(this.getStorageName(), {
-          value: this.data,
-          timestamp: this.timestamp
-        });
-      }
-      return data;
-    });
-    return this.promise;
+    return this.loading = 1, this.promise = this.options.method().then((i) => (l(this.options.success) && this.options.success(i), this.data = i, this.timestamp = Date.now(), this.options.storageMode !== "none" && this.storage(this.getStorageName(), {
+      value: this.data,
+      timestamp: this.timestamp
+    }), i)), this.promise;
   }
   /**
    * 判断缓存的数据有没有超时, 即: 没有设置超时, 或者没有超时
@@ -106,43 +65,38 @@ class CacheRequest {
    * 获取存储名称
    */
   getStorageName() {
-    return getStorageName(this.options.storageName);
+    return o(this.options.storageName);
   }
   /**
    * 移除存储的信息
    */
   remove() {
-    if (this.storage) {
-      this.storage(this.getStorageName(), null);
-    }
+    this.storage && this.storage(this.getStorageName(), null);
   }
   /**
    * 创建新的实例
    * @param options
    */
-  static create(options) {
-    return new CacheRequest(options);
+  static create(t) {
+    return new m(t);
   }
   /**
    * 移除本地的缓存存储
    * @param storageName
    * @param storageMode
    */
-  static remove(storageName, storageMode = "local") {
-    getStorage(storageMode)(getStorageName(storageName), null);
+  static remove(t, i = "local") {
+    e(i)(o(t), null);
   }
   /**
    * 移除所有的缓存请求数据
    * @param storageMode
    */
-  static removeAll(storageMode) {
-    if (storageMode === void 0 || storageMode === "local") {
-      removeStorage("local");
-    }
-    if (storageMode === void 0 || storageMode === "session") {
-      removeStorage("session");
-    }
+  static removeAll(t) {
+    (t === void 0 || t === "local") && a("local"), (t === void 0 || t === "session") && a("session");
   }
 }
-
-export { CacheRequest, CacheRequest as default };
+export {
+  m as CacheRequest,
+  m as default
+};

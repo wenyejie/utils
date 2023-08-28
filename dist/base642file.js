@@ -1,15 +1,13 @@
-import globalThis from './globalThis.js';
-
-const base642file = (base64, filename) => {
-  const array = base64.split(",");
-  const type = array[0].match(/:(.*?);/)[1];
-  const decodedData = globalThis.atob(array[1]);
-  let length = decodedData.length;
-  const uint8Array = new Uint8Array(length);
-  while (length--) {
-    uint8Array[length] = decodedData.charCodeAt(length);
-  }
-  return new File([uint8Array], filename + "." + type.substring(6), { type });
+import l from "./globalThis.js";
+const c = (o, s) => {
+  const e = o.split(","), a = e[0].match(/:(.*?);/)[1], n = l.atob(e[1]);
+  let t = n.length;
+  const r = new Uint8Array(t);
+  for (; t--; )
+    r[t] = n.charCodeAt(t);
+  return new File([r], s + "." + a.substring(6), { type: a });
 };
-
-export { base642file, base642file as default };
+export {
+  c as base642file,
+  c as default
+};

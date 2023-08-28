@@ -1,22 +1,11 @@
-import { isString } from './isString.js';
-import { isNumber } from './isNumber.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const spliceString = (string, start, deleteCount = 0, insertString = "") => {
-  if (!isString(string)) {
-    return "";
-  }
-  if (!isNumber(deleteCount) && insertString === "") {
-    insertString = deleteCount;
-    deleteCount = 0;
-  }
-  if (start < 0 || string.length < start || deleteCount < 0) {
-    return string;
-  }
-  return string.substring(0, start) + insertString + string.substring(start + deleteCount, string.length);
+import { isString as f } from "./isString.js";
+import { isNumber as o } from "./isNumber.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const j = (m, r, p = 0, i = "") => f(m) ? (!o(p) && i === "" && (i = p, p = 0), r < 0 || m.length < r || p < 0 ? m : m.substring(0, r) + i + m.substring(r + p, m.length)) : "";
+export {
+  j as default,
+  j as spliceString
 };
-
-export { spliceString as default, spliceString };

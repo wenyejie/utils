@@ -1,4 +1,6 @@
-const noop = function() {
+const o = function() {
 };
-
-export { noop as default, noop };
+export {
+  o as default,
+  o as noop
+};

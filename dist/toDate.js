@@ -1,42 +1,25 @@
-import { isDate } from './isDate.js';
-import { isNumber } from './isNumber.js';
-import { isString } from './isString.js';
-import { rInteger, rIOSDateStringFormat } from './regexp.js';
-import { isInvalidDate } from './isInvalidDate.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const toDate = (date, isNew = false) => {
-  if (!date || isInvalidDate(date)) {
+import { isDate as n } from "./isDate.js";
+import { isNumber as s } from "./isNumber.js";
+import { isString as m } from "./isString.js";
+import { rInteger as t, rIOSDateStringFormat as f } from "./regexp.js";
+import { isInvalidDate as p } from "./isInvalidDate.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const c = (r, o = !1) => {
+  if (!r || p(r))
     return null;
+  if (n(r))
+    return o ? new Date(r) : r;
+  if (m(r) && t.test(r) && (r = Number.parseInt(r)), s(r)) {
+    const i = r + "";
+    if (i.length >= 8 && (i.length > 13 ? r = i.substring(0, 13) : r = i.padEnd(13, "0"), r = Number.parseInt(r), Number.isNaN(r)))
+      return null;
   }
-  if (isDate(date)) {
-    return isNew ? new Date(date) : date;
-  }
-  if (isString(date) && rInteger.test(date)) {
-    date = Number.parseInt(date);
-  }
-  if (isNumber(date)) {
-    const dateStr = date + "";
-    if (dateStr.length >= 8) {
-      if (dateStr.length > 13) {
-        date = dateStr.substring(0, 13);
-      } else {
-        date = dateStr.padEnd(13, "0");
-      }
-      date = Number.parseInt(date);
-      if (Number.isNaN(date)) {
-        return null;
-      }
-    }
-  }
-  if (isString(date) && rIOSDateStringFormat.test(date)) {
-    date = date.replace(/-/g, "/");
-  }
-  date = new Date(date);
-  return isDate(date) ? date : null;
+  return m(r) && f.test(r) && (r = r.replace(/-/g, "/")), r = new Date(r), n(r) ? r : null;
 };
-
-export { toDate as default, toDate };
+export {
+  c as default,
+  c as toDate
+};

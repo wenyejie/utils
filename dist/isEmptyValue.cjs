@@ -1,18 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isArray = require('./isArray.cjs');
-const isObject = require('./isObject.cjs');
-const objectLength = require('./objectLength.cjs');
-require('./toRawType.cjs');
-require('./toTypeString.cjs');
-require('./objectToString.cjs');
-require('./decapitalize.cjs');
-
-const isEmptyValue = (value) => {
-  return value === void 0 || value === null || value === "" || Number.isNaN(value) || isArray.isArray(value) && value.length === 0 || isObject.isObject(value) && objectLength.objectLength(value) === 0;
-};
-
-exports.default = isEmptyValue;
-exports.isEmptyValue = isEmptyValue;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isArray.cjs"),i=require("./isObject.cjs"),u=require("./objectLength.cjs");require("./toRawType.cjs");require("./toTypeString.cjs");require("./objectToString.cjs");require("./decapitalize.cjs");const r=e=>e==null||e===""||Number.isNaN(e)||t.isArray(e)&&e.length===0||i.isObject(e)&&u.objectLength(e)===0;exports.default=r;exports.isEmptyValue=r;

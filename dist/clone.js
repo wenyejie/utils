@@ -1,39 +1,33 @@
-import { isPrimitive } from './isPrimitive.js';
-import { isJson } from './isJson.js';
-import { toRawType } from './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const linkIterableObj = {
+import { isPrimitive as l } from "./isPrimitive.js";
+import { isJson as o } from "./isJson.js";
+import { toRawType as u } from "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const f = {
   set: Set,
   map: Map,
   weakSet: WeakSet,
   weakMap: WeakMap
+}, c = (t, m = !0, e = /* @__PURE__ */ new WeakMap()) => {
+  const r = u(t);
+  if (l(t) || r === "function")
+    return t;
+  if (r in f)
+    return new f[r](t);
+  if (!o(t))
+    return t;
+  if (e.get(t))
+    return e.get(t);
+  const i = r === "array" ? [] : {};
+  e.set(t, i);
+  const a = Object.keys(t);
+  let n;
+  for (let s = 0, p = a.length; s < p; s++)
+    n = a[s], i[n] = m ? c(t[n], m, e) : t[n];
+  return i;
 };
-const clone = (obj, deep = true, weakMap = /* @__PURE__ */ new WeakMap()) => {
-  const type = toRawType(obj);
-  if (isPrimitive(obj) || type === "function") {
-    return obj;
-  }
-  if (type in linkIterableObj) {
-    return new linkIterableObj[type](obj);
-  }
-  if (!isJson(obj)) {
-    return obj;
-  }
-  if (weakMap.get(obj)) {
-    return weakMap.get(obj);
-  }
-  const result = type === "array" ? [] : {};
-  weakMap.set(obj, result);
-  const keys = Object.keys(obj);
-  let key;
-  for (let i = 0, length = keys.length; i < length; i++) {
-    key = keys[i];
-    result[key] = deep ? clone(obj[key], deep, weakMap) : obj[key];
-  }
-  return result;
+export {
+  c as clone,
+  c as default
 };
-
-export { clone, clone as default };

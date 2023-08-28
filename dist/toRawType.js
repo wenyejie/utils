@@ -1,9 +1,8 @@
-import { toTypeString } from './toTypeString.js';
-import { decapitalize } from './decapitalize.js';
-import './objectToString.js';
-
-const toRawType = (obj) => {
-  return decapitalize(toTypeString(obj).slice(8, -1));
+import { toTypeString as o } from "./toTypeString.js";
+import { decapitalize as r } from "./decapitalize.js";
+import "./objectToString.js";
+const a = (t) => r(o(t).slice(8, -1));
+export {
+  a as default,
+  a as toRawType
 };
-
-export { toRawType as default, toRawType };

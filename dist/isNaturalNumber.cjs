@@ -1,10 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isInteger = require('./isInteger.cjs');
-
-const isNaturalNumber = (obj) => isInteger.isInteger(obj) && obj >= 0;
-
-exports.default = isNaturalNumber;
-exports.isNaturalNumber = isNaturalNumber;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./isInteger.cjs"),t=e=>r.isInteger(e)&&e>=0;exports.default=t;exports.isNaturalNumber=t;

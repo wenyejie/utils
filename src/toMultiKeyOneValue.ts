@@ -1,22 +1,22 @@
 import isArray from './isArray'
 type ToMultiKeyOneValueTargetType = Record<string, any>
 
-const handler:ProxyHandler<ToMultiKeyOneValueTargetType> = {
+const handler: ProxyHandler<ToMultiKeyOneValueTargetType> = {
   get: (target, prop) => {
-    return target[prop as string]?.value
+    return target[<string>prop]?.value
   },
-  set:(obj, prop, value) => {
+  set: (obj, prop, value) => {
     let keys: string[] = []
     if (keys.includes(',')) {
-      keys = (prop as string).split(',')
+      keys = (<string>prop).split(',')
     }
-    keys = isArray(keys) ? keys : [prop as string]
-    const pkgVal = obj[keys.find(key => obj[key])] || { value }
+    keys = isArray(keys) ? keys : [<string>prop]
+    const pkgVal = obj[keys.find((key) => obj[key])] || { value }
     for (const key of keys) {
       obj[key] = pkgVal
     }
     return true
-  }
+  },
 }
 
 /**
@@ -24,7 +24,7 @@ const handler:ProxyHandler<ToMultiKeyOneValueTargetType> = {
  * @param data 数据
  */
 export const toMultiKeyOneValue = (data: any[][]) => {
-  const target:ToMultiKeyOneValueTargetType = {}
+  const target: ToMultiKeyOneValueTargetType = {}
   const proxy = new Proxy(target, handler)
   if (!isArray(data)) {
     console.error('Error parameter', data)

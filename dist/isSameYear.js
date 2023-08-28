@@ -1,21 +1,15 @@
-import { toDate } from './toDate.js';
-import { isDate } from './isDate.js';
-import './isNumber.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-import './isString.js';
-import './regexp.js';
-import './isInvalidDate.js';
-
-const isSameYear = (date1, date2) => {
-  date1 = toDate(date1);
-  date2 = toDate(date2);
-  if (!isDate(date1) || !isDate(date2)) {
-    return false;
-  }
-  return date1.getFullYear() === date2.getFullYear();
+import { toDate as t } from "./toDate.js";
+import { isDate as i } from "./isDate.js";
+import "./isNumber.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+import "./isString.js";
+import "./regexp.js";
+import "./isInvalidDate.js";
+const g = (r, o) => (r = t(r), o = t(o), !i(r) || !i(o) ? !1 : r.getFullYear() === o.getFullYear());
+export {
+  g as default,
+  g as isSameYear
 };
-
-export { isSameYear as default, isSameYear };

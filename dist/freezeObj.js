@@ -1,5 +1,6 @@
-import { emptyObject } from './emptyObject.js';
-
-const freezeObj = emptyObject;
-
-export { freezeObj as default, freezeObj };
+import { emptyObject as e } from "./emptyObject.js";
+const o = e;
+export {
+  o as default,
+  o as freezeObj
+};

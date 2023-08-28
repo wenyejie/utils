@@ -1,5 +1,6 @@
-import { isInteger } from './isInteger.js';
-
-const isOddNumber = (number) => isInteger(number) && number % 2 === 1;
-
-export { isOddNumber as default, isOddNumber };
+import { isInteger as e } from "./isInteger.js";
+const r = (t) => e(t) && t % 2 === 1;
+export {
+  r as default,
+  r as isOddNumber
+};

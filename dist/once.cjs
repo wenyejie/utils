@@ -1,13 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const once = (fn) => {
-  let cached;
-  return function() {
-    return cached || (cached = fn.apply(this, arguments));
-  };
-};
-
-exports.default = once;
-exports.once = once;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=u=>{let e;return function(){return e||(e=u.apply(this,arguments))}};exports.default=t;exports.once=t;

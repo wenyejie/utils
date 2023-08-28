@@ -1,10 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isInteger = require('./isInteger.cjs');
-
-const isOddNumber = (number) => isInteger.isInteger(number) && number % 2 === 1;
-
-exports.default = isOddNumber;
-exports.isOddNumber = isOddNumber;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./isInteger.cjs"),t=e=>r.isInteger(e)&&e%2===1;exports.default=t;exports.isOddNumber=t;

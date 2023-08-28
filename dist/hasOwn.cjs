@@ -1,17 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const hasOwnProperty = require('./hasOwnProperty.cjs');
-const isUndefined = require('./isUndefined.cjs');
-const isNull = require('./isNull.cjs');
-
-const hasOwn = (obj, prop) => {
-  if (isUndefined.isUndefined(obj) || isNull.isNull(obj)) {
-    return false;
-  }
-  return hasOwnProperty.hasOwnProperty.call(obj, prop);
-};
-
-exports.default = hasOwn;
-exports.hasOwn = hasOwn;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const n=require("./hasOwnProperty.cjs"),t=require("./isUndefined.cjs"),i=require("./isNull.cjs"),r=(e,s)=>t.isUndefined(e)||i.isNull(e)?!1:n.hasOwnProperty.call(e,s);exports.default=r;exports.hasOwn=r;

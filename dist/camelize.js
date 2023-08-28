@@ -1,6 +1,5 @@
-const camelizeRE = /-(\w)/g;
-const camelize = (str) => {
-  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
+const t = /-(\w)/g, c = (a) => a.replace(t, (r, e) => e ? e.toUpperCase() : "");
+export {
+  c as camelize,
+  c as default
 };
-
-export { camelize, camelize as default };

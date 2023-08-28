@@ -1,16 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const phoneNumFormat = require('./phoneNumFormat.cjs');
-require('./isString.cjs');
-require('./toRawType.cjs');
-require('./toTypeString.cjs');
-require('./objectToString.cjs');
-require('./decapitalize.cjs');
-require('./isInteger.cjs');
-
-const mobilePhoneFormat = phoneNumFormat.phoneNumFormat;
-
-exports.default = mobilePhoneFormat;
-exports.mobilePhoneFormat = mobilePhoneFormat;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./phoneNumFormat.cjs");require("./isString.cjs");require("./toRawType.cjs");require("./toTypeString.cjs");require("./objectToString.cjs");require("./decapitalize.cjs");require("./isInteger.cjs");const e=r.phoneNumFormat;exports.default=e;exports.mobilePhoneFormat=e;

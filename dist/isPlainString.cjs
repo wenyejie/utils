@@ -1,8 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isPlainString = (obj) => typeof obj === "string";
-
-exports.default = isPlainString;
-exports.isPlainString = isPlainString;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=t=>typeof t=="string";exports.default=e;exports.isPlainString=e;

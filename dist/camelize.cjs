@@ -1,11 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const camelizeRE = /-(\w)/g;
-const camelize = (str) => {
-  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
-};
-
-exports.camelize = camelize;
-exports.default = camelize;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const a=/-(\w)/g,t=l=>l.replace(a,(r,e)=>e?e.toUpperCase():"");exports.camelize=t;exports.default=t;

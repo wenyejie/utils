@@ -1,19 +1,15 @@
-import { isObject } from './isObject.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const ban = (obj, ...rest) => {
-  let result = {};
-  if (!isObject(obj)) {
-    return result;
-  }
-  result = { ...obj };
-  rest.forEach((key) => {
-    delete result[key];
-  });
-  return result;
+import { isObject as i } from "./isObject.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const n = (r, ...e) => {
+  let t = {};
+  return i(r) && (t = { ...r }, e.forEach((o) => {
+    delete t[o];
+  })), t;
 };
-
-export { ban, ban as default };
+export {
+  n as ban,
+  n as default
+};

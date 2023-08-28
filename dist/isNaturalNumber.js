@@ -1,5 +1,6 @@
-import { isInteger } from './isInteger.js';
-
-const isNaturalNumber = (obj) => isInteger(obj) && obj >= 0;
-
-export { isNaturalNumber as default, isNaturalNumber };
+import { isInteger as t } from "./isInteger.js";
+const a = (r) => t(r) && r >= 0;
+export {
+  a as default,
+  a as isNaturalNumber
+};

@@ -1,4 +1,3 @@
-
 import isString from './isString'
 
 /**
@@ -10,7 +9,7 @@ export const isJsonString = (obj: unknown) => {
     if (!isString(obj)) {
       return false
     }
-    return JSON.parse(obj as string) && true
+    return JSON.parse(<string>obj) && true
   } catch (e) {
     return false
   }

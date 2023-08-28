@@ -1,3 +1,5 @@
-const isInteger = Number.isInteger;
-
-export { isInteger as default, isInteger };
+const e = Number.isInteger;
+export {
+  e as default,
+  e as isInteger
+};

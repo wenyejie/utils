@@ -1,9 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const noop = function() {
-};
-
-exports.default = noop;
-exports.noop = noop;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=function(){};exports.default=e;exports.noop=e;

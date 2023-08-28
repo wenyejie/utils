@@ -1,3 +1,5 @@
-const isPromise = (obj) => obj instanceof Promise;
-
-export { isPromise as default, isPromise };
+const e = (s) => s instanceof Promise;
+export {
+  e as default,
+  e as isPromise
+};

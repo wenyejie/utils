@@ -1,17 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const file2base64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      resolve(reader.result);
-    };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-};
-
-exports.default = file2base64;
-exports.file2base64 = file2base64;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=t=>new Promise((a,o)=>{const e=new FileReader;e.onload=()=>{a(e.result)},e.onerror=o,e.readAsDataURL(t)});exports.default=r;exports.file2base64=r;

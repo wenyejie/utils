@@ -1,8 +1,10 @@
-const once = (fn) => {
-  let cached;
+const n = (e) => {
+  let t;
   return function() {
-    return cached || (cached = fn.apply(this, arguments));
+    return t || (t = e.apply(this, arguments));
   };
 };
-
-export { once as default, once };
+export {
+  n as default,
+  n as once
+};

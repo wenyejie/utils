@@ -8,7 +8,7 @@ import { rInteger } from './regexp'
  * @param unit 默认单位
  */
 export const toCSSUnit = (value: number | string, unit = 'px') => {
-  if (isNumber(value) || rInteger.test(value as string)) {
+  if (isNumber(value) || rInteger.test(<string>value)) {
     return value + unit
   } else if (isString(value)) {
     return <string>value

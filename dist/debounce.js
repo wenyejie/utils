@@ -1,17 +1,13 @@
-import globalThis from './globalThis.js';
-
-const debounce = (fn, interval = 500, isFirst = false) => {
-  let timer;
-  return function(...rest) {
-    clearTimeout(timer);
-    if (isFirst) {
-      fn.apply(this, rest);
-      isFirst = false;
-    }
-    timer = globalThis.setTimeout(() => {
-      fn.apply(this, rest);
-    }, interval);
+import i from "./globalThis.js";
+const u = (e, a = 500, t = !1) => {
+  let l;
+  return function(...o) {
+    clearTimeout(l), t && (e.apply(this, o), t = !1), l = i.setTimeout(() => {
+      e.apply(this, o);
+    }, a);
   };
 };
-
-export { debounce, debounce as default };
+export {
+  u as debounce,
+  u as default
+};

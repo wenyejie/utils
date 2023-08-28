@@ -1,11 +1,9 @@
-import { toRawType } from './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const isPrimitive = (obj) => {
-  const type = toRawType(obj);
-  switch (type) {
+import { toRawType as t } from "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const n = (e) => {
+  switch (t(e)) {
     case "string":
     case "number":
     case "boolean":
@@ -13,10 +11,12 @@ const isPrimitive = (obj) => {
     case "symbol":
     case "undefined":
     case "null":
-      return true;
+      return !0;
     default:
-      return false;
+      return !1;
   }
 };
-
-export { isPrimitive as default, isPrimitive };
+export {
+  n as default,
+  n as isPrimitive
+};

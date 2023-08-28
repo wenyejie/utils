@@ -1,3 +1,5 @@
-const emptyObject = Object.freeze({});
-
-export { emptyObject as default, emptyObject };
+const e = Object.freeze({});
+export {
+  e as default,
+  e as emptyObject
+};

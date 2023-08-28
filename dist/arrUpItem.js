@@ -1,7 +1,8 @@
-const arrUpItem = (arr, inx) => {
-  const delArr = arr.splice(inx, 1);
-  arr.splice(inx - 1, 0, delArr?.[0]);
-  return arr;
+const c = (e, t) => {
+  const s = e.splice(t, 1);
+  return e.splice(t - 1, 0, s?.[0]), e;
 };
-
-export { arrUpItem, arrUpItem as default };
+export {
+  c as arrUpItem,
+  c as default
+};

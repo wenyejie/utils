@@ -1,16 +1,16 @@
-import { isString } from './isString.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const suffix = (string) => {
-  if (!isString(string)) {
+import { isString as t } from "./isString.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const s = (f) => {
+  if (!t(f))
     return "";
-  }
-  string = string.trim();
-  const { groups: { suffix: suffix2 } } = string.match(/(?<=\.)(?<suffix>\w+)+$/);
-  return suffix2;
+  f = f.trim();
+  const { groups: { suffix: r } } = f.match(/(?<=\.)(?<suffix>\w+)+$/);
+  return r;
 };
-
-export { suffix as default, suffix };
+export {
+  s as default,
+  s as suffix
+};

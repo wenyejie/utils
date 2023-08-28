@@ -1,19 +1,12 @@
-import { isNumber } from './isNumber.js';
-import { isString } from './isString.js';
-import { rInteger } from './regexp.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const toCSSUnit = (value, unit = "px") => {
-  if (isNumber(value) || rInteger.test(value)) {
-    return value + unit;
-  } else if (isString(value)) {
-    return value;
-  } else {
-    return "";
-  }
+import { isNumber as i } from "./isNumber.js";
+import { isString as o } from "./isString.js";
+import { rInteger as m } from "./regexp.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const x = (r, t = "px") => i(r) || m.test(r) ? r + t : o(r) ? r : "";
+export {
+  x as default,
+  x as toCSSUnit
 };
-
-export { toCSSUnit as default, toCSSUnit };

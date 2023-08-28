@@ -1,3 +1,5 @@
-const isPlainString = (obj) => typeof obj === "string";
-
-export { isPlainString as default, isPlainString };
+const i = (t) => typeof t == "string";
+export {
+  i as default,
+  i as isPlainString
+};

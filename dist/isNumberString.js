@@ -1,14 +1,10 @@
-import { isString } from './isString.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const isNumberString = (obj) => {
-  if (!isString(obj)) {
-    return false;
-  }
-  return (+obj).toString() === obj;
+import { isString as t } from "./isString.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const p = (r) => t(r) ? (+r).toString() === r : !1;
+export {
+  p as default,
+  p as isNumberString
 };
-
-export { isNumberString as default, isNumberString };

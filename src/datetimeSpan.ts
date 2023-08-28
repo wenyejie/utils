@@ -65,8 +65,8 @@ export const datetimeSpan = (date: LikeDate, options?: DatetimeSpanOptions) => {
     options,
   )
   let timestamp = isDate(date)
-    ? Math.abs((date as Date).getTime() - opts.compare.getTime())
-    : Number.parseInt(date as string)
+    ? Math.abs((<Date>date).getTime() - opts.compare.getTime())
+    : Number.parseInt(<string>date)
   const result: DatetimeSpanResult = {}
   opts.types.forEach((name) => {
     if (opts[camelize(`has-${name}`)]) {

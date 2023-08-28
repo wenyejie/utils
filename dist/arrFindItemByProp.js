@@ -1,20 +1,18 @@
-import { isObject } from './isObject.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const arrFindItemByProp = (array, prop, value) => {
-  const props = isObject(prop) ? prop : { [prop]: value };
-  const propEntries = Object.entries(props);
-  return array.find((item) => {
-    for (const [prop2, value2] of propEntries) {
-      if (item[prop2] !== value2) {
-        return false;
-      }
-    }
-    return true;
+import { isObject as f } from "./isObject.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const l = (t, r, o) => {
+  const e = f(r) ? r : { [r]: o }, i = Object.entries(e);
+  return t.find((n) => {
+    for (const [s, p] of i)
+      if (n[s] !== p)
+        return !1;
+    return !0;
   });
 };
-
-export { arrFindItemByProp, arrFindItemByProp as default };
+export {
+  l as arrFindItemByProp,
+  l as default
+};

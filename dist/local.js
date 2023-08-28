@@ -1,6 +1,7 @@
-import globalThis from './globalThis.js';
-import { storage } from './storage.js';
-
-const local = storage(globalThis?.localStorage);
-
-export { local as default, local };
+import o from "./globalThis.js";
+import { storage as a } from "./storage.js";
+const t = a(o?.localStorage);
+export {
+  t as default,
+  t as local
+};

@@ -1,10 +1,6 @@
-import { isUndefined } from './isUndefined.js';
-
-const padStart = (obj, maxLength = 2, fillString = "0") => {
-  if (isUndefined(obj) || Number.isNaN(obj)) {
-    obj = "";
-  }
-  return `${obj}`.padStart(maxLength, fillString);
+import { isUndefined as e } from "./isUndefined.js";
+const i = (t, r = 2, a = "0") => ((e(t) || Number.isNaN(t)) && (t = ""), `${t}`.padStart(r, a));
+export {
+  i as default,
+  i as padStart
 };
-
-export { padStart as default, padStart };

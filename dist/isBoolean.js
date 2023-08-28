@@ -1,3 +1,5 @@
-const isBoolean = (obj) => obj === true || obj === false;
-
-export { isBoolean as default, isBoolean };
+const a = (e) => e === !0 || e === !1;
+export {
+  a as default,
+  a as isBoolean
+};

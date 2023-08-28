@@ -1,10 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isArrayIndex = (arr, index) => {
-  return index >= 0 && index < arr.length;
-};
-
-exports.default = isArrayIndex;
-exports.isArrayIndex = isArrayIndex;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=(t,e)=>e>=0&&e<t.length;exports.default=r;exports.isArrayIndex=r;

@@ -1,24 +1,18 @@
-import { isObject } from './isObject.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const arrDelItemByProp = (array, propKey, propValue) => {
-  const propObj = isObject(propKey) ? propKey : { [propKey]: propValue };
-  const propEntries = Object.entries(propObj);
-  const index = array.findIndex((item) => {
-    for (const [key, value] of propEntries) {
-      if (item[key] !== value) {
-        return false;
-      }
-    }
-    return true;
+import { isObject as p } from "./isObject.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const j = (t, e, o) => {
+  const i = p(e) ? e : { [e]: o }, n = Object.entries(i), r = t.findIndex((s) => {
+    for (const [c, f] of n)
+      if (s[c] !== f)
+        return !1;
+    return !0;
   });
-  if (index >= 0) {
-    array.splice(index, 1);
-  }
-  return array;
+  return r >= 0 && t.splice(r, 1), t;
 };
-
-export { arrDelItemByProp, arrDelItemByProp as default };
+export {
+  j as arrDelItemByProp,
+  j as default
+};

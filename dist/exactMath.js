@@ -1,124 +1,89 @@
-import { decimalLength } from './decimalLength.js';
-import { toNumber } from './toNumber.js';
-import { spliceString } from './spliceString.js';
-import { isString } from './isString.js';
-import './isNumber.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const rightPad = (n, len) => {
-  if (len === 0) {
-    return n;
-  }
-  const dl = decimalLength(+n);
-  let sn = n.toString();
-  if (dl === 0) {
-    sn += "".padEnd(len, "0");
-  } else {
-    sn = sn.replace(".", "");
-    sn += "".padEnd(len - dl, "0");
-  }
-  return Number.parseFloat(sn);
-};
-const leftPad = (n, len) => {
-  if (len === 0) {
-    return n;
-  }
-  let sn = n.toString();
-  const il = sn.length;
-  if (len - il + 1 > 0) {
-    sn = "".padEnd(len > il ? len - il + 1 : len - il, "0") + sn;
-  }
-  sn = spliceString(sn, Math.abs(il - len), ".");
-  return Number.parseFloat(sn);
-};
-const operationInit = (num1, num2) => {
-  const raise = Math.max(decimalLength(+num1), decimalLength(+num2));
+import { decimalLength as s } from "./decimalLength.js";
+import { toNumber as u } from "./toNumber.js";
+import { spliceString as b } from "./spliceString.js";
+import { isString as M } from "./isString.js";
+import "./isNumber.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const d = (r, t) => {
+  if (t === 0)
+    return r;
+  const e = s(+r);
+  let n = r.toString();
+  return e === 0 ? n += "".padEnd(t, "0") : (n = n.replace(".", ""), n += "".padEnd(t - e, "0")), Number.parseFloat(n);
+}, i = (r, t) => {
+  if (t === 0)
+    return r;
+  let e = r.toString();
+  const n = e.length;
+  return t - n + 1 > 0 && (e = "".padEnd(t > n ? t - n + 1 : t - n, "0") + e), e = b(e, Math.abs(n - t), "."), Number.parseFloat(e);
+}, c = (r, t) => {
+  const e = Math.max(s(+r), s(+t));
   return {
-    n1: rightPad(toNumber(num1), raise),
-    n2: rightPad(toNumber(num2), raise),
-    raise
+    n1: d(u(r), e),
+    n2: d(u(t), e),
+    raise: e
   };
-};
-const add = (num1, num2) => {
-  const { n1, n2, raise } = operationInit(num1, num2);
-  return leftPad(n1 + n2, raise);
-};
-const multiAdd = (...nums) => nums.reduce((accumulator, currentValue) => add(accumulator, currentValue));
-const subtract = (num1, num2) => {
-  const { n1, n2, raise } = operationInit(num1, num2);
-  return leftPad(n1 - n2, raise);
-};
-const multiSubtract = (...nums) => nums.reduce((accumulator, currentValue) => subtract(accumulator, currentValue));
-const multiply = (num1, num2) => {
-  const { n1, n2, raise } = operationInit(num1, num2);
-  return leftPad(n1 * n2, raise * 2);
-};
-const multiMultiply = (...nums) => nums.reduce((accumulator, currentValue) => multiply(accumulator, currentValue), 1);
-const divide = (num1, num2) => {
-  const { n1, n2 } = operationInit(num1, num2);
-  return n1 / n2;
-};
-const multiDivide = (...nums) => nums.reduce((accumulator, currentValue) => divide(accumulator, currentValue));
-const remain = (num1, num2) => {
-  const result = divide(num1, num2);
-  const r1 = multiply(result - Math.floor(result), num2);
-  const r2 = +num1 % +num2;
-  return r1.toString().length <= r2.toString().length ? r1 : r2;
-};
-const operates = {
-  "+": add,
-  "-": subtract,
-  "*": multiply,
-  "/": divide,
-  "%": remain
-};
-const rBracketsAndCon = /\([^()]+\)/g;
-const rBrackets = /[()]/g;
-const rSymbols = /(?<=\d|\.)([%*/+-])/g;
-const rSpace = /\s+/g;
-const arithmetic = (expression) => {
-  expression = expression.replace(rSymbols, " $1 ");
-  expression = expression.trim();
-  let arr = expression.split(rSpace);
-  if (arr.length <= 0) {
+}, g = (r, t) => {
+  const { n1: e, n2: n, raise: o } = c(r, t);
+  return i(e + n, o);
+}, x = (...r) => r.reduce((t, e) => g(t, e)), h = (r, t) => {
+  const { n1: e, n2: n, raise: o } = c(r, t);
+  return i(e - n, o);
+}, C = (...r) => r.reduce((t, e) => h(t, e)), a = (r, t) => {
+  const { n1: e, n2: n, raise: o } = c(r, t);
+  return i(e * n, o * 2);
+}, D = (...r) => r.reduce((t, e) => a(t, e), 1), l = (r, t) => {
+  const { n1: e, n2: n } = c(r, t);
+  return e / n;
+}, L = (...r) => r.reduce((t, e) => l(t, e)), S = (r, t) => {
+  const e = l(r, t), n = a(e - Math.floor(e), t), o = +r % +t;
+  return n.toString().length <= o.toString().length ? n : o;
+}, p = {
+  "+": g,
+  "-": h,
+  "*": a,
+  "/": l,
+  "%": S
+}, m = /\([^()]+\)/g, y = /[()]/g, k = /(?<=\d|\.)([%*/+-])/g, E = /\s+/g, f = (r) => {
+  r = r.replace(k, " $1 "), r = r.trim();
+  let t = r.split(E);
+  if (t.length <= 0)
     return 0;
-  }
-  let index = -1;
-  let result;
+  let e = -1, n;
   do {
-    index = arr.findIndex((item) => ["*", "/", "%"].includes(item));
-    if (index < 0) {
+    if (e = t.findIndex((o) => ["*", "/", "%"].includes(o)), e < 0)
       break;
-    }
-    result = operates[arr[index]](arr[index - 1], arr[index + 1]);
-    arr.splice(index - 1, 3, `${result}`);
-  } while (true);
-  result = +arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] === "+" || arr[i] === "-") {
-      continue;
-    }
-    result = operates[arr[i - 1] || "+"](result, arr[i]);
-  }
-  return result;
-};
-const exactMath = (arithmeticStr) => {
-  if (!isString(arithmeticStr)) {
+    n = p[t[e]](t[e - 1], t[e + 1]), t.splice(e - 1, 3, `${n}`);
+  } while (!0);
+  n = +t[0];
+  for (let o = 1; o < t.length; o++)
+    t[o] === "+" || t[o] === "-" || (n = p[t[o - 1] || "+"](n, t[o]));
+  return n;
+}, j = (r) => {
+  if (!M(r))
     return 0;
-  }
   try {
-    while (rBracketsAndCon.test(arithmeticStr)) {
-      arithmeticStr = arithmeticStr.replace(rBracketsAndCon, (express) => {
-        return arithmetic(express.replace(rBrackets, "")) + "";
-      });
-    }
-    return arithmetic(arithmeticStr);
-  } catch (err) {
+    for (; m.test(r); )
+      r = r.replace(m, (t) => f(t.replace(y, "")) + "");
+    return f(r);
+  } catch {
     return 0;
   }
 };
-
-export { add, arithmetic, exactMath as default, divide, exactMath, multiAdd, multiDivide, multiMultiply, multiSubtract, multiply, remain, subtract };
+export {
+  g as add,
+  f as arithmetic,
+  j as default,
+  l as divide,
+  j as exactMath,
+  x as multiAdd,
+  L as multiDivide,
+  D as multiMultiply,
+  C as multiSubtract,
+  a as multiply,
+  S as remain,
+  h as subtract
+};

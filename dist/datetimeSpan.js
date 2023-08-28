@@ -1,45 +1,41 @@
-import { isDate } from './isDate.js';
-import { camelize } from './camelize.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const defOpts = {
+import { isDate as i } from "./isDate.js";
+import { camelize as m } from "./camelize.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const p = {
   types: ["year", "week", "day", "hour", "minute", "second"],
-  hasYear: false,
+  hasYear: !1,
   year: 31536e6,
-  hasWeek: false,
+  hasWeek: !1,
   week: 6048e5,
-  hasDay: true,
+  hasDay: !0,
   day: 864e5,
-  hasHour: true,
+  hasHour: !0,
   hour: 36e5,
-  hasMinute: true,
+  hasMinute: !0,
   minute: 6e4,
-  hasSecond: true,
+  hasSecond: !0,
   second: 1e3,
-  hasMillisecond: false,
+  hasMillisecond: !1,
   millisecond: 1,
   defaultValue: ""
-};
-const datetimeSpan = (date, options = {}) => {
-  const opts = Object.assign(
+}, d = (s, o) => {
+  const e = Object.assign(
     {
       compare: /* @__PURE__ */ new Date()
     },
-    defOpts,
-    options
+    p,
+    o
   );
-  let timestamp = isDate(date) ? Math.abs(date.getTime() - opts.compare.getTime()) : Number.parseInt(date);
-  const result = {};
-  opts.types.forEach((name) => {
-    if (opts[camelize(`has-${name}`)]) {
-      result[name] = Math.floor(timestamp / opts[name]);
-      timestamp %= opts[name];
-    }
-  });
-  return result;
+  let a = i(s) ? Math.abs(s.getTime() - e.compare.getTime()) : Number.parseInt(s);
+  const r = {};
+  return e.types.forEach((t) => {
+    e[m(`has-${t}`)] && (r[t] = Math.floor(a / e[t]), a %= e[t]);
+  }), r;
 };
-
-export { datetimeSpan, datetimeSpan as default };
+export {
+  d as datetimeSpan,
+  d as default
+};

@@ -14,7 +14,7 @@ import toMultiKeyOneValue from './toMultiKeyOneValue'
  * 1y(365d) = 31536000000 31536e6 = 86400000 365
  */
 const strMap = toMultiKeyOneValue([
-  [['s','sec', 'second'], 1e3],
+  [['s', 'sec', 'second'], 1e3],
   [['m', 'min', 'minute'], 6e4],
   [['h', 'hour'], 36e5],
   [['d', 'day'], 864e5],
@@ -32,14 +32,16 @@ const rTsStr = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(
  * @param rtnType 返回类型
  */
 export const getTsByStr = (str: string | number, rtnType: 'second' | 'millisecond' = 'millisecond') => {
-  if (!isNumber(str) && !isString(str)) { // 当参数即不是正常的数字也不是正常的字符串返回错误
+  if (!isNumber(str) && !isString(str)) {
+    // 当参数即不是正常的数字也不是正常的字符串返回错误
     console.error(`getTsByStr: str is type error => ${str.toString()}`)
     return null
   }
-  if (isNumber(str)) { // 如果是number类型则直接返回
-    return str as number
+  if (isNumber(str)) {
+    // 如果是number类型则直接返回
+    return <number>str
   }
-  str = (str as string).trim()
+  str = (<string>str).trim()
   if (isNumberString(str)) {
     return Math.floor(+str)
   }
@@ -49,7 +51,7 @@ export const getTsByStr = (str: string | number, rtnType: 'second' | 'millisecon
     return null
   }
   let { num, unit } = result.groups
-  const rtnValue = +num * (strMap[unit.toLowerCase()] as number)
+  const rtnValue = +num * <number>strMap[unit.toLowerCase()]
   if (rtnType === 'second') {
     return Math.floor(rtnValue / 1e3) // 此处不允许出现小数, 时间戳只能是小数, 如果需要毫秒级时间戳, 请变更rtnType
   }

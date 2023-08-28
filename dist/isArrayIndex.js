@@ -1,5 +1,5 @@
-const isArrayIndex = (arr, index) => {
-  return index >= 0 && index < arr.length;
+const e = (t, r) => r >= 0 && r < t.length;
+export {
+  e as default,
+  e as isArrayIndex
 };
-
-export { isArrayIndex as default, isArrayIndex };

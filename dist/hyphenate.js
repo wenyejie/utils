@@ -1,6 +1,5 @@
-const hyphenateRE = /\B([A-Z])/g;
-const hyphenate = (str) => {
-  return str.replace(hyphenateRE, "-$1").toLowerCase();
+const t = /\B([A-Z])/g, a = (e) => e.replace(t, "-$1").toLowerCase();
+export {
+  a as default,
+  a as hyphenate
 };
-
-export { hyphenate as default, hyphenate };

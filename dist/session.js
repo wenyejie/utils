@@ -1,6 +1,7 @@
-import globalThis from './globalThis.js';
-import { storage } from './storage.js';
-
-const session = storage(globalThis?.sessionStorage);
-
-export { session as default, session };
+import o from "./globalThis.js";
+import { storage as s } from "./storage.js";
+const e = s(o?.sessionStorage);
+export {
+  e as default,
+  e as session
+};

@@ -1,21 +1,17 @@
-import globalThis from './globalThis.js';
-
-const throttle = (fn, interval = 500, isFirst = false) => {
-  let timer;
-  return function(...rest) {
-    if (isFirst) {
-      fn.apply(this, rest);
-      isFirst = false;
+import a from "./globalThis.js";
+const u = (e, o = 500, l = !1) => {
+  let t;
+  return function(...r) {
+    if (l) {
+      e.apply(this, r), l = !1;
       return;
     }
-    if (timer) {
-      return;
-    }
-    timer = globalThis.setTimeout(() => {
-      clearTimeout(timer);
-      fn.apply(this, rest);
-    }, interval);
+    t || (t = a.setTimeout(() => {
+      clearTimeout(t), e.apply(this, r);
+    }, o));
   };
 };
-
-export { throttle as default, throttle };
+export {
+  u as default,
+  u as throttle
+};

@@ -1,6 +1,5 @@
-const dayEnd = (date) => {
-  date.setHours(23, 59, 59, 999);
-  return date;
+const s = (r) => (r.setHours(23, 59, 59, 999), r);
+export {
+  s as dayEnd,
+  s as default
 };
-
-export { dayEnd, dayEnd as default };

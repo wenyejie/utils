@@ -1,8 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isInteger = Number.isInteger;
-
-exports.default = isInteger;
-exports.isInteger = isInteger;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=Number.isInteger;exports.default=e;exports.isInteger=e;

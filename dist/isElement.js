@@ -1,3 +1,5 @@
-const isElement = (obj) => obj?.nodeType === 1;
-
-export { isElement as default, isElement };
+const t = (e) => e?.nodeType === 1;
+export {
+  t as default,
+  t as isElement
+};

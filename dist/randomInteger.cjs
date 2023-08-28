@@ -1,12 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const randomInteger = (max, min = 0) => {
-  const cMax = Math.max(max, min);
-  const cMin = Math.min(max, min);
-  return Math.floor(Math.random() * (cMax - cMin + 1)) + cMin;
-};
-
-exports.default = randomInteger;
-exports.randomInteger = randomInteger;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=(e,t=0)=>{const a=Math.max(e,t),o=Math.min(e,t);return Math.floor(Math.random()*(a-o+1))+o};exports.default=r;exports.randomInteger=r;

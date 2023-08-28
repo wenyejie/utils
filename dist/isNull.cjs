@@ -1,8 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isNull = (value) => value === null;
-
-exports.default = isNull;
-exports.isNull = isNull;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=l=>l===null;exports.default=e;exports.isNull=e;

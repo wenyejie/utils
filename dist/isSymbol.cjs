@@ -1,13 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const toRawType = require('./toRawType.cjs');
-require('./toTypeString.cjs');
-require('./objectToString.cjs');
-require('./decapitalize.cjs');
-
-const isSymbol = (obj) => toRawType.toRawType(obj) === "symbol";
-
-exports.default = isSymbol;
-exports.isSymbol = isSymbol;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const o=require("./toRawType.cjs");require("./toTypeString.cjs");require("./objectToString.cjs");require("./decapitalize.cjs");const e=r=>o.toRawType(r)==="symbol";exports.default=e;exports.isSymbol=e;

@@ -1,12 +1,11 @@
-const cached = (fn) => {
-  const caches = {};
+const a = (n) => {
+  const t = {};
   return function() {
-    const args = Array.prototype.join.call(arguments, ",");
-    if (args in caches) {
-      return caches[args];
-    }
-    return caches[args] = fn.apply(this, arguments);
+    const r = Array.prototype.join.call(arguments, ",");
+    return r in t ? t[r] : t[r] = n.apply(this, arguments);
   };
 };
-
-export { cached, cached as default };
+export {
+  a as cached,
+  a as default
+};

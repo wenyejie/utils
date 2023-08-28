@@ -1,13 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const toRawType = require('./toRawType.cjs');
-require('./toTypeString.cjs');
-require('./objectToString.cjs');
-require('./decapitalize.cjs');
-
-const isNumber = (obj) => toRawType.toRawType(obj) === "number" && !Number.isNaN(obj);
-
-exports.default = isNumber;
-exports.isNumber = isNumber;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("./toRawType.cjs");require("./toTypeString.cjs");require("./objectToString.cjs");require("./decapitalize.cjs");const r=e=>u.toRawType(e)==="number"&&!Number.isNaN(e);exports.default=r;exports.isNumber=r;

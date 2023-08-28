@@ -15,15 +15,15 @@ export const spliceString = (string: string, start: number, deleteCount: number 
 
   // 如果deleteCount不为number, 而是string, 并且insertString为空字符串, 则默认为, 该输入参数为insertString
   if (!isNumber(deleteCount) && insertString === '') {
-    insertString = deleteCount as string
+    insertString = <string>deleteCount
     deleteCount = 0
   }
 
-  if (start < 0 || string.length < start || (deleteCount as number) < 0) {
+  if (start < 0 || string.length < start || <number>deleteCount < 0) {
     return string
   }
 
-  return string.substring(0, start) + insertString + string.substring(start + (deleteCount as number), string.length)
+  return string.substring(0, start) + insertString + string.substring(start + <number>deleteCount, string.length)
 }
 
 export default spliceString

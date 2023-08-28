@@ -1,13 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const toRawType = require('./toRawType.cjs');
-require('./toTypeString.cjs');
-require('./objectToString.cjs');
-require('./decapitalize.cjs');
-
-const isMap = (obj) => toRawType.toRawType(obj) === "map";
-
-exports.default = isMap;
-exports.isMap = isMap;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./toRawType.cjs");require("./toTypeString.cjs");require("./objectToString.cjs");require("./decapitalize.cjs");const e=r=>t.toRawType(r)==="map";exports.default=e;exports.isMap=e;

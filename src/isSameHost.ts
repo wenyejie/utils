@@ -3,18 +3,16 @@ import globalThis from './globalThis'
 
 /**
  * 判断两个链接地址是否为同一个域名, 是否会跨域
- * @param urlA
- * @param urlB
+ * @param urlA url地址A
+ * @param urlB url地址B
  */
-export const isSameHost = (urlA: string, urlB = globalThis.location.href) => {
+export const isSameHost = (urlA: string, urlB?: string) => {
   if (!isString(urlA)) {
     return false
   }
-  const $a = document.createElement('a')
-  $a.href = urlA
-  const $b = document.createElement('a')
-  $b.href = urlB
-  return $a.host === $b.host
+  const innerUrlA = new URL(urlA)
+  let innerUrlB: URL | Location = isString(urlB) ? new URL(urlB) : globalThis.location
+  return innerUrlA.host === innerUrlB.host
 }
 
 export default isSameHost

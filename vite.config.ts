@@ -12,46 +12,46 @@ const isProd = NODE_ENV === 'production'
 
 const plugins: PluginOption = []
 
-const entry:InputOption = []
+const entry: InputOption = []
 
 const entryFiles = readdirSync(join('./src'))
-entryFiles.forEach(file => {
+entryFiles.forEach((file) => {
   entry.push(`./src/${file}`)
 })
 
-const input:InputOption = []
+const input: InputOption = []
 
 const inputFiles = readdirSync(join('./examples'))
-inputFiles.forEach(file => input.push(`./examples/${file}`))
+inputFiles.forEach((file) => input.push(`./examples/${file}`))
 
 const rFileSuffix = /\.ts$/ // 文件后缀
 
 // 自动构建生成wenyejie.ts
-const buildMain = () => {
+const buildLibrary = () => {
   let content = `// @Copyright by https://github.com/wenyejie/utils\rexport const VERSION = '${version}'\r`
-  entryFiles.forEach(file => {
+  entryFiles.forEach((file) => {
     if (file === 'wenyejie.ts' || !rFileSuffix.test(file)) {
       return
     }
     content += `export * from './${file.replace(rFileSuffix, '')}'\r`
   })
-  writeFile('./src/wenyejie.ts', content, error => {
+  writeFile('./src/wenyejie.ts', content, (error) => {
     console.error(error)
   })
 }
 
-buildMain()
+buildLibrary()
 
-const build:BuildOptions = {
+const build: BuildOptions = {
   target: 'esnext',
-  minify: false,
+  minify: true,
   lib: {
     entry,
     name: 'wenyejie',
     fileName: (format, entryName) => {
       return `${entryName}.${format === 'es' ? 'js' : 'cjs'}`
-    }
-  }
+    },
+  },
 }
 
 const test = {
@@ -63,26 +63,26 @@ const test = {
   },
 }
 
-const server:ServerOptions = {
+const server: ServerOptions = {
   port: 8081,
-  open: './examples/'
+  open: './examples/',
 }
 
 if (isDev) {
   build.rollupOptions = {
-    input
+    input,
   }
 }
 
-if(isProd) {
+if (isProd) {
   build.rollupOptions = {
     output: {
-      exports: 'named'
+      exports: 'named',
     },
   }
 }
 
-const config:UserConfig = {
+const config: UserConfig = {
   build,
   test,
   plugins,
@@ -90,8 +90,8 @@ const config:UserConfig = {
   appType: 'mpa',
   resolve: {
     alias: {
-      '@': join(__dirname, './src')
-    }
+      '@': join(__dirname, './src'),
+    },
   },
 }
 

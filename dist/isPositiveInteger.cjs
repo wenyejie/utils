@@ -1,10 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isInteger = require('./isInteger.cjs');
-
-const isPositiveInteger = (obj) => isInteger.isInteger(obj) && obj > 0;
-
-exports.default = isPositiveInteger;
-exports.isPositiveInteger = isPositiveInteger;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./isInteger.cjs"),t=e=>i.isInteger(e)&&e>0;exports.default=t;exports.isPositiveInteger=t;

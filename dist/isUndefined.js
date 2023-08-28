@@ -1,3 +1,5 @@
-const isUndefined = (obj) => obj === void 0;
-
-export { isUndefined as default, isUndefined };
+const e = (d) => d === void 0;
+export {
+  e as default,
+  e as isUndefined
+};

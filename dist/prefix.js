@@ -1,16 +1,16 @@
-import { isString } from './isString.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-
-const prefix = (string) => {
-  if (!isString(string)) {
+import { isString as t } from "./isString.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const x = (r) => {
+  if (!t(r))
     return "";
-  }
-  string = string.trim();
-  const { groups: { prefix: prefix2 } } = string.match(/^(?<prefix>\w+)+(?=\.)/);
-  return prefix2;
+  r = r.trim();
+  const { groups: { prefix: p } } = r.match(/^(?<prefix>\w+)+(?=\.)/);
+  return p;
 };
-
-export { prefix as default, prefix };
+export {
+  x as default,
+  x as prefix
+};

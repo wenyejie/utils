@@ -1,6 +1,6 @@
 import isPrimitive from './isPrimitive'
 import isJson from './isJson'
-import toRawType from '@/toRawType'
+import toRawType from './toRawType'
 
 type ArrayOrObject = any[] | PropObj
 
@@ -31,19 +31,19 @@ export const clone = <T>(obj: T, deep = true, weakMap = new WeakMap()): T => {
     return obj
   }
 
-  if (weakMap.get(obj as ArrayOrObject)) {
-    return weakMap.get(obj as ArrayOrObject)
+  if (weakMap.get(<ArrayOrObject>obj)) {
+    return weakMap.get(<ArrayOrObject>obj)
   }
 
   const result = type === 'array' ? [] : {}
-  weakMap.set(obj as ArrayOrObject, result)
+  weakMap.set(<ArrayOrObject>obj, result)
   const keys = Object.keys(obj)
   let key: string
   for (let i = 0, length = keys.length; i < length; i++) {
     key = keys[i]
     result[key] = deep ? clone(obj[key], deep, weakMap) : obj[key]
   }
-  return result as T
+  return <T>result
 }
 
 export default clone

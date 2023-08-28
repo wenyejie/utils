@@ -1,10 +1,6 @@
-import { isArray } from './isArray.js';
-
-const unique = (array) => {
-  if (!isArray(array)) {
-    return array;
-  }
-  return Array.from(new Set(array));
+import { isArray as e } from "./isArray.js";
+const n = (r) => e(r) ? Array.from(new Set(r)) : r;
+export {
+  n as default,
+  n as unique
 };
-
-export { unique as default, unique };

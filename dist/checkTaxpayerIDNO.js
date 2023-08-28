@@ -1,4 +1,4 @@
-const regArr = [
+const a = [
   /^[\da-z]{10,15}$/i,
   /^\d{6}[\da-z]{10,12}$/i,
   /^[a-z]\d{6}[\da-z]{9,11}$/i,
@@ -8,15 +8,14 @@ const regArr = [
   /^[a-z]\d{14}[\dx][\da-z]{3,4}$/i,
   /^[a-z]\d{17}[\dx][\da-z]{0,1}$/i,
   /^\d{6}[\da-z]{13,14}$/i
-];
-const checkTaxpayerIDNO = (taxId) => {
-  const j = regArr.length;
-  for (let i = 0; i < j; i++) {
-    if (regArr[i].test(taxId)) {
-      return true;
-    }
-  }
-  return false;
+], t = (z) => {
+  const e = a.length;
+  for (let d = 0; d < e; d++)
+    if (a[d].test(z))
+      return !0;
+  return !1;
 };
-
-export { checkTaxpayerIDNO, checkTaxpayerIDNO as default };
+export {
+  t as checkTaxpayerIDNO,
+  t as default
+};

@@ -1,3 +1,5 @@
-const isFalse = (obj) => obj === false;
-
-export { isFalse as default, isFalse };
+const a = (s) => s === !1;
+export {
+  a as default,
+  a as isFalse
+};

@@ -37,8 +37,8 @@ export const toDate = (date: LikeDate, isNew = false) => {
   }
 
   // 兼容ios手机, 把ios的date string转换为正常格式
-  if (isString(date) && rIOSDateStringFormat.test(date as string)) {
-    date = (date as string).replace(/-/g, '/')
+  if (isString(date) && rIOSDateStringFormat.test(<string>date)) {
+    date = (<string>date).replace(/-/g, '/')
   }
 
   date = new Date(date)

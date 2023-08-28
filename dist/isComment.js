@@ -1,3 +1,5 @@
-const isComment = (obj) => obj?.nodeType === 8;
-
-export { isComment as default, isComment };
+const o = (e) => e?.nodeType === 8;
+export {
+  o as default,
+  o as isComment
+};

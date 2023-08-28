@@ -1,15 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const isArray = require('./isArray.cjs');
-
-const unique = (array) => {
-  if (!isArray.isArray(array)) {
-    return array;
-  }
-  return Array.from(new Set(array));
-};
-
-exports.default = unique;
-exports.unique = unique;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("./isArray.cjs"),r=e=>u.isArray(e)?Array.from(new Set(e)):e;exports.default=r;exports.unique=r;

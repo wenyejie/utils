@@ -1,3 +1,5 @@
-const isArray = Array.isArray;
-
-export { isArray as default, isArray };
+const r = Array.isArray;
+export {
+  r as default,
+  r as isArray
+};

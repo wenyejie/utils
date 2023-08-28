@@ -1,44 +1,31 @@
-import { isFunction } from './isFunction.js';
-import { isObject } from './isObject.js';
-import { hasOwn } from './hasOwn.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-import './hasOwnProperty.js';
-import './isUndefined.js';
-import './isNull.js';
-
-const DEFAULT_OPTIONS = {
+import { isFunction as c } from "./isFunction.js";
+import { isObject as s } from "./isObject.js";
+import { hasOwn as a } from "./hasOwn.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+import "./hasOwnProperty.js";
+import "./isUndefined.js";
+import "./isNull.js";
+const f = {
   before: null,
   mode: "src",
   attrs: null
+}, A = (i, n, r) => (r = Object.assign({}, f, r), new Promise((d, l) => {
+  const e = document.createElement(i), o = document.body;
+  e[r.mode] = n;
+  const t = r.attrs;
+  if (s(t))
+    for (let m in t)
+      a(t, m) && e.setAttribute(m, t[m]);
+  e.onload = () => {
+    d(e), o.removeChild(e);
+  }, e.onerror = () => {
+    l(e), o.removeChild(e);
+  }, c(r.before) && r.before(e), o.appendChild(e);
+}));
+export {
+  A as default,
+  A as load
 };
-const load = (tagName, url, options) => {
-  options = Object.assign({}, DEFAULT_OPTIONS, options);
-  return new Promise((resolve, reject) => {
-    const $element = document.createElement(tagName);
-    const $body = document.body;
-    $element[options.mode] = url;
-    const attrs = options.attrs;
-    if (isObject(attrs)) {
-      for (let key in attrs) {
-        if (hasOwn(attrs, key)) {
-          $element.setAttribute(key, attrs[key]);
-        }
-      }
-    }
-    $element.onload = () => {
-      resolve($element);
-      $body.removeChild($element);
-    };
-    $element.onerror = () => {
-      reject($element);
-      $body.removeChild($element);
-    };
-    isFunction(options.before) && options.before($element);
-    $body.appendChild($element);
-  });
-};
-
-export { load as default, load };

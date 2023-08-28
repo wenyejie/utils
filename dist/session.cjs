@@ -1,11 +1,1 @@
-'use strict';
-
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
-
-const globalThis = require('./globalThis.cjs');
-const storage = require('./storage.cjs');
-
-const session = storage.storage(globalThis.default?.sessionStorage);
-
-exports.default = session;
-exports.session = session;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("./globalThis.cjs"),o=require("./storage.cjs"),e=o.storage(s.default?.sessionStorage);exports.default=e;exports.session=e;

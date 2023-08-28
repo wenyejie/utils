@@ -1,5 +1,5 @@
 import globalThis from './globalThis'
-import storage from '@/storage'
+import storage from './storage'
 
 export const session = storage(globalThis?.sessionStorage)
 

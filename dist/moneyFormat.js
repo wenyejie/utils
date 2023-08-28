@@ -1,13 +1,12 @@
-import { isNumber } from './isNumber.js';
-import { toNumber } from './toNumber.js';
-import { nullProtoObject } from './nullProtoObject.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-import './isString.js';
-
-const defaultOptions = {
+import { isNumber as l } from "./isNumber.js";
+import { toNumber as m } from "./toNumber.js";
+import { nullProtoObject as a } from "./nullProtoObject.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+import "./isString.js";
+const d = {
   decimal: 2,
   // 小数点长度
   symbol: "",
@@ -18,28 +17,22 @@ const defaultOptions = {
   // 分隔符号
   length: 3,
   // 分割长度
-  padEnd: true
+  padEnd: !0
   // 是否尾部填充
+}, b = (r, t) => {
+  if (t = Object.assign(
+    a(),
+    d,
+    t
+  ), r = m(r), !l(r))
+    return t.default;
+  const e = r.toFixed(t.decimal).split(".");
+  return !t.padEnd && e[1] && (e[1] = e[1].replace(/0+$/, "")), t.symbol + e[0].replace(
+    new RegExp("\\B(?=(\\d{" + t.length + "})+(?!\\d))", "g"),
+    t.split
+  ) + (e[1] ? "." + e[1] : "");
 };
-const moneyFormat = (number, options) => {
-  options = Object.assign(
-    nullProtoObject(),
-    defaultOptions,
-    options
-  );
-  number = toNumber(number);
-  if (!isNumber(number)) {
-    return options.default;
-  }
-  const result = number.toFixed(options.decimal);
-  const numberSplit = result.split(".");
-  if (!options.padEnd && numberSplit[1]) {
-    numberSplit[1] = numberSplit[1].replace(/0+$/, "");
-  }
-  return options.symbol + numberSplit[0].replace(
-    new RegExp("\\B(?=(\\d{" + options.length + "})+(?!\\d))", "g"),
-    options.split
-  ) + (numberSplit[1] ? "." + numberSplit[1] : "");
+export {
+  b as default,
+  b as moneyFormat
 };
-
-export { moneyFormat as default, moneyFormat };

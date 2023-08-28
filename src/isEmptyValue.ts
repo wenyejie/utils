@@ -4,16 +4,16 @@ import objectLength from './objectLength'
 
 /**
  * 判断一个值是否为空值
- * @param value
+ * @param obj 对象
  */
-export const isEmptyValue = value => {
+export const isEmptyValue = (obj: unknown) => {
   return (
-    value === undefined ||
-    value === null ||
-    value === '' ||
-    Number.isNaN(value) ||
-    (isArray(value) && value.length === 0) ||
-    (isObject(value) && objectLength(value) === 0)
+    obj === undefined ||
+    obj === null ||
+    obj === '' ||
+    Number.isNaN(obj) ||
+    (isArray(obj) && obj.length === 0) ||
+    (isObject(obj) && objectLength(obj) === 0)
   )
 }
 export default isEmptyValue

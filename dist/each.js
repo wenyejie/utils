@@ -1,34 +1,26 @@
-import { isArray } from './isArray.js';
-import { isObject } from './isObject.js';
-import { hasOwn } from './hasOwn.js';
-import './toRawType.js';
-import './toTypeString.js';
-import './objectToString.js';
-import './decapitalize.js';
-import './hasOwnProperty.js';
-import './isUndefined.js';
-import './isNull.js';
-
-const each = (data, fn) => {
-  if (!isArray(data) && !isObject(data)) {
-    return;
-  }
-  if (isArray(data)) {
-    for (let i = 0; i < data.length; i++) {
-      if (fn.call(data[i], data[i], i, data) === false) {
-        return;
-      }
-    }
-  } else {
-    for (let key in data) {
-      if (!hasOwn(data, key)) {
-        continue;
-      }
-      if (fn.call(data[key], data[key], key, data) === false) {
-        return;
-      }
-    }
+import { isArray as e } from "./isArray.js";
+import { isObject as m } from "./isObject.js";
+import { hasOwn as f } from "./hasOwn.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+import "./hasOwnProperty.js";
+import "./isUndefined.js";
+import "./isNull.js";
+const b = (r, o) => {
+  if (!(!e(r) && !m(r))) {
+    if (e(r)) {
+      for (let i = 0; i < r.length; i++)
+        if (o.call(r[i], r[i], i, r) === !1)
+          return;
+    } else
+      for (let i in r)
+        if (f(r, i) && o.call(r[i], r[i], i, r) === !1)
+          return;
   }
 };
-
-export { each as default, each };
+export {
+  b as default,
+  b as each
+};
