@@ -124,7 +124,7 @@ import { toTypeString as Em } from "./toTypeString.js";
 import { unique as wm } from "./unique.js";
 import { url2http as jm } from "./url2http.js";
 import { url2https as Tm } from "./url2https.js";
-const r = "2.0.3";
+const r = "2.0.4";
 export {
   vt as PublishSubscribe,
   r as VERSION,
