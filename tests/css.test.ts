@@ -1,6 +1,8 @@
 import { expect, test } from 'vitest'
 import { CSSStyleDeclaration } from 'happy-dom'
-import { getCSS, setCSS, supportCSS } from '../src/css'
+import getCSS from '../src/getCSS'
+import setCSS from '../src/setCSS'
+import supportCSS from '../src/supportCSS'
 import globalThis from '../src/globalThis'
 import { window, document } from './utils'
 

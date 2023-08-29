@@ -4,15 +4,15 @@ import globalThis from './globalThis'
  * 函数节流 - 间隔一定时间后执行, 地铁
  * @param fn 函数
  * @param interval 时间间隔
- * @param isFirst 第一次是否立即执行
+ * @param immediate 立刻执行
  */
-export const throttle = (fn: (...rest: any[]) => any, interval = 500, isFirst = false) => {
+export const throttle = (fn: (...rest: any[]) => any, interval = 500, immediate = false) => {
   // 定时器
   let timer: string | number | NodeJS.Timeout
-  return function(...rest: any[]) {
-    if (isFirst) {
+  return function (...rest: any[]) {
+    if (immediate) {
       fn.apply(this, rest)
-      isFirst = false
+      immediate = false
       return
     }
     if (timer) {

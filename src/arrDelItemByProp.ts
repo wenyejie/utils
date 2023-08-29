@@ -7,7 +7,7 @@ export const arrDelItemByProp: {
    * @param prop 属性
    */ <P extends PropObj>(array: P[], prop: PropObj): P[]
   /**
-   * 根据属性删除数组子项
+   * 根据属性删除数组子项. 只删除最先匹配的一项
    * @param array 数组
    * @param propKey 属性
    * @param propValue 属性值
