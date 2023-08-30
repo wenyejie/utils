@@ -44,7 +44,6 @@ buildLibrary()
 
 const build: BuildOptions = {
   target: 'esnext',
-  minify: true,
   lib: {
     entry,
     name: 'wenyejie',

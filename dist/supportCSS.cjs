@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("./hyphenate.cjs"),o=require("./globalThis.cjs"),e=(t,r)=>o.default?.CSS?.supports?.(u.hyphenate(t),r);exports.default=e;exports.supportCSS=e;
