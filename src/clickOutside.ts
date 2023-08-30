@@ -3,14 +3,14 @@ import isFunction from './isFunction'
 import isParentElement from './isParentElement'
 import noop from './noop'
 
-type RemoveEventListener = () => void
+type RemoveClickOutside = () => void
 
 /**
  * 点击元素外部执行回调
  * @param element 元素
  * @param callback 回调
  */
-export const clickOutside = (element: HTMLElement, callback: AnyFn): RemoveEventListener => {
+export const clickOutside = (element: HTMLElement, callback: AnyFn): RemoveClickOutside => {
   if (!isElement(element) || !isFunction(callback)) {
     return noop
   }
