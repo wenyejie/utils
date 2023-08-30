@@ -6,8 +6,53 @@
 </head>
 <body>
 <script type="module">
-  import { toRawType } from '../dist/wenyejie.js'
-  console.log(toRawType(1))
+  export function getUUID(len) {
+    let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+    let uuid = [],
+      i;
+    let radix = chars.length;
+
+    if (len) {
+      // Compact form
+      for (i = 0; i < len; i++) uuid[i] = chars[0 | Math.random() * radix];
+    } else {
+      // rfc4122, version 4 form
+      let r;
+
+      // rfc4122 requires these characters
+      uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+      uuid[14] = '4';
+
+      // Fill in random data.  At i==19 set the high bits of clock sequence as
+      // per rfc4122, sec. 4.1.5
+      for (i = 0; i < 36; i++) {
+        if (!uuid[i]) {
+          r = 0 | Math.random() * 16;
+          uuid[i] = chars[(i === 19) ? (r & 0x3) | 0x8 : r];
+        }
+      }
+    }
+
+    return uuid.join('');
+  }
+
+  console.log(getUUID())
+
+  function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = (Math.random() * 16) | 0,
+        v = c === 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  }
+
+  console.log(generateUUID()); // 输出类似 "2f1ab935-3683-4f25-ae8a-a92f3a5a9fff"
+
+  /* 假定 self.crypto.randomUUID() 可用 */
+
+  let uuid = self.crypto.randomUUID();
+  console.log(uuid); // 例如 "36b8f84d-df4e-4d49-b662-bcde71a8764f"
+
 </script>
 </body>
 </html>

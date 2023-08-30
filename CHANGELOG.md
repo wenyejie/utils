@@ -1,5 +1,10 @@
 # 版本记录
 
+## 2.0.5
+
+- 新增`clickOutside`方法
+- 新增`isParentElement`方法
+
 ## 2.0.0 `online`
 
 - 使用`vite`重构

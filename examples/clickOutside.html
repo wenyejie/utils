@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='zh-cn'>
+<head>
+  <meta charset='utf-8'>
+  <title>clickOutside</title>
+  <style>
+    ul {
+      background-color: #a89b9b;
+      padding: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<ul>
+  <li>demo</li>
+</ul>
+<button></button>
+<script type='module'>
+  import clickOutside from '@/clickOutside'
+
+  const elUl = document.querySelector('ul')
+  const elLi = document.querySelector('li')
+
+  const remove = clickOutside(elUl, () => {
+    console.log('outside')
+  })
+</script>
+</body>
+</html>

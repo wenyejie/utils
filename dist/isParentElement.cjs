@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const n=require("./isElement.cjs"),r=(t,e,u=!0)=>{if(!n.isElement(t)||!n.isElement(e))return!1;for(u||(e=e.parentElement);e!==null;){if(e===t)return!0;e=e.parentElement}return!1};exports.default=r;exports.isParentElement=r;
