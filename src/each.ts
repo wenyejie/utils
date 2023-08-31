@@ -9,9 +9,10 @@ import hasOwn from './hasOwn'
  */
 export const each: {
   (data: any[], fn: (...rest: any[]) => any): void
-  (data: Record<any, any>, fn: (...rest: any[]) => any): void
-} = (data: any[] | Record<any, any>, fn: (...rest: any[]) => any) => {
+  (data: PropObj, fn: (...rest: any[]) => any): void
+} = (data: any[] | PropObj, fn: (...rest: any[]) => any) => {
   if (!isArray(data) && !isObject(data)) {
+    console.error(`${data} is not array or object`)
     return
   }
   if (isArray(data)) {

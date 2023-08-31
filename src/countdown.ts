@@ -2,11 +2,11 @@ import globalThis from './globalThis'
 import isFunction from './isFunction'
 
 // 倒计时时间名称
-type CountdownEventName = 'change' | 'start' | 'stop' | 'finish' | 'continue'
+export type CountdownEventName = 'change' | 'start' | 'stop' | 'finish' | 'continue'
 // 倒计时回调
-type CountdownCallback = (value: number) => void
+export type CountdownCallback = (value: number) => void
 // 倒计时选项
-interface CountdownOptions {
+export interface CountdownOptions {
   // 循环间隔时间
   delay?: number
   // 每次循环减少数

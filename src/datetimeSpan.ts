@@ -1,7 +1,7 @@
 import isDate from './isDate'
 import camelize from './camelize'
 
-interface DatetimeSpanOptions {
+export interface DatetimeSpanOptions {
   types?: string[]
   hasYear?: boolean
   year?: number
@@ -21,7 +21,7 @@ interface DatetimeSpanOptions {
   compare?: Date
 }
 
-interface DatetimeSpanResult {
+export interface DatetimeSpanResult {
   year?: number
   week?: number
   day?: number

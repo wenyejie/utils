@@ -9,9 +9,10 @@ import globalThis from './globalThis'
  * @param blob blob对象
  * @param filename 文件名称
  */
-export const downloadBlob = (blob:Blob, filename:string) => {
+export const downloadBlob = (blob: Blob, filename: string) => {
   if (!isBlob(blob)) {
-    throw new Error('参数错误: blob不是Blob类型')
+    console.error(`${blob} is not a Blob`)
+    return
   }
   if (!suffix(filename)) {
     filename = filename + '.' + blob.type.replace(/image\//, '')

@@ -6,9 +6,10 @@ import isString from './isString'
  * @param url
  * @param filename
  */
-export const downloadFile = (url:string, filename = '') => {
+export const downloadFile = (url: string, filename = '') => {
   if (!isString(url)) {
-    throw new Error(`参数错误: ${url}`)
+    console.error(`${url} is not a string`)
+    return
   }
   const $download = document.createElement('a')
   $download.style.display = 'none'

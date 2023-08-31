@@ -11,6 +11,7 @@ import padStart from './padStart'
 export const dateFormat = (date: LikeDate, format = 'YYYY-MM-DD hh:mm:ss', defaultValue = '') => {
   const newDate = toDate(date)
   if (isInvalidDate(newDate)) {
+    console.error(`${date} is not valid date`)
     return defaultValue
   }
 

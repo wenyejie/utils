@@ -2,7 +2,7 @@ import isDate from './isDate'
 import toDate from './toDate'
 
 // 日期对象返回结果
-interface DateObjResult {
+export interface DateObjResult {
   year?: number
   month?: number
   day?: number
@@ -22,6 +22,7 @@ export const dateObj = (date: LikeDate = new Date()) => {
   let result: DateObjResult = {}
   date = toDate(date)
   if (!isDate(date)) {
+    console.error(`${date} is not a date`)
     return result
   }
   result = {
