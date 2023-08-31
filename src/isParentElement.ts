@@ -2,13 +2,17 @@ import isElement from './isElement'
 
 /**
  * 判断元素是否为另一个的父级元素
- * 如果两个元素为同一个元素那么也返回true isParentElement(html, html) // true
  * @param parent 父级元素
  * @param child 子元素
- * @param selfParent 自己是否也算作自己的父级元素, 默认算{true}
+ * @param selfParent 自己是否也算作自己的父级元素, 默认是{true}
  */
 export const isParentElement = (parent: HTMLElement, child: HTMLElement, selfParent = true) => {
-  if (!isElement(parent) || !isElement(child)) {
+  if (!isElement(parent)) {
+    console.error(new TypeError(`"${parent}" is not a HTMLElement`))
+    return false
+  }
+  if (!isElement(child)) {
+    console.error(new TypeError(`"${child}" is not a HTMLElement`))
     return false
   }
   if (!selfParent) {

@@ -1,15 +1,17 @@
-import { isElement as r } from "./isElement.js";
-const u = (t, e, n = !0) => {
-  if (!r(t) || !r(e))
-    return !1;
-  for (n || (e = e.parentElement); e !== null; ) {
-    if (e === t)
+import { isElement as n } from "./isElement.js";
+const s = (r, e, t = !0) => {
+  if (!n(r))
+    return console.error(new TypeError(`"${r}" is not a HTMLElement`)), !1;
+  if (!n(e))
+    return console.error(new TypeError(`"${e}" is not a HTMLElement`)), !1;
+  for (t || (e = e.parentElement); e !== null; ) {
+    if (e === r)
       return !0;
     e = e.parentElement;
   }
   return !1;
 };
 export {
-  u as default,
-  u as isParentElement
+  s as default,
+  s as isParentElement
 };

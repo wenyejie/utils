@@ -1,13 +1,19 @@
-import l from "./globalThis.js";
-const c = (o, s) => {
-  const e = o.split(","), a = e[0].match(/:(.*?);/)[1], n = l.atob(e[1]);
-  let t = n.length;
-  const r = new Uint8Array(t);
-  for (; t--; )
-    r[t] = n.charCodeAt(t);
-  return new File([r], s + "." + a.substring(6), { type: a });
+import n from "./globalThis.js";
+import { hasSuffix as c } from "./hasSuffix.js";
+import "./isString.js";
+import "./toRawType.js";
+import "./toTypeString.js";
+import "./objectToString.js";
+import "./decapitalize.js";
+const g = (p, t) => {
+  const o = p.split(","), i = o[0].match(/:(.*?);/)[1], s = n.atob(o[1]);
+  let r = s.length;
+  const a = new Uint8Array(r);
+  for (; r--; )
+    a[r] = s.charCodeAt(r);
+  return t = c(t) ? t : `${t}.${i.substring(6)}`, new File([a], t, { type: i });
 };
 export {
-  c as base642file,
-  c as default
+  g as base642file,
+  g as default
 };

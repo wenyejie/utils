@@ -1,4 +1,5 @@
 import globalThis from './globalThis'
+import hasSuffix from '@/hasSuffix'
 
 /**
  * base64 to file
@@ -14,7 +15,8 @@ export const base642file = (base64: string, filename: string) => {
   while (length--) {
     uint8Array[length] = decodedData.charCodeAt(length)
   }
-  return new File([uint8Array], filename + '.' + type.substring(6), { type })
+  filename = hasSuffix(filename) ? filename : `${filename}.${type.substring(6)}`
+  return new File([uint8Array], filename, { type })
 }
 
 export default base642file
