@@ -2,7 +2,7 @@
 import { BuildOptions, defineConfig, PluginOption, UserConfig, ServerOptions } from 'vite'
 import { join } from 'node:path'
 import { InputOption } from 'rollup'
-import { readdirSync, writeFile } from 'node:fs'
+import { readdirSync, writeFile, statSync } from 'node:fs'
 import { version } from './package.json'
 
 const { NODE_ENV } = process.env
@@ -19,10 +19,19 @@ entryFiles.forEach((file) => {
   entry.push(`./src/${file}`)
 })
 
-const input: InputOption = []
-
-const inputFiles = readdirSync(join('./examples'))
-inputFiles.forEach((file) => input.push(`./examples/${file}`))
+// 获取examples文件夹中的最新修改文件
+const getExamplesLatestModifiedFile = (files: string[]) => {
+  let latestModifiedFile = ''
+  let latestModifiedTimestamp = 0
+  files.forEach((file) => {
+    const status = statSync(file)
+    if (status.mtimeMs > latestModifiedTimestamp) {
+      latestModifiedTimestamp = status.mtimeMs
+      latestModifiedFile = file
+    }
+  })
+  return latestModifiedFile
+}
 
 const rFileSuffix = /\.ts$/ // 文件后缀
 
@@ -62,14 +71,24 @@ const test = {
   },
 }
 
-const server: ServerOptions = {
-  port: 8081,
-  open: './examples/',
-}
+let server: ServerOptions = {}
 
 if (isDev) {
+  const input: InputOption = []
+
+  const inputFiles = readdirSync(join('./examples'))
+  inputFiles.forEach((file) => input.push(`./examples/${file}`))
+
   build.rollupOptions = {
     input,
+  }
+  server = {
+    port: 8081,
+    open: getExamplesLatestModifiedFile(input),
+    fs: {
+      strict: false,
+      allow: ['..'],
+    },
   }
 }
 
