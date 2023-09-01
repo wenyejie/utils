@@ -9,7 +9,7 @@ const { NODE_ENV } = process.env
 
 const isDev = NODE_ENV === 'development'
 const isProd = NODE_ENV === 'production'
-
+const libName = 'wenyejie'
 const plugins: PluginOption = []
 
 const entry: InputOption = []
@@ -39,12 +39,12 @@ const rFileSuffix = /\.ts$/ // 文件后缀
 const buildLibrary = () => {
   let content = `// @Copyright by https://github.com/wenyejie/utils\rexport const VERSION = '${version}'\r`
   entryFiles.forEach((file) => {
-    if (file === 'wenyejie.ts' || !rFileSuffix.test(file)) {
+    if (file === `${libName}.ts` || !rFileSuffix.test(file)) {
       return
     }
     content += `export * from './${file.replace(rFileSuffix, '')}'\r`
   })
-  writeFile('./src/wenyejie.ts', content, (error) => {
+  writeFile(`./src/${libName}.ts`, content, (error) => {
     console.error(error)
   })
 }
@@ -55,7 +55,7 @@ const build: BuildOptions = {
   target: 'esnext',
   lib: {
     entry,
-    name: 'wenyejie',
+    name: libName,
     fileName: (format, entryName) => {
       return `${entryName}.${format === 'es' ? 'js' : 'cjs'}`
     },
