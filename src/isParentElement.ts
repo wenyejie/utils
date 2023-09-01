@@ -8,11 +8,11 @@ import isElement from './isElement'
  */
 export const isParentElement = (parent: HTMLElement, child: HTMLElement, selfParent = true) => {
   if (!isElement(parent)) {
-    console.error(new TypeError(`"${parent}" is not a HTMLElement`))
+    console.error(`"${parent}" is not a HTMLElement`)
     return false
   }
   if (!isElement(child)) {
-    console.error(new TypeError(`"${child}" is not a HTMLElement`))
+    console.error(`"${child}" is not a HTMLElement`)
     return false
   }
   if (!selfParent) {

@@ -7,6 +7,7 @@ import { rHttps, rHttp } from './regexp'
  */
 export const url2http = (url: string) => {
   if (!isString(url)) {
+    console.error(`${url} is not a string`)
     return ''
   }
   if (!rHttp.test(url)) {

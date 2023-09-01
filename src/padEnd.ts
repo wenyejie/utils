@@ -8,6 +8,7 @@ import isUndefined from './isUndefined'
  */
 export const padEnd = (obj: string | number, maxLength: number = 2, fillString: string = '0'): string => {
   if (isUndefined(obj) || Number.isNaN(obj)) {
+    console.error(`${obj} is not a string or number`)
     obj = ''
   }
   return `${obj}`.padEnd(maxLength, fillString)

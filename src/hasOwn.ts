@@ -7,8 +7,9 @@ import isNull from './isNull'
  * @param obj 对象
  * @param prop 属性
  */
-export const hasOwn = (obj:PropObj, prop:string | number | symbol) => {
+export const hasOwn = (obj: PropObj, prop: string | number | symbol) => {
   if (isUndefined(obj) || isNull(obj)) {
+    console.error(`${obj} is not a valid type`)
     return false
   }
   return hasOwnProperty.call(obj, prop) as boolean

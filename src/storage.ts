@@ -60,6 +60,7 @@ export const storage = (storage: Storage, key?: string): StorageFn => {
   const instance = new CustomStorage(storage, key)
   return (name: string, value?: any) => {
     if (!name) {
+      console.error(`${name} is required`)
       return
     }
     switch (value) {

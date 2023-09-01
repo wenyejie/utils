@@ -6,11 +6,14 @@ import isString from './isString'
  */
 export const prefix = (string: string) => {
   if (!isString(string)) {
+    console.error(`${string} is not a string`)
     return ''
   }
   string = string.trim()
 
-  const { groups: { prefix } } = string.match(/^(?<prefix>\w+)+(?=\.)/)
+  const {
+    groups: { prefix },
+  } = string.match(/^(?<prefix>\w+)+(?=\.)/)
   return prefix
 }
 

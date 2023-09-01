@@ -25,7 +25,7 @@ const leftPad = (n: number, len: number) => {
   let sn = n.toString()
   const il = sn.length
   if (len - il + 1 > 0) {
-    sn = ''.padEnd(len > il ? (len - il + 1) : len - il, '0') + sn
+    sn = ''.padEnd(len > il ? len - il + 1 : len - il, '0') + sn
   }
   sn = spliceString(sn, Math.abs(il - len), '.')
   return Number.parseFloat(sn)
@@ -36,7 +36,7 @@ const operationInit = (num1: number | string, num2: number | string) => {
   return {
     n1: rightPad(toNumber(num1), raise),
     n2: rightPad(toNumber(num2), raise),
-    raise
+    raise,
   }
 }
 
@@ -54,7 +54,8 @@ export const add = (num1: number | string, num2: number | string) => {
  * 累加
  * @param nums 加数和被加数
  */
-export const multiAdd = (...nums: (number | string)[]) => nums.reduce((accumulator, currentValue) => add(accumulator, currentValue)) as number
+export const multiAdd = (...nums: (number | string)[]) =>
+  nums.reduce((accumulator, currentValue) => add(accumulator, currentValue)) as number
 
 /**
  * 减
@@ -70,7 +71,8 @@ export const subtract = (num1: number | string, num2: number | string) => {
  * 累减
  * @param nums 减数和被减数
  */
-export const multiSubtract = (...nums: (number | string)[]) => nums.reduce((accumulator, currentValue) => subtract(accumulator, currentValue)) as number
+export const multiSubtract = (...nums: (number | string)[]) =>
+  nums.reduce((accumulator, currentValue) => subtract(accumulator, currentValue)) as number
 
 /**
  * 乘
@@ -86,7 +88,8 @@ export const multiply = (num1: number | string, num2: number | string) => {
  * 累乘
  * @param nums 乘数和被乘数
  */
-export const multiMultiply = (...nums: (number | string)[]) => nums.reduce((accumulator, currentValue) => multiply(accumulator, currentValue), 1) as number
+export const multiMultiply = (...nums: (number | string)[]) =>
+  nums.reduce((accumulator, currentValue) => multiply(accumulator, currentValue), 1) as number
 
 /**
  * 除
@@ -102,7 +105,8 @@ export const divide = (num1: number | string, num2: number | string) => {
  * 累除
  * @param nums 除数和被除数
  */
-export const multiDivide = (...nums:(number | string)[]) => nums.reduce((accumulator, currentValue) => divide(accumulator, currentValue)) as number
+export const multiDivide = (...nums: (number | string)[]) =>
+  nums.reduce((accumulator, currentValue) => divide(accumulator, currentValue)) as number
 
 /**
  * 求余
@@ -116,13 +120,12 @@ export const remain = (num1: number | string, num2: number | string) => {
   return r1.toString().length <= r2.toString().length ? r1 : r2
 }
 
-
 const operates = {
   '+': add,
   '-': subtract,
   '*': multiply,
   '/': divide,
-  '%': remain
+  '%': remain,
 }
 
 // 匹配包括花括号的表达式
@@ -150,7 +153,7 @@ export const arithmetic = (expression: string) => {
   let index = -1
   let result: number
   do {
-    index = arr.findIndex(item => ['*', '/', '%'].includes(item))
+    index = arr.findIndex((item) => ['*', '/', '%'].includes(item))
     if (index < 0) {
       break
     }
@@ -168,13 +171,12 @@ export const arithmetic = (expression: string) => {
     result = operates[arr[i - 1] || '+'](result, arr[i])
   }
 
-
   return result
 }
 
 /**
  * 解析表达式并返回计算结果
- * @param arithmeticStr
+ * @param arithmeticStr 表达式
  */
 export const exactMath = (arithmeticStr: string) => {
   if (!isString(arithmeticStr)) {

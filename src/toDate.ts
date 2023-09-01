@@ -11,6 +11,7 @@ import isInvalidDate from './isInvalidDate'
  */
 export const toDate = (date: LikeDate, isNew = false) => {
   if (!date || isInvalidDate(date)) {
+    console.log(`${date} is not a valid date`)
     return null
   }
   if (isDate(date)) {

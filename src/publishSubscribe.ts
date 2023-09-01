@@ -2,25 +2,25 @@ import isFunction from './isFunction'
 import arrDelItemByProp from './arrDelItemByProp'
 
 // 发布订阅的订阅选项
-interface PublishSubscribeOnOptions {
+export interface PublishSubscribeOnOptions {
   immediate?: boolean
   once?: boolean
 }
 
 // 发布订阅回调Map队列
-interface PublishSubscribeCallbackMapQueue {
+export interface PublishSubscribeCallbackMapQueue {
   once?: boolean
   callback: AnyFn
 }
 
 //发布订阅的回调Map子项
-interface PublishSubscribeCallbackMapItem {
+export interface PublishSubscribeCallbackMapItem {
   data?: any
   queue: PublishSubscribeCallbackMapQueue[]
 }
 
 // 发布订阅的回调Map
-interface PublishSubscribeCallbackMap {
+export interface PublishSubscribeCallbackMap {
   [key: string]: PublishSubscribeCallbackMapItem
 }
 

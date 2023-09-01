@@ -27,7 +27,7 @@ export const toMultiKeyOneValue = (data: any[][]) => {
   const target: ToMultiKeyOneValueTargetType = {}
   const proxy = new Proxy(target, handler)
   if (!isArray(data)) {
-    console.error('Error parameter', data)
+    console.error(`${data} is not a array`)
   }
   for (const [keys, value] of data) {
     proxy[keys] = value

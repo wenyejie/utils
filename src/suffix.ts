@@ -6,10 +6,13 @@ import isString from './isString'
  */
 export const suffix = (string: string) => {
   if (!isString(string)) {
+    console.error(`${string} is not a string`)
     return ''
   }
   string = string.trim()
-  const { groups: { suffix } } = string.match(/(?<=\.)(?<suffix>\w+)+$/)
+  const {
+    groups: { suffix },
+  } = string.match(/(?<=\.)(?<suffix>\w+)+$/)
   return suffix
 }
 
