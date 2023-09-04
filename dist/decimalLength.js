@@ -1,11 +1,11 @@
-import { isNumber as i } from "./isNumber.js";
+import { isNumber as o } from "./isNumber.js";
 import { isString as r } from "./isString.js";
 import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-const o = /^\d+\.?/, c = (t) => (r(t) && (t = +t), i(t) ? `${t}`.replace(o, "").length : 0);
+const i = /^\d+\.?/, f = (t) => (r(t) && (t = +t), o(t) ? `${t}`.replace(i, "").length : (console.error(`${t} is not a number`), 0));
 export {
-  c as decimalLength,
-  c as default
+  f as decimalLength,
+  f as default
 };

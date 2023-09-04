@@ -4,14 +4,14 @@ import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-const U = (t, o) => {
-  if (!r(t))
-    return !1;
-  const i = new URL(t);
-  let n = r(o) ? new URL(o) : e.location;
+const c = (o, t) => {
+  if (!r(o))
+    return console.error(`${o} is not a string`), !1;
+  const i = new URL(o);
+  let n = r(t) ? new URL(t) : e.location;
   return i.host === n.host;
 };
 export {
-  U as default,
-  U as isSameHost
+  c as default,
+  c as isSameHost
 };

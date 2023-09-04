@@ -8,7 +8,7 @@ import "./decapitalize.js";
 import "./isString.js";
 import "./regexp.js";
 import "./isInvalidDate.js";
-const M = (r, o) => (r = t(r), o = t(o), !i(r) || !i(o) ? !1 : r.getFullYear() === o.getFullYear() && r.getMonth() === o.getMonth());
+const M = (o, r) => (o = t(o), r = t(r), !i(o) || !i(r) ? (console.error(`${o} or ${r} is not a valid date`), !1) : o.getFullYear() === r.getFullYear() && o.getMonth() === r.getMonth());
 export {
   M as default,
   M as isSameMonth

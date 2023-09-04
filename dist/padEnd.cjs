@@ -1,1 +1,1 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isUndefined.cjs"),d=(e,n=2,i="0")=>((t.isUndefined(e)||Number.isNaN(e))&&(e=""),`${e}`.padEnd(n,i));exports.default=d;exports.padEnd=d;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./isUndefined.cjs"),n=(e,r=2,d="0")=>((i.isUndefined(e)||Number.isNaN(e))&&(console.error(`${e} is not a string or number`),e=""),`${e}`.padEnd(r,d));exports.default=n;exports.padEnd=n;

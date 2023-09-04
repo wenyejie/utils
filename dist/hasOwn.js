@@ -1,8 +1,8 @@
-import { hasOwnProperty as e } from "./hasOwnProperty.js";
-import { isUndefined as f } from "./isUndefined.js";
+import { hasOwnProperty as t } from "./hasOwnProperty.js";
+import { isUndefined as o } from "./isUndefined.js";
 import { isNull as i } from "./isNull.js";
-const a = (r, t) => f(r) || i(r) ? !1 : e.call(r, t);
+const l = (r, e) => o(r) || i(r) ? (console.error(`${r} is not a valid type`), !1) : t.call(r, e);
 export {
-  a as default,
-  a as hasOwn
+  l as default,
+  l as hasOwn
 };

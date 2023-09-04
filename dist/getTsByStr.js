@@ -1,34 +1,34 @@
 import { isString as u } from "./isString.js";
-import { isNumber as o } from "./isNumber.js";
-import { isNumberString as s } from "./isNumberString.js";
-import { toMultiKeyOneValue as a } from "./toMultiKeyOneValue.js";
+import { isNumber as t } from "./isNumber.js";
+import { isNumberString as a } from "./isNumberString.js";
+import { toMultiKeyOneValue as s } from "./toMultiKeyOneValue.js";
 import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
 import "./isArray.js";
-const l = a([
+const l = s([
   [["s", "sec", "second"], 1e3],
   [["m", "min", "minute"], 6e4],
   [["h", "hour"], 36e5],
   [["d", "day"], 864e5],
   [["w", "week"], 6048e5],
   [["y", "year"], 31536e6]
-]), c = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(ay)?|w(eek)?|y(ear)?)$/i, T = (r, i = "millisecond") => {
-  if (!o(r) && !u(r))
-    return console.error(`getTsByStr: str is type error => ${r.toString()}`), null;
-  if (o(r))
+]), c = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(ay)?|w(eek)?|y(ear)?)$/i, b = (r, n = "millisecond") => {
+  if (!t(r) && !u(r))
+    return console.error(`${r} is not a number or string`), null;
+  if (t(r))
     return r;
-  if (r = r.trim(), s(r))
+  if (r = r.trim(), a(r))
     return Math.floor(+r);
   const e = r.match(c);
   if (!e)
     return console.error(`getTsByStr: Incorrect timestamp string parameter => ${r}`), null;
-  let { num: n, unit: m } = e.groups;
-  const t = +n * l[m.toLowerCase()];
-  return Math.floor(i === "second" ? t / 1e3 : t);
+  let { num: i, unit: m } = e.groups;
+  const o = +i * l[m.toLowerCase()];
+  return Math.floor(n === "second" ? o / 1e3 : o);
 };
 export {
-  T as default,
-  T as getTsByStr
+  b as default,
+  b as getTsByStr
 };

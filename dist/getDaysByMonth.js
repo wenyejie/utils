@@ -1,5 +1,5 @@
-import { toDate as t } from "./toDate.js";
-import { isDate as o } from "./isDate.js";
+import { toDate as o } from "./toDate.js";
+import { isDate as r } from "./isDate.js";
 import "./isNumber.js";
 import "./toRawType.js";
 import "./toTypeString.js";
@@ -8,8 +8,8 @@ import "./decapitalize.js";
 import "./isString.js";
 import "./regexp.js";
 import "./isInvalidDate.js";
-const u = (r) => (r = t(r), o(r) ? new Date(r.getFullYear(), r.getMonth() + 1, 0).getDate() : (console.error("参数错误", r), 0));
+const g = (t) => (t = o(t), r(t) ? new Date(t.getFullYear(), t.getMonth() + 1, 0).getDate() : (console.error(`${t} is not a valid date`), 0));
 export {
-  u as default,
-  u as getDaysByMonth
+  g as default,
+  g as getDaysByMonth
 };

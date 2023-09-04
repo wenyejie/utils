@@ -1,6 +1,6 @@
 import { isArray as e } from "./isArray.js";
-const n = (r) => e(r) ? Array.from(new Set(r)) : r;
+const t = (r) => e(r) ? Array.from(new Set(r)) : (console.error(`${r} is not a array`), r);
 export {
-  n as default,
-  n as unique
+  t as default,
+  t as unique
 };

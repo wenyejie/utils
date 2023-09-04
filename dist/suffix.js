@@ -3,14 +3,16 @@ import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-const s = (f) => {
-  if (!t(f))
-    return "";
-  f = f.trim();
-  const { groups: { suffix: r } } = f.match(/(?<=\.)(?<suffix>\w+)+$/);
+const p = (o) => {
+  if (!t(o))
+    return console.error(`${o} is not a string`), "";
+  o = o.trim();
+  const {
+    groups: { suffix: r }
+  } = o.match(/(?<=\.)(?<suffix>\w+)+$/);
   return r;
 };
 export {
-  s as default,
-  s as suffix
+  p as default,
+  p as suffix
 };

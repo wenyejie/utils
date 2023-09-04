@@ -11,7 +11,7 @@ const u = {
   }
 }, f = (e) => {
   const t = {}, o = new Proxy(t, u);
-  l(e) || console.error("Error parameter", e);
+  l(e) || console.error(`${e} is not a array`);
   for (const [r, n] of e)
     o[r] = n;
   return o;

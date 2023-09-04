@@ -1,5 +1,5 @@
-import { isUndefined as e } from "./isUndefined.js";
-const i = (t, r = 2, a = "0") => ((e(t) || Number.isNaN(t)) && (t = ""), `${t}`.padStart(r, a));
+import { isUndefined as a } from "./isUndefined.js";
+const i = (r, t = 2, e = "0") => ((a(r) || Number.isNaN(r)) && (console.error(`${r} is not a string or number`), r = ""), `${r}`.padStart(t, e));
 export {
   i as default,
   i as padStart

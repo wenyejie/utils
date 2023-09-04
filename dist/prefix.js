@@ -5,10 +5,12 @@ import "./objectToString.js";
 import "./decapitalize.js";
 const x = (r) => {
   if (!t(r))
-    return "";
+    return console.error(`${r} is not a string`), "";
   r = r.trim();
-  const { groups: { prefix: p } } = r.match(/^(?<prefix>\w+)+(?=\.)/);
-  return p;
+  const {
+    groups: { prefix: o }
+  } = r.match(/^(?<prefix>\w+)+(?=\.)/);
+  return o;
 };
 export {
   x as default,

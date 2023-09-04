@@ -1,1 +1,1 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("./isArray.cjs"),r=e=>u.isArray(e)?Array.from(new Set(e)):e;exports.default=r;exports.unique=r;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isArray.cjs"),r=e=>t.isArray(e)?Array.from(new Set(e)):(console.error(`${e} is not a array`),e);exports.default=r;exports.unique=r;

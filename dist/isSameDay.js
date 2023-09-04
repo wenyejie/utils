@@ -1,4 +1,4 @@
-import { toDate as o } from "./toDate.js";
+import { toDate as t } from "./toDate.js";
 import { isDate as i } from "./isDate.js";
 import "./isNumber.js";
 import "./toRawType.js";
@@ -8,8 +8,8 @@ import "./decapitalize.js";
 import "./isString.js";
 import "./regexp.js";
 import "./isInvalidDate.js";
-const h = (r, t) => (r = o(r), t = o(t), !i(r) || !i(t) ? !1 : r.getFullYear() === t.getFullYear() && r.getMonth() === t.getMonth() && r.getDate() === t.getDate());
+const a = (r, o) => (r = t(r), o = t(o), !i(r) || !i(o) ? (console.error(`${r} or ${o} is not a valid date`), !1) : r.getFullYear() === o.getFullYear() && r.getMonth() === o.getMonth() && r.getDate() === o.getDate());
 export {
-  h as default,
-  h as isSameDay
+  a as default,
+  a as isSameDay
 };

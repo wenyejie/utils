@@ -8,19 +8,21 @@ import "./decapitalize.js";
 import "./hasOwnProperty.js";
 import "./isUndefined.js";
 import "./isNull.js";
-const b = (r, o) => {
-  if (!(!e(r) && !m(r))) {
-    if (e(r)) {
-      for (let i = 0; i < r.length; i++)
-        if (o.call(r[i], r[i], i, r) === !1)
-          return;
-    } else
-      for (let i in r)
-        if (f(r, i) && o.call(r[i], r[i], i, r) === !1)
-          return;
+const j = (r, i) => {
+  if (!e(r) && !m(r)) {
+    console.error(`${r} is not array or object`);
+    return;
   }
+  if (e(r)) {
+    for (let o = 0; o < r.length; o++)
+      if (i.call(r[o], r[o], o, r) === !1)
+        return;
+  } else
+    for (let o in r)
+      if (f(r, o) && i.call(r[o], r[o], o, r) === !1)
+        return;
 };
 export {
-  b as default,
-  b as each
+  j as default,
+  j as each
 };

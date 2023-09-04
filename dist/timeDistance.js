@@ -1,6 +1,6 @@
-import { toDate as o } from "./toDate.js";
+import { toDate as a } from "./toDate.js";
 import { datetimeSpan as e } from "./datetimeSpan.js";
-import { dateFormat as a } from "./dateFormat.js";
+import { dateFormat as o } from "./dateFormat.js";
 import { isDate as i } from "./isDate.js";
 import "./isNumber.js";
 import "./toRawType.js";
@@ -14,8 +14,8 @@ import "./camelize.js";
 import "./padStart.js";
 import "./isUndefined.js";
 const j = (t, r) => {
-  if (t = o(t), !i(t))
-    return "";
+  if (t = a(t), !i(t))
+    return console.error(`${t} is not a valid date`), "";
   r = Object.assign(
     {
       yearFormat: "YYYY-MM-DD",
@@ -30,7 +30,7 @@ const j = (t, r) => {
     r
   );
   const m = e(t, { compare: r.compare });
-  return m.year > 0 ? a(t, r.yearFormat) : m.day > 0 && m.day <= r.days ? a(t, r.dayFormat) : m.hour > 0 ? m.hour + r.hoursAgo : m.minute > 0 ? m.minute + r.minutesAgo : r.just;
+  return m.year > 0 ? o(t, r.yearFormat) : m.day > 0 && m.day <= r.days ? o(t, r.dayFormat) : m.hour > 0 ? m.hour + r.hoursAgo : m.minute > 0 ? m.minute + r.minutesAgo : r.just;
 };
 export {
   j as default,

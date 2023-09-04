@@ -3,13 +3,17 @@ import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-const n = (r, ...e) => {
+const c = (r, ...e) => {
+  if (!i(r)) {
+    console.error(`${r} is not a object`);
+    return;
+  }
   let t = {};
-  return i(r) && (t = { ...r }, e.forEach((o) => {
+  return t = { ...r }, e.forEach((o) => {
     delete t[o];
-  })), t;
+  }), t;
 };
 export {
-  n as ban,
-  n as default
+  c as ban,
+  c as default
 };

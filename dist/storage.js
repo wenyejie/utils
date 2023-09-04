@@ -1,4 +1,4 @@
-class a {
+class i {
   storage;
   key;
   constructor(e, t = "v") {
@@ -37,23 +37,26 @@ class a {
     this.storage?.removeItem(e);
   }
 }
-const c = (s, e) => {
-  const t = new a(s, e);
+const a = (s, e) => {
+  const t = new i(s, e);
   return (r, o) => {
-    if (r)
-      switch (o) {
-        case void 0:
-          return t.get(r);
-        case null:
-          t.remove(r);
-          break;
-        default:
-          t.set(r, o);
-          break;
-      }
+    if (!r) {
+      console.error(`${r} is required`);
+      return;
+    }
+    switch (o) {
+      case void 0:
+        return t.get(r);
+      case null:
+        t.remove(r);
+        break;
+      default:
+        t.set(r, o);
+        break;
+    }
   };
 };
 export {
-  c as default,
-  c as storage
+  a as default,
+  a as storage
 };

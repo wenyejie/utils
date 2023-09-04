@@ -3,8 +3,8 @@ import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-const n = (t) => r(t) ? Object.keys(t).length : 0;
+const m = (t) => r(t) ? Object.keys(t).length : (console.error(`${t} is not a Object`), 0);
 export {
-  n as default,
-  n as objectLength
+  m as default,
+  m as objectLength
 };

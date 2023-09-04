@@ -1,5 +1,5 @@
 import { toDate as n } from "./toDate.js";
-import { isInvalidDate as u } from "./isInvalidDate.js";
+import { isInvalidDate as i } from "./isInvalidDate.js";
 import { padStart as t } from "./padStart.js";
 import "./isDate.js";
 import "./toRawType.js";
@@ -10,10 +10,10 @@ import "./isNumber.js";
 import "./isString.js";
 import "./regexp.js";
 import "./isUndefined.js";
-const f = (r, s = "YYYY-MM-DD hh:mm:ss", a = "") => {
+const f = (r, s = "YYYY-MM-DD hh:mm:ss", o = "") => {
   const e = n(r);
-  return u(e) ? a : s.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (o) => {
-    switch (o) {
+  return i(e) ? (console.error(`${r} is not valid date`), o) : s.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (a) => {
+    switch (a) {
       case "YYYY":
         return e.getFullYear() + "";
       case "YY":

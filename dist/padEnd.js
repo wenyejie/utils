@@ -1,6 +1,6 @@
-import { isUndefined as r } from "./isUndefined.js";
-const i = (d, e = 2, n = "0") => ((r(d) || Number.isNaN(d)) && (d = ""), `${d}`.padEnd(e, n));
+import { isUndefined as d } from "./isUndefined.js";
+const s = (r, n = 2, e = "0") => ((d(r) || Number.isNaN(r)) && (console.error(`${r} is not a string or number`), r = ""), `${r}`.padEnd(n, e));
 export {
-  i as default,
-  i as padEnd
+  s as default,
+  s as padEnd
 };
