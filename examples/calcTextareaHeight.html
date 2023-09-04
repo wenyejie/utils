@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='zh-cn'>
+<head>
+  <meta charset='utf-8'>
+  <title>CalcTextareaHeight</title>
+  <style>
+    .textarea {
+      resize: none;
+      overflow-y: hidden;
+    }
+  </style>
+</head>
+<body>
+<label>
+  评论
+  <textarea class='textarea'></textarea>
+</label>
+<script type='module'>
+  import calcTextareaHeight from '@/calcTextareaHeight'
+
+  const elTextarea = document.querySelector('.textarea')
+
+  elTextarea.addEventListener('input', () => {
+    console.log('....')
+    const styles = calcTextareaHeight(elTextarea)
+
+    elTextarea.style.height = styles.height
+    elTextarea.style.minHeight = styles.minHeight
+  })
+
+</script>
+</body>
+</html>

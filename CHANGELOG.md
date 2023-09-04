@@ -4,6 +4,7 @@
 
 - 新增`hasSuffix`方法
 - `base642file`新增是否有后缀判断, 如果有则不自动加入后缀
+- `calcTextareaHeight`新增计算`textarea`高度方法
 
 ## 2.0.5
 
