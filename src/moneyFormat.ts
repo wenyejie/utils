@@ -3,11 +3,11 @@ import toNumber from './toNumber.js'
 import nullProtoObject from './nullProtoObject'
 
 export interface MoneyFormatOptions {
-  decimal?: number, // 小数点长度
-  symbol?: string, // 钱币符号
-  default?: string, // 默认值
-  split?: string, // 分隔符号
-  length?: number, // 分割长度
+  decimal?: number // 小数点长度
+  symbol?: string // 钱币符号
+  default?: string // 默认值
+  split?: string // 分隔符号
+  length?: number // 分割长度
   padEnd?: boolean // 是否尾部填充
 }
 
@@ -26,11 +26,7 @@ const defaultOptions: MoneyFormatOptions = {
  * @param options 选项
  */
 export const moneyFormat = (number: number | string, options?: MoneyFormatOptions) => {
-  options = Object.assign(
-    nullProtoObject(),
-    defaultOptions,
-    options,
-  )
+  options = Object.assign(nullProtoObject(), defaultOptions, options)
   number = toNumber(number)
   if (!isNumber(number)) {
     return options.default
@@ -44,10 +40,7 @@ export const moneyFormat = (number: number | string, options?: MoneyFormatOption
 
   return (
     options.symbol +
-    numberSplit[0].replace(
-      new RegExp('\\B(?=(\\d{' + options.length + '})+(?!\\d))', 'g'),
-      options.split,
-    ) +
+    numberSplit[0].replace(new RegExp('\\B(?=(\\d{' + options.length + '})+(?!\\d))', 'g'), options.split) +
     (numberSplit[1] ? '.' + numberSplit[1] : '')
   )
 }

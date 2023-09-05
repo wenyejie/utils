@@ -1,5 +1,5 @@
 import isString from './isString'
-import { rHttps, rHttp } from './regexp'
+import { rHttp, rHttps } from './regexp'
 
 /**
  * url2https

@@ -3,6 +3,7 @@
 ## next
 
 - 新增`hasFocus`
+- 优化精简`load`
 
 ## 2.0.6
 

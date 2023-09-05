@@ -1,17 +1,16 @@
-import isFunction from './isFunction'
-import isObject from './isObject'
-import hasOwn from './hasOwn'
+import noop from '@/noop'
+import freezeObj from '@/freezeObj'
 
 export interface LoadOptions {
-  before?: (...rest: any[]) => void,
-  mode?: string,
+  before?: AnyFn
+  mode?: string
   attrs?: Record<string, any>
 }
 
-const DEFAULT_OPTIONS:LoadOptions = {
-  before: null,
+const DEFAULT_OPTIONS: LoadOptions = {
+  before: noop,
   mode: 'src',
-  attrs: null
+  attrs: freezeObj,
 }
 
 /**
@@ -20,21 +19,22 @@ const DEFAULT_OPTIONS:LoadOptions = {
  * @param url url地址
  * @param options 选项
  */
-export const load = (tagName: keyof HTMLElementTagNameMap, url: string, options?:LoadOptions):Promise<HTMLElement> => {
-  options = Object.assign( {}, DEFAULT_OPTIONS, options)
+export const load = (
+  tagName: keyof HTMLElementTagNameMap,
+  url: string,
+  options?: LoadOptions,
+): Promise<HTMLElement> => {
+  options = Object.assign({}, DEFAULT_OPTIONS, options)
   return new Promise((resolve, reject) => {
     const $element = document.createElement(tagName)
     const $body = document.body
 
-    $element[options.mode] = url
+    const { mode, attrs, before } = options
 
-    const attrs = options.attrs
-    if (isObject(attrs)) {
-      for (let key in attrs) {
-        if (hasOwn(attrs, key)) {
-          $element.setAttribute(key, attrs[key])
-        }
-      }
+    $element[mode] = url
+
+    for (const [key, value] of Object.entries(attrs)) {
+      $element.setAttribute(key, value)
     }
     $element.onload = () => {
       resolve($element)
@@ -44,7 +44,7 @@ export const load = (tagName: keyof HTMLElementTagNameMap, url: string, options?
       reject($element)
       $body.removeChild($element)
     }
-    isFunction(options.before) && options.before($element)
+    before($element)
     $body.appendChild($element)
   })
 }

@@ -4,6 +4,7 @@
 class CustomStorage {
   private readonly storage: Storage
   private readonly key: string
+
   constructor(storage: Storage, key: string = 'v') {
     this.storage = storage
     this.key = key

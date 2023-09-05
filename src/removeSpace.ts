@@ -1,4 +1,5 @@
 import isString from './isString'
+
 const rSpace = /\s+/g
 
 /**

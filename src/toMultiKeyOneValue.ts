@@ -1,4 +1,5 @@
 import isArray from './isArray'
+
 type ToMultiKeyOneValueTargetType = Record<string, any>
 
 const handler: ProxyHandler<ToMultiKeyOneValueTargetType> = {

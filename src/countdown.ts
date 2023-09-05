@@ -5,6 +5,7 @@ import isFunction from './isFunction'
 export type CountdownEventName = 'change' | 'start' | 'stop' | 'finish' | 'continue'
 // 倒计时回调
 export type CountdownCallback = (value: number) => void
+
 // 倒计时选项
 export interface CountdownOptions {
   // 循环间隔时间
@@ -48,6 +49,15 @@ class Countdown {
   }
 
   /**
+   * 创建倒计时实例
+   * @param value 倒计时
+   * @param options 选项
+   */
+  static create(value: number, options?: CountdownOptions) {
+    return new Countdown(value, options)
+  }
+
+  /**
    * 监听事件
    * @param eventName 事件名称
    * @param callback // 事件回调
@@ -68,28 +78,6 @@ class Countdown {
       return
     }
     queue.forEach((cb) => cb.call(this, this.value))
-  }
-
-  // 倒计时
-  private decrease() {
-    this.value = this.value - this.options.decrement
-    if (this.value <= this.options.end) {
-      clearInterval(this.intervalId)
-      this.trigger('finish')
-    }
-    this.trigger('change')
-  }
-
-  // 循环
-  private loop() {
-    this.clear()
-    this.intervalId = globalThis.setInterval(this.decrease.bind(this), this.options.delay)
-  }
-
-  // 清除倒计时
-  private clear() {
-    clearInterval(this.intervalId)
-    this.intervalId = 0
   }
 
   // 开始
@@ -119,13 +107,26 @@ class Countdown {
     this.trigger('continue')
   }
 
-  /**
-   * 创建倒计时实例
-   * @param value 倒计时
-   * @param options 选项
-   */
-  static create(value: number, options?: CountdownOptions) {
-    return new Countdown(value, options)
+  // 倒计时
+  private decrease() {
+    this.value = this.value - this.options.decrement
+    if (this.value <= this.options.end) {
+      clearInterval(this.intervalId)
+      this.trigger('finish')
+    }
+    this.trigger('change')
+  }
+
+  // 循环
+  private loop() {
+    this.clear()
+    this.intervalId = globalThis.setInterval(this.decrease.bind(this), this.options.delay)
+  }
+
+  // 清除倒计时
+  private clear() {
+    clearInterval(this.intervalId)
+    this.intervalId = 0
   }
 }
 

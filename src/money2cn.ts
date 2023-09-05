@@ -42,11 +42,7 @@ export const money2cn = (n: number | string) => {
     }
   }
 
-  let integer = integerAry
-    .join('')
-    .replace(rNumberDigit, '')
-    .replace(rUnit, '$1')
-    .replace(rZero, '零')
+  let integer = integerAry.join('').replace(rNumberDigit, '').replace(rUnit, '$1').replace(rZero, '零')
 
   if (integer.length > 1) {
     integer = integer.replace(/零$/, '')

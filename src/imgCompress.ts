@@ -15,32 +15,32 @@ export const file2img = async (file: File) => {
 }
 
 interface CreateCanvasResult {
-  context: CanvasRenderingContext2D,
+  context: CanvasRenderingContext2D
   $canvas: HTMLCanvasElement
 }
 
 interface ImgCompressOptions {
-  noCompressIfLarger?: boolean, // 如果发现压缩后文件大小比原来还大，则使用原图
-  maxWidth?: number, // 最大宽度, 默认1024
-  maxHeight?: number, // 最大高度, 默认1024
-  fillStyle?: string, // 填充底色, 默认透明
+  noCompressIfLarger?: boolean // 如果发现压缩后文件大小比原来还大，则使用原图
+  maxWidth?: number // 最大宽度, 默认1024
+  maxHeight?: number // 最大高度, 默认1024
+  fillStyle?: string // 填充底色, 默认透明
   quality?: number // 压缩之后的质量, 不压缩为1, 默认0.75
 }
 
-const DEFAULT_OPTIONS:ImgCompressOptions = {
+const DEFAULT_OPTIONS: ImgCompressOptions = {
   noCompressIfLarger: true,
   maxWidth: 1024,
   maxHeight: 1024,
   fillStyle: 'rgba(255, 255, 255, 0)',
-  quality: 0.75
+  quality: 0.75,
 }
 
 /**
  * 创建画板
  * @param options 选项
  */
-export const createCanvas = (options:ImgCompressOptions):Promise<CreateCanvasResult> => {
-  return new Promise(resolve => {
+export const createCanvas = (options: ImgCompressOptions): Promise<CreateCanvasResult> => {
+  return new Promise((resolve) => {
     const $canvas = document.createElement('canvas')
     const context = $canvas.getContext('2d')
 
@@ -56,7 +56,7 @@ export const createCanvas = (options:ImgCompressOptions):Promise<CreateCanvasRes
  * @param $img 图片
  * @param options 选项
  */
-export const calcDrawSize = ($img:HTMLImageElement, options:ImgCompressOptions) => {
+export const calcDrawSize = ($img: HTMLImageElement, options: ImgCompressOptions) => {
   const proportion = $img.naturalWidth / $img.naturalHeight
   let dw: number
   let dh: number
@@ -90,14 +90,14 @@ export const calcDrawSize = ($img:HTMLImageElement, options:ImgCompressOptions) 
  * @param file 文件对象
  * @param options 选项
  */
-export const canvas2file = ($canvas:HTMLCanvasElement, file:File, options:ImgCompressOptions):Promise<File> => {
-  return new Promise(resolve => {
+export const canvas2file = ($canvas: HTMLCanvasElement, file: File, options: ImgCompressOptions): Promise<File> => {
+  return new Promise((resolve) => {
     $canvas.toBlob(
-      blob => {
+      (blob) => {
         resolve(new File([blob], file.name, { type: file.type }))
       },
       file.type,
-      options.quality
+      options.quality,
     )
   })
 }
@@ -107,11 +107,8 @@ export const canvas2file = ($canvas:HTMLCanvasElement, file:File, options:ImgCom
  * @param file 文件对象
  * @param options 选项
  */
-const imgCompress = async (file:File, options:ImgCompressOptions) => {
-  options = Object.assign(
-    { ...DEFAULT_OPTIONS },
-    options
-  )
+const imgCompress = async (file: File, options: ImgCompressOptions) => {
+  options = Object.assign({ ...DEFAULT_OPTIONS }, options)
   const $img = await file2img(file)
   const { context, $canvas } = await createCanvas(options)
   // 如果低端版本不支持toBlob则无法使用图片压缩功能直接返回原图

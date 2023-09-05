@@ -1,4 +1,5 @@
 import globalThis from './globalThis'
+
 /**
  * 函数防抖 - 当一定时间之后没有重新调用则执行, 电梯
  * @param fn

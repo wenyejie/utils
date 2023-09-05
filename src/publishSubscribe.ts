@@ -27,6 +27,10 @@ export interface PublishSubscribeCallbackMap {
 export class PublishSubscribe {
   private readonly callbackMap: PublishSubscribeCallbackMap = {}
 
+  static create() {
+    return new PublishSubscribe()
+  }
+
   /**
    * 触发订阅
    * @param eventName 事件名称
@@ -93,10 +97,6 @@ export class PublishSubscribe {
     } else {
       delete this.callbackMap[eventName]
     }
-  }
-
-  static create() {
-    return new PublishSubscribe()
   }
 }
 

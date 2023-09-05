@@ -21,7 +21,7 @@ export const checkIDNO = (id: string) => {
   const len = arr.length
   let num = 0
   for (let i = 0; i < len; i++) {
-    num = num + (+arr[i]) * weightFactor[i]
+    num = num + +arr[i] * weightFactor[i]
   }
   return checkCode[num % 11] === code[17]
 }
