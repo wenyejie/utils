@@ -1,11 +1,9 @@
-import isArray from './isArray'
-
 /**
  * 数组去重
  * @param array 数组
  */
 export const unique = <T>(array: T[]): T[] => {
-  if (!isArray(array)) {
+  if (!Array.isArray(array)) {
     console.error(`${array} is not a array`)
     return array
   }

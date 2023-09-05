@@ -4,9 +4,8 @@ import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-import "./isInteger.js";
-const n = o;
+const a = o;
 export {
-  n as default,
-  n as mobilePhoneFormat
+  a as default,
+  a as mobilePhoneFormat
 };

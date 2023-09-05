@@ -1,28 +1,22 @@
-import { isArray as e } from "./isArray.js";
-import { isObject as m } from "./isObject.js";
-import { hasOwn as f } from "./hasOwn.js";
+import { isObject as s } from "./isObject.js";
 import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-import "./hasOwnProperty.js";
-import "./isUndefined.js";
-import "./isNull.js";
-const j = (r, i) => {
-  if (!e(r) && !m(r)) {
+const n = (r, o) => {
+  if (!Array.isArray(r) && !s(r)) {
     console.error(`${r} is not array or object`);
     return;
   }
-  if (e(r)) {
-    for (let o = 0; o < r.length; o++)
-      if (i.call(r[o], r[o], o, r) === !1)
-        return;
-  } else
-    for (let o in r)
-      if (f(r, o) && i.call(r[o], r[o], o, r) === !1)
-        return;
+  if (Array.isArray(r))
+    for (let e = 0; e < r.length && o(r[e], e, r) !== !1; e++)
+      ;
+  else
+    for (const [e, i] of Object.entries(r))
+      if (o(i, e, r) === !1)
+        break;
 };
 export {
-  j as default,
-  j as each
+  n as default,
+  n as each
 };

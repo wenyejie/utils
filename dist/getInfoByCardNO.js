@@ -1,8 +1,7 @@
 import { isOddNumber as i } from "./isOddNumber.js";
 import { checkIDNO as n } from "./checkIDNO.js";
-import "./isInteger.js";
 import "./regexp.js";
-const b = (s) => {
+const u = (s) => {
   const t = {};
   return n(s) && Object.assign(t, {
     province: s.substring(0, 2),
@@ -18,6 +17,6 @@ const b = (s) => {
   }), t;
 };
 export {
-  b as default,
-  b as getInfoByCardNO
+  u as default,
+  u as getInfoByCardNO
 };

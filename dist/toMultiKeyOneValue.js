@@ -1,22 +1,21 @@
-import { isArray as l } from "./isArray.js";
-const u = {
-  get: (e, t) => e[t]?.value,
-  set: (e, t, o) => {
-    let r = [];
-    r.includes(",") && (r = t.split(",")), r = l(r) ? r : [t];
-    const n = e[r.find((s) => e[s])] || { value: o };
-    for (const s of r)
-      e[s] = n;
+const a = {
+  get: (r, t) => r[t]?.value,
+  set: (r, t, n) => {
+    let e = [];
+    e.includes(",") && (e = t.split(",")), e = Array.isArray(e) ? e : [t];
+    const s = r[e.find((o) => r[o])] || { value: n };
+    for (const o of e)
+      r[o] = s;
     return !0;
   }
-}, f = (e) => {
-  const t = {}, o = new Proxy(t, u);
-  l(e) || console.error(`${e} is not a array`);
-  for (const [r, n] of e)
-    o[r] = n;
-  return o;
+}, l = (r) => {
+  const t = {}, n = new Proxy(t, a);
+  Array.isArray(r) || console.error(`${r} is not a array`);
+  for (const [e, s] of r)
+    n[e] = s;
+  return n;
 };
 export {
-  f as default,
-  f as toMultiKeyOneValue
+  l as default,
+  l as toMultiKeyOneValue
 };

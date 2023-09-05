@@ -1,11 +1,11 @@
 import { toDate as s } from "./toDate.js";
 import { isDate as i } from "./isDate.js";
 import "./isNumber.js";
+import "./isString.js";
 import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-import "./isString.js";
 import "./regexp.js";
 import "./isInvalidDate.js";
 const h = (t, r = "range") => {

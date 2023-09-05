@@ -6,7 +6,6 @@ import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-import "./isArray.js";
 const l = s([
   [["s", "sec", "second"], 1e3],
   [["m", "min", "minute"], 6e4],
@@ -14,7 +13,7 @@ const l = s([
   [["d", "day"], 864e5],
   [["w", "week"], 6048e5],
   [["y", "year"], 31536e6]
-]), c = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(ay)?|w(eek)?|y(ear)?)$/i, b = (r, n = "millisecond") => {
+]), c = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(ay)?|w(eek)?|y(ear)?)$/i, w = (r, n = "millisecond") => {
   if (!t(r) && !u(r))
     return console.error(`${r} is not a number or string`), null;
   if (t(r))
@@ -29,6 +28,6 @@ const l = s([
   return Math.floor(n === "second" ? o / 1e3 : o);
 };
 export {
-  b as default,
-  b as getTsByStr
+  w as default,
+  w as getTsByStr
 };

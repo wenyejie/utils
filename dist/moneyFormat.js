@@ -1,11 +1,11 @@
 import { isNumber as l } from "./isNumber.js";
 import { toNumber as m } from "./toNumber.js";
 import { nullProtoObject as a } from "./nullProtoObject.js";
+import "./isString.js";
 import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-import "./isString.js";
 const d = {
   decimal: 2,
   // 小数点长度

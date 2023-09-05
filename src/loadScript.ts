@@ -6,7 +6,7 @@ import { load, LoadOptions } from './load'
  * @param options 选项
  */
 export const loadScript = (url: string, options: LoadOptions) => {
-  return load('script', url, options)
+  return load('script', url, options) as Promise<HTMLScriptElement>
 }
 
 export default loadScript

@@ -1,6 +1,5 @@
-import { isInteger as t } from "./isInteger.js";
-const a = (r) => t(r) && r >= 0;
+const r = (e) => Number.isInteger(e) && e >= 0;
 export {
-  a as default,
-  a as isNaturalNumber
+  r as default,
+  r as isNaturalNumber
 };

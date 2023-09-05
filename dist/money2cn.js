@@ -1,10 +1,10 @@
 import { toNumber as s } from "./toNumber.js";
 import "./isNumber.js";
+import "./isString.js";
 import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-import "./isString.js";
 const g = ["角", "分"], p = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"], m = ["", "拾", "佰", "仟"], a = ["", "万", "亿"], f = /零[拾佰仟]/g, u = /零+([万亿])/g, d = /零{2,}/, N = (o) => {
   o = s(o);
   let c;
