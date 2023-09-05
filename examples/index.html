@@ -1,22 +1,28 @@
 <!doctype html>
-<html lang="zh-cn">
-  <head>
-    <meta charset="utf-8" />
-    <title>Utils</title>
-  </head>
-  <body>
-    <input class="input" />
-    <button type="button">button</button>
-    <pre>
+<html lang='zh-cn'>
+<head>
+  <meta charset='utf-8' />
+  <title>Utils</title>
+</head>
+<body>
+<fieldset>
+  <legend>输入你的姓名:</legend>
+  <label>
+    <input class='input' />
+  </label>
+</fieldset>
+<button type='button'>button</button>
+<pre>
   console.log(document.activeElement)
-</pre
-    >
-    <script type="module">
-      import hasSuffix from '@/hasSuffix'
+</pre>
+<script type='module'>
+  import hasFocus from '@/hasFocus'
 
-      console.log(hasSuffix('demo'))
+  const elInput = document.querySelector('.input')
 
-      const elInput = document.querySelector('.input')
-    </script>
-  </body>
+  setInterval(() => {
+    console.log(hasFocus(elInput))
+  }, 1000)
+</script>
+</body>
 </html>

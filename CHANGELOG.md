@@ -1,5 +1,9 @@
 # 版本记录
 
+## next
+
+- 新增`hasFocus`
+
 ## 2.0.6
 
 - 新增`hasSuffix`方法
