@@ -7,6 +7,9 @@ import "./decapitalize.js";
 import "./isObject.js";
 class u {
   callbackMap = {};
+  static create() {
+    return new u();
+  }
   /**
    * 触发订阅
    * @param eventName 事件名称
@@ -50,9 +53,6 @@ class u {
       return;
     const { queue: c } = i;
     o(r) ? s(c, { callback: r }) : delete this.callbackMap[t];
-  }
-  static create() {
-    return new u();
   }
 }
 export {

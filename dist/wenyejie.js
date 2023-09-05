@@ -38,101 +38,102 @@ import { getDaysByMonth as Zr } from "./getDaysByMonth.js";
 import { getInfoByCardNO as $r } from "./getInfoByCardNO.js";
 import { getTsByStr as oo } from "./getTsByStr.js";
 import { globalThis as to } from "./globalThis.js";
-import { hasOwn as po } from "./hasOwn.js";
-import { hasOwnProperty as fo } from "./hasOwnProperty.js";
-import { hasSuffix as ao } from "./hasSuffix.js";
-import { hyphenate as no } from "./hyphenate.js";
-import { calcDrawSize as co, canvas2file as uo, createCanvas as So, file2img as bo } from "./imgCompress.js";
-import { isArray as go } from "./isArray.js";
-import { isArrayIndex as Io } from "./isArrayIndex.js";
-import { isBigint as Oo } from "./isBigint.js";
-import { isBlob as Do } from "./isBlob.js";
-import { isBoolean as Bo } from "./isBoolean.js";
-import { isComment as Fo } from "./isComment.js";
-import { isDate as Mo } from "./isDate.js";
-import { isDefined as jo } from "./isDefined.js";
-import { isElement as ko } from "./isElement.js";
-import { isEmptyValue as Ao } from "./isEmptyValue.js";
-import { isEvenNumber as Vo } from "./isEvenNumber.js";
-import { isFalse as Ho } from "./isFalse.js";
-import { isFunction as Lo } from "./isFunction.js";
-import { isInteger as qo } from "./isInteger.js";
-import { isInvalidDate as Yo } from "./isInvalidDate.js";
-import { isJson as Qo } from "./isJson.js";
-import { isJsonString as Zo } from "./isJsonString.js";
-import { isMap as $o } from "./isMap.js";
-import { isNaturalNumber as oe } from "./isNaturalNumber.js";
-import { isNull as te } from "./isNull.js";
-import { isNumber as pe } from "./isNumber.js";
-import { isNumberString as fe } from "./isNumberString.js";
-import { isObject as ae } from "./isObject.js";
-import { isOddNumber as ne } from "./isOddNumber.js";
-import { isParentElement as de } from "./isParentElement.js";
-import { isPlainDate as ue } from "./isPlainDate.js";
-import { isPlainNumber as be } from "./isPlainNumber.js";
-import { isPlainObject as ge } from "./isPlainObject.js";
-import { isPlainString as Ie } from "./isPlainString.js";
-import { isPositiveInteger as Oe } from "./isPositiveInteger.js";
-import { isPrimitive as De } from "./isPrimitive.js";
-import { isPromise as Be } from "./isPromise.js";
-import { isRegExp as Fe } from "./isRegExp.js";
-import { isSameDay as Me } from "./isSameDay.js";
-import { isSameHost as je } from "./isSameHost.js";
-import { isSameMonth as ke } from "./isSameMonth.js";
-import { isSameYear as Ae } from "./isSameYear.js";
-import { isSet as Ve } from "./isSet.js";
-import { isString as He } from "./isString.js";
-import { isSupportWebp as Le } from "./isSupportWebp.js";
-import { isSymbol as qe } from "./isSymbol.js";
-import { isText as Ye } from "./isText.js";
-import { isTrue as Qe } from "./isTrue.js";
-import { isUndefined as Ze } from "./isUndefined.js";
-import { isWeakMap as $e } from "./isWeakMap.js";
-import { isWeakSet as ot } from "./isWeakSet.js";
-import { load as tt } from "./load.js";
-import { loadScript as pt } from "./loadScript.js";
-import { local as ft } from "./local.js";
-import { mobilePhoneFormat as at } from "./mobilePhoneFormat.js";
-import { money2cn as nt } from "./money2cn.js";
-import { moneyFormat as dt } from "./moneyFormat.js";
-import { monthRange as ut } from "./monthRange.js";
-import { noop as bt } from "./noop.js";
-import { nullProtoObject as gt } from "./nullProtoObject.js";
-import { objectLength as It } from "./objectLength.js";
-import { objectToString as Ot } from "./objectToString.js";
-import { once as Dt } from "./once.js";
-import { padEnd as Bt } from "./padEnd.js";
-import { padStart as Ft } from "./padStart.js";
-import { percentage as Mt } from "./percentage.js";
-import { phoneNumFormat as jt } from "./phoneNumFormat.js";
-import { pick as kt } from "./pick.js";
-import { prefix as At } from "./prefix.js";
-import { PublishSubscribe as Vt } from "./publishSubscribe.js";
-import { randomInteger as Ht } from "./randomInteger.js";
-import { randomNumber as Lt } from "./randomNumber.js";
-import { rAmount as qt, rBankCardNO as Kt, rChinese as Yt, rChineseName as Gt, rEmail as Qt, rEmoji as Xt, rHttp as Zt, rHttps as _t, rIDCardNO as $t, rIOSDateStringFormat as rm, rInteger as om, rMobilePhone as em, rPhone as tm, rPostcode as mm, rTelephone as pm, rUrl as im } from "./regexp.js";
-import { removeSpace as xm } from "./removeSpace.js";
-import { session as sm } from "./session.js";
-import { setCSS as lm } from "./setCSS.js";
-import { spliceString as cm } from "./spliceString.js";
-import { storage as Sm } from "./storage.js";
-import { suffix as hm } from "./suffix.js";
-import { supportCSS as ym } from "./supportCSS.js";
-import { swap as Pm } from "./swap.js";
-import { throttle as Nm } from "./throttle.js";
-import { timeDistance as Cm } from "./timeDistance.js";
-import { toCSSUnit as Em } from "./toCSSUnit.js";
-import { toDate as wm } from "./toDate.js";
-import { toMultiKeyOneValue as Tm } from "./toMultiKeyOneValue.js";
-import { toNumber as vm } from "./toNumber.js";
-import { toRawType as zm } from "./toRawType.js";
-import { toTypeString as Um } from "./toTypeString.js";
-import { unique as Wm } from "./unique.js";
-import { url2http as Rm } from "./url2http.js";
-import { url2https as Jm } from "./url2https.js";
+import { hasFocus as po } from "./hasFocus.js";
+import { hasOwn as fo } from "./hasOwn.js";
+import { hasOwnProperty as ao } from "./hasOwnProperty.js";
+import { hasSuffix as no } from "./hasSuffix.js";
+import { hyphenate as co } from "./hyphenate.js";
+import { calcDrawSize as So, canvas2file as bo, createCanvas as ho, file2img as go } from "./imgCompress.js";
+import { isArray as Io } from "./isArray.js";
+import { isArrayIndex as Oo } from "./isArrayIndex.js";
+import { isBigint as Do } from "./isBigint.js";
+import { isBlob as Bo } from "./isBlob.js";
+import { isBoolean as Fo } from "./isBoolean.js";
+import { isComment as Mo } from "./isComment.js";
+import { isDate as jo } from "./isDate.js";
+import { isDefined as ko } from "./isDefined.js";
+import { isElement as Ao } from "./isElement.js";
+import { isEmptyValue as Vo } from "./isEmptyValue.js";
+import { isEvenNumber as Ho } from "./isEvenNumber.js";
+import { isFalse as Lo } from "./isFalse.js";
+import { isFunction as qo } from "./isFunction.js";
+import { isInteger as Yo } from "./isInteger.js";
+import { isInvalidDate as Qo } from "./isInvalidDate.js";
+import { isJson as Zo } from "./isJson.js";
+import { isJsonString as $o } from "./isJsonString.js";
+import { isMap as oe } from "./isMap.js";
+import { isNaturalNumber as te } from "./isNaturalNumber.js";
+import { isNull as pe } from "./isNull.js";
+import { isNumber as fe } from "./isNumber.js";
+import { isNumberString as ae } from "./isNumberString.js";
+import { isObject as ne } from "./isObject.js";
+import { isOddNumber as de } from "./isOddNumber.js";
+import { isParentElement as ue } from "./isParentElement.js";
+import { isPlainDate as be } from "./isPlainDate.js";
+import { isPlainNumber as ge } from "./isPlainNumber.js";
+import { isPlainObject as Ie } from "./isPlainObject.js";
+import { isPlainString as Oe } from "./isPlainString.js";
+import { isPositiveInteger as De } from "./isPositiveInteger.js";
+import { isPrimitive as Be } from "./isPrimitive.js";
+import { isPromise as Fe } from "./isPromise.js";
+import { isRegExp as Me } from "./isRegExp.js";
+import { isSameDay as je } from "./isSameDay.js";
+import { isSameHost as ke } from "./isSameHost.js";
+import { isSameMonth as Ae } from "./isSameMonth.js";
+import { isSameYear as Ve } from "./isSameYear.js";
+import { isSet as He } from "./isSet.js";
+import { isString as Le } from "./isString.js";
+import { isSupportWebp as qe } from "./isSupportWebp.js";
+import { isSymbol as Ye } from "./isSymbol.js";
+import { isText as Qe } from "./isText.js";
+import { isTrue as Ze } from "./isTrue.js";
+import { isUndefined as $e } from "./isUndefined.js";
+import { isWeakMap as ot } from "./isWeakMap.js";
+import { isWeakSet as tt } from "./isWeakSet.js";
+import { load as pt } from "./load.js";
+import { loadScript as ft } from "./loadScript.js";
+import { local as at } from "./local.js";
+import { mobilePhoneFormat as nt } from "./mobilePhoneFormat.js";
+import { money2cn as dt } from "./money2cn.js";
+import { moneyFormat as ut } from "./moneyFormat.js";
+import { monthRange as bt } from "./monthRange.js";
+import { noop as gt } from "./noop.js";
+import { nullProtoObject as It } from "./nullProtoObject.js";
+import { objectLength as Ot } from "./objectLength.js";
+import { objectToString as Dt } from "./objectToString.js";
+import { once as Bt } from "./once.js";
+import { padEnd as Ft } from "./padEnd.js";
+import { padStart as Mt } from "./padStart.js";
+import { percentage as jt } from "./percentage.js";
+import { phoneNumFormat as kt } from "./phoneNumFormat.js";
+import { pick as At } from "./pick.js";
+import { prefix as Vt } from "./prefix.js";
+import { PublishSubscribe as Ht } from "./publishSubscribe.js";
+import { randomInteger as Lt } from "./randomInteger.js";
+import { randomNumber as qt } from "./randomNumber.js";
+import { rAmount as Yt, rBankCardNO as Gt, rChinese as Qt, rChineseName as Xt, rEmail as Zt, rEmoji as _t, rHttp as $t, rHttps as rm, rIDCardNO as om, rIOSDateStringFormat as em, rInteger as tm, rMobilePhone as mm, rPhone as pm, rPostcode as im, rTelephone as fm, rUrl as xm } from "./regexp.js";
+import { removeSpace as sm } from "./removeSpace.js";
+import { session as lm } from "./session.js";
+import { setCSS as cm } from "./setCSS.js";
+import { spliceString as Sm } from "./spliceString.js";
+import { storage as hm } from "./storage.js";
+import { suffix as ym } from "./suffix.js";
+import { supportCSS as Pm } from "./supportCSS.js";
+import { swap as Nm } from "./swap.js";
+import { throttle as Cm } from "./throttle.js";
+import { timeDistance as Em } from "./timeDistance.js";
+import { toCSSUnit as wm } from "./toCSSUnit.js";
+import { toDate as Tm } from "./toDate.js";
+import { toMultiKeyOneValue as vm } from "./toMultiKeyOneValue.js";
+import { toNumber as zm } from "./toNumber.js";
+import { toRawType as Um } from "./toRawType.js";
+import { toTypeString as Wm } from "./toTypeString.js";
+import { unique as Rm } from "./unique.js";
+import { url2http as Jm } from "./url2http.js";
+import { url2https as Km } from "./url2https.js";
 const r = "2.0.6";
 export {
-  Vt as PublishSubscribe,
+  Ht as PublishSubscribe,
   r as VERSION,
   jr as add,
   vr as arithmetic,
@@ -147,17 +148,17 @@ export {
   g as base642file,
   I as cached,
   O as cachedOne,
-  co as calcDrawSize,
+  So as calcDrawSize,
   D as calcTextareaHeight,
   B as camelize,
-  uo as canvas2file,
+  bo as canvas2file,
   F as capitalize,
   M as checkIDNO,
   j as checkTaxpayerIDNO,
   k as clickOutside,
   A as clone,
   V as countdown,
-  So as createCanvas,
+  ho as createCanvas,
   H as dateFormat,
   L as dateObj,
   q as datetimeSpan,
@@ -173,144 +174,145 @@ export {
   ar as emptyObject,
   zr as exactMath,
   qr as file2base64,
-  bo as file2img,
+  go as file2img,
   Yr as freezeObj,
   Qr as getCSS,
   Zr as getDaysByMonth,
   $r as getInfoByCardNO,
   oo as getTsByStr,
   to as globalThis,
-  po as hasOwn,
-  fo as hasOwnProperty,
-  ao as hasSuffix,
-  no as hyphenate,
+  po as hasFocus,
+  fo as hasOwn,
+  ao as hasOwnProperty,
+  no as hasSuffix,
+  co as hyphenate,
   nr as inBrowser,
   lr as inNode,
   dr as isAndroid,
-  go as isArray,
-  Io as isArrayIndex,
-  Oo as isBigint,
-  Do as isBlob,
-  Bo as isBoolean,
+  Io as isArray,
+  Oo as isArrayIndex,
+  Do as isBigint,
+  Bo as isBlob,
+  Fo as isBoolean,
   cr as isChrome,
-  Fo as isComment,
-  Mo as isDate,
-  jo as isDefined,
+  Mo as isComment,
+  jo as isDate,
+  ko as isDefined,
   ur as isEdge,
-  ko as isElement,
-  Ao as isEmptyValue,
-  Vo as isEvenNumber,
-  Ho as isFalse,
+  Ao as isElement,
+  Vo as isEmptyValue,
+  Ho as isEvenNumber,
+  Lo as isFalse,
   Sr as isFirefox,
-  Lo as isFunction,
+  qo as isFunction,
   br as isIE,
   hr as isIE9,
   gr as isIOS,
   yr as isIPad,
   Ir as isIPhone,
-  qo as isInteger,
-  Yo as isInvalidDate,
-  Qo as isJson,
-  Zo as isJsonString,
+  Yo as isInteger,
+  Qo as isInvalidDate,
+  Zo as isJson,
+  $o as isJsonString,
   Pr as isLinux,
   Or as isMac,
-  $o as isMap,
+  oe as isMap,
   Nr as isMobile,
-  oe as isNaturalNumber,
-  te as isNull,
-  pe as isNumber,
-  fe as isNumberString,
-  ae as isObject,
-  ne as isOddNumber,
+  te as isNaturalNumber,
+  pe as isNull,
+  fe as isNumber,
+  ae as isNumberString,
+  ne as isObject,
+  de as isOddNumber,
   Dr as isPC,
-  de as isParentElement,
+  ue as isParentElement,
   Cr as isPhantom,
-  ue as isPlainDate,
-  be as isPlainNumber,
-  ge as isPlainObject,
-  Ie as isPlainString,
-  Oe as isPositiveInteger,
-  De as isPrimitive,
-  Be as isPromise,
-  Fe as isRegExp,
+  be as isPlainDate,
+  ge as isPlainNumber,
+  Ie as isPlainObject,
+  Oe as isPlainString,
+  De as isPositiveInteger,
+  Be as isPrimitive,
+  Fe as isPromise,
+  Me as isRegExp,
   Br as isSafari,
-  Me as isSameDay,
-  je as isSameHost,
-  ke as isSameMonth,
-  Ae as isSameYear,
-  Ve as isSet,
-  He as isString,
-  Le as isSupportWebp,
-  qe as isSymbol,
-  Ye as isText,
-  Qe as isTrue,
+  je as isSameDay,
+  ke as isSameHost,
+  Ae as isSameMonth,
+  Ve as isSameYear,
+  He as isSet,
+  Le as isString,
+  qe as isSupportWebp,
+  Ye as isSymbol,
+  Qe as isText,
+  Ze as isTrue,
   Er as isUbuntu,
-  Ze as isUndefined,
+  $e as isUndefined,
   Fr as isWeChat,
-  $e as isWeakMap,
-  ot as isWeakSet,
+  ot as isWeakMap,
+  tt as isWeakSet,
   wr as isWindows,
-  tt as load,
-  pt as loadScript,
-  ft as local,
-  at as mobilePhoneFormat,
-  nt as money2cn,
-  dt as moneyFormat,
-  ut as monthRange,
+  pt as load,
+  ft as loadScript,
+  at as local,
+  nt as mobilePhoneFormat,
+  dt as money2cn,
+  ut as moneyFormat,
+  bt as monthRange,
   Ar as multiAdd,
   Ur as multiDivide,
   Vr as multiMultiply,
   Wr as multiSubtract,
   Hr as multiply,
-  bt as noop,
-  gt as nullProtoObject,
-  It as objectLength,
-  Ot as objectToString,
-  Dt as once,
-  Bt as padEnd,
-  Ft as padStart,
-  Mt as percentage,
-  jt as phoneNumFormat,
-  kt as pick,
-  At as prefix,
-  qt as rAmount,
-  Kt as rBankCardNO,
-  Yt as rChinese,
-  Gt as rChineseName,
-  Qt as rEmail,
-  Xt as rEmoji,
-  Zt as rHttp,
-  _t as rHttps,
-  $t as rIDCardNO,
-  rm as rIOSDateStringFormat,
-  om as rInteger,
-  em as rMobilePhone,
-  tm as rPhone,
-  mm as rPostcode,
-  pm as rTelephone,
-  im as rUrl,
-  Ht as randomInteger,
-  Lt as randomNumber,
+  gt as noop,
+  It as nullProtoObject,
+  Ot as objectLength,
+  Dt as objectToString,
+  Bt as once,
+  Ft as padEnd,
+  Mt as padStart,
+  jt as percentage,
+  kt as phoneNumFormat,
+  At as pick,
+  Vt as prefix,
+  Yt as rAmount,
+  Gt as rBankCardNO,
+  Qt as rChinese,
+  Xt as rChineseName,
+  Zt as rEmail,
+  _t as rEmoji,
+  $t as rHttp,
+  rm as rHttps,
+  om as rIDCardNO,
+  em as rIOSDateStringFormat,
+  tm as rInteger,
+  mm as rMobilePhone,
+  pm as rPhone,
+  im as rPostcode,
+  fm as rTelephone,
+  xm as rUrl,
+  Lt as randomInteger,
+  qt as randomNumber,
   Rr as remain,
-  xm as removeSpace,
-  sm as session,
-  lm as setCSS,
-  cm as spliceString,
-  Sm as storage,
+  sm as removeSpace,
+  lm as session,
+  cm as setCSS,
+  Sm as spliceString,
+  hm as storage,
   Lr as subtract,
-  hm as suffix,
-  ym as supportCSS,
-  Pm as swap,
-  Nm as throttle,
-  Cm as timeDistance,
-  Em as toCSSUnit,
-  wm as toDate,
-  Tm as toMultiKeyOneValue,
-  vm as toNumber,
-  zm as toRawType,
-  Um as toTypeString,
-  Wm as unique,
-  Rm as url2http,
-  Jm as url2https,
+  ym as suffix,
+  Pm as supportCSS,
+  Nm as swap,
+  Cm as throttle,
+  Em as timeDistance,
+  wm as toCSSUnit,
+  Tm as toDate,
+  vm as toMultiKeyOneValue,
+  zm as toNumber,
+  Um as toRawType,
+  Wm as toTypeString,
+  Rm as unique,
+  Jm as url2http,
+  Km as url2https,
   Mr as useragent
 };

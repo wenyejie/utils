@@ -20,17 +20,10 @@ const d = {
   padEnd: !0
   // 是否尾部填充
 }, b = (r, t) => {
-  if (t = Object.assign(
-    a(),
-    d,
-    t
-  ), r = m(r), !l(r))
+  if (t = Object.assign(a(), d, t), r = m(r), !l(r))
     return t.default;
   const e = r.toFixed(t.decimal).split(".");
-  return !t.padEnd && e[1] && (e[1] = e[1].replace(/0+$/, "")), t.symbol + e[0].replace(
-    new RegExp("\\B(?=(\\d{" + t.length + "})+(?!\\d))", "g"),
-    t.split
-  ) + (e[1] ? "." + e[1] : "");
+  return !t.padEnd && e[1] && (e[1] = e[1].replace(/0+$/, "")), t.symbol + e[0].replace(new RegExp("\\B(?=(\\d{" + t.length + "})+(?!\\d))", "g"), t.split) + (e[1] ? "." + e[1] : "");
 };
 export {
   b as default,

@@ -1,6 +1,3 @@
-import noop from '@/noop'
-import freezeObj from '@/freezeObj'
-
 export interface LoadOptions {
   before?: AnyFn
   mode?: string
@@ -8,9 +5,9 @@ export interface LoadOptions {
 }
 
 const DEFAULT_OPTIONS: LoadOptions = {
-  before: noop,
+  before: (_) => _,
   mode: 'src',
-  attrs: freezeObj,
+  attrs: {},
 }
 
 /**

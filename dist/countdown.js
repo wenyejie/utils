@@ -23,6 +23,14 @@ class s {
     a(i) && this.on("change", i), this.options = Object.assign({ ...o }, i, typeof t == "number" ? { value: t } : t), this.value = this.options.value, this.options.autostart && this.start();
   }
   /**
+   * 创建倒计时实例
+   * @param value 倒计时
+   * @param options 选项
+   */
+  static create(t, i) {
+    return new s(t, i);
+  }
+  /**
    * 监听事件
    * @param eventName 事件名称
    * @param callback // 事件回调
@@ -39,18 +47,6 @@ class s {
     const i = this.callbackQueues[t];
     Array.isArray(i) && i.forEach((e) => e.call(this, this.value));
   }
-  // 倒计时
-  decrease() {
-    this.value = this.value - this.options.decrement, this.value <= this.options.end && (clearInterval(this.intervalId), this.trigger("finish")), this.trigger("change");
-  }
-  // 循环
-  loop() {
-    this.clear(), this.intervalId = r.setInterval(this.decrease.bind(this), this.options.delay);
-  }
-  // 清除倒计时
-  clear() {
-    clearInterval(this.intervalId), this.intervalId = 0;
-  }
   // 开始
   start() {
     this.options.value > this.value || (this.loop(), this.trigger("start"));
@@ -63,13 +59,17 @@ class s {
   continue() {
     this.intervalId === 0 && (this.loop(), this.trigger("continue"));
   }
-  /**
-   * 创建倒计时实例
-   * @param value 倒计时
-   * @param options 选项
-   */
-  static create(t, i) {
-    return new s(t, i);
+  // 倒计时
+  decrease() {
+    this.value = this.value - this.options.decrement, this.value <= this.options.end && (clearInterval(this.intervalId), this.trigger("finish")), this.trigger("change");
+  }
+  // 循环
+  loop() {
+    this.clear(), this.intervalId = r.setInterval(this.decrease.bind(this), this.options.delay);
+  }
+  // 清除倒计时
+  clear() {
+    clearInterval(this.intervalId), this.intervalId = 0;
   }
 }
 const d = s.create;
