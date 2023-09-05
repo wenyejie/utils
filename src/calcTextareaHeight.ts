@@ -47,6 +47,10 @@ type TextAreaHeight = {
   minHeight?: string
 }
 
+/**
+ * 计算节点样式
+ * @param targetElement 目标元素
+ */
 function calculateNodeStyling(targetElement: Element): NodeStyle {
   const style = window.getComputedStyle(targetElement)
 
@@ -65,6 +69,12 @@ function calculateNodeStyling(targetElement: Element): NodeStyle {
   return { contextStyle, paddingSize, borderSize, boxSizing }
 }
 
+/**
+ * 计算Textarea输入框高度
+ * @param targetElement 目标元素
+ * @param minRows 最小行高
+ * @param maxRows 最大行高
+ */
 export function calcTextareaHeight(targetElement: HTMLTextAreaElement, minRows = 1, maxRows?: number): TextAreaHeight {
   if (!hiddenTextarea) {
     hiddenTextarea = document.createElement('textarea')
