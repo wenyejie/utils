@@ -1,35 +1,42 @@
-import { file2image as d } from "./file2image.js";
+import { file2image as o } from "./file2image.js";
 import "./file2url.js";
-const m = {
-  maxWidth: 0,
-  maxHeight: 0,
-  maxSize: 0
-}, h = (s, e, i) => {
-  const { naturalWidth: c, naturalHeight: t } = s, r = c / t;
-  let a, n;
-  return r >= 1 ? (e > 0 ? a = Math.min(c, e) : a = c, n = a / r) : (i > 0 ? n = Math.min(t, i) : n = t, a = n * r), {
-    dw: Math.floor(a),
-    dh: Math.floor(n),
-    sw: c,
-    sh: t
+const h = {
+  quality: 0.95,
+  qualityRate: 0.05
+}, d = (t, e, s) => {
+  const { naturalWidth: a, naturalHeight: n } = t, r = a / n;
+  let c, l;
+  return r >= 1 ? (e > 0 ? c = Math.min(a, e) : c = a, l = c / r) : (s > 0 ? l = Math.min(n, s) : l = n, c = l * r), {
+    dw: Math.floor(c),
+    dh: Math.floor(l),
+    sw: a,
+    sh: n
   };
-}, u = (s, e, i, c) => {
-  const t = document.createElement("canvas"), r = t.getContext("2d"), { dw: a, dh: n, sw: l, sh: o } = h(s, e, i);
-  return t.width = a, t.height = n, c && (r.fillStyle = c, r.fillRect(0, 0, a, n)), r.drawImage(s, 0, 0, l, o, 0, 0, a, n), t;
-}, g = (s, e) => {
-  e = Object.assign({ ...m }, e);
-  const i = d(s);
-  return document.body.appendChild(i), new Promise((c, t) => {
-    i.onload = () => {
-      const r = u(i, e.maxWidth, e.maxHeight, e.fileStyle), a = e.filetype ?? s.type, n = e.filename ?? s.name;
-      document.body.appendChild(r), r.toBlob(
-        (l) => {
-          l ? l.size > s.size ? c(s) : c(new File([l], n, { type: a })) : t(new Error("canvas toBlob return null"));
-        },
-        a,
-        e.quality
-      );
-    }, i.onerror = t;
+}, u = (t, e, s, a) => {
+  const n = document.createElement("canvas"), r = n.getContext("2d"), { dw: c, dh: l, sw: i, sh: m } = d(t, e, s);
+  return n.width = c, n.height = l, a && (r.fillStyle = a, r.fillRect(0, 0, c, l)), r.drawImage(t, 0, 0, i, m, 0, 0, c, l), n;
+}, w = async (t, e) => new Promise((s) => {
+  t.toBlob(
+    (a) => {
+      s(a);
+    },
+    "image/webp",
+    e
+  );
+}), g = (t, e) => {
+  e = Object.assign({ ...h }, e);
+  const s = o(t);
+  return new Promise((a, n) => {
+    s.onload = async () => {
+      const r = u(s, e.maxWidth, e.maxHeight, e.fileStyle), c = e.filetype ?? t.type, l = e.filename ?? t.name;
+      let i, m = e.quality;
+      do
+        i = await w(r, m), m -= e.qualityRate;
+      while (i?.size > e?.maxSize);
+      if (i?.size > t?.size)
+        return a(t);
+      a(new File([i], l, { type: c }));
+    }, s.onerror = n;
   });
 };
 export {

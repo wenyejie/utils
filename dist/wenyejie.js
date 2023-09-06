@@ -135,7 +135,7 @@ import { toTypeString as qm } from "./toTypeString.js";
 import { unique as Ym } from "./unique.js";
 import { url2http as Qm } from "./url2http.js";
 import { url2https as Zm } from "./url2https.js";
-const r = "2.0.6";
+const r = "2.1.0";
 export {
   Kt as PublishSubscribe,
   r as VERSION,

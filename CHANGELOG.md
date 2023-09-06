@@ -1,9 +1,11 @@
 # 版本记录
 
-## next
+## 2.1.0
 
 - 新增`hasFocus`
 - 优化精简`load`
+- 导出`StorageFn`
+- 重构`imageCompress`
 
 ## 2.0.6
 
