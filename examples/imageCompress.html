@@ -11,16 +11,60 @@
 </fieldset>
 <script type='module'>
   import imageCompress from '@/imageCompress'
+  import file2url from '@/file2url'
+
   const elFile = document.querySelector('input')
 
   elFile.addEventListener('change', event => {
     const file = event.target?.files?.[0]
-    console.log(file)
+    console.log(file.size)
+    /*const percentageMap = {
+      1: 1,
+      .975: 0.997424925942419,
+      .95: 0.889922360549091,
+      .925: 0.8151561501674767,
+      .9: 0.7353327266742822,
+      .875: 0.6872233731534009,
+      .85: 0.6363956707777498,
+      .825: 0.6004608027260935,
+      .8: 0.5733160370965555,
+      .775: 0.5386512807605182,
+      .75: 0.509771728397452,
+      .7: 0.4902243993107321,
+      .6: 0.4600282677302562,
+      .5: 0.43081569827102173,
+      .4: 0.3934635714147418,
+      .3: 0.34919553137524445,
+      .2: 0.30648415264574336,
+      .1: 0.26213092218629597,
+      0: 0.14804546070591879
+    }*/
+    /**36625
+     * 100kb = 100 * 1024 = 102400
+     * 1: 150269 258245
+     * .999: 73250 258245
+     * .99: 71668 250359
+     * .95: 62630 229818
+     * .9: 50438 189896
+     * .8: 37826 148056
+     * .75: 33618 131646
+     * .7: 32162 126598
+     * .6: 30224 118800
+     * .5: 28476 111256
+     * .4: 28476 101610
+     * .3: 28476 90178
+     * .2: 28476 79148
+     * .1: 28476 67694
+     * 0: 12316 38232
+     */
     imageCompress(file, {
-      filetype: 'image/jpeg',
-      quality: 1
+      maxSize: 102400,
+      // maxWidth: 1024,
     }).then(result => {
-      console.log(result)
+      const img = document.createElement('img')
+      img.src = file2url(result)
+      document.body.appendChild(img)
+      console.log(result.size / file.size)
     })
   })
 </script>

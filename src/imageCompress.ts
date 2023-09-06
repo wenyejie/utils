@@ -18,12 +18,13 @@ export interface FileCompressOptions {
   maxHeight?: number
   // 图片最大size, 暂不支持, 需要后续实现
   maxSize?: number
+  // 图片质量减少幅度
+  qualityRate?: number
 }
 
 const DEFAULT_OPTIONS: FileCompressOptions = {
-  maxWidth: 0,
-  maxHeight: 0,
-  maxSize: 0,
+  quality: 0.95,
+  qualityRate: 0.05,
 }
 
 /**
@@ -85,6 +86,23 @@ const image2canvas = (image: HTMLImageElement, maxWidth?: number, maxHeight?: nu
 }
 
 /**
+ * 把canvas转划为blob
+ * @param canvas 画布
+ * @param quality 质量
+ */
+const canvas2blob = async (canvas: HTMLCanvasElement, quality: number): Promise<Blob> => {
+  return new Promise(resolve => {
+    canvas.toBlob(
+      blob => {
+        resolve(blob)
+      },
+      'image/webp',
+      quality,
+    )
+  })
+}
+
+/**
  * 图片压缩, PS: quality只对jpg/jpeg/webp生效
  * @param file 图片
  * @param options 选项
@@ -92,30 +110,22 @@ const image2canvas = (image: HTMLImageElement, maxWidth?: number, maxHeight?: nu
 export const imageCompress = (file: File, options?: FileCompressOptions): Promise<File> => {
   options = Object.assign({ ...DEFAULT_OPTIONS }, options)
   const image = file2image(file)
-  document.body.appendChild(image)
   return new Promise((resolve, reject) => {
-    image.onload = () => {
+    image.onload = async () => {
       const canvas = image2canvas(image, options.maxWidth, options.maxHeight, options.fileStyle)
 
       const type = options.filetype ?? file.type
       const name = options.filename ?? file.name
-
-      document.body.appendChild(canvas)
-      canvas.toBlob(
-        blob => {
-          if (blob) {
-            if (blob.size > file.size) {
-              resolve(file)
-            } else {
-              resolve(new File([blob], name, { type }))
-            }
-          } else {
-            reject(new Error(`canvas toBlob return null`))
-          }
-        },
-        type,
-        options.quality,
-      )
+      let blob: Blob
+      let quality = options.quality
+      do {
+        blob = await canvas2blob(canvas, quality)
+        quality -= options.qualityRate
+      } while (blob?.size > options?.maxSize)
+      if (blob?.size > file?.size) {
+        return resolve(file)
+      }
+      resolve(new File([blob], name, { type }))
     }
     image.onerror = reject
   })
