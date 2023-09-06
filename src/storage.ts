@@ -46,7 +46,7 @@ class CustomStorage {
   }
 }
 
-type StorageFn = {
+export type StorageFn = {
   (name: string): any
   (name: string, value: null): void
   (name: string, value: any): void
