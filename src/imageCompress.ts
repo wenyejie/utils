@@ -103,7 +103,7 @@ const canvas2blob = async (canvas: HTMLCanvasElement, quality: number): Promise<
 }
 
 /**
- * 图片压缩, PS: quality只对jpg/jpeg/webp生效
+ * 图片压缩, PS: 不支持转换为svg
  * @param file 图片
  * @param options 选项
  */
