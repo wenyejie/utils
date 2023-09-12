@@ -13,7 +13,7 @@ export const isEmptyValue = (obj: unknown) => {
     obj === '' ||
     Number.isNaN(obj) ||
     (isArray(obj) && obj.length === 0) ||
-    (isObject(obj) && objectLength(obj) === 0)
+    (isObject(obj) && objectLength(<PropObj>obj) === 0)
   )
 }
 export default isEmptyValue

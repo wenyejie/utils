@@ -1,18 +1,39 @@
 import globalThis from './globalThis'
 
+export interface ThrottleOptions {
+  timeout?: number
+  immediate?: boolean
+}
+
+const DEFAULT_OPTIONS: ThrottleOptions = {
+  timeout: 500,
+  immediate: false,
+}
+
 /**
  * 函数节流 - 间隔一定时间后执行, 地铁
  * @param fn 函数
- * @param interval 时间间隔
- * @param immediate 立刻执行
+ * @param options 选项
  */
-export const throttle = (fn: (...rest: any[]) => any, interval = 500, immediate = false) => {
-  // 定时器
-  let timer: string | number | NodeJS.Timeout
+export const throttle: {
+  <T, R>(fn: (...rest: T[]) => R, options?: ThrottleOptions): (...rest: T[]) => void
+  <T, R>(fn: (...rest: T[]) => R, timeout?: ThrottleOptions['timeout']): (...rest: T[]) => void
+  <T, R>(fn: (...rest: T[]) => R, immediate?: ThrottleOptions['immediate']): (...rest: T[]) => void
+} = <T, R>(
+  fn: (...rest: T[]) => R,
+  options?: ThrottleOptions | ThrottleOptions['timeout'] | ThrottleOptions['immediate'],
+) => {
+  let timer: number | NodeJS.Timeout
+  const innerOptions: ThrottleOptions = Object.assign({ ...DEFAULT_OPTIONS }, options)
+  if (typeof options === 'boolean') {
+    innerOptions.immediate = options
+  } else if (typeof options === 'number') {
+    innerOptions.timeout = options
+  }
   return function (...rest: any[]) {
-    if (immediate) {
+    if (innerOptions.immediate) {
       fn.apply(this, rest)
-      immediate = false
+      innerOptions.immediate = false
       return
     }
     if (timer) {
@@ -22,7 +43,7 @@ export const throttle = (fn: (...rest: any[]) => any, interval = 500, immediate 
       clearTimeout(timer)
 
       fn.apply(this, rest)
-    }, interval)
+    }, innerOptions.timeout)
   }
 }
 

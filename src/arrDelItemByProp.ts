@@ -11,11 +11,11 @@ export const arrDelItemByProp: {
    * @param array 数组
    * @param propKey 属性
    * @param propValue 属性值
-   */ <P extends PropObj>(array: P[], propKey: PropKey, propValue: any): P[]
-} = <P extends PropObj>(array: P[], propKey: PropKey | PropObj, propValue?: any): P[] => {
+   */ <P extends PropObj>(array: P[], propKey: PropKey, propValue: unknown): P[]
+} = <P extends PropObj>(array: P[], propKey: PropKey | PropObj, propValue?: unknown): P[] => {
   const propObj = isObject(propKey) ? <PropObj>propKey : { [<PropKey>propKey]: propValue }
   const propEntries = Object.entries(propObj)
-  const index = array.findIndex((item) => {
+  const index = array.findIndex(item => {
     for (const [key, value] of propEntries) {
       if (item[key] !== value) {
         return false

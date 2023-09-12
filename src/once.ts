@@ -3,7 +3,7 @@
  * @param fn 函数
  */
 export const once = <T extends AnyFn>(fn: T): T => {
-  let cached: any
+  let cached: unknown
   return function () {
     return cached || (cached = fn.apply(this, arguments))
   } as T

@@ -1,25 +1,6 @@
 import isDate from './isDate'
-import camelize from './camelize'
 
-export interface DatetimeSpanOptions {
-  types?: string[]
-  hasYear?: boolean
-  year?: number
-  hasWeek?: boolean
-  week?: number
-  hasDay?: boolean
-  day?: number
-  hasHour?: boolean
-  hour?: number
-  hasMinute?: boolean
-  minute?: number
-  hasSecond?: boolean
-  second?: number
-  hasMillisecond?: boolean
-  millisecond?: number
-  defaultValue?: string
-  compare?: Date
-}
+export type DatetimeSpanTypes = 'year' | 'week' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond'
 
 export interface DatetimeSpanResult {
   year?: number
@@ -31,23 +12,20 @@ export interface DatetimeSpanResult {
   millisecond?: number
 }
 
-const defOpts: DatetimeSpanOptions = {
+export interface DatetimeSpanOptions extends DatetimeSpanResult {
+  types?: DatetimeSpanTypes[]
+  compare?: Date
+}
+
+const DEFAULT_OPTIONS: DatetimeSpanOptions = {
   types: ['year', 'week', 'day', 'hour', 'minute', 'second'],
-  hasYear: false,
   year: 31536e6,
-  hasWeek: false,
   week: 6048e5,
-  hasDay: true,
   day: 864e5,
-  hasHour: true,
   hour: 36e5,
-  hasMinute: true,
   minute: 6e4,
-  hasSecond: true,
   second: 1e3,
-  hasMillisecond: false,
   millisecond: 1,
-  defaultValue: '',
 }
 
 /**
@@ -59,21 +37,18 @@ const defOpts: DatetimeSpanOptions = {
 export const datetimeSpan = (date: LikeDate, options?: DatetimeSpanOptions) => {
   const opts: DatetimeSpanOptions = Object.assign(
     {
-      compare: new Date(),
+      ...DEFAULT_OPTIONS,
     },
-    defOpts,
     options,
   )
   let timestamp = isDate(date)
-    ? Math.abs((<Date>date).getTime() - opts.compare.getTime())
+    ? Math.abs((<Date>date).getTime() - (opts.compare ?? new Date()).getTime())
     : Number.parseInt(<string>date)
   const result: DatetimeSpanResult = {}
-  opts.types.forEach((name) => {
-    if (opts[camelize(`has-${name}`)]) {
-      result[name] = Math.floor(timestamp / opts[name])
-      timestamp %= opts[name]
-    }
-  })
+  for (const type of opts.types) {
+    result[type] = Math.floor(timestamp / opts[type])
+    timestamp %= opts[type]
+  }
   return result
 }
 

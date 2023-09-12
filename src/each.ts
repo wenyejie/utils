@@ -6,9 +6,12 @@ import isObject from './isObject'
  * @param fn 回调
  */
 export const each: {
-  (data: any[], fn: AnyFn): void
-  (data: PropObj, fn: AnyFn): void
-} = (data: any[] | PropObj, fn: AnyFn) => {
+  <V>(data: V[], fn: (value: V, index: number, data: V[]) => unknown): void
+  <K extends string, V, O = Record<K, V>>(data: O, fn: (value: V, key: K, data: O) => unknown): void
+} = <V, K extends string, O = Record<K, V>>(
+  data: V[] | O,
+  fn: (value: V, index: K | number, data: V[] | O) => unknown,
+) => {
   if (!Array.isArray(data) && !isObject(data)) {
     console.error(`${data} is not array or object`)
     return
@@ -22,7 +25,7 @@ export const each: {
     }
   } else {
     for (const [key, value] of Object.entries(data)) {
-      if (fn(value, key, data) === false) {
+      if (fn(value, <K>key, data) === false) {
         break
       }
     }

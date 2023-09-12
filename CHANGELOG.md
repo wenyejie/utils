@@ -2,6 +2,8 @@
 
 ## 2.1.1
 
+- add `isVoid`
+- fix `clone` 无法复制循环对象的bug
 
 ## 2.1.0
 

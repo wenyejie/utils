@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='zh-cn'>
+<head>
+  <meta charset='utf-8'>
+  <title>setCSS</title>
+  <style>
+    .demo {
+      width: 100px;
+      height: 100px;
+      background-color: darkgrey;
+    }
+  </style>
+</head>
+<body>
+  <div class='demo' style='background-color: blueviolet;'></div>
+<script type='module'>
+  import setCSS from '@/setCSS'
+  const elDemo = document.querySelector('.demo')
+  console.log('before', elDemo.style.cssText)
+  setCSS(elDemo, 'background-color: red')
+  console.log('after', elDemo.style.cssText)
+</script>
+</body>
+</html>

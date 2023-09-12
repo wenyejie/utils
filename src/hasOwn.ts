@@ -1,6 +1,5 @@
 import hasOwnProperty from './hasOwnProperty'
-import isUndefined from './isUndefined'
-import isNull from './isNull'
+import isVoid from '@/isVoid'
 
 /**
  * 判断key是否是对象自己的属性
@@ -8,7 +7,7 @@ import isNull from './isNull'
  * @param prop 属性
  */
 export const hasOwn = (obj: PropObj, prop: string | number | symbol) => {
-  if (isUndefined(obj) || isNull(obj)) {
+  if (isVoid(obj)) {
     console.error(`${obj} is not a valid type`)
     return false
   }

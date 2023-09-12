@@ -1,7 +1,9 @@
+export type StorageValue = string | number | undefined | null | Record<string, unknown> | unknown[]
+
 /**
  * 自定义存储
  */
-class CustomStorage {
+class CustomStorage<K extends string, V> {
   private readonly storage: Storage
   private readonly key: string
 
@@ -14,8 +16,8 @@ class CustomStorage {
    * 获取存储内容
    * @param key 保存key
    */
-  get(key: string) {
-    let result: any
+  get(key: K) {
+    let result: V
     try {
       result = JSON.parse(this.storage?.getItem(key))?.[this.key]
     } catch (e) {
@@ -29,7 +31,7 @@ class CustomStorage {
    * @param key key
    * @param value value
    */
-  set(key: string, value: any) {
+  set(key: K, value: V) {
     try {
       this.storage?.setItem(key, JSON.stringify({ [this.key]: value }))
     } catch (e) {
@@ -41,15 +43,15 @@ class CustomStorage {
    * 移除存储值
    * @param key
    */
-  remove(key: string) {
+  remove(key: K) {
     this.storage?.removeItem(key)
   }
 }
 
 export type StorageFn = {
-  (name: string): any
-  (name: string, value: null): void
-  (name: string, value: any): void
+  <K extends string, V>(name: K): V
+  <K extends string, V extends null>(name: K, value: V): void
+  <K extends string, V>(name: K, value: V): void
 }
 
 /**

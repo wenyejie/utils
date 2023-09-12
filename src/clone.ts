@@ -1,5 +1,4 @@
 import isPrimitive from './isPrimitive'
-import isJson from './isJson'
 import toRawType from './toRawType'
 
 type ArrayOrObject = any[] | PropObj
@@ -25,10 +24,6 @@ export const clone = <T>(obj: T, deep = true, weakMap = new WeakMap()): T => {
 
   if (type in linkIterableObj) {
     return new linkIterableObj[type](obj)
-  }
-
-  if (!isJson(obj)) {
-    return obj
   }
 
   if (weakMap.get(<ArrayOrObject>obj)) {
