@@ -1,5 +1,4 @@
 import toDate from './toDate'
-import isInvalidDate from './isInvalidDate'
 import padStart from './padStart'
 
 /**
@@ -10,7 +9,7 @@ import padStart from './padStart'
  */
 export const dateFormat = (date: LikeDate, format = 'YYYY-MM-DD hh:mm:ss', defaultValue = '') => {
   const newDate = toDate(date)
-  if (isInvalidDate(newDate)) {
+  if (!newDate) {
     console.error(`${date} is not valid date`)
     return defaultValue
   }
@@ -47,8 +46,6 @@ export const dateFormat = (date: LikeDate, format = 'YYYY-MM-DD hh:mm:ss', defau
         return padStart(Math.floor(newDate.getMilliseconds() / 10))
       case 'S':
         return Math.floor(newDate.getMilliseconds() / 100) + ''
-      default:
-        return ''
     }
   })
 }

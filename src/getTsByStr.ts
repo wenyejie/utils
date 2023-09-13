@@ -51,7 +51,7 @@ export const getTsByStr = (str: string | number, rtnType: 'second' | 'millisecon
     return null
   }
   let { num, unit } = result.groups
-  const rtnValue = +num * <number>strMap[unit.toLowerCase()]
+  const rtnValue = +num * strMap[unit.toLowerCase()]
   if (rtnType === 'second') {
     return Math.floor(rtnValue / 1e3) // 此处不允许出现小数, 时间戳只能是小数, 如果需要毫秒级时间戳, 请变更rtnType
   }

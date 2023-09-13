@@ -1,5 +1,6 @@
 import globalThis from './globalThis'
 import isFunction from './isFunction'
+import isObject from '@/isObject'
 
 // 倒计时时间名称
 export type CountdownEventName = 'change' | 'start' | 'stop' | 'finish' | 'continue'
@@ -18,6 +19,8 @@ export interface CountdownOptions {
   value?: number
   // 结束的值
   end?: number
+  // 回调
+  change?: CountdownCallback
 }
 
 const DEFAULT_OPTIONS: CountdownOptions = {
@@ -37,11 +40,11 @@ class Countdown {
   // 回调队列
   private readonly callbackQueues: Record<string, CountdownCallback[]> = {}
 
-  constructor(value: number | CountdownOptions, options?: CountdownOptions | CountdownCallback) {
-    if (isFunction(options)) {
-      this.on('change', <CountdownCallback>options)
+  constructor(options: CountdownOptions) {
+    if (isFunction(options.change)) {
+      this.on('change', options.change)
     }
-    this.options = Object.assign({ ...DEFAULT_OPTIONS }, options, typeof value === 'number' ? { value } : value)
+    this.options = Object.assign({ ...DEFAULT_OPTIONS }, options)
     this.value = this.options.value
     if (this.options.autostart) {
       this.start()
@@ -51,10 +54,33 @@ class Countdown {
   /**
    * 创建倒计时实例
    * @param value 倒计时
+   * @param callback 回调
+   */
+  static create(value: number, callback: CountdownCallback): Countdown
+  /**
+   * 创建倒计时实例
    * @param options 选项
    */
-  static create(value: number, options?: CountdownOptions) {
-    return new Countdown(value, options)
+  static create(options: CountdownOptions): Countdown
+  /**
+   * 创建倒计时实例
+   * @param value 倒计时
+   * @param options 选项
+   */
+  static create(value: number, options: CountdownOptions): Countdown
+  static create(value: number | CountdownOptions, options?: CountdownOptions | CountdownCallback) {
+    const innerOptions: CountdownOptions = {}
+    if (typeof value === 'number') {
+      innerOptions.value = value
+    } else if (isObject(value)) {
+      Object.assign(innerOptions, value)
+    }
+    if (isFunction(options)) {
+      innerOptions.change = <CountdownOptions['change']>options
+    } else if (isObject(options)) {
+      Object.assign(innerOptions, <CountdownOptions>options)
+    }
+    return new Countdown(innerOptions)
   }
 
   /**
