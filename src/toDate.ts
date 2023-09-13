@@ -31,6 +31,7 @@ const normalizedOptions = <D>(options: unknown) => {
  * @param options 选项
  */
 export const toDate: {
+  (date: LikeDate, defaultValue?: null | undefined): Date | null | undefined
   (date: LikeDate, toNew?: boolean): Date | undefined
   <D>(date: LikeDate, options?: ToDateOptions<D>): Date | D
   <D>(date: LikeDate, defaultValue?: D): Date | D
