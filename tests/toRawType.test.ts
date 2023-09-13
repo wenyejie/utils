@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest'
+import { expect, test } from 'vitest'
 import { toRawType } from '../src/toRawType'
 
 test('toRawType', () => {

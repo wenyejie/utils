@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest'
+import { expect, test } from 'vitest'
 import isPrimitive from '../src/isPrimitive'
 
 test('isPrimitive', () => {
@@ -18,5 +18,4 @@ test('isPrimitive', () => {
   expect(isPrimitive(new Set())).toBeFalsy()
   expect(isPrimitive(new WeakSet())).toBeFalsy()
   expect(isPrimitive(new WeakMap())).toBeFalsy()
-
 })

@@ -77,7 +77,7 @@ class Countdown {
     if (!Array.isArray(queue)) {
       return
     }
-    queue.forEach((cb) => cb.call(this, this.value))
+    queue.forEach(cb => cb.call(this, this.value))
   }
 
   // 开始

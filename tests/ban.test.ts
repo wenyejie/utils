@@ -1,5 +1,5 @@
 import ban from '../src/ban'
-import { test, expect } from 'vitest'
+import { expect, test } from 'vitest'
 
 test('ban', () => {
   const obj = { one: 1, two: 2, three: 3 }

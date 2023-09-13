@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest'
+import { expect, test } from 'vitest'
 import hasOwn from '../src/hasOwn'
 
 test('hasOwn', () => {
@@ -13,4 +13,3 @@ test('hasOwn', () => {
   // @ts-ignore
   expect(hasOwn(obj)).toBeFalsy()
 })
-

@@ -4,7 +4,7 @@ import getCSS from '../src/getCSS'
 import setCSS from '../src/setCSS'
 import supportCSS from '../src/supportCSS'
 import globalThis from '../src/globalThis'
-import { window, document } from './utils'
+import { document, window } from './utils'
 
 const $div = document.createElement('div')
 document.body.appendChild($div)

@@ -11,12 +11,12 @@ test('arrFindItemByProps', () => {
   const arr = [
     {
       name: 'one',
-      age: 18
+      age: 18,
     },
     {
       name: 'two',
-      age: 19
-    }
+      age: 19,
+    },
   ]
   expect(arrFindItemByProp(arr, { name: 'one' })).toEqual({ name: 'one', age: 18 })
   expect(arrFindItemByProp(arr, 'name', 'one')).toEqual({ name: 'one', age: 18 })
@@ -26,12 +26,12 @@ test('arrFindValByProps', () => {
   const arr = [
     {
       name: 'one',
-      age: 18
+      age: 18,
     },
     {
       name: 'two',
-      age: 19
-    }
+      age: 19,
+    },
   ]
   expect(arrFindValByProp(arr, { name: 'one' }, 'age')).toStrictEqual(18)
   expect(arrFindValByProp(arr, { age: 18 }, 'name')).toStrictEqual('one')
@@ -44,9 +44,16 @@ test('arrDelItemByVal', () => {
 })
 
 test('arrDelItemByProp', () => {
-  const arr = [ { name: 'one', num: 1 }, { name: 'two', num: 2 }, { name: 'three', num: 3 } ]
-  expect(arrDelItemByProp(arr, { name: 'one' })).toStrictEqual([ { name: 'two', num: 2 }, { name: 'three', num: 3 } ])
-  expect(arrDelItemByProp(arr, 'name', 'two')).toStrictEqual([  { name: 'three', num: 3 } ])
+  const arr = [
+    { name: 'one', num: 1 },
+    { name: 'two', num: 2 },
+    { name: 'three', num: 3 },
+  ]
+  expect(arrDelItemByProp(arr, { name: 'one' })).toStrictEqual([
+    { name: 'two', num: 2 },
+    { name: 'three', num: 3 },
+  ])
+  expect(arrDelItemByProp(arr, 'name', 'two')).toStrictEqual([{ name: 'three', num: 3 }])
 })
 
 test('arrDownItem', () => {

@@ -1,4 +1,4 @@
-import {test, expect} from 'vitest'
+import { expect, test } from 'vitest'
 import getInfoByCardNO from '../src/getInfoByCardNO'
 
 test('getInfoByCardNO', () => {
@@ -11,7 +11,7 @@ test('getInfoByCardNO', () => {
     month: '07',
     day: '28',
     date: '20000728',
-    sex: '2'
+    sex: '2',
   }
   expect(getInfoByCardNO('110101200007287504')).toContain(cardInfo)
   expect(getInfoByCardNO('')).toContain({})

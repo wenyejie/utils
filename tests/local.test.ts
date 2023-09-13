@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest'
+import { expect, test } from 'vitest'
 import { window } from './utils'
 import local from '../src/local'
 import globalThis from '../src/globalThis'

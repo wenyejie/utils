@@ -15,7 +15,7 @@ export const arrFindItemByProp: {
 } = <V extends unknown, P extends PropKey, R extends Record<P, V>>(array: R[], prop: P | PropObj, value?: V) => {
   const props: R = isObject(prop) ? <R>prop : <R>{ [<P>prop]: <V>value }
   const propEntries = Object.entries(props)
-  return array.find((item) => {
+  return array.find(item => {
     for (const [prop, value] of propEntries) {
       if (item[prop] !== value) {
         return false

@@ -15,7 +15,7 @@ export const dateFormat = (date: LikeDate, format = 'YYYY-MM-DD hh:mm:ss', defau
     return defaultValue
   }
 
-  return format.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (str) => {
+  return format.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, str => {
     switch (str) {
       case 'YYYY':
         return newDate.getFullYear() + ''

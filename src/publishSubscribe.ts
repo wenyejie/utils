@@ -9,9 +9,10 @@ export interface PublishSubscribeOnOptions {
 
 // 发布订阅回调Map队列
 export interface PublishSubscribeCallbackMapQueue {
-  [key: string]: unknown
   once?: boolean
   callback: AnyFn
+
+  [key: string]: unknown
 }
 
 //发布订阅的回调Map子项

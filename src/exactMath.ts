@@ -153,7 +153,7 @@ export const arithmetic = (expression: string) => {
   let index = -1
   let result: number
   do {
-    index = arr.findIndex((item) => ['*', '/', '%'].includes(item))
+    index = arr.findIndex(item => ['*', '/', '%'].includes(item))
     if (index < 0) {
       break
     }
@@ -184,7 +184,7 @@ export const exactMath = (arithmeticStr: string) => {
   }
   try {
     while (rBracketsAndCon.test(arithmeticStr)) {
-      arithmeticStr = arithmeticStr.replace(rBracketsAndCon, (express) => {
+      arithmeticStr = arithmeticStr.replace(rBracketsAndCon, express => {
         return arithmetic(express.replace(rBrackets, '')) + ''
       })
     }

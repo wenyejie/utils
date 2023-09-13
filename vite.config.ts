@@ -1,9 +1,9 @@
 /// <reference types="vitest" />
-import { BuildOptions, defineConfig, PluginOption, UserConfig, ServerOptions } from 'vite'
+import { BuildOptions, defineConfig, PluginOption, ServerOptions, UserConfig } from 'vite'
 import { join } from 'node:path'
 import { InputOption } from 'rollup'
-import { readdirSync, writeFile, statSync } from 'node:fs'
-import { version, name } from './package.json'
+import { readdirSync, statSync, writeFile } from 'node:fs'
+import { name, version } from './package.json'
 
 const { NODE_ENV } = process.env
 const isDev = NODE_ENV === 'development'
@@ -14,7 +14,7 @@ const suffix = '.ts' // 后缀
 const rFileSuffix = /\.ts$/ // 文件后缀
 
 const entryFiles = readdirSync(join('./src'))
-entryFiles.forEach((file) => {
+entryFiles.forEach(file => {
   entry.push(`./src/${file}`)
 })
 
@@ -22,7 +22,7 @@ entryFiles.forEach((file) => {
 const getExamplesLatestModifiedFile = (files: string[]) => {
   let latestModifiedFile = ''
   let latestModifiedTimestamp = 0
-  files.forEach((file) => {
+  files.forEach(file => {
     const status = statSync(file)
     if (status.mtimeMs > latestModifiedTimestamp) {
       latestModifiedTimestamp = status.mtimeMs
@@ -35,13 +35,13 @@ const getExamplesLatestModifiedFile = (files: string[]) => {
 // 自动构建生成entry
 const buildLibrary = () => {
   let content = `// @Copyright by https://github.com/${name}/utils\rexport const VERSION = '${version}'\r`
-  entryFiles.forEach((file) => {
+  entryFiles.forEach(file => {
     if (file === `${name}${suffix}` || !rFileSuffix.test(file)) {
       return
     }
     content += `export * from './${file.replace(rFileSuffix, '')}'\r`
   })
-  writeFile(`./src/${name}${suffix}`, content, (error) => {
+  writeFile(`./src/${name}${suffix}`, content, error => {
     console.error(error)
   })
 }
@@ -74,7 +74,7 @@ if (isDev) {
   const input: InputOption = []
 
   const inputFiles = readdirSync(join('./examples'))
-  inputFiles.forEach((file) => input.push(`./examples/${file}`))
+  inputFiles.forEach(file => input.push(`./examples/${file}`))
 
   build.rollupOptions = {
     input,

@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest'
+import { expect, test } from 'vitest'
 import capitalize from '../src/capitalize'
 
 test('capitalize', () => {

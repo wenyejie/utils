@@ -1,4 +1,4 @@
-import { test, expect, vi } from 'vitest'
+import { expect, test, vi } from 'vitest'
 import debounce from '../src/debounce'
 
 test('debounce', () => {
