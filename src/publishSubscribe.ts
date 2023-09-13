@@ -9,13 +9,14 @@ export interface PublishSubscribeOnOptions {
 
 // 发布订阅回调Map队列
 export interface PublishSubscribeCallbackMapQueue {
+  [key: string]: unknown
   once?: boolean
   callback: AnyFn
 }
 
 //发布订阅的回调Map子项
 export interface PublishSubscribeCallbackMapItem {
-  data?: any
+  data?: unknown
   queue: PublishSubscribeCallbackMapQueue[]
 }
 
@@ -36,7 +37,7 @@ export class PublishSubscribe {
    * @param eventName 事件名称
    * @param data 数据
    */
-  trigger(eventName: string, data?: any[]) {
+  trigger(eventName: string, data?: unknown[]) {
     if (!eventName) {
       return
     }
@@ -93,7 +94,7 @@ export class PublishSubscribe {
     }
     const { queue } = item
     if (isFunction(callback)) {
-      arrDelItemByProp(queue, { callback })
+      arrDelItemByProp(queue, 'callback', callback)
     } else {
       delete this.callbackMap[eventName]
     }

@@ -14,7 +14,7 @@ type SupportCSS = {
    */
   (prop: string, value: string): boolean
 }
-export const supportCSS: SupportCSS = (prop: string, value?: any) => {
+export const supportCSS: SupportCSS = (prop: string, value?: unknown) => {
   return globalThis?.CSS?.supports?.(hyphenate(prop), value)
 }
 

@@ -5,14 +5,14 @@ import isObject from './isObject'
  * @param obj 数据
  * @param rest 移除key
  */
-export const ban = <T extends PropObj>(obj: T, ...rest: PropKey[]) => {
+export const ban = <T extends PropObj>(obj: T, ...rest: string[]) => {
   if (!isObject(obj)) {
     console.error(`${obj} is not a object`)
     return
   }
   let result: PropObj = {}
   result = { ...obj }
-  rest.forEach((key) => {
+  rest.forEach(key => {
     delete result[key]
   })
   return result

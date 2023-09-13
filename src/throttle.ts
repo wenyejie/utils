@@ -23,14 +23,14 @@ export const throttle: {
   fn: (...rest: T[]) => R,
   options?: ThrottleOptions | ThrottleOptions['timeout'] | ThrottleOptions['immediate'],
 ) => {
-  let timer: number | NodeJS.Timeout
+  let timer: number
   const innerOptions: ThrottleOptions = Object.assign({ ...DEFAULT_OPTIONS }, options)
   if (typeof options === 'boolean') {
     innerOptions.immediate = options
   } else if (typeof options === 'number') {
     innerOptions.timeout = options
   }
-  return function (...rest: any[]) {
+  return function (...rest: T[]) {
     if (innerOptions.immediate) {
       fn.apply(this, rest)
       innerOptions.immediate = false

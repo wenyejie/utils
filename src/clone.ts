@@ -1,7 +1,7 @@
 import isPrimitive from './isPrimitive'
 import toRawType from './toRawType'
 
-type ArrayOrObject = any[] | PropObj
+type ArrayOrObject = unknown[] | PropObj
 
 const linkIterableObj = {
   set: Set,

@@ -14,7 +14,7 @@ export const getCSS: {
    * @param prop 属性名称
    * @param pseudoElt 伪元素 'before' | 'after'
    */
-  (elt: HTMLElement, prop: string, pseudoElt?: 'before' | 'after' | null): any
+  (elt: HTMLElement, prop: string, pseudoElt?: 'before' | 'after' | null): unknown
 } = (elt: HTMLElement, prop?: string, pseudoElt?: 'before' | 'after' | null) => {
   if (!isString(prop)) {
     return document.defaultView.getComputedStyle(elt, pseudoElt)

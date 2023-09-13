@@ -1,5 +1,5 @@
 type PropKey = string | number | symbol
-type PropObj = Record<PropKey, unknown>
+type PropObj = Record<string, unknown>
 
 type LikeDate = Date | string | number
 

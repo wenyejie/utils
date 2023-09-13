@@ -23,7 +23,7 @@ export const debounce: {
   fn: (...rest: T[]) => R,
   options?: DebounceOptions | DebounceOptions['timeout'] | DebounceOptions['immediate'],
 ) => {
-  let timer: number | NodeJS.Timeout
+  let timer: number
   const innerOptions: DebounceOptions = Object.assign({ ...DEFAULT_OPTIONS }, options)
   if (typeof options === 'boolean') {
     innerOptions.immediate = options

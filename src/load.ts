@@ -1,11 +1,11 @@
 export interface LoadOptions {
   before?: AnyFn
   mode?: string
-  attrs?: Record<string, any>
+  attrs?: Record<string, unknown>
 }
 
 const DEFAULT_OPTIONS: LoadOptions = {
-  before: (_) => _,
+  before: _ => _,
   mode: 'src',
   attrs: {},
 }
@@ -31,7 +31,7 @@ export const load = (
     $element[mode] = url
 
     for (const [key, value] of Object.entries(attrs)) {
-      $element.setAttribute(key, value)
+      $element.setAttribute(key, <string>value)
     }
     $element.onload = () => {
       resolve($element)
