@@ -34,7 +34,7 @@ const rTsStr = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(
 export const getTsByStr = (str: string | number, rtnType: 'second' | 'millisecond' = 'millisecond') => {
   if (!isNumber(str) && !isString(str)) {
     // 当参数即不是正常的数字也不是正常的字符串返回错误
-    console.error(`${str} is not a number or string`)
+    console.error(`"${str}" is not a number or string`)
     return null
   }
   if (isNumber(str)) {
@@ -47,7 +47,7 @@ export const getTsByStr = (str: string | number, rtnType: 'second' | 'millisecon
   }
   const result = str.match(rTsStr)
   if (!result) {
-    console.error(`getTsByStr: Incorrect timestamp string parameter => ${str}`)
+    console.error(`getTsByStr: Incorrect timestamp string parameter => "${str}"`)
     return null
   }
   let { num, unit } = result.groups

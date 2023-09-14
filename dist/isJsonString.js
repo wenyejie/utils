@@ -1,9 +1,5 @@
 import { isString as t } from "./isString.js";
-import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
-import "./decapitalize.js";
-const a = (r) => {
+const n = (r) => {
   try {
     return t(r) ? JSON.parse(r) && !0 : !1;
   } catch {
@@ -11,6 +7,6 @@ const a = (r) => {
   }
 };
 export {
-  a as default,
-  a as isJsonString
+  n as default,
+  n as isJsonString
 };

@@ -13,7 +13,7 @@ export const each: {
   fn: (value: V, index: K | number, data: V[] | O) => unknown,
 ) => {
   if (!Array.isArray(data) && !isObject(data)) {
-    console.error(`${data} is not array or object`)
+    console.error(`"${data}" is not array or object`)
     return
   }
 

@@ -22,7 +22,7 @@ export interface TimeDistanceOptions {
 export const timeDistance = (date: LikeDate, options?: TimeDistanceOptions) => {
   date = toDate(date)
   if (!isDate(date)) {
-    console.error(`${date} is not a valid date`)
+    console.error(`"${date}" is not a valid date`)
     return ''
   }
   options = Object.assign(

@@ -1,18 +1,14 @@
-import { isString as t } from "./isString.js";
-import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
-import "./decapitalize.js";
-const p = (o) => {
-  if (!t(o))
-    return console.error(`${o} is not a string`), "";
-  o = o.trim();
+import { isString as r } from "./isString.js";
+const t = (f) => {
+  if (!r(f))
+    return console.error(`"${f}" is not a string`), "";
+  f = f.trim();
   const {
-    groups: { suffix: r }
-  } = o.match(/(?<=\.)(?<suffix>\w+)+$/);
-  return r;
+    groups: { suffix: o }
+  } = f.match(/(?<=\.)(?<suffix>\w+)+$/);
+  return o;
 };
 export {
-  p as default,
-  p as suffix
+  t as default,
+  t as suffix
 };

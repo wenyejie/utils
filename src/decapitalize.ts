@@ -3,7 +3,7 @@
  * @param str 字符串
  */
 export const decapitalize = (str: string) => {
-  return str.charAt(0).toLowerCase() + str.slice(1)
+  return str.replace(/(\w+)/gi, substr => substr.charAt(0).toLowerCase() + substr.slice(1))
 }
 
 export default decapitalize

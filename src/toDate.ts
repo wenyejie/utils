@@ -31,14 +31,14 @@ const normalizedOptions = <D>(options: unknown) => {
  * @param options 选项
  */
 export const toDate: {
-  (date: LikeDate, defaultValue?: null | undefined): Date | null | undefined
+  (date: LikeDate): Date | undefined
   (date: LikeDate, toNew?: boolean): Date | undefined
   <D>(date: LikeDate, options?: ToDateOptions<D>): Date | D
   <D>(date: LikeDate, defaultValue?: D): Date | D
 } = <D, T extends ToDateOptions<D>>(date: LikeDate, options?: T['toNew'] | T['defaultValue'] | T) => {
   const innerOptions = normalizedOptions(options)
   if (!date || isInvalidDate(date)) {
-    console.error(`${date} is not valid date`)
+    console.error(`"${date}" is not valid date`)
     return <D>innerOptions.defaultValue
   }
   if (isDate(date)) {
@@ -55,15 +55,15 @@ export const toDate: {
   }
 
   if (isNumber(date)) {
-    const dateStr = date + ''
-    if (dateStr.length >= 8) {
-      if (dateStr.length > 13) {
-        date = dateStr.substring(0, 13)
-      } else {
-        date = dateStr.padEnd(13, '0')
-      }
-      date = Number.parseInt(<string>date)
+    let ts = Number.parseInt(date + '') + ''
+    // 在JS中只支持毫秒级时间戳, 如果是微秒, 纳秒则需要转换成毫秒
+    if (ts.length > 13) {
+      ts = ts.substring(0, 13)
+    } else if (ts.length < 13) {
+      // 秒级时间戳转换成毫秒级时间戳
+      ts = ts.padEnd(13, '0')
     }
+    date = Number.parseInt(ts)
   }
 
   date = new Date(date)

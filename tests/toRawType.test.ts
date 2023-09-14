@@ -7,4 +7,5 @@ test('toRawType', () => {
   expect(toRawType(null) === 'null').toBeTruthy()
   expect(toRawType('') === 'string').toBeTruthy()
   expect(toRawType(Symbol('')) === 'symbol').toBeTruthy()
+  expect(toRawType(new Blob(['text'], { type: 'text/plain' }))).toBe('blob')
 })

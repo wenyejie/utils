@@ -1,17 +1,21 @@
-import i from "./globalThis.js";
-const s = (e, o = 500, r = !1) => {
-  let t;
-  return function(...l) {
-    if (r) {
-      e.apply(this, l), r = !1;
+import r from "./globalThis.js";
+const l = {
+  timeout: 500,
+  immediate: !1
+}, u = (m, e) => {
+  let i;
+  const t = Object.assign({ ...l }, e);
+  return typeof e == "boolean" ? t.immediate = e : typeof e == "number" && (t.timeout = e), function(...a) {
+    if (t.immediate) {
+      m.apply(this, a), t.immediate = !1;
       return;
     }
-    t || (t = i.setTimeout(() => {
-      clearTimeout(t), e.apply(this, l);
-    }, o));
+    i || (i = r.setTimeout(() => {
+      clearTimeout(i), m.apply(this, a);
+    }, t.timeout));
   };
 };
 export {
-  s as default,
-  s as throttle
+  u as default,
+  u as throttle
 };

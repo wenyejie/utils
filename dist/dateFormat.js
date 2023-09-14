@@ -1,18 +1,20 @@
 import { toDate as n } from "./toDate.js";
-import { isInvalidDate as i } from "./isInvalidDate.js";
 import { padStart as t } from "./padStart.js";
 import "./isDate.js";
+import "./isNumber.js";
+import "./isString.js";
+import "./regexp.js";
+import "./isInvalidDate.js";
 import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-import "./isNumber.js";
-import "./isString.js";
-import "./regexp.js";
+import "./isObject.js";
+import "./nullProtoObject.js";
 import "./isUndefined.js";
-const f = (r, s = "YYYY-MM-DD hh:mm:ss", o = "") => {
+const F = (r, s = "YYYY-MM-DD hh:mm:ss", o = "") => {
   const e = n(r);
-  return i(e) ? (console.error(`${r} is not valid date`), o) : s.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (a) => {
+  return e ? s.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (a) => {
     switch (a) {
       case "YYYY":
         return e.getFullYear() + "";
@@ -44,12 +46,10 @@ const f = (r, s = "YYYY-MM-DD hh:mm:ss", o = "") => {
         return t(Math.floor(e.getMilliseconds() / 10));
       case "S":
         return Math.floor(e.getMilliseconds() / 100) + "";
-      default:
-        return "";
     }
-  });
+  }) : (console.error(`"${r}" is not valid date`), o);
 };
 export {
-  f as dateFormat,
-  f as default
+  F as dateFormat,
+  F as default
 };

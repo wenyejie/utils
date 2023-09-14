@@ -5,7 +5,7 @@ import "./objectToString.js";
 import "./decapitalize.js";
 const n = (r, o) => {
   if (!Array.isArray(r) && !s(r)) {
-    console.error(`${r} is not array or object`);
+    console.error(`"${r}" is not array or object`);
     return;
   }
   if (Array.isArray(r))

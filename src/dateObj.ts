@@ -1,5 +1,5 @@
-import isDate from './isDate'
 import toDate from './toDate'
+import isDate from './isDate'
 
 // 日期对象返回结果
 export interface DateObjResult {
@@ -21,21 +21,20 @@ export interface DateObjResult {
 export const dateObj = (date: LikeDate = new Date()) => {
   let result: DateObjResult = {}
   date = toDate(date)
-  if (!isDate(date)) {
-    console.error(`${date} is not a date`)
-    return result
+  if (isDate(date)) {
+    result = {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+      week: date.getDay(),
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      second: date.getSeconds(),
+      millisecond: date.getMilliseconds(),
+      time: date.getTime(),
+    }
   }
-  result = {
-    year: date.getFullYear(),
-    month: date.getMonth() + 1,
-    day: date.getDate(),
-    week: date.getDay(),
-    hour: date.getHours(),
-    minute: date.getMinutes(),
-    second: date.getSeconds(),
-    millisecond: date.getMilliseconds(),
-    time: date.getTime(),
-  }
+
   return result
 }
 

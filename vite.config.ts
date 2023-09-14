@@ -3,6 +3,7 @@ import { BuildOptions, defineConfig, PluginOption, ServerOptions, UserConfig } f
 import { join } from 'node:path'
 import { InputOption } from 'rollup'
 import { readdirSync, statSync, writeFile } from 'node:fs'
+import { EOL } from 'node:os'
 import { name, version } from './package.json'
 
 const { NODE_ENV } = process.env
@@ -12,8 +13,9 @@ const plugins: PluginOption = []
 const entry: InputOption = []
 const suffix = '.ts' // 后缀
 const rFileSuffix = /\.ts$/ // 文件后缀
+const ignoreFiles = [`utils${suffix}`]
 
-const entryFiles = readdirSync(join('./src'))
+const entryFiles = readdirSync(join('./src')).filter(file => rFileSuffix.test(file) && !ignoreFiles.includes(file))
 entryFiles.forEach(file => {
   entry.push(`./src/${file}`)
 })
@@ -34,12 +36,12 @@ const getExamplesLatestModifiedFile = (files: string[]) => {
 
 // 自动构建生成entry
 const buildLibrary = () => {
-  let content = `// @Copyright by https://github.com/${name}/utils\rexport const VERSION = '${version}'\r`
+  let content = `// @Copyright by https://github.com/${name}/utils${EOL}export const VERSION = '${version}'${EOL}`
   entryFiles.forEach(file => {
-    if (file === `${name}${suffix}` || !rFileSuffix.test(file)) {
+    if (file === `${name}${suffix}`) {
       return
     }
-    content += `export * from './${file.replace(rFileSuffix, '')}'\r`
+    content += `export * from './${file.replace(rFileSuffix, '')}'${EOL}`
   })
   writeFile(`./src/${name}${suffix}`, content, error => {
     console.error(error)

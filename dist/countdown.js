@@ -1,10 +1,11 @@
-import r from "./globalThis.js";
-import { isFunction as a } from "./isFunction.js";
+import n from "./globalThis.js";
+import { isFunction as r } from "./isFunction.js";
+import { isObject as a } from "./isObject.js";
 import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-const o = {
+const h = {
   delay: 1e3,
   decrement: 1,
   autostart: !0,
@@ -19,16 +20,12 @@ class s {
   options;
   // 回调队列
   callbackQueues = {};
-  constructor(t, i) {
-    a(i) && this.on("change", i), this.options = Object.assign({ ...o }, i, typeof t == "number" ? { value: t } : t), this.value = this.options.value, this.options.autostart && this.start();
+  constructor(t) {
+    r(t.change) && this.on("change", t.change), this.options = Object.assign({ ...h }, t), this.value = this.options.value, this.options.autostart && this.start();
   }
-  /**
-   * 创建倒计时实例
-   * @param value 倒计时
-   * @param options 选项
-   */
   static create(t, i) {
-    return new s(t, i);
+    const e = {};
+    return typeof t == "number" ? e.value = t : a(t) && Object.assign(e, t), r(i) ? e.change = i : a(i) && Object.assign(e, i), new s(e);
   }
   /**
    * 监听事件
@@ -65,15 +62,15 @@ class s {
   }
   // 循环
   loop() {
-    this.clear(), this.intervalId = r.setInterval(this.decrease.bind(this), this.options.delay);
+    this.clear(), this.intervalId = n.setInterval(this.decrease.bind(this), this.options.delay);
   }
   // 清除倒计时
   clear() {
     clearInterval(this.intervalId), this.intervalId = 0;
   }
 }
-const d = s.create;
+const f = s.create;
 export {
-  d as countdown,
-  d as default
+  f as countdown,
+  f as default
 };

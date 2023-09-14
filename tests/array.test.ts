@@ -4,7 +4,6 @@ import arrDelItemByVal from '../src/arrDelItemByVal'
 import arrDownItem from '../src/arrDownItem'
 import arrUpItem from '../src/arrUpItem'
 import arrFindItemByProp from '../src/arrFindItemByProp'
-import isArrayIndex from '../src/isArrayIndex'
 import arrFindValByProp from '../src/arrFindValByProp'
 
 test('arrFindItemByProps', () => {
@@ -68,13 +67,4 @@ test('arrUpItem', () => {
   expect(arrUpItem(arr, 1)).toStrictEqual([1, 0, 2])
   arr = [0, 1, 2]
   expect(arrUpItem(arr, 2)).toStrictEqual([0, 2, 1])
-})
-
-test('isArrayIndex', () => {
-  const arr = [0, 1, 2]
-  expect(isArrayIndex(arr, 0)).toBeTruthy()
-  expect(isArrayIndex(arr, 1)).toBeTruthy()
-  expect(isArrayIndex(arr, 2)).toBeTruthy()
-  expect(isArrayIndex(arr, -1)).toBeFalsy()
-  expect(isArrayIndex(arr, 3)).toBeFalsy()
 })

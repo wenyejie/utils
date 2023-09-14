@@ -1,33 +1,30 @@
-import { isPrimitive as l } from "./isPrimitive.js";
-import { isJson as o } from "./isJson.js";
-import { toRawType as u } from "./toRawType.js";
+import { isPrimitive as c } from "./isPrimitive.js";
+import { toRawType as f } from "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-const f = {
+const m = {
   set: Set,
   map: Map,
   weakSet: WeakSet,
   weakMap: WeakMap
-}, c = (t, m = !0, e = /* @__PURE__ */ new WeakMap()) => {
-  const r = u(t);
-  if (l(t) || r === "function")
+}, o = (t, a = !0, e = /* @__PURE__ */ new WeakMap()) => {
+  const r = f(t);
+  if (c(t) || r === "function")
     return t;
-  if (r in f)
-    return new f[r](t);
-  if (!o(t))
-    return t;
+  if (r in m)
+    return new m[r](t);
   if (e.get(t))
     return e.get(t);
   const i = r === "array" ? [] : {};
   e.set(t, i);
-  const a = Object.keys(t);
+  const l = Object.keys(t);
   let n;
-  for (let s = 0, p = a.length; s < p; s++)
-    n = a[s], i[n] = m ? c(t[n], m, e) : t[n];
+  for (let s = 0, p = l.length; s < p; s++)
+    n = l[s], i[n] = a ? o(t[n], a, e) : t[n];
   return i;
 };
 export {
-  c as clone,
-  c as default
+  o as clone,
+  o as default
 };

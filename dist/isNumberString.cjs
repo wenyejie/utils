@@ -1,1 +1,1 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./isString.cjs");require("./toRawType.cjs");require("./toTypeString.cjs");require("./objectToString.cjs");require("./decapitalize.cjs");const r=e=>i.isString(e)?(+e).toString()===e:!1;exports.default=r;exports.isNumberString=r;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isString.cjs"),r=e=>t.isString(e)?(+e).toString()===e:!1;exports.default=r;exports.isNumberString=r;

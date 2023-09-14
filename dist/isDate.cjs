@@ -1,1 +1,1 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./toRawType.cjs");require("./toTypeString.cjs");require("./objectToString.cjs");require("./decapitalize.cjs");const t=e=>r.toRawType(e)==="date"&&e.toString()!=="Invalid Date";exports.default=t;exports.isDate=t;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=e=>e instanceof Date&&e.toString()!=="Invalid Date";exports.default=t;exports.isDate=t;

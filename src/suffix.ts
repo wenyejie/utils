@@ -6,7 +6,7 @@ import isString from './isString'
  */
 export const suffix = (string: string) => {
   if (!isString(string)) {
-    console.error(`${string} is not a string`)
+    console.error(`"${string}" is not a string`)
     return ''
   }
   string = string.trim()

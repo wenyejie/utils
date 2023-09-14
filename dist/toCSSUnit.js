@@ -1,12 +1,8 @@
-import { isNumber as i } from "./isNumber.js";
-import { isString as o } from "./isString.js";
-import { rInteger as m } from "./regexp.js";
-import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
-import "./decapitalize.js";
-const x = (r, t = "px") => i(r) || m.test(r) ? r + t : o(r) ? r : "";
+import { isNumber as e } from "./isNumber.js";
+import { isString as i } from "./isString.js";
+import { rInteger as o } from "./regexp.js";
+const f = (r, t = "px") => e(r) || o.test(r) ? r + t : i(r) ? r : "";
 export {
-  x as default,
-  x as toCSSUnit
+  f as default,
+  f as toCSSUnit
 };

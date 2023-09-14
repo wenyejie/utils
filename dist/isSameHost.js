@@ -1,17 +1,13 @@
-import { isString as r } from "./isString.js";
-import e from "./globalThis.js";
-import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
-import "./decapitalize.js";
-const c = (o, t) => {
-  if (!r(o))
-    return console.error(`${o} is not a string`), !1;
-  const i = new URL(o);
-  let n = r(t) ? new URL(t) : e.location;
-  return i.host === n.host;
+import { isString as n } from "./isString.js";
+import s from "./globalThis.js";
+const l = (o, t) => {
+  if (!n(o))
+    return console.error(`"${o}" is not a string`), !1;
+  const r = new URL(o);
+  let e = n(t) ? new URL(t) : s.location;
+  return r.host === e.host;
 };
 export {
-  c as default,
-  c as isSameHost
+  l as default,
+  l as isSameHost
 };

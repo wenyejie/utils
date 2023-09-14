@@ -3,10 +3,6 @@ import { toNumber as u } from "./toNumber.js";
 import { spliceString as b } from "./spliceString.js";
 import { isString as M } from "./isString.js";
 import "./isNumber.js";
-import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
-import "./decapitalize.js";
 const d = (r, t) => {
   if (t === 0)
     return r;
@@ -26,28 +22,28 @@ const d = (r, t) => {
     n2: d(u(t), e),
     raise: e
   };
-}, g = (r, t) => {
+}, m = (r, t) => {
   const { n1: e, n2: n, raise: o } = c(r, t);
   return i(e + n, o);
-}, x = (...r) => r.reduce((t, e) => g(t, e)), h = (r, t) => {
+}, F = (...r) => r.reduce((t, e) => m(t, e)), h = (r, t) => {
   const { n1: e, n2: n, raise: o } = c(r, t);
   return i(e - n, o);
-}, C = (...r) => r.reduce((t, e) => h(t, e)), a = (r, t) => {
+}, I = (...r) => r.reduce((t, e) => h(t, e)), a = (r, t) => {
   const { n1: e, n2: n, raise: o } = c(r, t);
   return i(e * n, o * 2);
-}, D = (...r) => r.reduce((t, e) => a(t, e), 1), l = (r, t) => {
+}, P = (...r) => r.reduce((t, e) => a(t, e), 1), l = (r, t) => {
   const { n1: e, n2: n } = c(r, t);
   return e / n;
-}, L = (...r) => r.reduce((t, e) => l(t, e)), S = (r, t) => {
+}, $ = (...r) => r.reduce((t, e) => l(t, e)), S = (r, t) => {
   const e = l(r, t), n = a(e - Math.floor(e), t), o = +r % +t;
   return n.toString().length <= o.toString().length ? n : o;
 }, p = {
-  "+": g,
+  "+": m,
   "-": h,
   "*": a,
   "/": l,
   "%": S
-}, m = /\([^()]+\)/g, y = /[()]/g, k = /(?<=\d|\.)([%*/+-])/g, E = /\s+/g, f = (r) => {
+}, f = /\([^()]+\)/g, y = /[()]/g, k = /(?<=\d|\.)([%*/+-])/g, E = /\s+/g, g = (r) => {
   r = r.replace(k, " $1 "), r = r.trim();
   let t = r.split(E);
   if (t.length <= 0)
@@ -62,27 +58,27 @@ const d = (r, t) => {
   for (let o = 1; o < t.length; o++)
     t[o] === "+" || t[o] === "-" || (n = p[t[o - 1] || "+"](n, t[o]));
   return n;
-}, j = (r) => {
+}, x = (r) => {
   if (!M(r))
     return 0;
   try {
-    for (; m.test(r); )
-      r = r.replace(m, (t) => f(t.replace(y, "")) + "");
-    return f(r);
+    for (; f.test(r); )
+      r = r.replace(f, (t) => g(t.replace(y, "")) + "");
+    return g(r);
   } catch {
     return 0;
   }
 };
 export {
-  g as add,
-  f as arithmetic,
-  j as default,
+  m as add,
+  g as arithmetic,
+  x as default,
   l as divide,
-  j as exactMath,
-  x as multiAdd,
-  L as multiDivide,
-  D as multiMultiply,
-  C as multiSubtract,
+  x as exactMath,
+  F as multiAdd,
+  $ as multiDivide,
+  P as multiMultiply,
+  I as multiSubtract,
   a as multiply,
   S as remain,
   h as subtract

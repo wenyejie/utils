@@ -7,7 +7,7 @@ import isObject from './isObject'
  */
 export const ban = <T extends PropObj>(obj: T, ...rest: string[]) => {
   if (!isObject(obj)) {
-    console.error(`${obj} is not a object`)
+    console.error(`"${obj}" is not a object`)
     return
   }
   let result: PropObj = {}

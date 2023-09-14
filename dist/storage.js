@@ -41,7 +41,7 @@ const a = (s, e) => {
   const t = new i(s, e);
   return (r, o) => {
     if (!r) {
-      console.error(`${r} is required`);
+      console.error(`"${r}" is required`);
       return;
     }
     switch (o) {

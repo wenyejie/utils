@@ -11,15 +11,15 @@ import globalThis from './globalThis'
  */
 export const downloadBlob = (blob: Blob, filename: string) => {
   if (!isBlob(blob)) {
-    console.error(`${blob} is not a Blob`)
+    console.error(`"${blob}" is not a Blob`)
     return
   }
   if (!suffix(filename)) {
     filename = filename + '.' + blob.type.replace(/image\//, '')
     console.warn('参数错误: filename没有后缀名')
   }
-  if (globalThis.navigator?.['msSaveBlob']) {
-    globalThis.navigator?.['msSaveBlob'](blob, filename)
+  if (globalThis?.navigator?.['msSaveBlob']) {
+    globalThis?.navigator?.['msSaveBlob'](blob, filename)
     return
   }
   const url = globalThis.URL.createObjectURL(blob)

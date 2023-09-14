@@ -5,7 +5,7 @@ import "./objectToString.js";
 import "./decapitalize.js";
 const c = (r, ...e) => {
   if (!i(r)) {
-    console.error(`${r} is not a object`);
+    console.error(`"${r}" is not a object`);
     return;
   }
   let t = {};

@@ -12,7 +12,7 @@ export const decimalLength = (number: number | string) => {
     number = +number
   }
   if (!isNumber(number)) {
-    console.error(`${number} is not a number`)
+    console.error(`"${number}" is not a number`)
     return 0
   }
   return `${number}`.replace(INTEGER_BIT, '').length

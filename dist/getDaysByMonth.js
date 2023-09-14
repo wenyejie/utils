@@ -1,15 +1,17 @@
 import { toDate as o } from "./toDate.js";
-import { isDate as r } from "./isDate.js";
+import "./isDate.js";
 import "./isNumber.js";
 import "./isString.js";
+import "./regexp.js";
+import "./isInvalidDate.js";
 import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
 import "./decapitalize.js";
-import "./regexp.js";
-import "./isInvalidDate.js";
-const g = (t) => (t = o(t), r(t) ? new Date(t.getFullYear(), t.getMonth() + 1, 0).getDate() : (console.error(`${t} is not a valid date`), 0));
+import "./isObject.js";
+import "./nullProtoObject.js";
+const f = (t) => (t = o(t), new Date(t.getFullYear(), t.getMonth() + 1, 0).getDate());
 export {
-  g as default,
-  g as getDaysByMonth
+  f as default,
+  f as getDaysByMonth
 };

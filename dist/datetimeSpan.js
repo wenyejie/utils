@@ -1,41 +1,23 @@
-import { isDate as i } from "./isDate.js";
-import { camelize as m } from "./camelize.js";
-import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
-import "./decapitalize.js";
-const p = {
-  types: ["year", "week", "day", "hour", "minute", "second"],
-  hasYear: !1,
-  year: 31536e6,
-  hasWeek: !1,
-  week: 6048e5,
-  hasDay: !0,
-  day: 864e5,
-  hasHour: !0,
-  hour: 36e5,
-  hasMinute: !0,
-  minute: 6e4,
-  hasSecond: !0,
-  second: 1e3,
-  hasMillisecond: !1,
-  millisecond: 1,
-  defaultValue: ""
-}, d = (s, o) => {
-  const e = Object.assign(
+import { isDate as p } from "./isDate.js";
+var t = /* @__PURE__ */ ((e) => (e[e.YEAR = 31536e6] = "YEAR", e[e.WEEK = 6048e5] = "WEEK", e[e.DAY = 864e5] = "DAY", e[e.HOUR = 36e5] = "HOUR", e[e.MINUTE = 6e4] = "MINUTE", e[e.SECOND = 1e3] = "SECOND", e[e.MILLISECOND = 1] = "MILLISECOND", e))(t || {});
+const m = {
+  types: ["year", "week", "day", "hour", "minute", "second"]
+};
+t.YEAR, t.WEEK, t.DAY, t.HOUR, t.MINUTE, t.SECOND, t.MILLISECOND;
+const O = (e, n) => {
+  const s = Object.assign(
     {
-      compare: /* @__PURE__ */ new Date()
+      ...m
     },
-    p,
-    o
+    n
   );
-  let a = i(s) ? Math.abs(s.getTime() - e.compare.getTime()) : Number.parseInt(s);
-  const r = {};
-  return e.types.forEach((t) => {
-    e[m(`has-${t}`)] && (r[t] = Math.floor(a / e[t]), a %= e[t]);
-  }), r;
+  let r = p(e) ? Math.abs(e.getTime() - (s.compare ?? /* @__PURE__ */ new Date()).getTime()) : Number.parseInt(e);
+  const a = {};
+  for (const o of s.types)
+    a[o] = Math.floor(r / t[o.toUpperCase()]), r %= t[o.toUpperCase()];
+  return a;
 };
 export {
-  d as datetimeSpan,
-  d as default
+  O as datetimeSpan,
+  O as default
 };

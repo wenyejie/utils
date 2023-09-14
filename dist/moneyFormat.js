@@ -1,12 +1,8 @@
-import { isNumber as l } from "./isNumber.js";
-import { toNumber as m } from "./toNumber.js";
-import { nullProtoObject as a } from "./nullProtoObject.js";
+import { isNumber as r } from "./isNumber.js";
+import { toNumber as a } from "./toNumber.js";
+import { nullProtoObject as d } from "./nullProtoObject.js";
 import "./isString.js";
-import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
-import "./decapitalize.js";
-const d = {
+const m = {
   decimal: 2,
   // 小数点长度
   symbol: "",
@@ -19,13 +15,13 @@ const d = {
   // 分割长度
   padEnd: !0
   // 是否尾部填充
-}, b = (r, t) => {
-  if (t = Object.assign(a(), d, t), r = m(r), !l(r))
-    return t.default;
-  const e = r.toFixed(t.decimal).split(".");
-  return !t.padEnd && e[1] && (e[1] = e[1].replace(/0+$/, "")), t.symbol + e[0].replace(new RegExp("\\B(?=(\\d{" + t.length + "})+(?!\\d))", "g"), t.split) + (e[1] ? "." + e[1] : "");
+}, p = (l, e) => {
+  if (e = Object.assign(d(), m, e), l = a(l), !r(l))
+    return e.default;
+  const t = l.toFixed(e.decimal).split(".");
+  return !e.padEnd && t[1] && (t[1] = t[1].replace(/0+$/, "")), e.symbol + t[0].replace(new RegExp("\\B(?=(\\d{" + e.length + "})+(?!\\d))", "g"), e.split) + (t[1] ? "." + t[1] : "");
 };
 export {
-  b as default,
-  b as moneyFormat
+  p as default,
+  p as moneyFormat
 };

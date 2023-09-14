@@ -1,11 +1,7 @@
-import { isString as p } from "./isString.js";
-import { isNumber as f } from "./isNumber.js";
-import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
-import "./decapitalize.js";
-const x = (r, m, o = 0, i = "") => p(r) ? (!f(o) && i === "" && (i = o, o = 0), m < 0 || r.length < m || o < 0 ? r : r.substring(0, m) + i + r.substring(m + o, r.length)) : (console.error(`${r} is not a string`), "");
+import { isString as i } from "./isString.js";
+import { isNumber as p } from "./isNumber.js";
+const u = (r, o, f = 0, m = "") => i(r) ? (!p(f) && m === "" && (m = f, f = 0), o < 0 || r.length < o || f < 0 ? r : r.substring(0, o) + m + r.substring(o + f, r.length)) : (console.error(`"${r}" is not a string`), "");
 export {
-  x as default,
-  x as spliceString
+  u as default,
+  u as spliceString
 };

@@ -19,7 +19,7 @@ const handler: ProxyHandler<Record<string, ToMultiKeyOneValueItem>> = {
 export const toMultiKeyOneValue = <T extends string, V>(data: [T[], V][]) => {
   const proxy = new Proxy({}, handler)
   if (!Array.isArray(data)) {
-    console.error(`${data} is not a array`)
+    console.error(`"${data}" is not a array`)
     return
   }
   for (const [keys, value] of data) {

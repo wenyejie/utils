@@ -1,5 +1,5 @@
 import { isFunction as o } from "./isFunction.js";
-import { arrDelItemByProp as s } from "./arrDelItemByProp.js";
+import { arrDelItemByProp as l } from "./arrDelItemByProp.js";
 import "./toRawType.js";
 import "./toTypeString.js";
 import "./objectToString.js";
@@ -52,7 +52,7 @@ class u {
     if (!i)
       return;
     const { queue: c } = i;
-    o(r) ? s(c, { callback: r }) : delete this.callbackMap[t];
+    o(r) ? l(c, "callback", r) : delete this.callbackMap[t];
   }
 }
 export {

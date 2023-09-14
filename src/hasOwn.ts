@@ -1,4 +1,4 @@
-import hasOwnProperty from './hasOwnProperty'
+import { hasOwnProperty } from './utils'
 import isVoid from '@/isVoid'
 
 /**
@@ -6,11 +6,11 @@ import isVoid from '@/isVoid'
  * @param obj 对象
  * @param prop 属性
  */
-export const hasOwn = (obj: PropObj, prop: string | number | symbol) => {
+export const hasOwn = (obj: PropObj, prop: PropKey) => {
   if (isVoid(obj)) {
-    console.error(`${obj} is not a valid type`)
+    console.error(`"${obj}" is not a valid type`)
     return false
   }
-  return hasOwnProperty.call(obj, prop) as boolean
+  return <boolean>hasOwnProperty.call(obj, prop)
 }
 export default hasOwn

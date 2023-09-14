@@ -9,7 +9,7 @@ import "./objectToString.js";
 import "./decapitalize.js";
 const B = (o, r) => {
   if (!a(o)) {
-    console.error(`${o} is not a Blob`);
+    console.error(`"${o}" is not a Blob`);
     return;
   }
   if (m(r) || (r = r + "." + o.type.replace(/image\//, ""), console.warn("参数错误: filename没有后缀名")), t.navigator?.msSaveBlob) {

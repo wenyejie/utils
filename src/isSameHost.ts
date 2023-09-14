@@ -8,7 +8,7 @@ import globalThis from './globalThis'
  */
 export const isSameHost = (urlA: string, urlB?: string) => {
   if (!isString(urlA)) {
-    console.error(`${urlA} is not a string`)
+    console.error(`"${urlA}" is not a string`)
     return false
   }
   const innerUrlA = new URL(urlA)

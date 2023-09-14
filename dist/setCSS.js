@@ -1,17 +1,18 @@
-import { isString as r } from "./isString.js";
-import { isObject as s } from "./isObject.js";
-import { camelize as f } from "./camelize.js";
-import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
-import "./decapitalize.js";
-const b = (m, t, o) => {
-  let i = {};
-  r(t) ? i[t] = o : s(t) && (i = t);
-  for (const e in i)
-    m.style[f(e)] = i[e];
+import { camelize as l } from "./camelize.js";
+const c = (t, e, i) => {
+  let s = {};
+  if (typeof e == "string") {
+    if (i === void 0 && e.includes(":")) {
+      t.style.cssText = e;
+      return;
+    }
+    s[e] = i;
+  } else
+    s = e;
+  for (const f in s)
+    t.style[l(f)] = s[f];
 };
 export {
-  b as default,
-  b as setCSS
+  c as default,
+  c as setCSS
 };
