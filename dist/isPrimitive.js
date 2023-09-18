@@ -1,8 +1,6 @@
 import { toRawType as t } from "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
 import "./decapitalize.js";
-const n = (e) => {
+const i = (e) => {
   switch (t(e)) {
     case "string":
     case "number":
@@ -17,6 +15,6 @@ const n = (e) => {
   }
 };
 export {
-  n as default,
-  n as isPrimitive
+  i as default,
+  i as isPrimitive
 };

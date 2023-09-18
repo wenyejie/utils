@@ -1,5 +1,5 @@
 import isDate from './isDate'
-import { TIMESTAMP_UNIT } from './utils'
+import { TS_UNIT } from './utils'
 
 export type DatetimeSpanTypes = 'year' | 'week' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond'
 
@@ -52,8 +52,8 @@ export const datetimeSpan: {
     : Number.parseInt(<string>date)
   const result: DatetimeSpanResult = {}
   for (const type of types) {
-    result[type] = Math.floor(timestamp / TIMESTAMP_UNIT[type.toUpperCase()])
-    timestamp %= TIMESTAMP_UNIT[type.toUpperCase()]
+    result[type] = Math.floor(timestamp / TS_UNIT[type.toUpperCase()])
+    timestamp %= TS_UNIT[type.toUpperCase()]
   }
   return result
 }

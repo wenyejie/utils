@@ -1,5 +1,7 @@
-import { hasOwnProperty } from './utils'
 import isVoid from '@/isVoid'
+
+// 判断是不是对象的自身属性
+export const hasOwnProperty = Object.prototype.hasOwnProperty
 
 /**
  * 判断key是否是对象自己的属性

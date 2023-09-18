@@ -1,13 +1,12 @@
-import { hasOwn as e } from "./hasOwn.js";
-import "./hasOwnProperty.js";
+import { hasOwn as n } from "./hasOwn.js";
 import "./isVoid.js";
-const f = (t, r, p) => {
-  if (!e(t, r) || !e(t, p))
+const m = (t, r, e) => {
+  if (!n(t, r) || !n(t, e))
     return t;
-  const m = t[r];
-  return t[r] = t[p], t[p] = m, t;
+  const p = t[r];
+  return t[r] = t[e], t[e] = p, t;
 };
 export {
-  f as default,
-  f as swap
+  m as default,
+  m as swap
 };

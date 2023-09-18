@@ -1,1 +1,1 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isString.cjs"),r=e=>{try{return t.isString(e)?JSON.parse(e)&&!0:!1}catch{return!1}};exports.default=r;exports.isJsonString=r;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isString.cjs"),r=e=>{if(!t.isString(e))return!1;try{return JSON.parse(e),!0}catch{return!1}};exports.default=r;exports.isJsonString=r;

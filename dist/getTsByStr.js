@@ -1,29 +1,30 @@
-import { isString as m } from "./isString.js";
-import { isNumber as t } from "./isNumber.js";
-import { isNumberString as a } from "./isNumberString.js";
-import { toMultiKeyOneValue as s } from "./toMultiKeyOneValue.js";
-const l = s([
-  [["s", "sec", "second"], 1e3],
-  [["m", "min", "minute"], 6e4],
-  [["h", "hour"], 36e5],
-  [["d", "day"], 864e5],
-  [["w", "week"], 6048e5],
-  [["y", "year"], 31536e6]
-]), c = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(ay)?|w(eek)?|y(ear)?)$/i, g = (e, n = "millisecond") => {
-  if (!t(e) && !m(e))
-    return console.error(`"${e}" is not a number or string`), null;
-  if (t(e))
-    return e;
-  if (e = e.trim(), a(e))
-    return Math.floor(+e);
-  const r = e.match(c);
-  if (!r)
-    return console.error(`getTsByStr: Incorrect timestamp string parameter => "${e}"`), null;
-  let { num: i, unit: u } = r.groups;
-  const o = +i * l[u.toLowerCase()];
-  return Math.floor(n === "second" ? o / 1e3 : o);
+import { isString as a } from "./isString.js";
+import { isNumber as n } from "./isNumber.js";
+import { isNumberString as s } from "./isNumberString.js";
+import { toMultiKeyOneValue as l } from "./toMultiKeyOneValue.js";
+import { TS_UNIT as e } from "./utils.js";
+const c = l([
+  [["s", "sec", "second"], e.SECOND],
+  [["m", "min", "minute"], e.MINUTE],
+  [["h", "hour"], e.HOUR],
+  [["d", "day"], e.DAY],
+  [["w", "week"], e.WEEK],
+  [["y", "year"], e.YEAR]
+]), f = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(ay)?|w(eek)?|y(ear)?)$/i, S = (r, i = "millisecond") => {
+  if (!n(r) && !a(r))
+    return console.error(`"${r}" is not a number or string`), null;
+  if (n(r))
+    return r;
+  if (r = r.trim(), s(r))
+    return Math.floor(+r);
+  const o = r.match(f);
+  if (!o)
+    return console.error(`getTsByStr: Incorrect timestamp string parameter => "${r}"`), null;
+  let { num: m, unit: u } = o.groups;
+  const t = +m * c[u.toLowerCase()];
+  return Math.floor(i === "second" ? t / 1e3 : t);
 };
 export {
-  g as default,
-  g as getTsByStr
+  S as default,
+  S as getTsByStr
 };

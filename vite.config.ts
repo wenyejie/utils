@@ -13,7 +13,7 @@ const plugins: PluginOption = []
 const entry: InputOption = []
 const suffix = '.ts' // 后缀
 const rFileSuffix = /\.ts$/ // 文件后缀
-const ignoreFiles = [`utils${suffix}`]
+const ignoreFiles = [] // `utils${suffix}`
 
 const entryFiles = readdirSync(join('./src')).filter(file => rFileSuffix.test(file) && !ignoreFiles.includes(file))
 entryFiles.forEach(file => {

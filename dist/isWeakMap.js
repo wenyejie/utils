@@ -1,9 +1,7 @@
-import { toRawType as p } from "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
+import { toRawType as o } from "./toRawType.js";
 import "./decapitalize.js";
-const i = (o) => p(o) === "weakMap";
+const e = (a) => o(a) === "weakMap";
 export {
-  i as default,
-  i as isWeakMap
+  e as default,
+  e as isWeakMap
 };

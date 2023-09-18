@@ -1,9 +1,7 @@
 import { isObject as s } from "./isObject.js";
 import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
 import "./decapitalize.js";
-const n = (r, o) => {
+const t = (r, o) => {
   if (!Array.isArray(r) && !s(r)) {
     console.error(`"${r}" is not array or object`);
     return;
@@ -17,6 +15,6 @@ const n = (r, o) => {
         break;
 };
 export {
-  n as default,
-  n as each
+  t as default,
+  t as each
 };

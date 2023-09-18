@@ -1,5 +1,5 @@
-const a = (e) => e.charAt(0).toUpperCase() + e.slice(1);
+const t = (a) => a.replace(/(\w+)/gi, (e) => e.charAt(0).toUpperCase() + e.slice(1));
 export {
-  a as capitalize,
-  a as default
+  t as capitalize,
+  t as default
 };

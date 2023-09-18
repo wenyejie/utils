@@ -2,6 +2,7 @@ import isString from './isString'
 import isNumber from './isNumber'
 import isNumberString from './isNumberString'
 import toMultiKeyOneValue from './toMultiKeyOneValue'
+import { TS_UNIT } from '@/utils'
 
 /**
  * 字符串键值对(毫秒级)
@@ -14,12 +15,12 @@ import toMultiKeyOneValue from './toMultiKeyOneValue'
  * 1y(365d) = 31536000000 31536e6 = 86400000 365
  */
 const strMap = toMultiKeyOneValue([
-  [['s', 'sec', 'second'], 1e3],
-  [['m', 'min', 'minute'], 6e4],
-  [['h', 'hour'], 36e5],
-  [['d', 'day'], 864e5],
-  [['w', 'week'], 6048e5],
-  [['y', 'year'], 31536e6],
+  [['s', 'sec', 'second'], TS_UNIT.SECOND],
+  [['m', 'min', 'minute'], TS_UNIT.MINUTE],
+  [['h', 'hour'], TS_UNIT.HOUR],
+  [['d', 'day'], TS_UNIT.DAY],
+  [['w', 'week'], TS_UNIT.WEEK],
+  [['y', 'year'], TS_UNIT.YEAR],
 ])
 
 // 时间单位正则

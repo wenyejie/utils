@@ -5,11 +5,12 @@ import isString from './isString'
  * @param obj
  */
 export const isJsonString = (obj: unknown) => {
+  if (!isString(obj)) {
+    return false
+  }
   try {
-    if (!isString(obj)) {
-      return false
-    }
-    return JSON.parse(<string>obj) && true
+    JSON.parse(<string>obj)
+    return true
   } catch (e) {
     return false
   }

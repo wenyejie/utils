@@ -1,7 +1,5 @@
 import { isObject as i } from "./isObject.js";
 import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
 import "./decapitalize.js";
 const c = (r, ...e) => {
   if (!i(r)) {

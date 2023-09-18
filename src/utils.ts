@@ -6,7 +6,7 @@ export const TS_MINUTE = 6e4
 export const TS_SECOND = 1e3
 export const TS_MILLISECOND = 1
 
-export enum TIMESTAMP_UNIT {
+export enum TS_UNIT {
   YEAR = TS_YEAR,
   WEEK = TS_WEEK,
   DAY = TS_DAY,
@@ -15,8 +15,3 @@ export enum TIMESTAMP_UNIT {
   SECOND = TS_SECOND,
   MILLISECOND = TS_MILLISECOND,
 }
-
-/**
- * 判断是不是对象的自身属性
- */
-export const hasOwnProperty = Object.prototype.hasOwnProperty

@@ -1,14 +1,12 @@
-import { isFunction as o } from "./isFunction.js";
-import { arrDelItemByProp as l } from "./arrDelItemByProp.js";
+import { isFunction as u } from "./isFunction.js";
+import { arrDelItemByProp as s } from "./arrDelItemByProp.js";
 import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
 import "./decapitalize.js";
 import "./isObject.js";
-class u {
+class e {
   callbackMap = {};
   static create() {
-    return new u();
+    return new e();
   }
   /**
    * 触发订阅
@@ -32,10 +30,10 @@ class u {
    * @param options 选项
    */
   on(t, r, i) {
-    if (!t || !o(r()))
+    if (!t || !u(r()))
       return;
-    const c = this.callbackMap[t] ?? { queue: [] }, { data: a, queue: e } = c;
-    i?.immediate && r(a), e.push({
+    const c = this.callbackMap[t] ?? { queue: [] }, { data: a, queue: l } = c;
+    i?.immediate && r(a), l.push({
       once: i?.once ?? !1,
       callback: r
     }), this.callbackMap[t] = c;
@@ -52,10 +50,10 @@ class u {
     if (!i)
       return;
     const { queue: c } = i;
-    o(r) ? l(c, "callback", r) : delete this.callbackMap[t];
+    u(r) ? s(c, "callback", r) : delete this.callbackMap[t];
   }
 }
 export {
-  u as PublishSubscribe,
-  u as default
+  e as PublishSubscribe,
+  e as default
 };

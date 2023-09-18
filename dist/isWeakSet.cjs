@@ -1,1 +1,1 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./toRawType.cjs");require("./toTypeString.cjs");require("./objectToString.cjs");require("./decapitalize.cjs");const e=t=>r.toRawType(t)==="weakSet";exports.default=e;exports.isWeakSet=e;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const a=require("./toRawType.cjs");require("./decapitalize.cjs");const e=t=>a.toRawType(t)==="weakSet";exports.default=e;exports.isWeakSet=e;

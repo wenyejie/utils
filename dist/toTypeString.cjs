@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const o=require("./objectToString.cjs"),e=t=>o.objectToString.call(t).toLocaleLowerCase();exports.default=e;exports.toTypeString=e;

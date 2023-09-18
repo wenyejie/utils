@@ -6,13 +6,11 @@ import "./isString.js";
 import "./regexp.js";
 import "./isInvalidDate.js";
 import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
 import "./decapitalize.js";
 import "./isObject.js";
 import "./nullProtoObject.js";
 import "./isUndefined.js";
-const F = (r, s = "YYYY-MM-DD hh:mm:ss", o = "") => {
+const d = (r, s = "YYYY-MM-DD hh:mm:ss", o = "") => {
   const e = n(r);
   return e ? s.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (a) => {
     switch (a) {
@@ -50,6 +48,6 @@ const F = (r, s = "YYYY-MM-DD hh:mm:ss", o = "") => {
   }) : (console.error(`"${r}" is not valid date`), o);
 };
 export {
-  F as dateFormat,
-  F as default
+  d as dateFormat,
+  d as default
 };

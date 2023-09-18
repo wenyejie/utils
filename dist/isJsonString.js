@@ -1,7 +1,9 @@
 import { isString as t } from "./isString.js";
 const n = (r) => {
+  if (!t(r))
+    return !1;
   try {
-    return t(r) ? JSON.parse(r) && !0 : !1;
+    return JSON.parse(r), !0;
   } catch {
     return !1;
   }

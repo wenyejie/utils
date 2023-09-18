@@ -1,30 +1,28 @@
-import { isPrimitive as c } from "./isPrimitive.js";
-import { toRawType as f } from "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
+import { isPrimitive as u } from "./isPrimitive.js";
+import { toRawType as m } from "./toRawType.js";
 import "./decapitalize.js";
-const m = {
+const c = {
   set: Set,
   map: Map,
   weakSet: WeakSet,
   weakMap: WeakMap
-}, o = (t, a = !0, e = /* @__PURE__ */ new WeakMap()) => {
-  const r = f(t);
-  if (c(t) || r === "function")
+}, p = (t, a = !0, e = /* @__PURE__ */ new WeakMap()) => {
+  const r = m(t);
+  if (u(t) || r === "function")
     return t;
-  if (r in m)
-    return new m[r](t);
+  if (r in c)
+    return new c[r](t);
   if (e.get(t))
     return e.get(t);
   const i = r === "array" ? [] : {};
   e.set(t, i);
   const l = Object.keys(t);
   let n;
-  for (let s = 0, p = l.length; s < p; s++)
-    n = l[s], i[n] = a ? o(t[n], a, e) : t[n];
+  for (let s = 0, f = l.length; s < f; s++)
+    n = l[s], i[n] = a ? p(t[n], a, e) : t[n];
   return i;
 };
 export {
-  o as clone,
-  o as default
+  p as clone,
+  p as default
 };

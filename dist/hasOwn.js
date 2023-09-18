@@ -1,7 +1,7 @@
-import { hasOwnProperty as t } from "./hasOwnProperty.js";
 import { isVoid as e } from "./isVoid.js";
-const i = (r, o) => e(r) ? (console.error(`"${r}" is not a valid type`), !1) : t.call(r, o);
+const o = Object.prototype.hasOwnProperty, a = (r, t) => e(r) ? (console.error(`"${r}" is not a valid type`), !1) : o.call(r, t);
 export {
-  i as default,
-  i as hasOwn
+  a as default,
+  a as hasOwn,
+  o as hasOwnProperty
 };

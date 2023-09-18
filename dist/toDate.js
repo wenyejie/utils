@@ -1,30 +1,28 @@
 import { isDate as n } from "./isDate.js";
-import { isNumber as m } from "./isNumber.js";
+import { isNumber as s } from "./isNumber.js";
 import { isString as f } from "./isString.js";
-import { rInteger as s, rIOSDateStringFormat as l } from "./regexp.js";
-import { isInvalidDate as t } from "./isInvalidDate.js";
+import { rInteger as l, rIOSDateStringFormat as m } from "./regexp.js";
+import { isInvalidDate as o } from "./isInvalidDate.js";
 import { isObject as u } from "./isObject.js";
 import { nullProtoObject as p } from "./nullProtoObject.js";
 import "./toRawType.js";
-import "./toTypeString.js";
-import "./objectToString.js";
 import "./decapitalize.js";
-const c = (r) => {
-  const i = p();
-  return typeof r == "boolean" ? i.toNew = r : u(r) ? Object.assign(i, r) : i.defaultValue = r, i;
-}, h = (r, i) => {
-  const o = c(i);
-  if (!r || t(r))
-    return console.error(`"${r}" is not valid date`), o.defaultValue;
+const b = (r) => {
+  const t = p();
+  return typeof r == "boolean" ? t.toNew = r : u(r) ? Object.assign(t, r) : t.defaultValue = r, t;
+}, S = (r, t) => {
+  const i = b(t);
+  if (!r || o(r))
+    return console.error(`"${r}" is not valid date`), i.defaultValue;
   if (n(r))
-    return o.toNew ? new Date(r) : r;
-  if (f(r) && (s.test(r) ? r = Number.parseInt(r) : l.test(r) && (r = r.replace(/-/g, "/"))), m(r)) {
-    const e = r + "";
-    e.length >= 8 && (e.length > 13 ? r = e.substring(0, 13) : r = e.padEnd(13, "0"), r = Number.parseInt(r));
+    return i.toNew ? new Date(r) : r;
+  if (f(r) && (l.test(r) ? r = Number.parseInt(r) : m.test(r) && (r = r.replace(/-/g, "/"))), s(r)) {
+    let e = Number.parseInt(r + "") + "";
+    e.length > 13 ? e = e.substring(0, 13) : e.length < 13 && (e = e.padEnd(13, "0")), r = Number.parseInt(e);
   }
-  return r = new Date(r), t(r) ? o.defaultValue : r;
+  return r = new Date(r), o(r) ? i.defaultValue : r;
 };
 export {
-  h as default,
-  h as toDate
+  S as default,
+  S as toDate
 };
