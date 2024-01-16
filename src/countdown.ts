@@ -1,6 +1,6 @@
 import globalThis from './globalThis'
 import isFunction from './isFunction'
-import isObject from '@/isObject'
+import isObject from './isObject'
 
 // 倒计时时间名称
 export type CountdownEventName = 'change' | 'start' | 'stop' | 'finish' | 'continue'

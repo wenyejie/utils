@@ -13,6 +13,6 @@ test('getInfoByCardNO', () => {
     date: '20000728',
     sex: '2',
   }
-  expect(getInfoByCardNO('110101200007287504')).toContain(cardInfo)
-  expect(getInfoByCardNO('')).toContain({})
+  expect(getInfoByCardNO('110101200007287504')).toMatchObject(cardInfo)
+  expect(getInfoByCardNO('')).toMatchObject({})
 })

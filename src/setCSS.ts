@@ -1,4 +1,4 @@
-import camelize from '@/camelize'
+import camelize from './camelize'
 
 export const setCSS: {
   /**

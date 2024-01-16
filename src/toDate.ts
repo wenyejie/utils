@@ -3,8 +3,8 @@ import isNumber from './isNumber'
 import isString from './isString'
 import { rInteger, rIOSDateStringFormat } from './regexp'
 import isInvalidDate from './isInvalidDate'
-import isObject from '@/isObject'
-import nullProtoObject from '@/nullProtoObject'
+import isObject from './isObject'
+import nullProtoObject from './nullProtoObject'
 
 export interface ToDateOptions<D = undefined> {
   // 是否转换成新的对象
