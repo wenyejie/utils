@@ -1,4 +1,4 @@
-import { isFirefox } from '@/env'
+import { isFirefox } from './env'
 import isNumber from './isNumber'
 
 /**
