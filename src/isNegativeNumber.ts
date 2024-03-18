@@ -1,4 +1,4 @@
-import isNumber from '@/isNumber'
+import isNumber from './isNumber'
 
 /**
  * 判断是否为负数

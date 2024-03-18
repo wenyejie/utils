@@ -2,7 +2,7 @@ import isString from './isString'
 import isNumber from './isNumber'
 import isNumberString from './isNumberString'
 import toMultiKeyOneValue from './toMultiKeyOneValue'
-import { TS_UNIT } from '@/utils'
+import { TS_UNIT } from './utils'
 
 /**
  * 字符串键值对(毫秒级)
