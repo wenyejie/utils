@@ -16,7 +16,7 @@
   ],
   "main": "./dist/wenyejie.cjs",
   "module": "./dist/wenyejie.js",
-  "types": "./src/wenyejie.ts",
+  "types": "./src/types/types.d.ts",
   "exports": {
     ".": {
       "import": "./dist/wenyejie.js",
@@ -30,13 +30,13 @@
     "publish": "npm run build && npm publish"
   },
   "devDependencies": {
-    "@types/node": "^20.11.4",
-    "@vitest/coverage-v8": "^1.2.0",
-    "happy-dom": "^13.1.4",
-    "prettier": "^3.2.2",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.11",
-    "vitest": "^1.2.0"
+    "@types/node": "^20.11.28",
+    "@vitest/coverage-v8": "^1.4.0",
+    "happy-dom": "^13.9.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6",
+    "vitest": "^1.4.0"
   },
   "repository": {
     "type": "git",
