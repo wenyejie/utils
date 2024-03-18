@@ -1,5 +1,5 @@
-import isString from '@/isString'
-import camelize from '@/camelize'
+import isString from './isString'
+import camelize from './camelize'
 
 export const getCSS: {
   /**

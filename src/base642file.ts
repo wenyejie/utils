@@ -1,5 +1,5 @@
 import globalThis from './globalThis'
-import hasSuffix from '@/hasSuffix'
+import hasSuffix from './hasSuffix'
 
 /**
  * base64 to file

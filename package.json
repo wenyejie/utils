@@ -2,7 +2,7 @@
   "name": "wenyejie",
   "sideEffects": false,
   "description": "utils tools",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": false,
   "type": "module",
   "license": "ISC",
@@ -30,13 +30,13 @@
     "publish": "npm run build && npm publish"
   },
   "devDependencies": {
-    "@types/node": "^20.5.9",
-    "@vitest/coverage-v8": "^0.34.3",
-    "happy-dom": "^11.0.2",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2",
-    "vite": "^4.4.9",
-    "vitest": "^0.34.3"
+    "@types/node": "^20.11.4",
+    "@vitest/coverage-v8": "^1.2.0",
+    "happy-dom": "^13.1.4",
+    "prettier": "^3.2.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11",
+    "vitest": "^1.2.0"
   },
   "repository": {
     "type": "git",

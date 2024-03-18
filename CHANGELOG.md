@@ -1,5 +1,11 @@
 # 版本记录
 
+## 2.1.2
+
+- 调整相关引用由`@/`改为`./`
+- 更新相关引用
+- 修复`ban.test.ts`, `swap.test.ts`, `getInfoByCardNO.test.ts`的方法调用错误
+
 ## 2.1.1
 
 - add `isVoid`
