@@ -120,13 +120,13 @@ export const remain = (num1: number | string, num2: number | string) => {
   return r1.toString().length <= r2.toString().length ? r1 : r2
 }
 
-const operates = {
+const operates = Object.freeze({
   '+': add,
   '-': subtract,
   '*': multiply,
   '/': divide,
   '%': remain,
-}
+})
 
 // 匹配包括花括号的表达式
 const rBracketsAndCon = /\([^()]+\)/g
