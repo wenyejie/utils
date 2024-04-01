@@ -1,9 +1,12 @@
-type PropKey = string | number | symbol
-type PropObj = Record<string, unknown>
+export * from '../src/wenyejie'
 
-type LikeDate = Date | string | number
+export type PropKey = string | number | symbol
+
+export type PropObj = Record<string, unknown>
+
+export type LikeDate = Date | string | number
 
 // 任意函数
-type AnyFn = (...rest: unknown[]) => unknown
+export type AnyFn = (...rest: unknown[]) => unknown
 
-type VoidFn = () => void
+export type VoidFn = () => void

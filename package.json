@@ -2,7 +2,7 @@
   "name": "wenyejie",
   "sideEffects": false,
   "description": "utils tools",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "private": false,
   "type": "module",
   "license": "ISC",
@@ -16,7 +16,7 @@
   ],
   "main": "./dist/wenyejie.cjs",
   "module": "./dist/wenyejie.js",
-  "types": "./src/types/types.d.ts",
+  "types": "./types/types.d.ts",
   "exports": {
     ".": {
       "import": "./dist/wenyejie.js",
