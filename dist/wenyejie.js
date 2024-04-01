@@ -135,7 +135,7 @@ import { unique as qm } from "./unique.js";
 import { url2http as Qm } from "./url2http.js";
 import { url2https as Zm } from "./url2https.js";
 import { TS_DAY as rp, TS_HOUR as op, TS_MILLISECOND as ep, TS_MINUTE as tp, TS_SECOND as mp, TS_UNIT as pp, TS_WEEK as ip, TS_YEAR as fp } from "./utils.js";
-const r = "2.2.2";
+const r = "2.2.3";
 export {
   Kt as PublishSubscribe,
   rp as TS_DAY,
