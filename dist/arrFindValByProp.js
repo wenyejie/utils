@@ -1,12 +1,10 @@
-import { isObject as e } from "./isObject.js";
+import { isObject as o } from "./isObject.js";
 import { arrFindItemByProp as s } from "./arrFindItemByProp.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-const l = (o, t, i, m) => {
+const c = (e, t, i, m) => {
   let r;
-  return e(t) ? (r = t, m = i) : r = { [t]: i }, s(o, r)?.[m];
+  return o(t) ? (r = t, m = i) : r = { [t]: i }, s(e, r)?.[m];
 };
 export {
-  l as arrFindValByProp,
-  l as default
+  c as arrFindValByProp,
+  c as default
 };

@@ -1,7 +1,6 @@
 import { toRawType as t } from "./toRawType.js";
-import "./decapitalize.js";
-const r = (o) => t(o) === "symbol";
+const s = (o) => t(o) === "symbol";
 export {
-  r as default,
-  r as isSymbol
+  s as default,
+  s as isSymbol
 };

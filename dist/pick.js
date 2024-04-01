@@ -1,10 +1,8 @@
-import { isObject as c } from "./isObject.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-const f = (t, ...i) => {
+import { isObject as s } from "./isObject.js";
+const f = (t, ...o) => {
   const r = {};
-  return c(t) && i.forEach((o) => {
-    r[o] = t[o];
+  return s(t) && o.forEach((c) => {
+    r[c] = t[c];
   }), r;
 };
 export {

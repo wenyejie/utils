@@ -1,8 +1,5 @@
 import { isFunction as u } from "./isFunction.js";
 import { arrDelItemByProp as s } from "./arrDelItemByProp.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-import "./isObject.js";
 class e {
   callbackMap = {};
   static create() {
@@ -13,15 +10,15 @@ class e {
    * @param eventName 事件名称
    * @param data 数据
    */
-  trigger(t, r) {
+  trigger(t, i) {
     if (!t)
       return;
-    const i = this.callbackMap[t] ?? { queue: [] }, { queue: c } = i;
-    if (i.data = r, c.length === 0) {
-      this.callbackMap[t] = i;
+    const c = this.callbackMap[t] ?? { queue: [] }, { queue: r } = c;
+    if (c.data = i, r.length === 0) {
+      this.callbackMap[t] = c;
       return;
     }
-    c.forEach(({ callback: a }) => a(r)), i.queue = c.filter(({ once: a }) => !a), this.callbackMap[t] = i;
+    r.forEach(({ callback: a }) => a(i)), c.queue = r.filter(({ once: a }) => !a), this.callbackMap[t] = c;
   }
   /**
    * 订阅事件
@@ -29,28 +26,28 @@ class e {
    * @param callback 回调
    * @param options 选项
    */
-  on(t, r, i) {
-    if (!t || !u(r()))
+  on(t, i, c) {
+    if (!t || !u(i()))
       return;
-    const c = this.callbackMap[t] ?? { queue: [] }, { data: a, queue: l } = c;
-    i?.immediate && r(a), l.push({
-      once: i?.once ?? !1,
-      callback: r
-    }), this.callbackMap[t] = c;
+    const r = this.callbackMap[t] ?? { queue: [] }, { data: a, queue: l } = r;
+    c?.immediate && i(a), l.push({
+      once: c?.once ?? !1,
+      callback: i
+    }), this.callbackMap[t] = r;
   }
   /**
    * 移除订阅/频道
    * @param eventName 事件名称
    * @param callback 回调
    */
-  off(t, r) {
+  off(t, i) {
     if (!t)
       return;
-    const i = this.callbackMap[t];
-    if (!i)
+    const c = this.callbackMap[t];
+    if (!c)
       return;
-    const { queue: c } = i;
-    u(r) ? s(c, "callback", r) : delete this.callbackMap[t];
+    const { queue: r } = c;
+    u(i) ? s(r, "callback", i) : delete this.callbackMap[t];
   }
 }
 export {

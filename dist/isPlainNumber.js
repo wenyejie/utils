@@ -1,7 +1,6 @@
-import { toRawType as r } from "./toRawType.js";
-import "./decapitalize.js";
-const m = (o) => r(o) === "number";
+import { toRawType as o } from "./toRawType.js";
+const t = (e) => o(e) === "number";
 export {
-  m as default,
-  m as isPlainNumber
+  t as default,
+  t as isPlainNumber
 };

@@ -1,7 +1,6 @@
-import { toRawType as e } from "./toRawType.js";
-import "./decapitalize.js";
-const p = (t) => e(t) === "weakSet";
+import { toRawType as t } from "./toRawType.js";
+const o = (e) => t(e) === "weakSet";
 export {
-  p as default,
-  p as isWeakSet
+  o as default,
+  o as isWeakSet
 };

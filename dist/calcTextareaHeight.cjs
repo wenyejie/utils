@@ -1,4 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const b=require("./env.cjs"),u=require("./isNumber.cjs");require("./globalThis.cjs");let e;const h=`
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const b=require("./env.cjs"),u=require("./isNumber.cjs");let e;const h=`
   height:0 !important;
   visibility:hidden !important;
   ${b.isFirefox()?"":"overflow:hidden !important;"}

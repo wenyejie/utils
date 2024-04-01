@@ -1,7 +1,6 @@
 import { toRawType as o } from "./toRawType.js";
-import "./decapitalize.js";
-const r = (e) => o(e) === "regexp";
+const t = (e) => o(e) === "regexp";
 export {
-  r as default,
-  r as isRegExp
+  t as default,
+  t as isRegExp
 };

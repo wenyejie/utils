@@ -1,8 +1,6 @@
 import n from "./globalThis.js";
 import { isFunction as r } from "./isFunction.js";
 import { isObject as a } from "./isObject.js";
-import "./toRawType.js";
-import "./decapitalize.js";
 const h = {
   delay: 1e3,
   decrement: 1,
@@ -67,8 +65,8 @@ class s {
     clearInterval(this.intervalId), this.intervalId = 0;
   }
 }
-const d = s.create;
+const u = s.create;
 export {
-  d as countdown,
-  d as default
+  u as countdown,
+  u as default
 };

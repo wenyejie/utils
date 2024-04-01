@@ -1,21 +1,10 @@
-import { toDate as a } from "./toDate.js";
-import { datetimeSpan as e } from "./datetimeSpan.js";
-import { dateFormat as o } from "./dateFormat.js";
-import { isDate as i } from "./isDate.js";
-import "./isNumber.js";
-import "./isString.js";
-import "./regexp.js";
-import "./isInvalidDate.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-import "./isObject.js";
-import "./nullProtoObject.js";
-import "./utils.js";
-import "./padStart.js";
-import "./isUndefined.js";
-const j = (t, r) => {
-  if (t = a(t), !i(t))
-    return console.error(`"${t}" is not a valid date`), "";
+import { toDate as m } from "./toDate.js";
+import { datetimeSpan as o } from "./datetimeSpan.js";
+import { dateFormat as t } from "./dateFormat.js";
+import { isDate as u } from "./isDate.js";
+const y = (a, r) => {
+  if (a = m(a), !u(a))
+    return console.error(`"${a}" is not a valid date`), "";
   r = Object.assign(
     {
       yearFormat: "YYYY-MM-DD",
@@ -29,10 +18,10 @@ const j = (t, r) => {
     },
     r
   );
-  const m = e(t, { compare: r.compare });
-  return m.year > 0 ? o(t, r.yearFormat) : m.day > 0 && m.day <= r.days ? o(t, r.dayFormat) : m.hour > 0 ? m.hour + r.hoursAgo : m.minute > 0 ? m.minute + r.minutesAgo : r.just;
+  const e = o(a, { compare: r.compare });
+  return e.year > 0 ? t(a, r.yearFormat) : e.day > 0 && e.day <= r.days ? t(a, r.dayFormat) : e.hour > 0 ? e.hour + r.hoursAgo : e.minute > 0 ? e.minute + r.minutesAgo : r.just;
 };
 export {
-  j as default,
-  j as timeDistance
+  y as default,
+  y as timeDistance
 };

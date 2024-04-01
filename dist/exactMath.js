@@ -2,7 +2,6 @@ import { decimalLength as s } from "./decimalLength.js";
 import { toNumber as u } from "./toNumber.js";
 import { spliceString as b } from "./spliceString.js";
 import { isString as M } from "./isString.js";
-import "./isNumber.js";
 const d = (r, t) => {
   if (t === 0)
     return r;
@@ -25,25 +24,25 @@ const d = (r, t) => {
 }, m = (r, t) => {
   const { n1: e, n2: n, raise: o } = c(r, t);
   return i(e + n, o);
-}, F = (...r) => r.reduce((t, e) => m(t, e)), h = (r, t) => {
+}, B = (...r) => r.reduce((t, e) => m(t, e)), h = (r, t) => {
   const { n1: e, n2: n, raise: o } = c(r, t);
   return i(e - n, o);
-}, I = (...r) => r.reduce((t, e) => h(t, e)), a = (r, t) => {
+}, F = (...r) => r.reduce((t, e) => h(t, e)), a = (r, t) => {
   const { n1: e, n2: n, raise: o } = c(r, t);
   return i(e * n, o * 2);
-}, P = (...r) => r.reduce((t, e) => a(t, e), 1), l = (r, t) => {
+}, I = (...r) => r.reduce((t, e) => a(t, e), 1), l = (r, t) => {
   const { n1: e, n2: n } = c(r, t);
   return e / n;
-}, $ = (...r) => r.reduce((t, e) => l(t, e)), S = (r, t) => {
+}, P = (...r) => r.reduce((t, e) => l(t, e)), S = (r, t) => {
   const e = l(r, t), n = a(e - Math.floor(e), t), o = +r % +t;
   return n.toString().length <= o.toString().length ? n : o;
-}, p = {
+}, f = Object.freeze({
   "+": m,
   "-": h,
   "*": a,
   "/": l,
   "%": S
-}, f = /\([^()]+\)/g, y = /[()]/g, k = /(?<=\d|\.)([%*/+-])/g, E = /\s+/g, g = (r) => {
+}), p = /\([^()]+\)/g, y = /[()]/g, k = /(?<=\d|\.)([%*/+-])/g, E = /\s+/g, g = (r) => {
   r = r.replace(k, " $1 "), r = r.trim();
   let t = r.split(E);
   if (t.length <= 0)
@@ -52,18 +51,18 @@ const d = (r, t) => {
   do {
     if (e = t.findIndex((o) => ["*", "/", "%"].includes(o)), e < 0)
       break;
-    n = p[t[e]](t[e - 1], t[e + 1]), t.splice(e - 1, 3, `${n}`);
+    n = f[t[e]](t[e - 1], t[e + 1]), t.splice(e - 1, 3, `${n}`);
   } while (!0);
   n = +t[0];
   for (let o = 1; o < t.length; o++)
-    t[o] === "+" || t[o] === "-" || (n = p[t[o - 1] || "+"](n, t[o]));
+    t[o] === "+" || t[o] === "-" || (n = f[t[o - 1] || "+"](n, t[o]));
   return n;
-}, x = (r) => {
+}, $ = (r) => {
   if (!M(r))
     return 0;
   try {
-    for (; f.test(r); )
-      r = r.replace(f, (t) => g(t.replace(y, "")) + "");
+    for (; p.test(r); )
+      r = r.replace(p, (t) => g(t.replace(y, "")) + "");
     return g(r);
   } catch {
     return 0;
@@ -72,13 +71,13 @@ const d = (r, t) => {
 export {
   m as add,
   g as arithmetic,
-  x as default,
+  $ as default,
   l as divide,
-  x as exactMath,
-  F as multiAdd,
-  $ as multiDivide,
-  P as multiMultiply,
-  I as multiSubtract,
+  $ as exactMath,
+  B as multiAdd,
+  P as multiDivide,
+  I as multiMultiply,
+  F as multiSubtract,
   a as multiply,
   S as remain,
   h as subtract

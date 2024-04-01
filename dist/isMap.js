@@ -1,7 +1,6 @@
-import { toRawType as p } from "./toRawType.js";
-import "./decapitalize.js";
-const m = (o) => p(o) === "map";
+import { toRawType as o } from "./toRawType.js";
+const t = (a) => o(a) === "map";
 export {
-  m as default,
-  m as isMap
+  t as default,
+  t as isMap
 };

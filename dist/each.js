@@ -1,8 +1,6 @@
-import { isObject as s } from "./isObject.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-const t = (r, o) => {
-  if (!Array.isArray(r) && !s(r)) {
+import { isObject as i } from "./isObject.js";
+const l = (r, o) => {
+  if (!Array.isArray(r) && !i(r)) {
     console.error(`"${r}" is not array or object`);
     return;
   }
@@ -10,11 +8,11 @@ const t = (r, o) => {
     for (let e = 0; e < r.length && o(r[e], e, r) !== !1; e++)
       ;
   else
-    for (const [e, i] of Object.entries(r))
-      if (o(i, e, r) === !1)
+    for (const [e, s] of Object.entries(r))
+      if (o(s, e, r) === !1)
         break;
 };
 export {
-  t as default,
-  t as each
+  l as default,
+  l as each
 };

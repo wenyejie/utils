@@ -1,1 +1,1 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("./hasOwn.cjs");require("./isVoid.cjs");const u=(e,t,r)=>{if(!s.hasOwn(e,t)||!s.hasOwn(e,r))return e;const n=e[t];return e[t]=e[r],e[r]=n,e};exports.default=u;exports.swap=u;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./hasOwn.cjs"),n=(e,t,s)=>{if(!r.hasOwn(e,t)||!r.hasOwn(e,s))return e;const u=e[t];return e[t]=e[s],e[s]=u,e};exports.default=n;exports.swap=n;

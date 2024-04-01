@@ -1,7 +1,6 @@
 import { toRawType as a } from "./toRawType.js";
-import "./decapitalize.js";
-const i = (t) => a(t) === "date";
+const o = (t) => a(t) === "date";
 export {
-  i as default,
-  i as isPlainDate
+  o as default,
+  o as isPlainDate
 };

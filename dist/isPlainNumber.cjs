@@ -1,1 +1,1 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./toRawType.cjs");require("./decapitalize.cjs");const e=r=>t.toRawType(r)==="number";exports.default=e;exports.isPlainNumber=e;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("./toRawType.cjs"),e=t=>u.toRawType(t)==="number";exports.default=e;exports.isPlainNumber=e;

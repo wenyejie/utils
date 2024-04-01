@@ -1,5 +1,4 @@
 import { file2image as o } from "./file2image.js";
-import "./file2url.js";
 const h = {
   quality: 0.95,
   qualityRate: 0.05
@@ -23,7 +22,7 @@ const h = {
     "image/webp",
     e
   );
-}), g = (t, e) => {
+}), f = (t, e) => {
   e = Object.assign({ ...h }, e);
   const s = o(t);
   return new Promise((a, n) => {
@@ -40,6 +39,6 @@ const h = {
   });
 };
 export {
-  g as default,
-  g as imageCompress
+  f as default,
+  f as imageCompress
 };

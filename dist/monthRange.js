@@ -1,28 +1,20 @@
-import { toDate as s } from "./toDate.js";
-import { isDate as i } from "./isDate.js";
-import "./isNumber.js";
-import "./isString.js";
-import "./regexp.js";
-import "./isInvalidDate.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-import "./isObject.js";
-import "./nullProtoObject.js";
-const h = (t, r = "range") => {
-  t = s(t);
-  const n = {
+import { toDate as o } from "./toDate.js";
+import { isDate as a } from "./isDate.js";
+const l = (t, n = "range") => {
+  t = o(t);
+  const e = {
     start: null,
     end: null
   };
-  if (!i(t))
-    return console.error(`"${t}" is not a valid date`), r === "range" ? n : null;
-  const e = new Date(t);
-  if (r !== "end" && (e.setDate(1), e.setHours(0, 0, 0, 0), r === "start"))
-    return e;
-  const o = new Date(t);
-  return r !== "start" && (o.setMonth(o.getMonth() + 1, 0), o.setHours(23, 59, 59, 999), r === "end") ? o : (n.start = e, n.end = o, n);
+  if (!a(t))
+    return console.error(`"${t}" is not a valid date`), n === "range" ? e : null;
+  const s = new Date(t);
+  if (n !== "end" && (s.setDate(1), s.setHours(0, 0, 0, 0), n === "start"))
+    return s;
+  const r = new Date(t);
+  return n !== "start" && (r.setMonth(r.getMonth() + 1, 0), r.setHours(23, 59, 59, 999), n === "end") ? r : (e.start = s, e.end = r, e);
 };
 export {
-  h as default,
-  h as monthRange
+  l as default,
+  l as monthRange
 };
