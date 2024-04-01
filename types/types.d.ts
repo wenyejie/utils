@@ -1,5 +1,3 @@
-export * from '../src/wenyejie'
-
 declare global {
   export type PropKey = string | number | symbol
 
@@ -12,3 +10,5 @@ declare global {
 
   export type VoidFn = () => void
 }
+
+export * from '../src/wenyejie'
