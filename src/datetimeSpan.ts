@@ -1,5 +1,6 @@
 import isDate from './isDate'
 import { TS_UNIT } from './utils'
+import { LikeDate } from '../types'
 
 export type DatetimeSpanTypes = 'year' | 'week' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond'
 

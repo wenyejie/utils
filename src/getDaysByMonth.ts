@@ -1,4 +1,5 @@
 import toDate from './toDate'
+import { LikeDate } from '../types'
 
 /**
  * 获取当前月份的天数

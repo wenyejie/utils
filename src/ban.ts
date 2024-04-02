@@ -1,4 +1,5 @@
 import isObject from './isObject'
+import type { PropObj } from '../types'
 
 /**
  * 从对象中选中一些属性移除, 剩下的属性组成新的对象并返回,不影响原有对象

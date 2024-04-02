@@ -1,5 +1,6 @@
 import toDate from './toDate'
 import padStart from './padStart'
+import type { LikeDate } from '../types'
 
 /**
  * 把相关数据转换成

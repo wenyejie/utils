@@ -1,4 +1,5 @@
 import hasOwn from './hasOwn'
+import { PropKey } from '../types'
 
 /**
  * 交换对象中的两个属性值

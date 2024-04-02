@@ -5,6 +5,7 @@ import { rInteger, rIOSDateStringFormat } from './regexp'
 import isInvalidDate from './isInvalidDate'
 import isObject from './isObject'
 import nullProtoObject from './nullProtoObject'
+import type { LikeDate } from '../types'
 
 export interface ToDateOptions<D = undefined> {
   // 是否转换成新的对象

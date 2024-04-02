@@ -1,4 +1,5 @@
 import isObject from './isObject'
+import { PropObj } from '../types'
 
 /**
  * 从一个对象中选中一些属性并返回一个新函数,不影响原有对象

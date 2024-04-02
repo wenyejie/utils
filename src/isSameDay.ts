@@ -1,5 +1,6 @@
 import toDate from './toDate'
 import isDate from './isDate'
+import { LikeDate } from '../types'
 
 /**
  * 判断两个日期是否在同一天

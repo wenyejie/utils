@@ -2,6 +2,7 @@ import toDate from './toDate'
 import datetimeSpan from './datetimeSpan'
 import dateFormat from './dateFormat'
 import isDate from './isDate'
+import { LikeDate } from '../types'
 
 export interface TimeDistanceOptions {
   yearFormat?: string

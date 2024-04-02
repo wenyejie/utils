@@ -1,3 +1,5 @@
+import { AnyFn } from '../types'
+
 export interface LoadOptions {
   before?: AnyFn
   mode?: string

@@ -2,7 +2,7 @@
   "name": "wenyejie",
   "sideEffects": false,
   "description": "utils tools",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "private": false,
   "type": "module",
   "license": "ISC",
@@ -16,13 +16,7 @@
   ],
   "main": "./dist/wenyejie.cjs",
   "module": "./dist/wenyejie.js",
-  "types": "./types/types.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/wenyejie.js",
-      "require": "./dist/wenyejie.cjs"
-    }
-  },
+  "types": "./src/wenyejie.ts",
   "scripts": {
     "test": "vitest",
     "dev": "vite",

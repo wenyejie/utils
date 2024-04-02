@@ -1,5 +1,6 @@
 import toDate from './toDate'
 import isDate from './isDate'
+import type { LikeDate } from '../types'
 
 // 日期对象返回结果
 export interface DateObjResult {

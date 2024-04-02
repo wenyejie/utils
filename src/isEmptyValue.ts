@@ -1,6 +1,7 @@
 import isArray from './isArray'
 import isObject from './isObject'
 import objectLength from './objectLength'
+import { PropObj } from '../types'
 
 /**
  * 判断一个值是否为空值

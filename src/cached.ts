@@ -1,3 +1,5 @@
+import type { AnyFn } from '../types'
+
 /**
  * 缓存执行结果, 当结果输入相同时, 不再执行
  * @param fn 方法

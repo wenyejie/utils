@@ -1,4 +1,5 @@
 import isParentElement from './isParentElement'
+import type { AnyFn } from '../types'
 
 type RemoveClickOutsideListener = () => void
 

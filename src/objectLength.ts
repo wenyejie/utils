@@ -1,4 +1,5 @@
 import isObject from './isObject'
+import { PropObj } from '../types'
 
 /**
  * 获取对象长度
