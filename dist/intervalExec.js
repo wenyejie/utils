@@ -1,15 +1,15 @@
-import { globalThis as c } from "./globalThis.js";
-const e = {
+import { globalThis as u } from "./globalThis.js";
+const t = {
   timeout: 300,
-  isFirst: !0
-}, m = (t) => typeof t == "number" ? { ...e, timeout: t } : typeof t == "boolean" ? { ...e, isFirst: t } : { ...e, ...t }, v = (t, o = {}) => {
-  const { timeout: n, isFirst: l } = m(o), { resolve: a, promise: u } = Promise.withResolvers();
+  immediate: !0
+}, c = (e) => typeof e == "number" ? { ...t, timeout: e } : typeof e == "boolean" ? { ...t, immediate: e } : { ...t, ...e }, v = (e, m = {}) => {
+  const { timeout: n, immediate: a } = c(m), { resolve: l, promise: s } = Promise.withResolvers();
   let r = 0;
-  const s = () => {
-    const i = t();
-    i && (clearInterval(r), a(i));
+  const i = () => {
+    const o = e();
+    o && (clearInterval(r), l(o));
   };
-  return r = c.setInterval(s, n), l && s(), u;
+  return r = u.setInterval(i, n), a && i(), s;
 };
 export {
   v as default,
