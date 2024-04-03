@@ -24,12 +24,12 @@
     "publish": "npm run build && npm publish"
   },
   "devDependencies": {
-    "@types/node": "^20.11.28",
+    "@types/node": "^20.12.3",
     "@vitest/coverage-v8": "^1.4.0",
-    "happy-dom": "^13.9.0",
+    "happy-dom": "^14.3.10",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.2",
-    "vite": "^5.1.6",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7",
     "vitest": "^1.4.0"
   },
   "repository": {
