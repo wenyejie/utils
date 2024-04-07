@@ -9,7 +9,7 @@ const t = {
     const o = e();
     o && (clearInterval(r), l(o));
   };
-  return r = u.setInterval(i, n), a && i(), s;
+  return () => (r = u.setInterval(i, n), a && i(), s);
 };
 export {
   v as default,
