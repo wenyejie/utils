@@ -2,7 +2,7 @@
   "name": "wenyejie",
   "sideEffects": false,
   "description": "utils tools",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "private": false,
   "type": "module",
   "license": "ISC",
@@ -21,7 +21,7 @@
     "test": "vitest",
     "dev": "vite",
     "build": "vitest run && vite build",
-    "publish": "npm run build && npm publish"
+    "package": "npm run build && npm publish"
   },
   "devDependencies": {
     "@types/node": "^20.12.3",
@@ -39,5 +39,6 @@
   "bugs": {
     "url": "https://github.com/wenyejie/utils/issues"
   },
-  "homepage": "https://github.com/wenyejie/utils#readme"
+  "homepage": "https://github.com/wenyejie/utils#readme",
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
