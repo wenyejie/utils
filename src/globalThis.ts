@@ -15,9 +15,9 @@ const getGlobalThis = (): Window & typeof globalThis => {
   }
 }
 
-let gt
+let gt: Window & typeof globalThis
 try {
-  gt = globalThis
+  gt = <Window & typeof globalThis>globalThis
 } catch {
   gt = getGlobalThis()
 }
