@@ -1,17 +1,27 @@
-import { globalThis as u } from "./globalThis.js";
-const t = {
+import { globalThis as f } from "./globalThis.js";
+import { isPromise as d } from "./isPromise.js";
+const r = {
   timeout: 300,
   immediate: !0
-}, c = (e) => typeof e == "number" ? { ...t, timeout: e } : typeof e == "boolean" ? { ...t, immediate: e } : { ...t, ...e }, v = (e, m = {}) => {
-  const { timeout: n, immediate: a } = c(m), { resolve: l, promise: s } = Promise.withResolvers();
-  let r = 0;
-  const i = () => {
-    const o = e();
-    o && (clearInterval(r), l(o));
+}, v = (e) => typeof e == "number" ? { ...r, timeout: e } : typeof e == "boolean" ? { ...r, immediate: e } : { ...r, ...e }, h = (e, m = {}) => {
+  const { timeout: n, immediate: a } = v(m);
+  return (...i) => {
+    const { resolve: s, promise: u } = Promise.withResolvers();
+    let o = 0;
+    const l = async (c) => {
+      let t = e(...c);
+      if (d(t))
+        try {
+          t = await t;
+        } catch {
+          t = null;
+        }
+      t && (clearInterval(o), s(t));
+    };
+    return o = f.setInterval(l.bind(null, i), n), a && l(i), u;
   };
-  return () => (r = u.setInterval(i, n), a && i(), s);
 };
 export {
-  v as default,
-  v as intervalExec
+  h as default,
+  h as intervalExec
 };

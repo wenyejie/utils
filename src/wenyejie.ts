@@ -1,5 +1,5 @@
 // @Copyright by https://github.com/wenyejie/utils
-export const VERSION = '2.2.7'
+export const VERSION = '2.2.8'
 export * from './arrDelItemByProp'
 export * from './arrDelItemByVal'
 export * from './arrDownItem'

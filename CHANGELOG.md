@@ -1,5 +1,9 @@
 # 版本记录
 
+## 2.2.8
+
+- 修复并调整`intervalExec`会缓存Promise值的bug, 加入识别Promise返回值的功能
+
 ## 2.2.2
 
 - 修复ts文档声明

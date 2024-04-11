@@ -1,4 +1,5 @@
 import { globalThis } from './globalThis'
+import { isPromise } from './isPromise'
 
 export interface IntervalExecOptions {
   // 轮询时间 默认300
@@ -38,38 +39,44 @@ export const intervalExec:{
   /**
    * @param callback 回调
    */
-  <T>(callback: () => T): () => Promise<T>
+  <T>(callback: (...args: any[]) => T): () => Promise<T>
   /**
    * @param callback 回调
    * @param timeout 轮询时间
    */
-  <T>(callback: () => T, timeout: number): () => Promise<T>
+  <T>(callback: (...args: any[]) => T, timeout: number): () => Promise<T>
   /**
    * @param callback 回调
    * @param immediate 是否立即执行一次
    */
-  <T>(callback: () => T, immediate: boolean): () => Promise<T>
+  <T>(callback: (...args: any[]) => T, immediate: boolean): () => Promise<T>
   /**
    * @param callback 回调
    * @param options 选项
    */
-  <T>(callback: () => T, options: IntervalExecOptions): () => Promise<T>
-} = <T>(callback: () => T, options:IntervalExecLikeOptions = {}): () => Promise<T> => {
+  <T>(callback: (...args: any[]) => T, options: IntervalExecOptions): () => Promise<T>
+} = <T>(callback: (...args: any[]) => T, options:IntervalExecLikeOptions = {}): () => Promise<T> => {
   const { timeout, immediate } = normalizedOptions(options)
-  const { resolve, promise }:IntervalExecResolvers<T> = Promise.withResolvers()
-  let timer = 0
-  const intervalExecLoop = () => {
-    const result = callback();
-    if (result) {
-      clearInterval(timer);
-      resolve(result);
-    }
-  }
-
-  return () => {
-    timer = globalThis.setInterval(intervalExecLoop, timeout);
+  return (...args) => {
+    const { resolve, promise }:IntervalExecResolvers<T> = Promise.withResolvers()
+    let timer = 0
+    const intervalExecLoop = async (args) => {
+      let result = callback(...args);
+      if (isPromise(result)) {
+        try {
+          result = await result
+        } catch (error) {
+          result = null;
+        }
+      }
+      if (result) {
+        clearInterval(timer)
+        resolve(result)
+      }
+    };
+    timer = globalThis.setInterval(intervalExecLoop.bind(null, args), timeout)
     if (immediate) {
-      intervalExecLoop();
+      intervalExecLoop(args)
     }
     return promise
   };
