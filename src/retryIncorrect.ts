@@ -4,7 +4,7 @@ import { normalizeOptions } from './normalizeOptions'
 export interface IRetryIncorrectOptions {
   retry: number; // 重试次数
   base: number; // 底数
-  failureReturn: any; // 重试retry次数之后返回的失败值
+  rtnVal: any; // 重试retry次数之后返回的失败值
   check: (result: any) => any; // 检查数据是否是自己需要的数据
 }
 
@@ -17,7 +17,7 @@ export type LikeRetryIncorrectOptions =
 const RETRY_INCORRECT_DEFAULT_OPTIONS: IRetryIncorrectOptions = {
   retry: 5, // 重试次数
   base: 2,
-  failureReturn: null,
+  rtnVal: null,
   check: (result) => {
     if (result?.error) {
       return false;
@@ -37,7 +37,7 @@ const RETRY_INCORRECT_TYPES = {
  * @param options 选项
  */
 export const retryIncorrect = <T>(execute: (...args: any[]) => T, options?: LikeRetryIncorrectOptions) => {
-  const { retry, base, failureReturn, check } = normalizeOptions(options, RETRY_INCORRECT_TYPES, RETRY_INCORRECT_DEFAULT_OPTIONS);
+  const { retry, base, rtnVal, check } = normalizeOptions(options, RETRY_INCORRECT_TYPES, RETRY_INCORRECT_DEFAULT_OPTIONS);
   const { resolve, promise } = Promise.withResolvers<T>();
   let timer = 0;
   let retryCount = 0; // 重试次数
@@ -49,7 +49,8 @@ export const retryIncorrect = <T>(execute: (...args: any[]) => T, options?: Like
       try {
         result = await result;
       } catch (error) {
-        result = failureReturn;
+        console.error('retryIncorrect promise error', error)
+        result = rtnVal;
       }
     }
     if (check(result) || retryCount >= retry) {
