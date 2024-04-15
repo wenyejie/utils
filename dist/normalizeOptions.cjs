@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const i=require("./toRawType.cjs"),c=(e,o,n)=>{const t=i.toRawType(e);if(t==="undefined")return{...n};if(t==="object")return{...e};const r={...n};return r[o[t]]=e,r};exports.normalizeOptions=c;

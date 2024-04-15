@@ -1,27 +1,40 @@
-import { globalThis as f } from "./globalThis.js";
-import { isPromise as d } from "./isPromise.js";
-const r = {
+import { globalThis as p } from "./globalThis.js";
+import { isPromise as v } from "./isPromise.js";
+import { normalizeOptions as b } from "./normalizeOptions.js";
+const d = {
   timeout: 300,
-  immediate: !0
-}, v = (e) => typeof e == "number" ? { ...r, timeout: e } : typeof e == "boolean" ? { ...r, immediate: e } : { ...r, ...e }, h = (e, m = {}) => {
-  const { timeout: n, immediate: a } = v(m);
-  return (...i) => {
-    const { resolve: s, promise: u } = Promise.withResolvers();
-    let o = 0;
-    const l = async (c) => {
-      let t = e(...c);
-      if (d(t))
-        try {
-          t = await t;
-        } catch {
-          t = null;
+  immediate: !0,
+  rtnVal: null,
+  abort: -1
+}, x = {
+  number: "timeout",
+  boolean: "immediate"
+}, y = (n, l) => {
+  const { timeout: s, immediate: m, rtnVal: o, abort: c } = b(l, x, d);
+  return (...u) => {
+    const { resolve: i, promise: f } = Promise.withResolvers();
+    let t = c, r = 0;
+    const a = async () => {
+      if (t >= 0)
+        if (t > 0)
+          t--;
+        else {
+          clearInterval(r), i(o);
+          return;
         }
-      t && (clearInterval(o), s(t));
+      let e = n(...u);
+      if (v(e))
+        try {
+          e = await e;
+        } catch {
+          e = o;
+        }
+      e && (clearInterval(r), i(e));
     };
-    return o = f.setInterval(l.bind(null, i), n), a && l(i), u;
+    return r = p.setInterval(a, s), m && a(), f;
   };
 };
 export {
-  h as default,
-  h as intervalExec
+  y as default,
+  y as intervalExec
 };

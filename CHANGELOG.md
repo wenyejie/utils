@@ -1,8 +1,11 @@
 # 版本记录
 
-## 2.2.8
+## 2.3.0 `dev`
 
-- 修复并调整`intervalExec`会缓存Promise值的bug, 加入识别Promise返回值的功能
+- 修复并调整`intervalExec`会缓存Promise值的bug, 加入识别Promise返回值的功能, 加入参数`abort`, `rtnVal`
+- 新增`retryIncorrect`
+- `dateFormat` 新增识别`[]`内容使其不格式化
+- add `normalizeOptions` 序列化选项
 
 ## 2.2.2
 
