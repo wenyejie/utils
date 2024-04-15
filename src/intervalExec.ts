@@ -71,6 +71,7 @@ export const intervalExec: {
         try {
           result = await result
         } catch (error) {
+          console.error('intervalExec promise error', error)
           result = rtnVal
         }
       }
