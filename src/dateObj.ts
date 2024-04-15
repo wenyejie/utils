@@ -4,15 +4,15 @@ import type { LikeDate } from '../types'
 
 // 日期对象返回结果
 export interface DateObjResult {
-  year?: number
-  month?: number
-  day?: number
-  week?: number
-  hour?: number
-  minute?: number
-  second?: number
-  millisecond?: number
-  time?: number
+  year: number
+  month: number
+  day: number
+  week: number
+  hour: number
+  minute: number
+  second: number
+  millisecond: number
+  time: number
 }
 
 /**
@@ -20,7 +20,7 @@ export interface DateObjResult {
  * @param date 日期
  */
 export const dateObj = (date: LikeDate = new Date()) => {
-  let result: DateObjResult = {}
+  let result = {}
   date = toDate(date)
   if (isDate(date)) {
     result = {
@@ -34,9 +34,11 @@ export const dateObj = (date: LikeDate = new Date()) => {
       millisecond: date.getMilliseconds(),
       time: date.getTime(),
     }
+  } else {
+    console.error('dateObj params error', date);
   }
 
-  return result
+  return <DateObjResult>result
 }
 
 export default dateObj
