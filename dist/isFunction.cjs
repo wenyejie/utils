@@ -1,1 +1,5 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const o=require("./toRawType.cjs"),e=t=>o.toRawType(t)==="function";exports.default=e;exports.isFunction=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toRawType = require("./toRawType.cjs");
+const isFunction = (obj) => toRawType.toRawType(obj) === "function";
+exports.isFunction = isFunction;

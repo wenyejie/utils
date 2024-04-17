@@ -1,1 +1,16 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const i=require("./toRawType.cjs"),c=(e,o,n)=>{const t=i.toRawType(e);if(t==="undefined")return{...n};if(t==="object")return{...e};const r={...n};return r[o[t]]=e,r};exports.normalizeOptions=c;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toRawType = require("./toRawType.cjs");
+const normalizeOptions = (options, types, defaultOptions) => {
+  const type = toRawType.toRawType(options);
+  if (type === "undefined") {
+    return { ...defaultOptions };
+  }
+  if (type === "object") {
+    return { ...options };
+  }
+  const innerOptions = { ...defaultOptions };
+  innerOptions[types[type]] = options;
+  return innerOptions;
+};
+exports.normalizeOptions = normalizeOptions;

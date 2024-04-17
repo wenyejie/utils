@@ -1,20 +1,25 @@
-import { toDate as o } from "./toDate.js";
-import { isDate as i } from "./isDate.js";
-const s = (e = /* @__PURE__ */ new Date()) => {
-  let t = {};
-  return e = o(e), i(e) && (t = {
-    year: e.getFullYear(),
-    month: e.getMonth() + 1,
-    day: e.getDate(),
-    week: e.getDay(),
-    hour: e.getHours(),
-    minute: e.getMinutes(),
-    second: e.getSeconds(),
-    millisecond: e.getMilliseconds(),
-    time: e.getTime()
-  }), t;
+import { toDate } from "./toDate.js";
+import { isDate } from "./isDate.js";
+const dateObj = (date = /* @__PURE__ */ new Date()) => {
+  let result = {};
+  date = toDate(date);
+  if (isDate(date)) {
+    result = {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+      week: date.getDay(),
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      second: date.getSeconds(),
+      millisecond: date.getMilliseconds(),
+      time: date.getTime()
+    };
+  } else {
+    console.error("dateObj params error", date);
+  }
+  return result;
 };
 export {
-  s as dateObj,
-  s as default
+  dateObj
 };

@@ -1,10 +1,10 @@
 import { expect, test } from 'vitest'
-import arrDelItemByProp from '../src/arrDelItemByProp'
-import arrDelItemByVal from '../src/arrDelItemByVal'
-import arrDownItem from '../src/arrDownItem'
-import arrUpItem from '../src/arrUpItem'
-import arrFindItemByProp from '../src/arrFindItemByProp'
-import arrFindValByProp from '../src/arrFindValByProp'
+import { arrDelItemByProp } from '../src/arrDelItemByProp'
+import { arrDelItemByVal } from '../src/arrDelItemByVal'
+import { arrDownItem } from '../src/arrDownItem'
+import { arrUpItem } from '../src/arrUpItem'
+import { arrFindItemByProp } from '../src/arrFindItemByProp'
+import { arrFindValByProp } from '../src/arrFindValByProp'
 
 test('arrFindItemByProps', () => {
   const arr = [

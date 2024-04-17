@@ -4,4 +4,3 @@
  */
 export const file2url = (file: File) => URL.createObjectURL(file)
 
-export default file2url

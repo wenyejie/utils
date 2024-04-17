@@ -1,5 +1,5 @@
-import isObject from './isObject'
-import arrFindItemByProp from './arrFindItemByProp'
+import { isObject } from './isObject'
+import { arrFindItemByProp } from './arrFindItemByProp'
 import type { PropObj, PropKey } from '../types'
 
 export const arrFindValByProp: {
@@ -28,4 +28,3 @@ export const arrFindValByProp: {
   return item?.[rtnPropKey]
 }
 
-export default arrFindValByProp

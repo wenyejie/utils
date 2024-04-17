@@ -1,5 +1,5 @@
-import toDate from './toDate'
-import isDate from './isDate'
+import { toDate } from './toDate'
+import { isDate } from './isDate'
 import type { LikeDate } from '../types'
 
 // 日期对象返回结果
@@ -41,4 +41,3 @@ export const dateObj = (date: LikeDate = new Date()) => {
   return <DateObjResult>result
 }
 
-export default dateObj

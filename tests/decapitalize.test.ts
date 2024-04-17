@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import decapitalize from '../src/decapitalize'
+import { decapitalize } from '../src/decapitalize'
 
 test('decapitalize', () => {
   expect(decapitalize('Hello')).toBe('hello')

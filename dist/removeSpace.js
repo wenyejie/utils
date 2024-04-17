@@ -1,6 +1,12 @@
-import { isString as e } from "./isString.js";
-const o = /\s+/g, a = (r) => e(r) ? r.replace(o, "") : (console.error(`"${r}" is not a string`), "");
+import { isString } from "./isString.js";
+const rSpace = /\s+/g;
+const removeSpace = (string) => {
+  if (!isString(string)) {
+    console.error(`"${string}" is not a string`);
+    return "";
+  }
+  return string.replace(rSpace, "");
+};
 export {
-  a as default,
-  a as removeSpace
+  removeSpace
 };

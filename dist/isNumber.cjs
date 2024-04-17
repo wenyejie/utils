@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=e=>typeof e=="number"&&!Number.isNaN(e);exports.default=u;exports.isNumber=u;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isNumber = (obj) => typeof obj === "number" && !Number.isNaN(obj);
+exports.isNumber = isNumber;

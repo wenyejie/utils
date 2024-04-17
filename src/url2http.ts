@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 import { rHttp, rHttps } from './regexp'
 
 /**
@@ -16,4 +16,3 @@ export const url2http = (url: string) => {
   return url.replace(rHttps, 'http')
 }
 
-export default url2http

@@ -1,6 +1,11 @@
-import { isObject as t } from "./isObject.js";
-const n = (e) => t(e) ? Object.keys(e).length : (console.error(`"${e}" is not a Object`), 0);
+import { isObject } from "./isObject.js";
+const objectLength = (obj) => {
+  if (!isObject(obj)) {
+    console.error(`"${obj}" is not a Object`);
+    return 0;
+  }
+  return Object.keys(obj).length;
+};
 export {
-  n as default,
-  n as objectLength
+  objectLength
 };

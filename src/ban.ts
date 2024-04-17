@@ -1,4 +1,4 @@
-import isObject from './isObject'
+import { isObject } from './isObject'
 import type { PropObj } from '../types'
 
 /**
@@ -19,4 +19,3 @@ export const ban = <T extends PropObj>(obj: T, ...rest: string[]) => {
   return result
 }
 
-export default ban

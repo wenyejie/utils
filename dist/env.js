@@ -1,25 +1,45 @@
-import i from "./globalThis.js";
-const n = () => typeof window < "u", a = () => typeof global < "u", s = () => n() ? i.navigator.userAgent.toLocaleLowerCase() : "", o = () => s().includes("android"), e = () => s().includes("edge"), t = () => /chrome\/\d+/.test(s()) && !e(), r = () => /safari/.test(s()) && !t(), l = () => /firefox\/(\d+)/.test(s()), m = () => /msie|trident/.test(s()), f = () => s().includes("msie 9.0"), h = () => /iphone|ipad|ipod|ios/.test(s()), p = () => s().includes("ipad"), g = () => s().includes("iphone"), c = () => s().includes("mobile"), w = () => !c(), b = () => /phantomjs/.test(s()), x = () => s().includes("micromessenger"), I = () => s().includes("windows"), C = () => s().includes("macintosh"), d = () => s().includes("ubuntu"), P = () => s().includes("linux") && !d() && !o();
+import { globalThis as gt } from "./globalThis.js";
+const inBrowser = () => typeof window !== "undefined";
+const inNode = () => typeof global !== "undefined";
+const useragent = () => inBrowser() ? gt.navigator.userAgent.toLocaleLowerCase() : "";
+const isAndroid = () => useragent().includes("android");
+const isEdge = () => useragent().includes("edge");
+const isChrome = () => /chrome\/\d+/.test(useragent()) && !isEdge();
+const isSafari = () => /safari/.test(useragent()) && !isChrome();
+const isFirefox = () => /firefox\/(\d+)/.test(useragent());
+const isIE = () => /msie|trident/.test(useragent());
+const isIE9 = () => useragent().includes("msie 9.0");
+const isIOS = () => /iphone|ipad|ipod|ios/.test(useragent());
+const isIPad = () => useragent().includes("ipad");
+const isIPhone = () => useragent().includes("iphone");
+const isMobile = () => useragent().includes("mobile");
+const isPC = () => !isMobile();
+const isPhantom = () => /phantomjs/.test(useragent());
+const isWeChat = () => useragent().includes("micromessenger");
+const isWindows = () => useragent().includes("windows");
+const isMac = () => useragent().includes("macintosh");
+const isUbuntu = () => useragent().includes("ubuntu");
+const isLinux = () => useragent().includes("linux") && !isUbuntu() && !isAndroid();
 export {
-  n as inBrowser,
-  a as inNode,
-  o as isAndroid,
-  t as isChrome,
-  e as isEdge,
-  l as isFirefox,
-  m as isIE,
-  f as isIE9,
-  h as isIOS,
-  p as isIPad,
-  g as isIPhone,
-  P as isLinux,
-  C as isMac,
-  c as isMobile,
-  w as isPC,
-  b as isPhantom,
-  r as isSafari,
-  d as isUbuntu,
-  x as isWeChat,
-  I as isWindows,
-  s as useragent
+  inBrowser,
+  inNode,
+  isAndroid,
+  isChrome,
+  isEdge,
+  isFirefox,
+  isIE,
+  isIE9,
+  isIOS,
+  isIPad,
+  isIPhone,
+  isLinux,
+  isMac,
+  isMobile,
+  isPC,
+  isPhantom,
+  isSafari,
+  isUbuntu,
+  isWeChat,
+  isWindows,
+  useragent
 };

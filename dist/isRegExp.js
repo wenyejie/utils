@@ -1,6 +1,5 @@
-import { toRawType as o } from "./toRawType.js";
-const t = (e) => o(e) === "regexp";
+import { toRawType } from "./toRawType.js";
+const isRegExp = (obj) => toRawType(obj) === "regexp";
 export {
-  t as default,
-  t as isRegExp
+  isRegExp
 };

@@ -51,12 +51,20 @@ const buildLibrary = () => {
 buildLibrary()
 
 const build: BuildOptions = {
-  target: 'esnext',
+  // target: 'esnext',
+  target: 'modules',
+  minify: false,
   lib: {
     entry,
+    formats: ['es', 'cjs'],
     name,
     fileName: (format, entryName) => {
-      return `${entryName}.${format === 'es' ? 'js' : 'cjs'}`
+      switch (format) {
+        case 'es':
+          return `${entryName}.js`;
+        case 'cjs':
+          return `${entryName}.cjs`;
+      }
     },
   },
 }

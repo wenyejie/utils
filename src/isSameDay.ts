@@ -1,6 +1,6 @@
-import toDate from './toDate'
-import isDate from './isDate'
-import { LikeDate } from '../types'
+import { toDate } from './toDate'
+import { isDate } from './isDate'
+import type { LikeDate } from '../types'
 
 /**
  * 判断两个日期是否在同一天
@@ -21,4 +21,3 @@ export const isSameDay = (date1: LikeDate, date2: LikeDate) => {
   )
 }
 
-export default isSameDay

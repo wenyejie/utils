@@ -1,7 +1,12 @@
-import { isString as o } from "./isString.js";
-import { removeSpace as e } from "./removeSpace.js";
-const i = (r) => o(r) ? e(r).replace(/(\d{4}(?=\d))/g, "$1 ") : (console.error(`"${r}" is not a string`), "");
+import { isString } from "./isString.js";
+import { removeSpace } from "./removeSpace.js";
+const bankCardFormat = (card) => {
+  if (!isString(card)) {
+    console.error(`"${card}" is not a string`);
+    return "";
+  }
+  return removeSpace(card).replace(/(\d{4}(?=\d))/g, "$1 ");
+};
 export {
-  i as bankCardFormat,
-  i as default
+  bankCardFormat
 };

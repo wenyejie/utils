@@ -1,5 +1,4 @@
-const o = (e) => e?.nodeType === 8;
+const isComment = (obj) => (obj == null ? void 0 : obj["nodeType"]) === 8;
 export {
-  o as default,
-  o as isComment
+  isComment
 };

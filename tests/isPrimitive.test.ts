@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isPrimitive from '../src/isPrimitive'
+import { isPrimitive } from '../src/isPrimitive'
 
 test('isPrimitive', () => {
   expect(isPrimitive(undefined)).toBeTruthy()

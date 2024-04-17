@@ -1,4 +1,4 @@
-import isObject from './isObject'
+import { isObject } from './isObject'
 import type { PropObj, PropKey } from '../types'
 
 export const arrDelItemByProp: {
@@ -30,4 +30,3 @@ export const arrDelItemByProp: {
   return array
 }
 
-export default arrDelItemByProp

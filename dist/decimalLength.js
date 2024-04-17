@@ -1,7 +1,16 @@
-import { isNumber as o } from "./isNumber.js";
-import { isString as r } from "./isString.js";
-const i = /^\d+\.?/, a = (t) => (r(t) && (t = +t), o(t) ? `${t}`.replace(i, "").length : (console.error(`"${t}" is not a number`), 0));
+import { isNumber } from "./isNumber.js";
+import { isString } from "./isString.js";
+const INTEGER_BIT = /^\d+\.?/;
+const decimalLength = (number) => {
+  if (isString(number)) {
+    number = +number;
+  }
+  if (!isNumber(number)) {
+    console.error(`"${number}" is not a number`);
+    return 0;
+  }
+  return `${number}`.replace(INTEGER_BIT, "").length;
+};
 export {
-  a as decimalLength,
-  a as default
+  decimalLength
 };

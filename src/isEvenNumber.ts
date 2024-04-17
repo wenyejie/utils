@@ -5,4 +5,3 @@
  */
 export const isEvenNumber = (obj: number) => Number.isInteger(obj) && obj % 2 === 0
 
-export default isEvenNumber

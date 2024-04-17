@@ -79,4 +79,3 @@ export const storage = (storage: Storage, key?: string): StorageFn => {
   }
 }
 
-export default storage

@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import { toRawType } from './toRawType'
 
 /**
  * 判断是否为数字
@@ -6,4 +6,3 @@ import toRawType from './toRawType'
  */
 export const isPlainNumber = (obj: unknown) => toRawType(obj) === 'number'
 
-export default isPlainNumber

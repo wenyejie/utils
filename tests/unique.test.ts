@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import unique from '../src/unique'
+import { unique } from '../src/unique'
 
 test('unique', () => {
   const arr = [1, 2, 2, 3]

@@ -1,1 +1,16 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const a=require("./isObject.cjs"),r=(t,e,n)=>{const o=a.isObject(e)?e:{[e]:n},s=Object.entries(o);return t.find(i=>{for(const[u,c]of s)if(i[u]!==c)return!1;return!0})};exports.arrFindItemByProp=r;exports.default=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isObject = require("./isObject.cjs");
+const arrFindItemByProp = (array, prop, value) => {
+  const props = isObject.isObject(prop) ? prop : { [prop]: value };
+  const propEntries = Object.entries(props);
+  return array.find((item) => {
+    for (const [prop2, value2] of propEntries) {
+      if (item[prop2] !== value2) {
+        return false;
+      }
+    }
+    return true;
+  });
+};
+exports.arrFindItemByProp = arrFindItemByProp;

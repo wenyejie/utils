@@ -1,1 +1,16 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("./isParentElement.cjs"),t=(c,i,n)=>{const e=r=>{u.isParentElement(c,r?.target)||i()};return document.addEventListener("click",e,{once:n}),()=>{document.removeEventListener("click",e)}};exports.clickOutside=t;exports.default=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isParentElement = require("./isParentElement.cjs");
+const clickOutside = (element, callback, once) => {
+  const docClick = (event) => {
+    if (isParentElement.isParentElement(element, event == null ? void 0 : event.target)) {
+      return;
+    }
+    callback();
+  };
+  document.addEventListener("click", docClick, { once });
+  return () => {
+    document.removeEventListener("click", docClick);
+  };
+};
+exports.clickOutside = clickOutside;

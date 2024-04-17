@@ -26,4 +26,3 @@ export const checkIDNO = (id: string) => {
   return checkCode[num % 11] === code[17]
 }
 
-export default checkIDNO

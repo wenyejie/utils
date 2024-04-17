@@ -1,6 +1,7 @@
-import { load as o } from "./load.js";
-const p = (r, t) => o("script", r, t);
+import { load } from "./load.js";
+const loadScript = (url, options) => {
+  return load("script", url, options);
+};
 export {
-  p as default,
-  p as loadScript
+  loadScript
 };

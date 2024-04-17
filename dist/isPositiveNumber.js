@@ -1,6 +1,5 @@
-import { isNumber as i } from "./isNumber.js";
-const s = (e) => i(e) && e > 0;
+import { isNumber } from "./isNumber.js";
+const isPositiveNumber = (obj) => isNumber(obj) && obj > 0;
 export {
-  s as default,
-  s as isPositiveNumber
+  isPositiveNumber
 };

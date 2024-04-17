@@ -1,5 +1,5 @@
-import globalThis from './globalThis'
-import hasSuffix from './hasSuffix'
+import { globalThis } from './globalThis'
+import { hasSuffix } from './hasSuffix'
 
 /**
  * base64 to file
@@ -19,4 +19,3 @@ export const base642file = (base64: string, filename: string) => {
   return new File([uint8Array], filename, { type })
 }
 
-export default base642file

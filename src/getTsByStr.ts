@@ -1,7 +1,7 @@
-import isString from './isString'
-import isNumber from './isNumber'
-import isNumberString from './isNumberString'
-import toMultiKeyOneValue from './toMultiKeyOneValue'
+import { isString } from './isString'
+import { isNumber } from './isNumber'
+import { isNumberString } from './isNumberString'
+import { toMultiKeyOneValue } from './toMultiKeyOneValue'
 import { TS_UNIT } from './utils'
 
 /**
@@ -59,4 +59,3 @@ export const getTsByStr = (str: string | number, rtnType: 'second' | 'millisecon
   return Math.floor(rtnValue) // 时间戳不能为小数
 }
 
-export default getTsByStr

@@ -15,4 +15,3 @@ export const cached = <T extends AnyFn>(fn: T) => {
   } as T
 }
 
-export default cached

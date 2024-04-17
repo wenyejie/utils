@@ -4,4 +4,3 @@
  */
 export const isBigint = (obj: unknown) => typeof obj === 'bigint'
 
-export default isBigint

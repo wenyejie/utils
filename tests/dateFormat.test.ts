@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import dateFormat from '../src/dateFormat'
+import { dateFormat } from '../src/dateFormat'
 
 test('dateFormat', () => {
   const date = new Date('2023-09-13 12:12:12.122')

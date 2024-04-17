@@ -1,5 +1,5 @@
-import toDate from './toDate'
-import padStart from './padStart'
+import { toDate } from './toDate'
+import { padStart } from './padStart'
 import type { LikeDate } from '../types'
 
 /**
@@ -51,4 +51,3 @@ export const dateFormat = (date: LikeDate, format = 'YYYY-MM-DD hh:mm:ss', defau
   })
 }
 
-export default dateFormat

@@ -1,1 +1,15 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isString.cjs"),r=e=>{if(!t.isString(e))return!1;try{return JSON.parse(e),!0}catch{return!1}};exports.default=r;exports.isJsonString=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const isJsonString = (obj) => {
+  if (!isString.isString(obj)) {
+    return false;
+  }
+  try {
+    JSON.parse(obj);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+exports.isJsonString = isJsonString;

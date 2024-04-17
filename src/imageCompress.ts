@@ -1,4 +1,4 @@
-import file2image from './file2image'
+import { file2image } from './file2image'
 
 /**
  * 文件压缩选项
@@ -131,4 +131,3 @@ export const imageCompress = (file: File, options?: FileCompressOptions): Promis
   })
 }
 
-export default imageCompress

@@ -1,7 +1,15 @@
-import { isString as r } from "./isString.js";
-import { rHttps as e, rHttp as o } from "./regexp.js";
-const n = (t) => r(t) ? e.test(t) ? t : t.replace(o, "https") : (console.error(`"${t}" is not a string`), "");
+import { isString } from "./isString.js";
+import { rHttps, rHttp } from "./regexp.js";
+const url2https = (url) => {
+  if (!isString(url)) {
+    console.error(`"${url}" is not a string`);
+    return "";
+  }
+  if (rHttps.test(url)) {
+    return url;
+  }
+  return url.replace(rHttp, "https");
+};
 export {
-  n as default,
-  n as url2https
+  url2https
 };

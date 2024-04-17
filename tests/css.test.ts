@@ -1,9 +1,9 @@
 import { expect, test } from 'vitest'
 import { CSSStyleDeclaration } from 'happy-dom'
-import getCSS from '../src/getCSS'
-import setCSS from '../src/setCSS'
-import supportCSS from '../src/supportCSS'
-import globalThis from '../src/globalThis'
+import { getCSS } from '../src/getCSS'
+import { setCSS } from '../src/setCSS'
+import { supportCSS } from '../src/supportCSS'
+import { globalThis } from '../src/globalThis'
 import { document, window } from './utils'
 
 const $div = document.createElement('div')

@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=t=>t?.nodeType===3;exports.default=e;exports.isText=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isText = (obj) => (obj == null ? void 0 : obj["nodeType"]) === 3;
+exports.isText = isText;

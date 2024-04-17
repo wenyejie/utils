@@ -1,8 +1,15 @@
-import { isNumber as e } from "./isNumber.js";
-import { isString as i } from "./isString.js";
-import { rInteger as o } from "./regexp.js";
-const f = (r, t = "px") => e(r) || o.test(r) ? r + t : i(r) ? r : "";
+import { isNumber } from "./isNumber.js";
+import { isString } from "./isString.js";
+import { rInteger } from "./regexp.js";
+const toCSSUnit = (value, unit = "px") => {
+  if (isNumber(value) || rInteger.test(value)) {
+    return value + unit;
+  } else if (isString(value)) {
+    return value;
+  } else {
+    return "";
+  }
+};
 export {
-  f as default,
-  f as toCSSUnit
+  toCSSUnit
 };

@@ -1,11 +1,13 @@
-import { isObject as s } from "./isObject.js";
-const f = (t, ...o) => {
-  const r = {};
-  return s(t) && o.forEach((c) => {
-    r[c] = t[c];
-  }), r;
+import { isObject } from "./isObject.js";
+const pick = (obj, ...rest) => {
+  const result = {};
+  if (isObject(obj)) {
+    rest.forEach((key) => {
+      result[key] = obj[key];
+    });
+  }
+  return result;
 };
 export {
-  f as default,
-  f as pick
+  pick
 };

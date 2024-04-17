@@ -1,5 +1,4 @@
-const r = (e) => Number.isInteger(e) && e >= 0;
+const isNaturalNumber = (obj) => Number.isInteger(obj) && obj >= 0;
 export {
-  r as default,
-  r as isNaturalNumber
+  isNaturalNumber
 };

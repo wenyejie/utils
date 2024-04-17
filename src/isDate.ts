@@ -4,4 +4,3 @@
  */
 export const isDate = (obj: unknown) => obj instanceof Date && obj.toString() !== 'Invalid Date'
 
-export default isDate

@@ -1,4 +1,4 @@
-import globalThis from './globalThis'
+import { globalThis } from './globalThis'
 
 export const inBrowser = () => typeof window !== 'undefined'
 

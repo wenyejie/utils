@@ -1,7 +1,7 @@
-import isArray from './isArray'
-import isObject from './isObject'
-import objectLength from './objectLength'
-import { PropObj } from '../types'
+import { isArray } from './isArray'
+import { isObject } from './isObject'
+import { objectLength } from './objectLength'
+import type { PropObj } from '../types'
 
 /**
  * 判断一个值是否为空值
@@ -17,4 +17,3 @@ export const isEmptyValue = (obj: unknown) => {
     (isObject(obj) && objectLength(<PropObj>obj) === 0)
   )
 }
-export default isEmptyValue

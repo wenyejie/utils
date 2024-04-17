@@ -1,1 +1,19 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const c=require("./isString.cjs"),o=require("./isNumber.cjs"),s=(e,i,r=0,u="")=>c.isString(e)?(!o.isNumber(r)&&u===""&&(u=r,r=0),i<0||e.length<i||r<0?e:e.substring(0,i)+u+e.substring(i+r,e.length)):(console.error(`"${e}" is not a string`),"");exports.default=s;exports.spliceString=s;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const isNumber = require("./isNumber.cjs");
+const spliceString = (string, start, deleteCount = 0, insertString = "") => {
+  if (!isString.isString(string)) {
+    console.error(`"${string}" is not a string`);
+    return "";
+  }
+  if (!isNumber.isNumber(deleteCount) && insertString === "") {
+    insertString = deleteCount;
+    deleteCount = 0;
+  }
+  if (start < 0 || string.length < start || deleteCount < 0) {
+    return string;
+  }
+  return string.substring(0, start) + insertString + string.substring(start + deleteCount, string.length);
+};
+exports.spliceString = spliceString;

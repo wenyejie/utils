@@ -4,4 +4,3 @@
  */
 export const isFalse = (obj: unknown) => obj === false
 
-export default isFalse

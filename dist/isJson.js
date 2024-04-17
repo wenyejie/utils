@@ -1,11 +1,10 @@
-const e = (t) => {
+const isJson = (obj) => {
   try {
-    return JSON.stringify(t) && !0;
-  } catch {
-    return !1;
+    return JSON.stringify(obj) && true;
+  } catch (e) {
+    return false;
   }
 };
 export {
-  e as default,
-  e as isJson
+  isJson
 };

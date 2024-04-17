@@ -4,4 +4,3 @@
  */
 export const isDefined = (obj: unknown) => obj !== undefined
 
-export default isDefined

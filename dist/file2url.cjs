@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=t=>URL.createObjectURL(t);exports.default=e;exports.file2url=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const file2url = (file) => URL.createObjectURL(file);
+exports.file2url = file2url;

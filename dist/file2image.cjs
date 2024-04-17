@@ -1,1 +1,9 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const l=require("./file2url.cjs"),t=i=>{const e=document.createElement("img");return e.src=l.file2url(i),e};exports.default=t;exports.file2image=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const file2url = require("./file2url.cjs");
+const file2image = (file) => {
+  const image = document.createElement("img");
+  image.src = file2url.file2url(file);
+  return image;
+};
+exports.file2image = file2image;

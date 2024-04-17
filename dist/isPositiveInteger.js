@@ -1,5 +1,4 @@
-const t = (e) => Number.isInteger(e) && e > 0;
+const isPositiveInteger = (obj) => Number.isInteger(obj) && obj > 0;
 export {
-  t as default,
-  t as isPositiveInteger
+  isPositiveInteger
 };

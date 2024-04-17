@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import decimalLength from '../src/decimalLength'
+import { decimalLength } from '../src/decimalLength'
 
 test('decimalLength', () => {
   expect(decimalLength(1.11)).toEqual(2)

@@ -1,5 +1,5 @@
 import { expect, test, vi } from 'vitest'
-import countdown from '../src/countdown'
+import { countdown } from '../src/countdown'
 
 test('countdown', () => {
   vi.useFakeTimers()

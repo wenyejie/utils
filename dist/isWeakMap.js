@@ -1,6 +1,5 @@
-import { toRawType as e } from "./toRawType.js";
-const p = (a) => e(a) === "weakMap";
+import { toRawType } from "./toRawType.js";
+const isWeakMap = (obj) => toRawType(obj) === "weakMap";
 export {
-  p as default,
-  p as isWeakMap
+  isWeakMap
 };

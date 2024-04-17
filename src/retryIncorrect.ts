@@ -65,5 +65,3 @@ export const retryIncorrect = <T>(execute: (...args: any[]) => T, options?: Like
   retryIncorrectLoop();
   return promise;
 };
-
-export default retryIncorrect;

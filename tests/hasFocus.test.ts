@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
-import hasFocus from '../src/hasFocus'
+import { hasFocus } from '../src/hasFocus'
 import { document } from './utils'
-import globalThis from '../src/globalThis'
+import { globalThis } from '../src/globalThis'
 
 test('hasFocus', () => {
   globalThis.document = document

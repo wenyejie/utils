@@ -1,1 +1,15 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./isNumber.cjs"),s=require("./isString.cjs"),n=require("./regexp.cjs"),r=(e,t="px")=>i.isNumber(e)||n.rInteger.test(e)?e+t:s.isString(e)?e:"";exports.default=r;exports.toCSSUnit=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isNumber = require("./isNumber.cjs");
+const isString = require("./isString.cjs");
+const regexp = require("./regexp.cjs");
+const toCSSUnit = (value, unit = "px") => {
+  if (isNumber.isNumber(value) || regexp.rInteger.test(value)) {
+    return value + unit;
+  } else if (isString.isString(value)) {
+    return value;
+  } else {
+    return "";
+  }
+};
+exports.toCSSUnit = toCSSUnit;

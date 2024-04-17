@@ -1,4 +1,4 @@
-import file2url from './file2url'
+import { file2url } from './file2url'
 
 /**
  * file对象转图片
@@ -10,4 +10,3 @@ export const file2image = (file: File) => {
   return image
 }
 
-export default file2image

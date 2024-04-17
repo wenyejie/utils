@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isBlob from '../src/isBlob'
+import { isBlob } from '../src/isBlob'
 
 test('isBlob', () => {
   const blob = new Blob(['test'], { type: 'text/plain' })

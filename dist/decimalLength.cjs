@@ -1,1 +1,16 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./isNumber.cjs"),r=require("./isString.cjs"),s=/^\d+\.?/,t=e=>(r.isString(e)&&(e=+e),i.isNumber(e)?`${e}`.replace(s,"").length:(console.error(`"${e}" is not a number`),0));exports.decimalLength=t;exports.default=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isNumber = require("./isNumber.cjs");
+const isString = require("./isString.cjs");
+const INTEGER_BIT = /^\d+\.?/;
+const decimalLength = (number) => {
+  if (isString.isString(number)) {
+    number = +number;
+  }
+  if (!isNumber.isNumber(number)) {
+    console.error(`"${number}" is not a number`);
+    return 0;
+  }
+  return `${number}`.replace(INTEGER_BIT, "").length;
+};
+exports.decimalLength = decimalLength;

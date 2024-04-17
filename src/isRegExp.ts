@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import { toRawType } from './toRawType'
 
 /**
  * 判断是否为正则表达式
@@ -6,4 +6,3 @@ import toRawType from './toRawType'
  */
 export const isRegExp = (obj: unknown) => toRawType(obj) === 'regexp'
 
-export default isRegExp

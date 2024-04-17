@@ -1,6 +1,7 @@
-import { toRawType as t } from "./toRawType.js";
-const n = (e) => {
-  switch (t(e)) {
+import { toRawType } from "./toRawType.js";
+const isPrimitive = (obj) => {
+  const type = toRawType(obj);
+  switch (type) {
     case "string":
     case "number":
     case "boolean":
@@ -8,12 +9,11 @@ const n = (e) => {
     case "symbol":
     case "undefined":
     case "null":
-      return !0;
+      return true;
     default:
-      return !1;
+      return false;
   }
 };
 export {
-  n as default,
-  n as isPrimitive
+  isPrimitive
 };

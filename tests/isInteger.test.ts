@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isInteger from '../src/isInteger'
+import { isInteger } from '../src/isInteger'
 
 test('isInteger', () => {
   expect(isInteger(1)).toBe(true)

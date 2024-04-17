@@ -1,44 +1,81 @@
-import { file2image as o } from "./file2image.js";
-const h = {
+import { file2image } from "./file2image.js";
+const DEFAULT_OPTIONS = {
   quality: 0.95,
   qualityRate: 0.05
-}, d = (t, e, s) => {
-  const { naturalWidth: a, naturalHeight: n } = t, r = a / n;
-  let c, l;
-  return r >= 1 ? (e > 0 ? c = Math.min(a, e) : c = a, l = c / r) : (s > 0 ? l = Math.min(n, s) : l = n, c = l * r), {
-    dw: Math.floor(c),
-    dh: Math.floor(l),
-    sw: a,
-    sh: n
+};
+const calcDrawSize = (image, maxWidth, maxHeight) => {
+  const { naturalWidth, naturalHeight } = image;
+  const ratio = naturalWidth / naturalHeight;
+  let dw;
+  let dh;
+  if (ratio >= 1) {
+    if (maxWidth > 0) {
+      dw = Math.min(naturalWidth, maxWidth);
+    } else {
+      dw = naturalWidth;
+    }
+    dh = dw / ratio;
+  } else {
+    if (maxHeight > 0) {
+      dh = Math.min(naturalHeight, maxHeight);
+    } else {
+      dh = naturalHeight;
+    }
+    dw = dh * ratio;
+  }
+  return {
+    dw: Math.floor(dw),
+    dh: Math.floor(dh),
+    sw: naturalWidth,
+    sh: naturalHeight
   };
-}, u = (t, e, s, a) => {
-  const n = document.createElement("canvas"), r = n.getContext("2d"), { dw: c, dh: l, sw: i, sh: m } = d(t, e, s);
-  return n.width = c, n.height = l, a && (r.fillStyle = a, r.fillRect(0, 0, c, l)), r.drawImage(t, 0, 0, i, m, 0, 0, c, l), n;
-}, w = async (t, e) => new Promise((s) => {
-  t.toBlob(
-    (a) => {
-      s(a);
-    },
-    "image/webp",
-    e
-  );
-}), f = (t, e) => {
-  e = Object.assign({ ...h }, e);
-  const s = o(t);
-  return new Promise((a, n) => {
-    s.onload = async () => {
-      const r = u(s, e.maxWidth, e.maxHeight, e.fileStyle), c = e.filetype ?? t.type, l = e.filename ?? t.name;
-      let i, m = e.quality;
-      do
-        i = await w(r, m), m -= e.qualityRate;
-      while (i?.size > e?.maxSize);
-      if (i?.size > t?.size)
-        return a(t);
-      a(new File([i], l, { type: c }));
-    }, s.onerror = n;
+};
+const image2canvas = (image, maxWidth, maxHeight, fileStyle) => {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  const { dw, dh, sw, sh } = calcDrawSize(image, maxWidth, maxHeight);
+  canvas.width = dw;
+  canvas.height = dh;
+  if (fileStyle) {
+    context.fillStyle = fileStyle;
+    context.fillRect(0, 0, dw, dh);
+  }
+  context.drawImage(image, 0, 0, sw, sh, 0, 0, dw, dh);
+  return canvas;
+};
+const canvas2blob = async (canvas, quality) => {
+  return new Promise((resolve) => {
+    canvas.toBlob(
+      (blob) => {
+        resolve(blob);
+      },
+      "image/webp",
+      quality
+    );
+  });
+};
+const imageCompress = (file, options) => {
+  options = Object.assign({ ...DEFAULT_OPTIONS }, options);
+  const image = file2image(file);
+  return new Promise((resolve, reject) => {
+    image.onload = async () => {
+      const canvas = image2canvas(image, options.maxWidth, options.maxHeight, options.fileStyle);
+      const type = options.filetype ?? file.type;
+      const name = options.filename ?? file.name;
+      let blob;
+      let quality = options.quality;
+      do {
+        blob = await canvas2blob(canvas, quality);
+        quality -= options.qualityRate;
+      } while ((blob == null ? void 0 : blob.size) > (options == null ? void 0 : options.maxSize));
+      if ((blob == null ? void 0 : blob.size) > (file == null ? void 0 : file.size)) {
+        return resolve(file);
+      }
+      resolve(new File([blob], name, { type }));
+    };
+    image.onerror = reject;
   });
 };
 export {
-  f as default,
-  f as imageCompress
+  imageCompress
 };

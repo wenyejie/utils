@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 
 /**
  * 获取字符串中的前缀
@@ -17,4 +17,3 @@ export const prefix = (string: string) => {
   return prefix
 }
 
-export default prefix

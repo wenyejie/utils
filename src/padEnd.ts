@@ -1,4 +1,4 @@
-import isUndefined from './isUndefined'
+import { isUndefined } from './isUndefined'
 
 /**
  * 后置填充
@@ -14,4 +14,3 @@ export const padEnd = (obj: string | number, maxLength: number = 2, fillString: 
   return `${obj}`.padEnd(maxLength, fillString)
 }
 
-export default padEnd

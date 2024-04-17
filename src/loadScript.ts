@@ -9,4 +9,3 @@ export const loadScript = (url: string, options: LoadOptions) => {
   return load('script', url, options) as Promise<HTMLScriptElement>
 }
 
-export default loadScript

@@ -37,4 +37,3 @@ export const toRawType = (obj: unknown) => {
   return decapitalize(toTypeString(obj).slice(8, -1)) as ToRawType
 }
 
-export default toRawType

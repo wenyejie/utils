@@ -1,9 +1,9 @@
-import { file2url as r } from "./file2url.js";
-const i = (t) => {
-  const e = document.createElement("img");
-  return e.src = r(t), e;
+import { file2url } from "./file2url.js";
+const file2image = (file) => {
+  const image = document.createElement("img");
+  image.src = file2url(file);
+  return image;
 };
 export {
-  i as default,
-  i as file2image
+  file2image
 };

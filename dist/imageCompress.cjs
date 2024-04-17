@@ -1,1 +1,81 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const m=require("./file2image.cjs"),d={quality:.95,qualityRate:.05},h=(t,e,i)=>{const{naturalWidth:a,naturalHeight:n}=t,c=a/n;let l,s;return c>=1?(e>0?l=Math.min(a,e):l=a,s=l/c):(i>0?s=Math.min(n,i):s=n,l=s*c),{dw:Math.floor(l),dh:Math.floor(s),sw:a,sh:n}},w=(t,e,i,a)=>{const n=document.createElement("canvas"),c=n.getContext("2d"),{dw:l,dh:s,sw:r,sh:o}=h(t,e,i);return n.width=l,n.height=s,a&&(c.fillStyle=a,c.fillRect(0,0,l,s)),c.drawImage(t,0,0,r,o,0,0,l,s),n},g=async(t,e)=>new Promise(i=>{t.toBlob(a=>{i(a)},"image/webp",e)}),u=(t,e)=>{e=Object.assign({...d},e);const i=m.file2image(t);return new Promise((a,n)=>{i.onload=async()=>{const c=w(i,e.maxWidth,e.maxHeight,e.fileStyle),l=e.filetype??t.type,s=e.filename??t.name;let r,o=e.quality;do r=await g(c,o),o-=e.qualityRate;while(r?.size>e?.maxSize);if(r?.size>t?.size)return a(t);a(new File([r],s,{type:l}))},i.onerror=n})};exports.default=u;exports.imageCompress=u;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const file2image = require("./file2image.cjs");
+const DEFAULT_OPTIONS = {
+  quality: 0.95,
+  qualityRate: 0.05
+};
+const calcDrawSize = (image, maxWidth, maxHeight) => {
+  const { naturalWidth, naturalHeight } = image;
+  const ratio = naturalWidth / naturalHeight;
+  let dw;
+  let dh;
+  if (ratio >= 1) {
+    if (maxWidth > 0) {
+      dw = Math.min(naturalWidth, maxWidth);
+    } else {
+      dw = naturalWidth;
+    }
+    dh = dw / ratio;
+  } else {
+    if (maxHeight > 0) {
+      dh = Math.min(naturalHeight, maxHeight);
+    } else {
+      dh = naturalHeight;
+    }
+    dw = dh * ratio;
+  }
+  return {
+    dw: Math.floor(dw),
+    dh: Math.floor(dh),
+    sw: naturalWidth,
+    sh: naturalHeight
+  };
+};
+const image2canvas = (image, maxWidth, maxHeight, fileStyle) => {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  const { dw, dh, sw, sh } = calcDrawSize(image, maxWidth, maxHeight);
+  canvas.width = dw;
+  canvas.height = dh;
+  if (fileStyle) {
+    context.fillStyle = fileStyle;
+    context.fillRect(0, 0, dw, dh);
+  }
+  context.drawImage(image, 0, 0, sw, sh, 0, 0, dw, dh);
+  return canvas;
+};
+const canvas2blob = async (canvas, quality) => {
+  return new Promise((resolve) => {
+    canvas.toBlob(
+      (blob) => {
+        resolve(blob);
+      },
+      "image/webp",
+      quality
+    );
+  });
+};
+const imageCompress = (file, options) => {
+  options = Object.assign({ ...DEFAULT_OPTIONS }, options);
+  const image = file2image.file2image(file);
+  return new Promise((resolve, reject) => {
+    image.onload = async () => {
+      const canvas = image2canvas(image, options.maxWidth, options.maxHeight, options.fileStyle);
+      const type = options.filetype ?? file.type;
+      const name = options.filename ?? file.name;
+      let blob;
+      let quality = options.quality;
+      do {
+        blob = await canvas2blob(canvas, quality);
+        quality -= options.qualityRate;
+      } while ((blob == null ? void 0 : blob.size) > (options == null ? void 0 : options.maxSize));
+      if ((blob == null ? void 0 : blob.size) > (file == null ? void 0 : file.size)) {
+        return resolve(file);
+      }
+      resolve(new File([blob], name, { type }));
+    };
+    image.onerror = reject;
+  });
+};
+exports.imageCompress = imageCompress;

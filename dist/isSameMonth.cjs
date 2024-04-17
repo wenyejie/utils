@@ -1,1 +1,14 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const o=require("./toDate.cjs"),r=require("./isDate.cjs"),s=(e,t)=>(e=o.toDate(e),t=o.toDate(t),!r.isDate(e)||!r.isDate(t)?(console.error(`"${e}" or "${t}" is not a valid date`),!1):e.getFullYear()===t.getFullYear()&&e.getMonth()===t.getMonth());exports.default=s;exports.isSameMonth=s;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toDate = require("./toDate.cjs");
+const isDate = require("./isDate.cjs");
+const isSameMonth = (date1, date2) => {
+  date1 = toDate.toDate(date1);
+  date2 = toDate.toDate(date2);
+  if (!isDate.isDate(date1) || !isDate.isDate(date2)) {
+    console.error(`"${date1}" or "${date2}" is not a valid date`);
+    return false;
+  }
+  return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth();
+};
+exports.isSameMonth = isSameMonth;

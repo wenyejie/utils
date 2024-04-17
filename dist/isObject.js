@@ -1,6 +1,5 @@
-import { toRawType as o } from "./toRawType.js";
-const a = (t) => o(t) === "object";
+import { toRawType } from "./toRawType.js";
+const isObject = (obj) => toRawType(obj) === "object";
 export {
-  a as default,
-  a as isObject
+  isObject
 };

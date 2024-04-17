@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import dayEnd from '../src/dayEnd'
+import { dayEnd } from '../src/dayEnd'
 
 test('dayEnd', () => {
   expect(dayEnd(new Date(2021, 11, 1))).toEqual(new Date(2021, 11, 1, 23, 59, 59, 999))

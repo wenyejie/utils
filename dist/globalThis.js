@@ -1,12 +1,22 @@
-const l = () => typeof globalThis < "u" ? globalThis : typeof self < "u" ? self : typeof window < "u" ? window : typeof global < "u" ? global : Function("return this")();
-let e;
+const getGlobalThis = () => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  } else if (typeof self !== "undefined") {
+    return self;
+  } else if (typeof window !== "undefined") {
+    return window;
+  } else if (typeof global !== "undefined") {
+    return global;
+  } else {
+    return Function("return this")();
+  }
+};
+let gt;
 try {
-  e = globalThis;
+  gt = globalThis;
 } catch {
-  e = l();
+  gt = getGlobalThis();
 }
-const t = e;
 export {
-  t as default,
-  e as globalThis
+  gt as globalThis
 };

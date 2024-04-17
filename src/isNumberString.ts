@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 
 /**
  * 判断是否为一个数字型字符串
@@ -11,4 +11,3 @@ export const isNumberString = (obj: unknown) => {
   return (+obj).toString() === obj
 }
 
-export default isNumberString

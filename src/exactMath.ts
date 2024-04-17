@@ -1,7 +1,7 @@
-import decimalLength from './decimalLength'
-import toNumber from './toNumber'
-import spliceString from './spliceString'
-import isString from './isString'
+import { decimalLength } from './decimalLength'
+import { toNumber } from './toNumber'
+import { spliceString } from './spliceString'
+import { isString } from './isString'
 
 const rightPad = (n: number, len: number) => {
   if (len === 0) {
@@ -194,4 +194,3 @@ export const exactMath = (arithmeticStr: string) => {
   }
 }
 
-export default exactMath

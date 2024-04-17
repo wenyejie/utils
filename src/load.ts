@@ -1,4 +1,4 @@
-import { AnyFn } from '../types'
+import type { AnyFn } from '../types'
 
 export interface LoadOptions {
   before?: AnyFn
@@ -48,4 +48,3 @@ export const load = (
   })
 }
 
-export default load

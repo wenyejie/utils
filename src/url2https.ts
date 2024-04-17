@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 import { rHttp, rHttps } from './regexp'
 
 /**
@@ -16,4 +16,3 @@ export const url2https = (url: string) => {
   return url.replace(rHttp, 'https')
 }
 
-export default url2https

@@ -24,4 +24,3 @@ try {
 
 export { gt as globalThis }
 
-export default gt

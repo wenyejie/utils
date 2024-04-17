@@ -1,1 +1,24 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./isElement.cjs"),n=(t,e,s=!0)=>{if(!r.isElement(t))return console.error(`"${t}" is not a HTMLElement`),!1;if(!r.isElement(e))return console.error(`"${e}" is not a HTMLElement`),!1;for(s||(e=e.parentElement);e!==null;){if(e===t)return!0;e=e.parentElement}return!1};exports.default=n;exports.isParentElement=n;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isElement = require("./isElement.cjs");
+const isParentElement = (parent, child, selfParent = true) => {
+  if (!isElement.isElement(parent)) {
+    console.error(`"${parent}" is not a HTMLElement`);
+    return false;
+  }
+  if (!isElement.isElement(child)) {
+    console.error(`"${child}" is not a HTMLElement`);
+    return false;
+  }
+  if (!selfParent) {
+    child = child.parentElement;
+  }
+  while (child !== null) {
+    if (child === parent) {
+      return true;
+    }
+    child = child.parentElement;
+  }
+  return false;
+};
+exports.isParentElement = isParentElement;

@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import toMultiKeyOneValue from '../src/toMultiKeyOneValue'
+import { toMultiKeyOneValue } from '../src/toMultiKeyOneValue'
 
 test('toMultiKeyOneValue', () => {
   const obj = toMultiKeyOneValue([

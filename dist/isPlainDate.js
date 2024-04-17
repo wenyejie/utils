@@ -1,6 +1,5 @@
-import { toRawType as a } from "./toRawType.js";
-const o = (t) => a(t) === "date";
+import { toRawType } from "./toRawType.js";
+const isPlainDate = (obj) => toRawType(obj) === "date";
 export {
-  o as default,
-  o as isPlainDate
+  isPlainDate
 };

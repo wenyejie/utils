@@ -1,4 +1,4 @@
-import once from './once'
+import { once } from './once'
 
 /**
  * 缓存执行结果, 只有一次
@@ -6,4 +6,3 @@ import once from './once'
  */
 export const cachedOne = once
 
-export default cachedOne

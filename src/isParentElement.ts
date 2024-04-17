@@ -1,4 +1,4 @@
-import isElement from './isElement'
+import { isElement } from './isElement'
 
 /**
  * 判断元素是否为另一个的父级元素
@@ -27,4 +27,3 @@ export const isParentElement = (parent: HTMLElement, child: HTMLElement, selfPar
   return false
 }
 
-export default isParentElement

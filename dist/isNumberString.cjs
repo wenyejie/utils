@@ -1,1 +1,10 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isString.cjs"),r=e=>t.isString(e)?(+e).toString()===e:!1;exports.default=r;exports.isNumberString=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const isNumberString = (obj) => {
+  if (!isString.isString(obj)) {
+    return false;
+  }
+  return (+obj).toString() === obj;
+};
+exports.isNumberString = isNumberString;

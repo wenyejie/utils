@@ -1,5 +1,5 @@
-import isNumber from './isNumber'
-import isString from './isString'
+import { isNumber } from './isNumber'
+import { isString } from './isString'
 import { rInteger } from './regexp'
 
 /**
@@ -17,4 +17,3 @@ export const toCSSUnit = (value: number | string, unit = 'px') => {
   }
 }
 
-export default toCSSUnit

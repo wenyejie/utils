@@ -1,1 +1,15 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("./isString.cjs"),e=require("./regexp.cjs"),r=t=>s.isString(t)?e.rHttps.test(t)?t:t.replace(e.rHttp,"https"):(console.error(`"${t}" is not a string`),"");exports.default=r;exports.url2https=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const regexp = require("./regexp.cjs");
+const url2https = (url) => {
+  if (!isString.isString(url)) {
+    console.error(`"${url}" is not a string`);
+    return "";
+  }
+  if (regexp.rHttps.test(url)) {
+    return url;
+  }
+  return url.replace(regexp.rHttp, "https");
+};
+exports.url2https = url2https;

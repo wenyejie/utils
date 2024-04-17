@@ -1,14 +1,15 @@
-import { isString as t } from "./isString.js";
-const n = (r) => {
-  if (!t(r))
-    return !1;
+import { isString } from "./isString.js";
+const isJsonString = (obj) => {
+  if (!isString(obj)) {
+    return false;
+  }
   try {
-    return JSON.parse(r), !0;
-  } catch {
-    return !1;
+    JSON.parse(obj);
+    return true;
+  } catch (e) {
+    return false;
   }
 };
 export {
-  n as default,
-  n as isJsonString
+  isJsonString
 };

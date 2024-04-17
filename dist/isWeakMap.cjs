@@ -1,1 +1,5 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./toRawType.cjs"),e=a=>t.toRawType(a)==="weakMap";exports.default=e;exports.isWeakMap=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toRawType = require("./toRawType.cjs");
+const isWeakMap = (obj) => toRawType.toRawType(obj) === "weakMap";
+exports.isWeakMap = isWeakMap;

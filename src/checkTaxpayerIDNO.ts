@@ -18,4 +18,3 @@ export const checkTaxpayerIDNO = (taxId: string) => {
   return /[0-9A-HJ-NPQRTUWXY]{2}\d{6}[0-9A-HJ-NPQRTUWXY]{10}/.test(taxId)
 }
 
-export default checkTaxpayerIDNO

@@ -1,6 +1,5 @@
-import { toRawType as o } from "./toRawType.js";
-const t = (a) => o(a) === "map";
+import { toRawType } from "./toRawType.js";
+const isMap = (obj) => toRawType(obj) === "map";
 export {
-  t as default,
-  t as isMap
+  isMap
 };

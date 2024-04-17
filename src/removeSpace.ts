@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 
 const rSpace = /\s+/g
 
@@ -14,4 +14,3 @@ export const removeSpace = (string: string) => {
   return string.replace(rSpace, '')
 }
 
-export default removeSpace

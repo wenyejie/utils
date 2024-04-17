@@ -1,40 +1,53 @@
-import { globalThis as p } from "./globalThis.js";
-import { isPromise as v } from "./isPromise.js";
-import { normalizeOptions as b } from "./normalizeOptions.js";
-const d = {
+import { globalThis as gt } from "./globalThis.js";
+import { isPromise } from "./isPromise.js";
+import { normalizeOptions } from "./normalizeOptions.js";
+const DEFAULT_OPTIONS = {
   timeout: 300,
-  immediate: !0,
+  immediate: true,
   rtnVal: null,
   abort: -1
-}, x = {
-  number: "timeout",
-  boolean: "immediate"
-}, y = (n, l) => {
-  const { timeout: s, immediate: m, rtnVal: o, abort: c } = b(l, x, d);
-  return (...u) => {
-    const { resolve: i, promise: f } = Promise.withResolvers();
-    let t = c, r = 0;
-    const a = async () => {
-      if (t >= 0)
-        if (t > 0)
-          t--;
-        else {
-          clearInterval(r), i(o);
+};
+const intervalExecTypes = {
+  "number": "timeout",
+  "boolean": "immediate"
+};
+const intervalExec = (execute, options) => {
+  const { timeout, immediate, rtnVal, abort } = normalizeOptions(options, intervalExecTypes, DEFAULT_OPTIONS);
+  return (...args) => {
+    const { resolve, promise } = Promise.withResolvers();
+    let innerAbort = abort;
+    let timer = 0;
+    const intervalExecLoop = async () => {
+      if (innerAbort >= 0) {
+        if (innerAbort > 0) {
+          innerAbort--;
+        } else {
+          clearInterval(timer);
+          resolve(rtnVal);
           return;
         }
-      let e = n(...u);
-      if (v(e))
+      }
+      let result = execute(...args);
+      if (isPromise(result)) {
         try {
-          e = await e;
-        } catch {
-          e = o;
+          result = await result;
+        } catch (error) {
+          console.error("intervalExec promise error", error);
+          result = rtnVal;
         }
-      e && (clearInterval(r), i(e));
+      }
+      if (result) {
+        clearInterval(timer);
+        resolve(result);
+      }
     };
-    return r = p.setInterval(a, s), m && a(), f;
+    timer = gt.setInterval(intervalExecLoop, timeout);
+    if (immediate) {
+      intervalExecLoop();
+    }
+    return promise;
   };
 };
 export {
-  y as default,
-  y as intervalExec
+  intervalExec
 };

@@ -1,5 +1,5 @@
-import isNumber from './isNumber'
-import isString from './isString'
+import { isNumber } from './isNumber'
+import { isString } from './isString'
 
 const INTEGER_BIT = /^\d+\.?/
 
@@ -18,4 +18,3 @@ export const decimalLength = (number: number | string) => {
   return `${number}`.replace(INTEGER_BIT, '').length
 }
 
-export default decimalLength

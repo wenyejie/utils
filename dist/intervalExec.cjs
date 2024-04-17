@@ -1,1 +1,53 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const d=require("./globalThis.cjs"),f=require("./isPromise.cjs"),p=require("./normalizeOptions.cjs"),T={timeout:300,immediate:!0,rtnVal:null,abort:-1},E={number:"timeout",boolean:"immediate"},n=(s,a)=>{const{timeout:c,immediate:u,rtnVal:i,abort:m}=p.normalizeOptions(a,E,T);return(...v)=>{const{resolve:o,promise:b}=Promise.withResolvers();let t=m,r=0;const l=async()=>{if(t>=0)if(t>0)t--;else{clearInterval(r),o(i);return}let e=s(...v);if(f.isPromise(e))try{e=await e}catch{e=i}e&&(clearInterval(r),o(e))};return r=d.globalThis.setInterval(l,c),u&&l(),b}};exports.default=n;exports.intervalExec=n;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const globalThis = require("./globalThis.cjs");
+const isPromise = require("./isPromise.cjs");
+const normalizeOptions = require("./normalizeOptions.cjs");
+const DEFAULT_OPTIONS = {
+  timeout: 300,
+  immediate: true,
+  rtnVal: null,
+  abort: -1
+};
+const intervalExecTypes = {
+  "number": "timeout",
+  "boolean": "immediate"
+};
+const intervalExec = (execute, options) => {
+  const { timeout, immediate, rtnVal, abort } = normalizeOptions.normalizeOptions(options, intervalExecTypes, DEFAULT_OPTIONS);
+  return (...args) => {
+    const { resolve, promise } = Promise.withResolvers();
+    let innerAbort = abort;
+    let timer = 0;
+    const intervalExecLoop = async () => {
+      if (innerAbort >= 0) {
+        if (innerAbort > 0) {
+          innerAbort--;
+        } else {
+          clearInterval(timer);
+          resolve(rtnVal);
+          return;
+        }
+      }
+      let result = execute(...args);
+      if (isPromise.isPromise(result)) {
+        try {
+          result = await result;
+        } catch (error) {
+          console.error("intervalExec promise error", error);
+          result = rtnVal;
+        }
+      }
+      if (result) {
+        clearInterval(timer);
+        resolve(result);
+      }
+    };
+    timer = globalThis.globalThis.setInterval(intervalExecLoop, timeout);
+    if (immediate) {
+      intervalExecLoop();
+    }
+    return promise;
+  };
+};
+exports.intervalExec = intervalExec;

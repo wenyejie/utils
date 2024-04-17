@@ -1,6 +1,13 @@
-import { isString as t } from "./isString.js";
-const i = (r) => (Number.isInteger(r) && (r += ""), t(r) ? r.replace(/(\d{3})\d*(\d{4})/, "$1****$2") : "");
+import { isString } from "./isString.js";
+const phoneNumFormat = (phone) => {
+  if (Number.isInteger(phone)) {
+    phone += "";
+  }
+  if (isString(phone)) {
+    return phone.replace(/(\d{3})\d*(\d{4})/, "$1****$2");
+  }
+  return "";
+};
 export {
-  i as default,
-  i as phoneNumFormat
+  phoneNumFormat
 };

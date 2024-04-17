@@ -4,4 +4,3 @@
  */
 export const isElement = (obj: unknown) => obj?.['nodeType'] === 1
 
-export default isElement

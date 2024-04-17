@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import clone from '../src/clone'
+import { clone } from '../src/clone'
 
 test('clone', () => {
   expect(clone('')).toBe('')

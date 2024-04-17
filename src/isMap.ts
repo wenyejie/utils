@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import { toRawType } from './toRawType'
 
 /**
  * 判断一个数据是否为map类型
@@ -6,4 +6,3 @@ import toRawType from './toRawType'
  */
 export const isMap = (obj: unknown) => toRawType(obj) === 'map'
 
-export default isMap

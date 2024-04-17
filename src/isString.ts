@@ -4,4 +4,3 @@
  */
 export const isString = (obj: unknown) => typeof obj === 'string' && obj.trim().length > 0
 
-export default isString

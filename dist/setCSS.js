@@ -1,18 +1,19 @@
-import { camelize as l } from "./camelize.js";
-const c = (t, e, i) => {
-  let s = {};
-  if (typeof e == "string") {
-    if (i === void 0 && e.includes(":")) {
-      t.style.cssText = e;
+import { camelize } from "./camelize.js";
+const setCSS = (elt, prop, value) => {
+  let styles = {};
+  if (typeof prop === "string") {
+    if (value === void 0 && prop.includes(":")) {
+      elt.style.cssText = prop;
       return;
     }
-    s[e] = i;
-  } else
-    s = e;
-  for (const f in s)
-    t.style[l(f)] = s[f];
+    styles[prop] = value;
+  } else {
+    styles = prop;
+  }
+  for (const key in styles) {
+    elt.style[camelize(key)] = styles[key];
+  }
 };
 export {
-  c as default,
-  c as setCSS
+  setCSS
 };

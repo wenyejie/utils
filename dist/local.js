@@ -1,7 +1,7 @@
-import o from "./globalThis.js";
-import { storage as a } from "./storage.js";
-const t = a(o?.localStorage);
+var _a;
+import { globalThis as gt } from "./globalThis.js";
+import { storage } from "./storage.js";
+const local = storage((_a = gt) == null ? void 0 : _a.localStorage);
 export {
-  t as default,
-  t as local
+  local
 };

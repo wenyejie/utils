@@ -1,20 +1,35 @@
-import { toDate as o } from "./toDate.js";
-import { isDate as a } from "./isDate.js";
-const l = (t, n = "range") => {
-  t = o(t);
-  const e = {
+import { toDate } from "./toDate.js";
+import { isDate } from "./isDate.js";
+const monthRange = (date, type = "range") => {
+  date = toDate(date);
+  const result = {
     start: null,
     end: null
   };
-  if (!a(t))
-    return console.error(`"${t}" is not a valid date`), n === "range" ? e : null;
-  const s = new Date(t);
-  if (n !== "end" && (s.setDate(1), s.setHours(0, 0, 0, 0), n === "start"))
-    return s;
-  const r = new Date(t);
-  return n !== "start" && (r.setMonth(r.getMonth() + 1, 0), r.setHours(23, 59, 59, 999), n === "end") ? r : (e.start = s, e.end = r, e);
+  if (!isDate(date)) {
+    console.error(`"${date}" is not a valid date`);
+    return type === "range" ? result : null;
+  }
+  const start = new Date(date);
+  if (type !== "end") {
+    start.setDate(1);
+    start.setHours(0, 0, 0, 0);
+    if (type === "start") {
+      return start;
+    }
+  }
+  const end = new Date(date);
+  if (type !== "start") {
+    end.setMonth(end.getMonth() + 1, 0);
+    end.setHours(23, 59, 59, 999);
+    if (type === "end") {
+      return end;
+    }
+  }
+  result.start = start;
+  result.end = end;
+  return result;
 };
 export {
-  l as default,
-  l as monthRange
+  monthRange
 };

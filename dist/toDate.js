@@ -1,26 +1,52 @@
-import { isDate as o } from "./isDate.js";
-import { isNumber as s } from "./isNumber.js";
-import { isString as f } from "./isString.js";
-import { rInteger as l, rIOSDateStringFormat as m } from "./regexp.js";
-import { isInvalidDate as n } from "./isInvalidDate.js";
-import { isObject as u } from "./isObject.js";
-import { nullProtoObject as p } from "./nullProtoObject.js";
-const b = (r) => {
-  const t = p();
-  return typeof r == "boolean" ? t.toNew = r : u(r) ? Object.assign(t, r) : t.defaultValue = r, t;
-}, w = (r, t) => {
-  const i = b(t);
-  if (!r || n(r))
-    return console.error(`"${r}" is not valid date`), i.defaultValue;
-  if (o(r))
-    return i.toNew ? new Date(r) : r;
-  if (f(r) && (l.test(r) ? r = Number.parseInt(r) : m.test(r) && (r = r.replace(/-/g, "/"))), s(r)) {
-    let e = Number.parseInt(r + "") + "";
-    e.length > 13 ? e = e.substring(0, 13) : e.length < 13 && (e = e.padEnd(13, "0")), r = Number.parseInt(e);
+import { isDate } from "./isDate.js";
+import { isNumber } from "./isNumber.js";
+import { isString } from "./isString.js";
+import { rInteger, rIOSDateStringFormat } from "./regexp.js";
+import { isInvalidDate } from "./isInvalidDate.js";
+import { isObject } from "./isObject.js";
+import { nullProtoObject } from "./nullProtoObject.js";
+const normalizedOptions = (options) => {
+  const normalized = nullProtoObject();
+  if (typeof options === "boolean") {
+    normalized.toNew = options;
+  } else if (isObject(options)) {
+    Object.assign(normalized, options);
+  } else {
+    normalized.defaultValue = options;
   }
-  return r = new Date(r), n(r) ? i.defaultValue : r;
+  return normalized;
+};
+const toDate = (date, options) => {
+  const innerOptions = normalizedOptions(options);
+  if (!date || isInvalidDate(date)) {
+    console.error(`"${date}" is not valid date`);
+    return innerOptions.defaultValue;
+  }
+  if (isDate(date)) {
+    return innerOptions.toNew ? new Date(date) : date;
+  }
+  if (isString(date)) {
+    if (rInteger.test(date)) {
+      date = Number.parseInt(date);
+    } else if (rIOSDateStringFormat.test(date)) {
+      date = date.replace(/-/g, "/");
+    }
+  }
+  if (isNumber(date)) {
+    let ts = Number.parseInt(date + "") + "";
+    if (ts.length > 13) {
+      ts = ts.substring(0, 13);
+    } else if (ts.length < 13) {
+      ts = ts.padEnd(13, "0");
+    }
+    date = Number.parseInt(ts);
+  }
+  date = new Date(date);
+  if (isInvalidDate(date)) {
+    return innerOptions.defaultValue;
+  }
+  return date;
 };
 export {
-  w as default,
-  w as toDate
+  toDate
 };

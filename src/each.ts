@@ -1,4 +1,4 @@
-import isObject from './isObject'
+import { isObject } from './isObject'
 
 /**
  * 遍历
@@ -32,4 +32,3 @@ export const each: {
   }
 }
 
-export default each

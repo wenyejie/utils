@@ -1,13 +1,20 @@
-import { isString as n } from "./isString.js";
-const i = (e, o = "") => {
-  if (!n(e)) {
-    console.error(`"${e}" is not a string`);
+import { isString } from "./isString.js";
+const downloadFile = (url, filename = "") => {
+  if (!isString(url)) {
+    console.error(`"${url}" is not a string`);
     return;
   }
-  const t = document.createElement("a");
-  t.style.display = "none", t.href = e, t.setAttribute("download", o), t.download || t.setAttribute("target", "_blank"), document.body.appendChild(t), t.click(), document.body.removeChild(t);
+  const $download = document.createElement("a");
+  $download.style.display = "none";
+  $download.href = url;
+  $download.setAttribute("download", filename);
+  if (!$download.download) {
+    $download.setAttribute("target", "_blank");
+  }
+  document.body.appendChild($download);
+  $download.click();
+  document.body.removeChild($download);
 };
 export {
-  i as default,
-  i as downloadFile
+  downloadFile
 };

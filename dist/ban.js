@@ -1,15 +1,16 @@
-import { isObject as n } from "./isObject.js";
-const a = (e, ...t) => {
-  if (!n(e)) {
-    console.error(`"${e}" is not a object`);
+import { isObject } from "./isObject.js";
+const ban = (obj, ...rest) => {
+  if (!isObject(obj)) {
+    console.error(`"${obj}" is not a object`);
     return;
   }
-  let r = {};
-  return r = { ...e }, t.forEach((o) => {
-    delete r[o];
-  }), r;
+  let result = {};
+  result = { ...obj };
+  rest.forEach((key) => {
+    delete result[key];
+  });
+  return result;
 };
 export {
-  a as ban,
-  a as default
+  ban
 };

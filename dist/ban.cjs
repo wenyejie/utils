@@ -1,1 +1,16 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("./isObject.cjs"),r=(e,...o)=>{if(!u.isObject(e)){console.error(`"${e}" is not a object`);return}let t={};return t={...e},o.forEach(s=>{delete t[s]}),t};exports.ban=r;exports.default=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isObject = require("./isObject.cjs");
+const ban = (obj, ...rest) => {
+  if (!isObject.isObject(obj)) {
+    console.error(`"${obj}" is not a object`);
+    return;
+  }
+  let result = {};
+  result = { ...obj };
+  rest.forEach((key) => {
+    delete result[key];
+  });
+  return result;
+};
+exports.ban = ban;

@@ -1,1 +1,32 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const a=require("./globalThis.cjs"),m={timeout:500,immediate:!1},r=(l,e)=>{let i;const t=Object.assign({...m},e);return typeof e=="boolean"?t.immediate=e:typeof e=="number"&&(t.timeout=e),function(...u){if(t.immediate){l.apply(this,u),t.immediate=!1;return}i||(i=a.default.setTimeout(()=>{clearTimeout(i),l.apply(this,u)},t.timeout))}};exports.default=r;exports.throttle=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const globalThis = require("./globalThis.cjs");
+const normalizeOptions = require("./normalizeOptions.cjs");
+const DEFAULT_OPTIONS = {
+  timeout: 500,
+  immediate: false
+};
+const THROTTLE_TYPES = {
+  "number": "timeout",
+  "boolean": "immediate"
+};
+const throttle = (fn, options) => {
+  let timer = 0;
+  const { immediate, timeout } = normalizeOptions.normalizeOptions(options, THROTTLE_TYPES, DEFAULT_OPTIONS);
+  let innerImmediate = immediate;
+  return function(...rest) {
+    if (innerImmediate) {
+      fn.apply(this, rest);
+      innerImmediate = false;
+      return;
+    }
+    if (timer) {
+      return;
+    }
+    timer = globalThis.globalThis.setTimeout(() => {
+      clearTimeout(timer);
+      fn.apply(this, rest);
+    }, timeout);
+  };
+};
+exports.throttle = throttle;

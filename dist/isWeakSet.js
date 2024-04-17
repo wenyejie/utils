@@ -1,6 +1,5 @@
-import { toRawType as t } from "./toRawType.js";
-const o = (e) => t(e) === "weakSet";
+import { toRawType } from "./toRawType.js";
+const isWeakSet = (obj) => toRawType(obj) === "weakSet";
 export {
-  o as default,
-  o as isWeakSet
+  isWeakSet
 };

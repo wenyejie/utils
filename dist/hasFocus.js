@@ -1,5 +1,6 @@
-const t = (e) => document.hasFocus() && document.activeElement === e;
+const hasFocus = (element) => {
+  return document.hasFocus() && document.activeElement === element;
+};
 export {
-  t as default,
-  t as hasFocus
+  hasFocus
 };

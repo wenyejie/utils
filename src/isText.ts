@@ -4,4 +4,3 @@
  */
 export const isText = (obj: unknown) => obj?.['nodeType'] === 3
 
-export default isText

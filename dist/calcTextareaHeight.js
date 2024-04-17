@@ -1,15 +1,16 @@
-import { isFirefox as b } from "./env.js";
-import { isNumber as h } from "./isNumber.js";
-let t;
-const c = `
+import { isFirefox } from "./env.js";
+import { isNumber } from "./isNumber.js";
+let hiddenTextarea = void 0;
+const HIDDEN_STYLE = `
   height:0 !important;
   visibility:hidden !important;
-  ${b() ? "" : "overflow:hidden !important;"}
+  ${isFirefox() ? "" : "overflow:hidden !important;"}
   position:absolute !important;
   z-index:-1000 !important;
   top:0 !important;
   right:0 !important;
-`, m = [
+`;
+const CONTEXT_STYLE = [
   "letter-spacing",
   "line-height",
   "padding-top",
@@ -26,29 +27,52 @@ const c = `
   "border-width",
   "box-sizing"
 ];
-function u(n) {
-  const e = window.getComputedStyle(n), l = e.getPropertyValue("box-sizing"), r = Number.parseFloat(e.getPropertyValue("padding-bottom")) + Number.parseFloat(e.getPropertyValue("padding-top")), a = Number.parseFloat(e.getPropertyValue("border-bottom-width")) + Number.parseFloat(e.getPropertyValue("border-top-width"));
-  return { contextStyle: m.map((p) => `${p}:${e.getPropertyValue(p)}`).join(";"), paddingSize: r, borderSize: a, boxSizing: l };
+function calculateNodeStyling(targetElement) {
+  const style = window.getComputedStyle(targetElement);
+  const boxSizing = style.getPropertyValue("box-sizing");
+  const paddingSize = Number.parseFloat(style.getPropertyValue("padding-bottom")) + Number.parseFloat(style.getPropertyValue("padding-top"));
+  const borderSize = Number.parseFloat(style.getPropertyValue("border-bottom-width")) + Number.parseFloat(style.getPropertyValue("border-top-width"));
+  const contextStyle = CONTEXT_STYLE.map((name) => `${name}:${style.getPropertyValue(name)}`).join(";");
+  return { contextStyle, paddingSize, borderSize, boxSizing };
 }
-function y(n, e = 1, l) {
-  t || (t = document.createElement("textarea"), document.body.appendChild(t));
-  const { paddingSize: r, borderSize: a, boxSizing: d, contextStyle: p } = u(n);
-  t.setAttribute("style", `${p};${c}`), t.value = n.value || n.placeholder || "";
-  let o = t.scrollHeight;
-  const g = {};
-  d === "border-box" ? o = o + a : d === "content-box" && (o = o - r), t.value = "";
-  const s = t.scrollHeight - r;
-  if (h(e)) {
-    let i = s * e;
-    d === "border-box" && (i = i + r + a), o = Math.max(i, o), g.minHeight = `${i}px`;
+function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
+  var _a;
+  if (!hiddenTextarea) {
+    hiddenTextarea = document.createElement("textarea");
+    document.body.appendChild(hiddenTextarea);
   }
-  if (h(l)) {
-    let i = s * l;
-    d === "border-box" && (i = i + r + a), o = Math.min(i, o);
+  const { paddingSize, borderSize, boxSizing, contextStyle } = calculateNodeStyling(targetElement);
+  hiddenTextarea.setAttribute("style", `${contextStyle};${HIDDEN_STYLE}`);
+  hiddenTextarea.value = targetElement.value || targetElement.placeholder || "";
+  let height = hiddenTextarea.scrollHeight;
+  const result = {};
+  if (boxSizing === "border-box") {
+    height = height + borderSize;
+  } else if (boxSizing === "content-box") {
+    height = height - paddingSize;
   }
-  return g.height = `${o}px`, t.parentNode?.removeChild(t), t = void 0, g;
+  hiddenTextarea.value = "";
+  const singleRowHeight = hiddenTextarea.scrollHeight - paddingSize;
+  if (isNumber(minRows)) {
+    let minHeight = singleRowHeight * minRows;
+    if (boxSizing === "border-box") {
+      minHeight = minHeight + paddingSize + borderSize;
+    }
+    height = Math.max(minHeight, height);
+    result.minHeight = `${minHeight}px`;
+  }
+  if (isNumber(maxRows)) {
+    let maxHeight = singleRowHeight * maxRows;
+    if (boxSizing === "border-box") {
+      maxHeight = maxHeight + paddingSize + borderSize;
+    }
+    height = Math.min(maxHeight, height);
+  }
+  result.height = `${height}px`;
+  (_a = hiddenTextarea.parentNode) == null ? void 0 : _a.removeChild(hiddenTextarea);
+  hiddenTextarea = void 0;
+  return result;
 }
 export {
-  y as calcTextareaHeight,
-  y as default
+  calcTextareaHeight
 };

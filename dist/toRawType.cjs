@@ -1,1 +1,13 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./decapitalize.cjs"),t=Object.prototype.toString,o=e=>t.call(e).toLocaleLowerCase(),r=e=>i.decapitalize(o(e).slice(8,-1));exports.default=r;exports.objectToString=t;exports.toRawType=r;exports.toTypeString=o;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const decapitalize = require("./decapitalize.cjs");
+const objectToString = Object.prototype.toString;
+const toTypeString = (obj) => {
+  return objectToString.call(obj).toLocaleLowerCase();
+};
+const toRawType = (obj) => {
+  return decapitalize.decapitalize(toTypeString(obj).slice(8, -1));
+};
+exports.objectToString = objectToString;
+exports.toRawType = toRawType;
+exports.toTypeString = toTypeString;

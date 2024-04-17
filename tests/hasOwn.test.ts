@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import hasOwn from '../src/hasOwn'
+import { hasOwn } from '../src/hasOwn'
 
 test('hasOwn', () => {
   const obj = { key: 'value' }

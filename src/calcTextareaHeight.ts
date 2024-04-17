@@ -1,5 +1,5 @@
 import { isFirefox } from './env'
-import isNumber from './isNumber'
+import { isNumber } from './isNumber'
 
 /**
  * @copyright https://github.com/element-plus/element-plus/blob/dev/packages/components/input/src/utils.ts
@@ -120,4 +120,3 @@ export function calcTextareaHeight(targetElement: HTMLTextAreaElement, minRows =
   return result
 }
 
-export default calcTextareaHeight

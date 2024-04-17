@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=e=>e instanceof Date&&e.toString()!=="Invalid Date";exports.default=t;exports.isDate=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isDate = (obj) => obj instanceof Date && obj.toString() !== "Invalid Date";
+exports.isDate = isDate;

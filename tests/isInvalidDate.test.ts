@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isInvalidDate from '../src/isInvalidDate'
+import { isInvalidDate } from '../src/isInvalidDate'
 
 test('isInvalidDate', () => {
   expect(isInvalidDate(new Date())).toBeFalsy()

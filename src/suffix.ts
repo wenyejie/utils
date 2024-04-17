@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 
 /**
  * 获取字符串中的后缀
@@ -16,4 +16,3 @@ export const suffix = (string: string) => {
   return suffix
 }
 
-export default suffix

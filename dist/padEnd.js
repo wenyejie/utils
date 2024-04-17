@@ -1,6 +1,11 @@
-import { isUndefined as d } from "./isUndefined.js";
-const s = (r, n = 2, e = "0") => ((d(r) || Number.isNaN(r)) && (console.error(`"${r}" is not a string or number`), r = ""), `${r}`.padEnd(n, e));
+import { isUndefined } from "./isUndefined.js";
+const padEnd = (obj, maxLength = 2, fillString = "0") => {
+  if (isUndefined(obj) || Number.isNaN(obj)) {
+    console.error(`"${obj}" is not a string or number`);
+    obj = "";
+  }
+  return `${obj}`.padEnd(maxLength, fillString);
+};
 export {
-  s as default,
-  s as padEnd
+  padEnd
 };

@@ -6,4 +6,3 @@ export const decapitalize = (str: string) => {
   return str.replace(/(\w+)/gi, substr => substr.charAt(0).toLowerCase() + substr.slice(1))
 }
 
-export default decapitalize

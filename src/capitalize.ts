@@ -6,4 +6,3 @@ export const capitalize = (str: string) => {
   return str.replace(/(\w+)/gi, substr => substr.charAt(0).toUpperCase() + substr.slice(1))
 }
 
-export default capitalize

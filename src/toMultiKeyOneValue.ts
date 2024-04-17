@@ -31,4 +31,3 @@ export const toMultiKeyOneValue = <T extends string, V>(data: [T[], V][]) => {
   return proxy as Record<T, V>
 }
 
-export default toMultiKeyOneValue

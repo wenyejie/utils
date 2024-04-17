@@ -1,1 +1,14 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("./isString.cjs"),o=require("./globalThis.cjs"),i=(e,t)=>{if(!s.isString(e))return console.error(`"${e}" is not a string`),!1;const n=new URL(e);let r=s.isString(t)?new URL(t):o.default.location;return n.host===r.host};exports.default=i;exports.isSameHost=i;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const globalThis = require("./globalThis.cjs");
+const isSameHost = (urlA, urlB) => {
+  if (!isString.isString(urlA)) {
+    console.error(`"${urlA}" is not a string`);
+    return false;
+  }
+  const innerUrlA = new URL(urlA);
+  let innerUrlB = isString.isString(urlB) ? new URL(urlB) : globalThis.globalThis.location;
+  return innerUrlA.host === innerUrlB.host;
+};
+exports.isSameHost = isSameHost;

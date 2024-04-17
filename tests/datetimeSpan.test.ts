@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import datetimeSpan from '../src/datetimeSpan'
+import { datetimeSpan } from '../src/datetimeSpan'
 
 test('datetimeSpan', () => {
   const ts = 111111111111

@@ -1,8 +1,8 @@
-import toDate from './toDate'
-import datetimeSpan from './datetimeSpan'
-import dateFormat from './dateFormat'
-import isDate from './isDate'
-import { LikeDate } from '../types'
+import { toDate } from './toDate'
+import { datetimeSpan } from './datetimeSpan'
+import { dateFormat } from './dateFormat'
+import { isDate } from './isDate'
+import type { LikeDate } from '../types'
 
 export interface TimeDistanceOptions {
   yearFormat?: string
@@ -61,4 +61,3 @@ export const timeDistance = (date: LikeDate, options?: TimeDistanceOptions) => {
   return options.just
 }
 
-export default timeDistance

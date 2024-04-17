@@ -1,11 +1,13 @@
-import { hasOwn as n } from "./hasOwn.js";
-const p = (t, r, e) => {
-  if (!n(t, r) || !n(t, e))
-    return t;
-  const s = t[r];
-  return t[r] = t[e], t[e] = s, t;
+import { hasOwn } from "./hasOwn.js";
+const swap = (obj, i, j) => {
+  if (!hasOwn(obj, i) || !hasOwn(obj, j)) {
+    return obj;
+  }
+  const temp = obj[i];
+  obj[i] = obj[j];
+  obj[j] = temp;
+  return obj;
 };
 export {
-  p as default,
-  p as swap
+  swap
 };

@@ -1,14 +1,15 @@
-import { isString as o } from "./isString.js";
-const f = (r) => {
-  if (!o(r))
-    return console.error(`"${r}" is not a string`), "";
-  r = r.trim();
+import { isString } from "./isString.js";
+const prefix = (string) => {
+  if (!isString(string)) {
+    console.error(`"${string}" is not a string`);
+    return "";
+  }
+  string = string.trim();
   const {
-    groups: { prefix: e }
-  } = r.match(/^(?<prefix>\w+)+(?=\.)/);
-  return e;
+    groups: { prefix: prefix2 }
+  } = string.match(/^(?<prefix>\w+)+(?=\.)/);
+  return prefix2;
 };
 export {
-  f as default,
-  f as prefix
+  prefix
 };

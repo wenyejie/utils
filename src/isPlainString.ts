@@ -4,4 +4,3 @@
  */
 export const isPlainString = (obj: unknown) => typeof obj === 'string'
 
-export default isPlainString

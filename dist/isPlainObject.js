@@ -1,5 +1,4 @@
-const e = (t) => typeof t == "object";
+const isPlainObject = (obj) => typeof obj === "object";
 export {
-  e as default,
-  e as isPlainObject
+  isPlainObject
 };

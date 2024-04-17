@@ -1,5 +1,5 @@
-import isObject from './isObject'
-import { PropObj } from '../types'
+import { isObject } from './isObject'
+import type { PropObj } from '../types'
 
 /**
  * 从一个对象中选中一些属性并返回一个新函数,不影响原有对象
@@ -16,4 +16,3 @@ export const pick = <P extends string, T extends Record<P, unknown>>(obj: T, ...
   return result
 }
 
-export default pick

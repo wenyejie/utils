@@ -1,7 +1,14 @@
-import { toDate as t } from "./toDate.js";
-import { isDate as l } from "./isDate.js";
-const i = (o, r) => (o = t(o), r = t(r), !l(o) || !l(r) ? (console.error(`"${o}" or "${r}" is not a valid date`), !1) : o.getFullYear() === r.getFullYear() && o.getMonth() === r.getMonth());
+import { toDate } from "./toDate.js";
+import { isDate } from "./isDate.js";
+const isSameMonth = (date1, date2) => {
+  date1 = toDate(date1);
+  date2 = toDate(date2);
+  if (!isDate(date1) || !isDate(date2)) {
+    console.error(`"${date1}" or "${date2}" is not a valid date`);
+    return false;
+  }
+  return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth();
+};
 export {
-  i as default,
-  i as isSameMonth
+  isSameMonth
 };

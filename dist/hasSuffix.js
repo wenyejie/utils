@@ -1,5 +1,4 @@
-const s = (t) => /\.\w+$/.test(t);
+const hasSuffix = (name) => /\.\w+$/.test(name);
 export {
-  s as default,
-  s as hasSuffix
+  hasSuffix
 };

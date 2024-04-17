@@ -1,4 +1,4 @@
-import isParentElement from './isParentElement'
+import { isParentElement } from './isParentElement'
 import type { AnyFn } from '../types'
 
 type RemoveClickOutsideListener = () => void
@@ -23,4 +23,3 @@ export const clickOutside = (element: HTMLElement, callback: AnyFn, once?: boole
   }
 }
 
-export default clickOutside

@@ -1,5 +1,5 @@
-import isObject from './isObject'
-import { PropObj } from '../types'
+import { isObject } from './isObject'
+import type { PropObj } from '../types'
 
 /**
  * 获取对象长度
@@ -13,4 +13,3 @@ export const objectLength = (obj: PropObj) => {
   return Object.keys(obj).length
 }
 
-export default objectLength

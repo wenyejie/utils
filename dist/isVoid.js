@@ -1,5 +1,6 @@
-const i = (e) => e == null || Number.isNaN(e);
+const isVoid = (obj) => {
+  return obj === void 0 || obj === null || Number.isNaN(obj);
+};
 export {
-  i as default,
-  i as isVoid
+  isVoid
 };

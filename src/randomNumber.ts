@@ -9,4 +9,3 @@ export const randomNumber = (max: number, min = 0) => {
   return Math.random() * (cMax - cMin) + cMin
 }
 
-export default randomNumber

@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=e=>Number.isInteger(e)&&e>=0;exports.default=t;exports.isNaturalNumber=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isNaturalNumber = (obj) => Number.isInteger(obj) && obj >= 0;
+exports.isNaturalNumber = isNaturalNumber;

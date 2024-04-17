@@ -88,4 +88,3 @@ export const intervalExec: {
   }
 }
 
-export default intervalExec

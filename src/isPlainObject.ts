@@ -4,4 +4,3 @@
  */
 export const isPlainObject = (obj: unknown) => typeof obj === 'object'
 
-export default isPlainObject

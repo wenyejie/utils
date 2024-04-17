@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=()=>Object.create(null);exports.default=e;exports.nullProtoObject=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const nullProtoObject = () => /* @__PURE__ */ Object.create(null);
+exports.nullProtoObject = nullProtoObject;

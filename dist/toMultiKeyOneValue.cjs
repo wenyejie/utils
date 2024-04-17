@@ -1,1 +1,27 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s={get:(e,r)=>e[r]?.value,set:(e,r,t)=>(e[r]=t,!0)},o=e=>{const r=new Proxy({},s);if(!Array.isArray(e)){console.error(`"${e}" is not a array`);return}for(const[t,n]of e){const u={value:n};for(const l of t)r[l]=u}return r};exports.default=o;exports.toMultiKeyOneValue=o;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const handler = {
+  get: (target, prop) => {
+    var _a;
+    return (_a = target[prop]) == null ? void 0 : _a.value;
+  },
+  set: (obj, prop, value) => {
+    obj[prop] = value;
+    return true;
+  }
+};
+const toMultiKeyOneValue = (data) => {
+  const proxy = new Proxy({}, handler);
+  if (!Array.isArray(data)) {
+    console.error(`"${data}" is not a array`);
+    return;
+  }
+  for (const [keys, value] of data) {
+    const innerValue = { value };
+    for (const key of keys) {
+      proxy[key] = innerValue;
+    }
+  }
+  return proxy;
+};
+exports.toMultiKeyOneValue = toMultiKeyOneValue;

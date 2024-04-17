@@ -1,1 +1,5 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("./toRawType.cjs"),e=t=>u.toRawType(t)==="number";exports.default=e;exports.isPlainNumber=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toRawType = require("./toRawType.cjs");
+const isPlainNumber = (obj) => toRawType.toRawType(obj) === "number";
+exports.isPlainNumber = isPlainNumber;

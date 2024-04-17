@@ -1,1 +1,5 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./toRawType.cjs"),e=o=>t.toRawType(o)==="blob";exports.default=e;exports.isBlob=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toRawType = require("./toRawType.cjs");
+const isBlob = (obj) => toRawType.toRawType(obj) === "blob";
+exports.isBlob = isBlob;

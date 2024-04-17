@@ -1,1 +1,29 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./isDate.cjs"),n=require("./utils.cjs"),l={types:["year","week","day","hour","minute","second"]},p=e=>{const t={...l};return i.isDate(e)?t.compare=e:Array.isArray(e)?t.types=e:Object.assign(t,e),t},o=(e,t)=>{const{compare:u,types:c}=p(t);let s=i.isDate(e)?Math.abs(e.getTime()-(u??new Date).getTime()):Number.parseInt(e);const a={};for(const r of c)a[r]=Math.floor(s/n.TS_UNIT[r.toUpperCase()]),s%=n.TS_UNIT[r.toUpperCase()];return a};exports.datetimeSpan=o;exports.default=o;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isDate = require("./isDate.cjs");
+const utils = require("./utils.cjs");
+const DEFAULT_OPTIONS = {
+  types: ["year", "week", "day", "hour", "minute", "second"]
+};
+const normalizedOptions = (options) => {
+  const innerOptions = { ...DEFAULT_OPTIONS };
+  if (isDate.isDate(options)) {
+    innerOptions.compare = options;
+  } else if (Array.isArray(options)) {
+    innerOptions.types = options;
+  } else {
+    Object.assign(innerOptions, options);
+  }
+  return innerOptions;
+};
+const datetimeSpan = (date, options) => {
+  const { compare, types } = normalizedOptions(options);
+  let timestamp = isDate.isDate(date) ? Math.abs(date.getTime() - (compare ?? /* @__PURE__ */ new Date()).getTime()) : Number.parseInt(date);
+  const result = {};
+  for (const type of types) {
+    result[type] = Math.floor(timestamp / utils.TS_UNIT[type.toUpperCase()]);
+    timestamp %= utils.TS_UNIT[type.toUpperCase()];
+  }
+  return result;
+};
+exports.datetimeSpan = datetimeSpan;

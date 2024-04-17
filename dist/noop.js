@@ -1,6 +1,5 @@
-const o = function() {
+const noop = function() {
 };
 export {
-  o as default,
-  o as noop
+  noop
 };

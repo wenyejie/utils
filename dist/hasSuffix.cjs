@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=t=>/\.\w+$/.test(t);exports.default=e;exports.hasSuffix=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const hasSuffix = (name) => /\.\w+$/.test(name);
+exports.hasSuffix = hasSuffix;

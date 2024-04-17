@@ -1,5 +1,5 @@
-import isString from './isString'
-import globalThis from './globalThis'
+import { isString } from './isString'
+import { globalThis } from './globalThis'
 
 /**
  * 判断两个链接地址是否为同一个域名, 是否会跨域
@@ -16,4 +16,3 @@ export const isSameHost = (urlA: string, urlB?: string) => {
   return innerUrlA.host === innerUrlB.host
 }
 
-export default isSameHost

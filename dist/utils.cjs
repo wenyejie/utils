@@ -1,1 +1,27 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=31536e6,t=6048e5,O=864e5,D=36e5,S=6e4,o=1e3,n=1;var c=(E=>(E[E.YEAR=e]="YEAR",E[E.WEEK=t]="WEEK",E[E.DAY=O]="DAY",E[E.HOUR=D]="HOUR",E[E.MINUTE=S]="MINUTE",E[E.SECOND=o]="SECOND",E[E.MILLISECOND=n]="MILLISECOND",E))(c||{});exports.TS_DAY=O;exports.TS_HOUR=D;exports.TS_MILLISECOND=n;exports.TS_MINUTE=S;exports.TS_SECOND=o;exports.TS_UNIT=c;exports.TS_WEEK=t;exports.TS_YEAR=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const TS_YEAR = 31536e6;
+const TS_WEEK = 6048e5;
+const TS_DAY = 864e5;
+const TS_HOUR = 36e5;
+const TS_MINUTE = 6e4;
+const TS_SECOND = 1e3;
+const TS_MILLISECOND = 1;
+var TS_UNIT = /* @__PURE__ */ ((TS_UNIT2) => {
+  TS_UNIT2[TS_UNIT2["YEAR"] = TS_YEAR] = "YEAR";
+  TS_UNIT2[TS_UNIT2["WEEK"] = TS_WEEK] = "WEEK";
+  TS_UNIT2[TS_UNIT2["DAY"] = TS_DAY] = "DAY";
+  TS_UNIT2[TS_UNIT2["HOUR"] = TS_HOUR] = "HOUR";
+  TS_UNIT2[TS_UNIT2["MINUTE"] = TS_MINUTE] = "MINUTE";
+  TS_UNIT2[TS_UNIT2["SECOND"] = TS_SECOND] = "SECOND";
+  TS_UNIT2[TS_UNIT2["MILLISECOND"] = TS_MILLISECOND] = "MILLISECOND";
+  return TS_UNIT2;
+})(TS_UNIT || {});
+exports.TS_DAY = TS_DAY;
+exports.TS_HOUR = TS_HOUR;
+exports.TS_MILLISECOND = TS_MILLISECOND;
+exports.TS_MINUTE = TS_MINUTE;
+exports.TS_SECOND = TS_SECOND;
+exports.TS_UNIT = TS_UNIT;
+exports.TS_WEEK = TS_WEEK;
+exports.TS_YEAR = TS_YEAR;

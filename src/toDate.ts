@@ -1,10 +1,10 @@
-import isDate from './isDate'
-import isNumber from './isNumber'
-import isString from './isString'
+import { isDate } from './isDate'
+import { isNumber } from './isNumber'
+import { isString } from './isString'
 import { rInteger, rIOSDateStringFormat } from './regexp'
-import isInvalidDate from './isInvalidDate'
-import isObject from './isObject'
-import nullProtoObject from './nullProtoObject'
+import { isInvalidDate } from './isInvalidDate'
+import { isObject } from './isObject'
+import { nullProtoObject } from './nullProtoObject'
 import type { LikeDate } from '../types'
 
 export interface ToDateOptions<D = undefined> {
@@ -74,4 +74,3 @@ export const toDate: {
   return date
 }
 
-export default toDate

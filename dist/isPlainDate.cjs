@@ -1,1 +1,5 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const a=require("./toRawType.cjs"),e=t=>a.toRawType(t)==="date";exports.default=e;exports.isPlainDate=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toRawType = require("./toRawType.cjs");
+const isPlainDate = (obj) => toRawType.toRawType(obj) === "date";
+exports.isPlainDate = isPlainDate;

@@ -1,1 +1,12 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isString.cjs"),o=require("./removeSpace.cjs"),r=e=>t.isString(e)?o.removeSpace(e).replace(/(\d{4}(?=\d))/g,"$1 "):(console.error(`"${e}" is not a string`),"");exports.bankCardFormat=r;exports.default=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const removeSpace = require("./removeSpace.cjs");
+const bankCardFormat = (card) => {
+  if (!isString.isString(card)) {
+    console.error(`"${card}" is not a string`);
+    return "";
+  }
+  return removeSpace.removeSpace(card).replace(/(\d{4}(?=\d))/g, "$1 ");
+};
+exports.bankCardFormat = bankCardFormat;

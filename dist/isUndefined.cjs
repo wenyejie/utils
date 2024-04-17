@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=d=>d===void 0;exports.default=e;exports.isUndefined=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isUndefined = (obj) => obj === void 0;
+exports.isUndefined = isUndefined;

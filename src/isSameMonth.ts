@@ -1,6 +1,6 @@
-import toDate from './toDate'
-import isDate from './isDate'
-import { LikeDate } from '../types'
+import { toDate } from './toDate'
+import { isDate } from './isDate'
+import type { LikeDate } from '../types'
 
 /**
  * 判断两个日期是否在同一月
@@ -17,4 +17,3 @@ export const isSameMonth = (date1: LikeDate, date2: LikeDate) => {
   return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth()
 }
 
-export default isSameMonth

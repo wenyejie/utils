@@ -1,5 +1,5 @@
-import isPrimitive from './isPrimitive'
-import toRawType from './toRawType'
+import { isPrimitive } from './isPrimitive'
+import { toRawType } from './toRawType'
 import type { PropObj } from '../types'
 
 type ArrayOrObject = unknown[] | PropObj
@@ -42,4 +42,3 @@ export const clone = <T>(obj: T, deep = true, weakMap = new WeakMap()): T => {
   return <T>result
 }
 
-export default clone

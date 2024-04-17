@@ -1,5 +1,5 @@
-import isNumber from './isNumber'
-import isString from './isString'
+import { isNumber } from './isNumber'
+import { isString } from './isString'
 
 /**
  * 转换为数字
@@ -16,4 +16,3 @@ export const toNumber = (num: string | number, defaultValue = 0) => {
   return defaultValue
 }
 
-export default toNumber

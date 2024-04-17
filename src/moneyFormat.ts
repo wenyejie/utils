@@ -1,6 +1,6 @@
-import isNumber from './isNumber.js'
-import toNumber from './toNumber.js'
-import nullProtoObject from './nullProtoObject'
+import { isNumber } from './isNumber.js'
+import { toNumber } from './toNumber.js'
+import { nullProtoObject } from './nullProtoObject'
 
 export interface MoneyFormatOptions {
   decimal?: number // 小数点长度
@@ -45,4 +45,3 @@ export const moneyFormat = (number: number | string, options?: MoneyFormatOption
   )
 }
 
-export default moneyFormat

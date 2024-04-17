@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isJson from '../src/isJson'
+import { isJson } from '../src/isJson'
 
 test('isJson', () => {
   const json = ['1', '2']

@@ -1,1 +1,19 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const n=require("./camelize.cjs"),c=(s,e,i)=>{let t={};if(typeof e=="string"){if(i===void 0&&e.includes(":")){s.style.cssText=e;return}t[e]=i}else t=e;for(const l in t)s.style[n.camelize(l)]=t[l]};exports.default=c;exports.setCSS=c;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const camelize = require("./camelize.cjs");
+const setCSS = (elt, prop, value) => {
+  let styles = {};
+  if (typeof prop === "string") {
+    if (value === void 0 && prop.includes(":")) {
+      elt.style.cssText = prop;
+      return;
+    }
+    styles[prop] = value;
+  } else {
+    styles = prop;
+  }
+  for (const key in styles) {
+    elt.style[camelize.camelize(key)] = styles[key];
+  }
+};
+exports.setCSS = setCSS;

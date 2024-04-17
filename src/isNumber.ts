@@ -4,4 +4,3 @@
  */
 export const isNumber = (obj: unknown) => typeof obj === 'number' && !Number.isNaN(obj)
 
-export default isNumber

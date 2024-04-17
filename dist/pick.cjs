@@ -1,1 +1,13 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("./isObject.cjs"),c=(e,...i)=>{const t={};return s.isObject(e)&&i.forEach(r=>{t[r]=e[r]}),t};exports.default=c;exports.pick=c;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isObject = require("./isObject.cjs");
+const pick = (obj, ...rest) => {
+  const result = {};
+  if (isObject.isObject(obj)) {
+    rest.forEach((key) => {
+      result[key] = obj[key];
+    });
+  }
+  return result;
+};
+exports.pick = pick;

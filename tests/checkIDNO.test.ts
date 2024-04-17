@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import checkIDNO from '../src/checkIDNO'
+import { checkIDNO } from '../src/checkIDNO'
 
 test('checkIDNO', () => {
   const cardNO = '110101199003071196'

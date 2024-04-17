@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import each from '../src/each'
+import { each } from '../src/each'
 
 test('each', () => {
   const arr = [0, 1, 2]

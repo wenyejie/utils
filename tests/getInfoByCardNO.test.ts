@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import getInfoByCardNO from '../src/getInfoByCardNO'
+import { getInfoByCardNO } from '../src/getInfoByCardNO'
 
 test('getInfoByCardNO', () => {
   const cardInfo = {

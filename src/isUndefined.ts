@@ -4,4 +4,3 @@
  */
 export const isUndefined = (obj: unknown) => obj === undefined
 
-export default isUndefined

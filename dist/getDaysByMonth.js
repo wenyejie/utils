@@ -1,6 +1,8 @@
-import { toDate as e } from "./toDate.js";
-const r = (t) => (t = e(t), new Date(t.getFullYear(), t.getMonth() + 1, 0).getDate());
+import { toDate } from "./toDate.js";
+const getDaysByMonth = (date) => {
+  date = toDate(date);
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+};
 export {
-  r as default,
-  r as getDaysByMonth
+  getDaysByMonth
 };

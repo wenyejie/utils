@@ -1,5 +1,5 @@
-import isString from './isString'
-import isNumber from './isNumber'
+import { isString } from './isString'
+import { isNumber } from './isNumber'
 import { divide } from './exactMath'
 
 export interface PercentageOptions {
@@ -47,4 +47,3 @@ export const percentage = (value: number | string, options: PercentageOptions = 
   return `${value}${options.symbol}`
 }
 
-export default percentage

@@ -1,5 +1,4 @@
-const e = (a, t) => t >= 0 && t < a.length;
+const isArrayIndex = (arr, index) => index >= 0 && index < arr.length;
 export {
-  e as default,
-  e as isArrayIndex
+  isArrayIndex
 };

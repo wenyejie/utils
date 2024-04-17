@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import toDate from '../src/toDate'
+import { toDate } from '../src/toDate'
 
 test('toDate', () => {
   const date = new Date('2013-09-13 12:12:12.121')

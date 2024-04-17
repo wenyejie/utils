@@ -4,4 +4,3 @@
  */
 export const isOddNumber = (number: number) => Number.isInteger(number) && number % 2 === 1
 
-export default isOddNumber

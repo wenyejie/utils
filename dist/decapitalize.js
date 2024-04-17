@@ -1,5 +1,6 @@
-const t = (a) => a.replace(/(\w+)/gi, (e) => e.charAt(0).toLowerCase() + e.slice(1));
+const decapitalize = (str) => {
+  return str.replace(/(\w+)/gi, (substr) => substr.charAt(0).toLowerCase() + substr.slice(1));
+};
 export {
-  t as decapitalize,
-  t as default
+  decapitalize
 };

@@ -1,8 +1,8 @@
-const c = (e, t) => {
-  const s = e.splice(t, 1);
-  return e.splice(t + 1, 0, s?.[0]), e;
+const arrDownItem = (arr, inx) => {
+  const delArr = arr.splice(inx, 1);
+  arr.splice(inx + 1, 0, delArr == null ? void 0 : delArr[0]);
+  return arr;
 };
 export {
-  c as arrDownItem,
-  c as default
+  arrDownItem
 };

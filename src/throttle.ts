@@ -1,13 +1,19 @@
-import globalThis from './globalThis'
+import { globalThis } from './globalThis'
+import { normalizeOptions } from '@/normalizeOptions'
 
 export interface ThrottleOptions {
-  timeout?: number
-  immediate?: boolean
+  timeout: number
+  immediate: boolean
 }
 
 const DEFAULT_OPTIONS: ThrottleOptions = {
   timeout: 500,
   immediate: false,
+}
+
+const THROTTLE_TYPES = {
+  'number': 'timeout',
+  'boolean': 'immediate'
 }
 
 /**
@@ -16,24 +22,21 @@ const DEFAULT_OPTIONS: ThrottleOptions = {
  * @param options 选项
  */
 export const throttle: {
-  <T, R>(fn: (...rest: T[]) => R, options?: ThrottleOptions): (...rest: T[]) => void
+  <T, R>(fn: (...rest: T[]) => R): (...rest: T[]) => void
+  <T, R>(fn: (...rest: T[]) => R, options?: Partial<ThrottleOptions>): (...rest: T[]) => void
   <T, R>(fn: (...rest: T[]) => R, timeout?: ThrottleOptions['timeout']): (...rest: T[]) => void
   <T, R>(fn: (...rest: T[]) => R, immediate?: ThrottleOptions['immediate']): (...rest: T[]) => void
 } = <T, R>(
   fn: (...rest: T[]) => R,
-  options?: ThrottleOptions | ThrottleOptions['timeout'] | ThrottleOptions['immediate'],
+  options?: Partial<ThrottleOptions> | ThrottleOptions['timeout'] | ThrottleOptions['immediate'],
 ) => {
-  let timer: number
-  const innerOptions: ThrottleOptions = Object.assign({ ...DEFAULT_OPTIONS }, options)
-  if (typeof options === 'boolean') {
-    innerOptions.immediate = options
-  } else if (typeof options === 'number') {
-    innerOptions.timeout = options
-  }
+  let timer: number = 0
+  const { immediate, timeout } = normalizeOptions(options, THROTTLE_TYPES, DEFAULT_OPTIONS)
+  let innerImmediate = immediate;
   return function (...rest: T[]) {
-    if (innerOptions.immediate) {
+    if (innerImmediate) {
       fn.apply(this, rest)
-      innerOptions.immediate = false
+      innerImmediate = false
       return
     }
     if (timer) {
@@ -43,8 +46,7 @@ export const throttle: {
       clearTimeout(timer)
 
       fn.apply(this, rest)
-    }, innerOptions.timeout)
+    }, timeout)
   }
 }
 
-export default throttle

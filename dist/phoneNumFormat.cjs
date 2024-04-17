@@ -1,1 +1,13 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isString.cjs"),r=e=>(Number.isInteger(e)&&(e+=""),t.isString(e)?e.replace(/(\d{3})\d*(\d{4})/,"$1****$2"):"");exports.default=r;exports.phoneNumFormat=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const phoneNumFormat = (phone) => {
+  if (Number.isInteger(phone)) {
+    phone += "";
+  }
+  if (isString.isString(phone)) {
+    return phone.replace(/(\d{3})\d*(\d{4})/, "$1****$2");
+  }
+  return "";
+};
+exports.phoneNumFormat = phoneNumFormat;

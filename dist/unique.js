@@ -1,5 +1,10 @@
-const e = (r) => Array.isArray(r) ? Array.from(new Set(r)) : (console.error(`"${r}" is not a array`), r);
+const unique = (array) => {
+  if (!Array.isArray(array)) {
+    console.error(`"${array}" is not a array`);
+    return array;
+  }
+  return Array.from(new Set(array));
+};
 export {
-  e as default,
-  e as unique
+  unique
 };

@@ -1,5 +1,5 @@
-import isVoid from './isVoid'
-import { PropKey, PropObj } from '../types'
+import { isVoid } from './isVoid'
+import type { PropKey, PropObj } from '../types'
 
 // 判断是不是对象的自身属性
 export const hasOwnProperty = Object.prototype.hasOwnProperty
@@ -16,4 +16,3 @@ export const hasOwn = (obj: PropObj, prop: PropKey) => {
   }
   return <boolean>hasOwnProperty.call(obj, prop)
 }
-export default hasOwn

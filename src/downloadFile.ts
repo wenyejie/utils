@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 
 /**
  * 通过url下载
@@ -24,4 +24,3 @@ export const downloadFile = (url: string, filename = '') => {
   document.body.removeChild($download)
 }
 
-export default downloadFile

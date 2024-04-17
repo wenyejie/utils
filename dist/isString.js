@@ -1,5 +1,4 @@
-const e = (t) => typeof t == "string" && t.trim().length > 0;
+const isString = (obj) => typeof obj === "string" && obj.trim().length > 0;
 export {
-  e as default,
-  e as isString
+  isString
 };

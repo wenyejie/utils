@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=s=>s===!1;exports.default=e;exports.isFalse=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isFalse = (obj) => obj === false;
+exports.isFalse = isFalse;

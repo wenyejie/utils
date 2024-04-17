@@ -1,6 +1,6 @@
-import isDate from './isDate'
+import { isDate } from './isDate'
 import { TS_UNIT } from './utils'
-import { LikeDate } from '../types'
+import type { LikeDate } from '../types'
 
 export type DatetimeSpanTypes = 'year' | 'week' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond'
 
@@ -59,4 +59,3 @@ export const datetimeSpan: {
   return result
 }
 
-export default datetimeSpan

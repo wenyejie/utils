@@ -1,5 +1,5 @@
-import isString from './isString'
-import removeSpace from './removeSpace'
+import { isString } from './isString'
+import { removeSpace } from './removeSpace'
 
 /**
  * 银行卡格式化
@@ -13,4 +13,3 @@ export const bankCardFormat = (card: string): string => {
   return removeSpace(card).replace(/(\d{4}(?=\d))/g, '$1 ')
 }
 
-export default bankCardFormat

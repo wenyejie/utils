@@ -1,7 +1,11 @@
-import { isString as r } from "./isString.js";
-import { camelize as i } from "./camelize.js";
-const d = (e, t, m) => r(t) ? document.defaultView.getComputedStyle(e, m)[i(t)] : document.defaultView.getComputedStyle(e, m);
+import { isString } from "./isString.js";
+import { camelize } from "./camelize.js";
+const getCSS = (elt, prop, pseudoElt) => {
+  if (!isString(prop)) {
+    return document.defaultView.getComputedStyle(elt, pseudoElt);
+  }
+  return document.defaultView.getComputedStyle(elt, pseudoElt)[camelize(prop)];
+};
 export {
-  d as default,
-  d as getCSS
+  getCSS
 };

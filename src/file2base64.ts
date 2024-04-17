@@ -13,4 +13,3 @@ export const file2base64 = (file: File): Promise<string> => {
   })
 }
 
-export default file2base64

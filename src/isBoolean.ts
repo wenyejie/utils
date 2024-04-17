@@ -4,4 +4,3 @@
  */
 export const isBoolean = (obj: unknown) => obj === true || obj === false
 
-export default isBoolean

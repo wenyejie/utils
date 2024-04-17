@@ -1,14 +1,20 @@
-import { isObject as u } from "./isObject.js";
-const d = (e, t, r) => {
-  const o = u(t) ? t : { [t]: r }, s = Object.entries(o), n = e.findIndex((i) => {
-    for (const [c, f] of s)
-      if (i[c] !== f)
-        return !1;
-    return !0;
+import { isObject } from "./isObject.js";
+const arrDelItemByProp = (array, propKey, propValue) => {
+  const propObj = isObject(propKey) ? propKey : { [propKey]: propValue };
+  const propEntries = Object.entries(propObj);
+  const index = array.findIndex((item) => {
+    for (const [key, value] of propEntries) {
+      if (item[key] !== value) {
+        return false;
+      }
+    }
+    return true;
   });
-  return n >= 0 && e.splice(n, 1), e;
+  if (index >= 0) {
+    array.splice(index, 1);
+  }
+  return array;
 };
 export {
-  d as arrDelItemByProp,
-  d as default
+  arrDelItemByProp
 };

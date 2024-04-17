@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import { toRawType } from './toRawType'
 
 /**
  * 判断是否为对象
@@ -6,4 +6,3 @@ import toRawType from './toRawType'
  */
 export const isObject = (obj: unknown) => toRawType(obj) === 'object'
 
-export default isObject

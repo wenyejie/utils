@@ -1,9 +1,78 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const b=require("./env.cjs"),u=require("./isNumber.cjs");let e;const h=`
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const env = require("./env.cjs");
+const isNumber = require("./isNumber.cjs");
+let hiddenTextarea = void 0;
+const HIDDEN_STYLE = `
   height:0 !important;
   visibility:hidden !important;
-  ${b.isFirefox()?"":"overflow:hidden !important;"}
+  ${env.isFirefox() ? "" : "overflow:hidden !important;"}
   position:absolute !important;
   z-index:-1000 !important;
   top:0 !important;
   right:0 !important;
-`,m=["letter-spacing","line-height","padding-top","padding-bottom","font-family","font-weight","font-size","text-rendering","text-transform","width","text-indent","padding-left","padding-right","border-width","box-sizing"];function x(n){const t=window.getComputedStyle(n),l=t.getPropertyValue("box-sizing"),r=Number.parseFloat(t.getPropertyValue("padding-bottom"))+Number.parseFloat(t.getPropertyValue("padding-top")),a=Number.parseFloat(t.getPropertyValue("border-bottom-width"))+Number.parseFloat(t.getPropertyValue("border-top-width"));return{contextStyle:m.map(p=>`${p}:${t.getPropertyValue(p)}`).join(";"),paddingSize:r,borderSize:a,boxSizing:l}}function c(n,t=1,l){e||(e=document.createElement("textarea"),document.body.appendChild(e));const{paddingSize:r,borderSize:a,boxSizing:d,contextStyle:p}=x(n);e.setAttribute("style",`${p};${h}`),e.value=n.value||n.placeholder||"";let i=e.scrollHeight;const g={};d==="border-box"?i=i+a:d==="content-box"&&(i=i-r),e.value="";const s=e.scrollHeight-r;if(u.isNumber(t)){let o=s*t;d==="border-box"&&(o=o+r+a),i=Math.max(o,i),g.minHeight=`${o}px`}if(u.isNumber(l)){let o=s*l;d==="border-box"&&(o=o+r+a),i=Math.min(o,i)}return g.height=`${i}px`,e.parentNode?.removeChild(e),e=void 0,g}exports.calcTextareaHeight=c;exports.default=c;
+`;
+const CONTEXT_STYLE = [
+  "letter-spacing",
+  "line-height",
+  "padding-top",
+  "padding-bottom",
+  "font-family",
+  "font-weight",
+  "font-size",
+  "text-rendering",
+  "text-transform",
+  "width",
+  "text-indent",
+  "padding-left",
+  "padding-right",
+  "border-width",
+  "box-sizing"
+];
+function calculateNodeStyling(targetElement) {
+  const style = window.getComputedStyle(targetElement);
+  const boxSizing = style.getPropertyValue("box-sizing");
+  const paddingSize = Number.parseFloat(style.getPropertyValue("padding-bottom")) + Number.parseFloat(style.getPropertyValue("padding-top"));
+  const borderSize = Number.parseFloat(style.getPropertyValue("border-bottom-width")) + Number.parseFloat(style.getPropertyValue("border-top-width"));
+  const contextStyle = CONTEXT_STYLE.map((name) => `${name}:${style.getPropertyValue(name)}`).join(";");
+  return { contextStyle, paddingSize, borderSize, boxSizing };
+}
+function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
+  var _a;
+  if (!hiddenTextarea) {
+    hiddenTextarea = document.createElement("textarea");
+    document.body.appendChild(hiddenTextarea);
+  }
+  const { paddingSize, borderSize, boxSizing, contextStyle } = calculateNodeStyling(targetElement);
+  hiddenTextarea.setAttribute("style", `${contextStyle};${HIDDEN_STYLE}`);
+  hiddenTextarea.value = targetElement.value || targetElement.placeholder || "";
+  let height = hiddenTextarea.scrollHeight;
+  const result = {};
+  if (boxSizing === "border-box") {
+    height = height + borderSize;
+  } else if (boxSizing === "content-box") {
+    height = height - paddingSize;
+  }
+  hiddenTextarea.value = "";
+  const singleRowHeight = hiddenTextarea.scrollHeight - paddingSize;
+  if (isNumber.isNumber(minRows)) {
+    let minHeight = singleRowHeight * minRows;
+    if (boxSizing === "border-box") {
+      minHeight = minHeight + paddingSize + borderSize;
+    }
+    height = Math.max(minHeight, height);
+    result.minHeight = `${minHeight}px`;
+  }
+  if (isNumber.isNumber(maxRows)) {
+    let maxHeight = singleRowHeight * maxRows;
+    if (boxSizing === "border-box") {
+      maxHeight = maxHeight + paddingSize + borderSize;
+    }
+    height = Math.min(maxHeight, height);
+  }
+  result.height = `${height}px`;
+  (_a = hiddenTextarea.parentNode) == null ? void 0 : _a.removeChild(hiddenTextarea);
+  hiddenTextarea = void 0;
+  return result;
+}
+exports.calcTextareaHeight = calcTextareaHeight;

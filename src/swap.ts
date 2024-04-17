@@ -1,5 +1,5 @@
-import hasOwn from './hasOwn'
-import { PropKey } from '../types'
+import { hasOwn } from './hasOwn'
+import type { PropKey } from '../types'
 
 /**
  * 交换对象中的两个属性值
@@ -7,7 +7,7 @@ import { PropKey } from '../types'
  * @param i key值
  * @param j key值
  */
-export const swap = <T extends PropKey, K>(obj: Record<T, K>, i: T, j: T) => {
+export const swap = <T extends PropKey, K>(obj: Record<T, K>, i: string, j: string) => {
   if (!hasOwn(obj, i) || !hasOwn(obj, j)) {
     return obj
   }
@@ -17,4 +17,3 @@ export const swap = <T extends PropKey, K>(obj: Record<T, K>, i: T, j: T) => {
   return obj
 }
 
-export default swap

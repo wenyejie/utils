@@ -1,6 +1,10 @@
-import { isString as t } from "./isString.js";
-const e = (r) => t(r) ? (+r).toString() === r : !1;
+import { isString } from "./isString.js";
+const isNumberString = (obj) => {
+  if (!isString(obj)) {
+    return false;
+  }
+  return (+obj).toString() === obj;
+};
 export {
-  e as default,
-  e as isNumberString
+  isNumberString
 };

@@ -1,4 +1,4 @@
-import { toRawType, type ToRawType } from './toRawType'
+import { toRawType } from './toRawType'
 
 
 /**

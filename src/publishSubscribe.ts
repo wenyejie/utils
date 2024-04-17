@@ -1,6 +1,6 @@
-import isFunction from './isFunction'
-import arrDelItemByProp from './arrDelItemByProp'
-import { AnyFn } from '../types'
+import { isFunction } from './isFunction'
+import { arrDelItemByProp } from './arrDelItemByProp'
+import type { AnyFn } from '../types'
 
 // 发布订阅的订阅选项
 export interface PublishSubscribeOnOptions {
@@ -103,4 +103,3 @@ export class PublishSubscribe {
   }
 }
 
-export default PublishSubscribe

@@ -1,1 +1,7 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const o=require("./load.cjs"),e=(t,r)=>o.load("script",t,r);exports.default=e;exports.loadScript=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const load = require("./load.cjs");
+const loadScript = (url, options) => {
+  return load.load("script", url, options);
+};
+exports.loadScript = loadScript;

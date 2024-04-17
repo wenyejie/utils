@@ -1,6 +1,5 @@
-import { toRawType as e } from "./toRawType.js";
-const s = (t) => e(t) === "set";
+import { toRawType } from "./toRawType.js";
+const isSet = (obj) => toRawType(obj) === "set";
 export {
-  s as default,
-  s as isSet
+  isSet
 };

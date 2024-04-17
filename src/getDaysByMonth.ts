@@ -1,5 +1,5 @@
-import toDate from './toDate'
-import { LikeDate } from '../types'
+import { toDate } from './toDate'
+import type { LikeDate } from '../types'
 
 /**
  * 获取当前月份的天数
@@ -10,4 +10,3 @@ export const getDaysByMonth = (date: LikeDate) => {
   return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
 }
 
-export default getDaysByMonth

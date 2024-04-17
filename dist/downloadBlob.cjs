@@ -1,1 +1,25 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const a=require("./downloadFile.cjs"),s=require("./isBlob.cjs"),u=require("./suffix.cjs"),r=require("./globalThis.cjs"),l=(e,o)=>{if(!s.isBlob(e)){console.error(`"${e}" is not a Blob`);return}if(u.suffix(o)||(o=o+"."+e.type.replace(/image\//,""),console.warn("参数错误: filename没有后缀名")),r.default?.navigator?.msSaveBlob){r.default?.navigator?.msSaveBlob(e,o);return}const t=r.default.URL.createObjectURL(e);a.downloadFile(t,o),r.default.URL.revokeObjectURL(t)};exports.default=l;exports.downloadBlob=l;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const downloadFile = require("./downloadFile.cjs");
+const isBlob = require("./isBlob.cjs");
+const suffix = require("./suffix.cjs");
+const globalThis = require("./globalThis.cjs");
+const downloadBlob = (blob, filename) => {
+  var _a, _b, _c, _d;
+  if (!isBlob.isBlob(blob)) {
+    console.error(`"${blob}" is not a Blob`);
+    return;
+  }
+  if (!suffix.suffix(filename)) {
+    filename = filename + "." + blob.type.replace(/image\//, "");
+    console.warn("参数错误: filename没有后缀名");
+  }
+  if ((_b = (_a = globalThis.globalThis) == null ? void 0 : _a.navigator) == null ? void 0 : _b["msSaveBlob"]) {
+    (_d = (_c = globalThis.globalThis) == null ? void 0 : _c.navigator) == null ? void 0 : _d["msSaveBlob"](blob, filename);
+    return;
+  }
+  const url = globalThis.globalThis.URL.createObjectURL(blob);
+  downloadFile.downloadFile(url, filename);
+  globalThis.globalThis.URL.revokeObjectURL(url);
+};
+exports.downloadBlob = downloadBlob;

@@ -1,5 +1,5 @@
-import isOddNumber from './isOddNumber'
-import checkIDNO from './checkIDNO'
+import { isOddNumber } from './isOddNumber'
+import { checkIDNO } from './checkIDNO'
 
 export interface CardInfo {
   province?: string
@@ -35,4 +35,3 @@ export const getInfoByCardNO = (card: string) => {
   return cardInfo
 }
 
-export default getInfoByCardNO

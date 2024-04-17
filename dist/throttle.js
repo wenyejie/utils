@@ -1,21 +1,32 @@
-import r from "./globalThis.js";
-const l = {
+import { globalThis as gt } from "./globalThis.js";
+import { normalizeOptions } from "./normalizeOptions.js";
+const DEFAULT_OPTIONS = {
   timeout: 500,
-  immediate: !1
-}, u = (m, e) => {
-  let i;
-  const t = Object.assign({ ...l }, e);
-  return typeof e == "boolean" ? t.immediate = e : typeof e == "number" && (t.timeout = e), function(...a) {
-    if (t.immediate) {
-      m.apply(this, a), t.immediate = !1;
+  immediate: false
+};
+const THROTTLE_TYPES = {
+  "number": "timeout",
+  "boolean": "immediate"
+};
+const throttle = (fn, options) => {
+  let timer = 0;
+  const { immediate, timeout } = normalizeOptions(options, THROTTLE_TYPES, DEFAULT_OPTIONS);
+  let innerImmediate = immediate;
+  return function(...rest) {
+    if (innerImmediate) {
+      fn.apply(this, rest);
+      innerImmediate = false;
       return;
     }
-    i || (i = r.setTimeout(() => {
-      clearTimeout(i), m.apply(this, a);
-    }, t.timeout));
+    if (timer) {
+      return;
+    }
+    timer = gt.setTimeout(() => {
+      clearTimeout(timer);
+      fn.apply(this, rest);
+    }, timeout);
   };
 };
 export {
-  u as default,
-  u as throttle
+  throttle
 };

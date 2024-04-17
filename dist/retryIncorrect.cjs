@@ -1,1 +1,49 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const T=require("./isPromise.cjs"),f=require("./normalizeOptions.cjs"),O={retry:5,base:2,failureReturn:null,check:r=>r?.error?!1:r},_={number:"retry",function:"check"},i=(r,n)=>{const{retry:c,base:u,failureReturn:l,check:a}=f.normalizeOptions(n,_,O),{resolve:m,promise:R}=Promise.withResolvers();let y=0,t=0,o=0;const s=async()=>{let e=r();if(T.isPromise(e))try{e=await e}catch{e=l}a(e)||t>=c?(clearTimeout(y),m(e)):(o=Math.pow(u,t)-.5,setTimeout(s,o*1e3),t++)};return s(),R};exports.default=i;exports.retryIncorrect=i;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isPromise = require("./isPromise.cjs");
+const normalizeOptions = require("./normalizeOptions.cjs");
+const RETRY_INCORRECT_DEFAULT_OPTIONS = {
+  retry: 5,
+  // 重试次数
+  base: 2,
+  rtnVal: null,
+  check: (result) => {
+    if (result == null ? void 0 : result.error) {
+      return false;
+    }
+    return result;
+  }
+};
+const RETRY_INCORRECT_TYPES = {
+  "number": "retry",
+  "function": "check"
+};
+const retryIncorrect = (execute, options) => {
+  const { retry, base, rtnVal, check } = normalizeOptions.normalizeOptions(options, RETRY_INCORRECT_TYPES, RETRY_INCORRECT_DEFAULT_OPTIONS);
+  const { resolve, promise } = Promise.withResolvers();
+  let timer = 0;
+  let retryCount = 0;
+  let timeout = 0;
+  const retryIncorrectLoop = async () => {
+    let result = execute();
+    if (isPromise.isPromise(result)) {
+      try {
+        result = await result;
+      } catch (error) {
+        console.error("retryIncorrect promise error", error);
+        result = rtnVal;
+      }
+    }
+    if (check(result) || retryCount >= retry) {
+      clearTimeout(timer);
+      resolve(result);
+    } else {
+      timeout = Math.pow(base, retryCount) - 0.5;
+      setTimeout(retryIncorrectLoop, timeout * 1e3);
+      retryCount++;
+    }
+  };
+  retryIncorrectLoop();
+  return promise;
+};
+exports.retryIncorrect = retryIncorrect;
