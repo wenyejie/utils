@@ -39,7 +39,7 @@ export const toDate: {
 } = <D, T extends ToDateOptions<D>>(date: LikeDate, options?: T['toNew'] | T['defaultValue'] | T) => {
   const innerOptions = normalizedOptions(options)
   if (!date || isInvalidDate(date)) {
-    console.error(`"${date}" is not valid date`)
+    console.error(`"${ date }" is not valid date`)
     return <D>innerOptions.defaultValue
   }
   if (isDate(date)) {

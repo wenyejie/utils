@@ -32,10 +32,10 @@ export const dateObj = (date: LikeDate = new Date()) => {
       minute: date.getMinutes(),
       second: date.getSeconds(),
       millisecond: date.getMilliseconds(),
-      time: date.getTime(),
+      time: date.getTime()
     }
   } else {
-    console.error('dateObj params error', date);
+    console.error('dateObj params error', date)
   }
 
   return <DateObjResult>result

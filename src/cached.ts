@@ -6,7 +6,7 @@ import type { AnyFn } from '../types'
  */
 export const cached = <T extends AnyFn>(fn: T) => {
   const caches = {}
-  return function () {
+  return function() {
     const args = Array.prototype.join.call(arguments, ',')
     if (args in caches) {
       return caches[args]

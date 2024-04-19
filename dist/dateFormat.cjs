@@ -8,7 +8,7 @@ const dateFormat = (date, format = "YYYY-MM-DD hh:mm:ss", defaultValue = "") => 
     console.error(`"${date}" is not valid date`);
     return defaultValue;
   }
-  return format.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (str) => {
+  return format.replace(/\[(.*?)\]|YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (str) => {
     switch (str) {
       case "YYYY":
         return newDate.getFullYear() + "";
@@ -40,6 +40,8 @@ const dateFormat = (date, format = "YYYY-MM-DD hh:mm:ss", defaultValue = "") => 
         return padStart.padStart(Math.floor(newDate.getMilliseconds() / 10));
       case "S":
         return Math.floor(newDate.getMilliseconds() / 100) + "";
+      default:
+        return str.replace(/\[(.*?)\]/g, "$1");
     }
   });
 };

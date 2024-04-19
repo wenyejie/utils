@@ -25,7 +25,7 @@ const DEFAULT_OPTIONS = {
 
 const intervalExecTypes = {
   'number': 'timeout',
-  'boolean': 'immediate',
+  'boolean': 'immediate'
 }
 
 

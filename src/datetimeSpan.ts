@@ -20,7 +20,7 @@ export interface DatetimeSpanOptions {
 }
 
 const DEFAULT_OPTIONS: DatetimeSpanOptions = {
-  types: ['year', 'week', 'day', 'hour', 'minute', 'second'],
+  types: [ 'year', 'week', 'day', 'hour', 'minute', 'second' ]
 }
 
 const normalizedOptions = (options: Date | DatetimeSpanTypes[] | DatetimeSpanOptions): DatetimeSpanOptions => {

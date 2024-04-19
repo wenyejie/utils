@@ -8,7 +8,7 @@ export interface ThrottleOptions {
 
 const DEFAULT_OPTIONS: ThrottleOptions = {
   timeout: 500,
-  immediate: false,
+  immediate: false
 }
 
 const THROTTLE_TYPES = {
@@ -28,12 +28,12 @@ export const throttle: {
   <T, R>(fn: (...rest: T[]) => R, immediate?: ThrottleOptions['immediate']): (...rest: T[]) => void
 } = <T, R>(
   fn: (...rest: T[]) => R,
-  options?: Partial<ThrottleOptions> | ThrottleOptions['timeout'] | ThrottleOptions['immediate'],
+  options?: Partial<ThrottleOptions> | ThrottleOptions['timeout'] | ThrottleOptions['immediate']
 ) => {
   let timer: number = 0
   const { immediate, timeout } = normalizeOptions(options, THROTTLE_TYPES, DEFAULT_OPTIONS)
-  let innerImmediate = immediate;
-  return function (...rest: T[]) {
+  let innerImmediate = immediate
+  return function(...rest: T[]) {
     if (innerImmediate) {
       fn.apply(this, rest)
       innerImmediate = false

@@ -1,4 +1,4 @@
-import { isPromise } from './isPromise';
+import { isPromise } from './isPromise'
 import { normalizeOptions } from './normalizeOptions'
 
 export interface IRetryIncorrectOptions {
@@ -20,11 +20,11 @@ const RETRY_INCORRECT_DEFAULT_OPTIONS: IRetryIncorrectOptions = {
   rtnVal: null,
   check: (result) => {
     if (result?.error) {
-      return false;
+      return false
     }
-    return result;
-  },
-};
+    return result
+  }
+}
 
 const RETRY_INCORRECT_TYPES = {
   'number': 'retry',
@@ -37,31 +37,36 @@ const RETRY_INCORRECT_TYPES = {
  * @param options 选项
  */
 export const retryIncorrect = <T>(execute: (...args: any[]) => T, options?: LikeRetryIncorrectOptions) => {
-  const { retry, base, rtnVal, check } = normalizeOptions(options, RETRY_INCORRECT_TYPES, RETRY_INCORRECT_DEFAULT_OPTIONS);
-  const { resolve, promise } = Promise.withResolvers<T>();
-  let timer = 0;
-  let retryCount = 0; // 重试次数
-  let timeout = 0; // 超时时间
+  const {
+    retry,
+    base,
+    rtnVal,
+    check
+  } = normalizeOptions(options, RETRY_INCORRECT_TYPES, RETRY_INCORRECT_DEFAULT_OPTIONS)
+  const { resolve, promise } = Promise.withResolvers<T>()
+  let timer = 0
+  let retryCount = 0 // 重试次数
+  let timeout = 0 // 超时时间
   const retryIncorrectLoop = async () => {
-    let result: null | T = execute();
+    let result: null | T = execute()
 
     if (isPromise(result)) {
       try {
-        result = await result;
+        result = await result
       } catch (error) {
         console.error('retryIncorrect promise error', error)
-        result = rtnVal;
+        result = rtnVal
       }
     }
     if (check(result) || retryCount >= retry) {
-      clearTimeout(timer);
-      resolve(result);
+      clearTimeout(timer)
+      resolve(result)
     } else {
-      timeout = Math.pow(base, retryCount) - .5;
-      setTimeout(retryIncorrectLoop, timeout * 1000);
-      retryCount++;
+      timeout = Math.pow(base, retryCount) - .5
+      setTimeout(retryIncorrectLoop, timeout * 1000)
+      retryCount++
     }
-  };
-  retryIncorrectLoop();
-  return promise;
-};
+  }
+  retryIncorrectLoop()
+  return promise
+}

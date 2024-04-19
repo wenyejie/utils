@@ -11,7 +11,8 @@ test('isPrimitive', () => {
   expect(isPrimitive(1n)).toBeTruthy()
 
   expect(isPrimitive({})).toBeFalsy()
-  expect(isPrimitive(() => {})).toBeFalsy()
+  expect(isPrimitive(() => {
+  })).toBeFalsy()
   expect(isPrimitive([])).toBeFalsy()
   expect(isPrimitive(new Date())).toBeFalsy()
   expect(isPrimitive(new Map())).toBeFalsy()

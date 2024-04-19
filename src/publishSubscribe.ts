@@ -73,7 +73,7 @@ export class PublishSubscribe {
     }
     queue.push({
       once: options?.once ?? false,
-      callback,
+      callback
     })
     this.callbackMap[eventName] = item
   }

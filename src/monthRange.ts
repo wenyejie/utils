@@ -11,10 +11,10 @@ export const monthRange = (date: LikeDate, type = 'range') => {
   date = toDate(date)
   const result = {
     start: null,
-    end: null,
+    end: null
   }
   if (!isDate(date)) {
-    console.error(`"${date}" is not a valid date`)
+    console.error(`"${ date }" is not a valid date`)
     return type === 'range' ? result : null
   }
 

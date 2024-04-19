@@ -17,7 +17,7 @@ const ignoreFiles = [] // `utils${suffix}`
 
 const entryFiles = readdirSync(join('./src')).filter(file => rFileSuffix.test(file) && !ignoreFiles.includes(file))
 entryFiles.forEach(file => {
-  entry.push(`./src/${file}`)
+  entry.push(`./src/${ file }`)
 })
 
 // 获取examples文件夹中的最新修改文件
@@ -36,14 +36,14 @@ const getExamplesLatestModifiedFile = (files: string[]) => {
 
 // 自动构建生成entry
 const buildLibrary = () => {
-  let content = `// @Copyright by https://github.com/${name}/utils${EOL}export const VERSION = '${version}'${EOL}`
+  let content = `// @Copyright by https://github.com/${ name }/utils${ EOL }export const VERSION = '${ version }'${ EOL }`
   entryFiles.forEach(file => {
-    if (file === `${name}${suffix}`) {
+    if (file === `${ name }${ suffix }`) {
       return
     }
-    content += `export * from './${file.replace(rFileSuffix, '')}'${EOL}`
+    content += `export * from './${ file.replace(rFileSuffix, '') }'${ EOL }`
   })
-  writeFile(`./src/${name}${suffix}`, content, error => {
+  writeFile(`./src/${ name }${ suffix }`, content, error => {
     console.error(error)
   })
 }
@@ -56,26 +56,26 @@ const build: BuildOptions = {
   minify: false,
   lib: {
     entry,
-    formats: ['es', 'cjs'],
+    formats: [ 'es', 'cjs' ],
     name,
     fileName: (format, entryName) => {
       switch (format) {
         case 'es':
-          return `${entryName}.js`;
+          return `${ entryName }.js`
         case 'cjs':
-          return `${entryName}.cjs`;
+          return `${ entryName }.cjs`
       }
-    },
-  },
+    }
+  }
 }
 
 const test = {
-  include: ['./tests/*.test.ts'],
+  include: [ './tests/*.test.ts' ],
   environment: 'happy-dom',
   browser: {
     enabled: false,
-    name: 'chrome',
-  },
+    name: 'chrome'
+  }
 }
 
 let server: ServerOptions = {}
@@ -84,26 +84,26 @@ if (isDev) {
   const input: InputOption = []
 
   const inputFiles = readdirSync(join('./examples'))
-  inputFiles.forEach(file => input.push(`./examples/${file}`))
+  inputFiles.forEach(file => input.push(`./examples/${ file }`))
 
   build.rollupOptions = {
-    input,
+    input
   }
   server = {
     port: 8081,
     open: getExamplesLatestModifiedFile(input),
     fs: {
       strict: false,
-      allow: ['..'],
-    },
+      allow: [ '..' ]
+    }
   }
 }
 
 if (isProd) {
   build.rollupOptions = {
     output: {
-      exports: 'named',
-    },
+      exports: 'named'
+    }
   }
 }
 
@@ -115,9 +115,9 @@ const config: UserConfig = {
   appType: 'mpa',
   resolve: {
     alias: {
-      '@': join(__dirname, './src'),
-    },
-  },
+      '@': join(__dirname, './src')
+    }
+  }
 }
 
 export default defineConfig(config)

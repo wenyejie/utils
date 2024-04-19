@@ -10,7 +10,7 @@ import { isNumber } from './isNumber'
  */
 export const spliceString = (string: string, start: number, deleteCount: number | string = 0, insertString = '') => {
   if (!isString(string)) {
-    console.error(`"${string}" is not a string`)
+    console.error(`"${ string }" is not a string`)
     return ''
   }
 

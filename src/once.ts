@@ -6,7 +6,7 @@ import type { AnyFn } from '../types'
  */
 export const once = <T extends AnyFn>(fn: T): T => {
   let cached: unknown
-  return function () {
+  return function() {
     return cached || (cached = fn.apply(this, arguments))
   } as T
 }

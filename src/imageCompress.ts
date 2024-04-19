@@ -24,7 +24,7 @@ export interface FileCompressOptions {
 
 const DEFAULT_OPTIONS: FileCompressOptions = {
   quality: 0.95,
-  qualityRate: 0.05,
+  qualityRate: 0.05
 }
 
 /**
@@ -59,7 +59,7 @@ const calcDrawSize = (image: HTMLImageElement, maxWidth?: number, maxHeight?: nu
     dw: Math.floor(dw),
     dh: Math.floor(dh),
     sw: naturalWidth,
-    sh: naturalHeight,
+    sh: naturalHeight
   }
 }
 
@@ -97,7 +97,7 @@ const canvas2blob = async (canvas: HTMLCanvasElement, quality: number): Promise<
         resolve(blob)
       },
       'image/webp',
-      quality,
+      quality
     )
   })
 }
@@ -125,7 +125,7 @@ export const imageCompress = (file: File, options?: FileCompressOptions): Promis
       if (blob?.size > file?.size) {
         return resolve(file)
       }
-      resolve(new File([blob], name, { type }))
+      resolve(new File([ blob ], name, { type }))
     }
     image.onerror = reject
   })

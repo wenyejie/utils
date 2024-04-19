@@ -36,7 +36,7 @@ const operationInit = (num1: number | string, num2: number | string) => {
   return {
     n1: rightPad(toNumber(num1), raise),
     n2: rightPad(toNumber(num2), raise),
-    raise,
+    raise
   }
 }
 
@@ -125,7 +125,7 @@ const operates = Object.freeze({
   '-': subtract,
   '*': multiply,
   '/': divide,
-  '%': remain,
+  '%': remain
 })
 
 // 匹配包括花括号的表达式
@@ -153,12 +153,12 @@ export const arithmetic = (expression: string) => {
   let index = -1
   let result: number
   do {
-    index = arr.findIndex(item => ['*', '/', '%'].includes(item))
+    index = arr.findIndex(item => [ '*', '/', '%' ].includes(item))
     if (index < 0) {
       break
     }
     result = operates[arr[index]](arr[index - 1], arr[index + 1])
-    arr.splice(index - 1, 3, `${result}`)
+    arr.splice(index - 1, 3, `${ result }`)
   } while (true)
 
   result = +arr[0]

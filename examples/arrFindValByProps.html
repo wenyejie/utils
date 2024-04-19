@@ -5,9 +5,10 @@
   <title>arrFindValByProps</title>
 </head>
 <body>
-  <script type='module'>
-    import { arrFindValByProp } from '../src/arrFindValByProp.js'
-    console.log(arrFindValByProp({}, { name: 'one' }, 'age'))
-  </script>
+<script type='module'>
+  import { arrFindValByProp } from '@/arrFindValByProp'
+
+  console.log(arrFindValByProp([{ name: 'one', age: 18 }], { name: 'one' }, 'age'))
+</script>
 </body>
 </html>

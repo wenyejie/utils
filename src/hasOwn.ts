@@ -11,7 +11,7 @@ export const hasOwnProperty = Object.prototype.hasOwnProperty
  */
 export const hasOwn = (obj: PropObj, prop: PropKey) => {
   if (isVoid(obj)) {
-    console.error(`"${obj}" is not a valid type`)
+    console.error(`"${ obj }" is not a valid type`)
     return false
   }
   return <boolean>hasOwnProperty.call(obj, prop)

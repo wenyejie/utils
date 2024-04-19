@@ -20,7 +20,7 @@ test('setCSS', () => {
   expect(getCSS($div, 'display')).toBe('flex')
   setCSS($div, {
     display: 'block',
-    margin: '1px',
+    margin: '1px'
   })
   expect(getCSS($div, 'display')).toBe('block')
   expect(getCSS($div, 'margin')).toBe('1px')

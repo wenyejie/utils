@@ -19,7 +19,7 @@ test('toDate', () => {
   expect(toDate(new Date('ddd'), null)).toBeNull()
   expect(
     toDate(new Date('ddd'), {
-      defaultValue: null,
-    }),
+      defaultValue: null
+    })
   ).toBeNull()
 })

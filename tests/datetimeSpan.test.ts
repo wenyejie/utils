@@ -7,7 +7,7 @@ test('datetimeSpan', () => {
   expect(datetimeSpan(ts)).toEqual(result)
   expect(
     datetimeSpan(ts, {
-      types: ['day', 'hour', 'minute', 'second'],
-    }),
+      types: [ 'day', 'hour', 'minute', 'second' ]
+    })
   ).toEqual({ day: 1286, hour: 0, minute: 11, second: 51 })
 })

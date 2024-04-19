@@ -12,7 +12,7 @@ test('dateObj', () => {
     second: 12,
     time: 1694664732122,
     week: 4,
-    year: 2023,
+    year: 2023
   }
   expect(dateObj(date)).toEqual(result)
 

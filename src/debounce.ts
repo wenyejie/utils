@@ -30,9 +30,9 @@ export const debounce: {
   fn: (...rest: T[]) => R,
   options?: Partial<DebounceOptions> | DebounceOptions['timeout'] | DebounceOptions['immediate']
 ) => {
-  let timer: number = 0;
+  let timer: number = 0
   const { immediate, timeout } = normalizeOptions(options, DEBOUNCE_TYPES, DEBOUNCE_DEFAULT_OPTIONS)
-  let innerImmediate = immediate;
+  let innerImmediate = immediate
   return function(...rest: T[]) {
     clearTimeout(timer)
     if (innerImmediate) {

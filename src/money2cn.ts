@@ -1,9 +1,9 @@
 import { toNumber } from './toNumber'
 
-const fraction = ['角', '分']
-const digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
-const numberDigit = ['', '拾', '佰', '仟']
-const unit = ['', '万', '亿']
+const fraction = [ '角', '分' ]
+const digit = [ '零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖' ]
+const numberDigit = [ '', '拾', '佰', '仟' ]
+const unit = [ '', '万', '亿' ]
 const rNumberDigit = /零[拾佰仟]/g
 const rUnit = /零+([万亿])/g
 const rZero = /零{2,}/

@@ -17,7 +17,7 @@ const defaultOptions: MoneyFormatOptions = {
   default: '', // 默认值
   split: ',', // 分隔符号
   length: 3, // 分割长度
-  padEnd: true, // 是否尾部填充
+  padEnd: true // 是否尾部填充
 }
 
 /**

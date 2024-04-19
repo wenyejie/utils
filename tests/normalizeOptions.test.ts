@@ -5,17 +5,18 @@ test('normalizeOptions', () => {
   const DEFAULT_OPTIONS = {
     immediate: true,
     timeout: 300,
-    check: () => {},
+    check: () => {
+    }
   }
 
 
   const types = {
     'boolean': 'immediate',
     'number': 'timeout',
-    'function': 'check',
+    'function': 'check'
   }
 
-  let options:any = false
+  let options: any = false
   expect(normalizeOptions(options, types, DEFAULT_OPTIONS)).toStrictEqual({ ...DEFAULT_OPTIONS, immediate: options })
   options = 500
   expect(normalizeOptions(options, types, DEFAULT_OPTIONS)).toStrictEqual({ ...DEFAULT_OPTIONS, timeout: options })

@@ -5,18 +5,19 @@
     "sourceMap": true,
     "lib": [
       "ESNext",
-      "DOM",
+      "DOM"
     ],
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "emitDeclarationOnly": true,
     "declaration": true,
     "extendedDiagnostics": true,
-
     /* fix vite alias 无法识别的问题 */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": [

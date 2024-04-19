@@ -8,7 +8,7 @@ const linkIterableObj = {
   set: Set,
   map: Map,
   weakSet: WeakSet,
-  weakMap: WeakMap,
+  weakMap: WeakMap
 }
 
 /**

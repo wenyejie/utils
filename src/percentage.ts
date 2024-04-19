@@ -15,7 +15,7 @@ const defaultOptions: PercentageOptions = {
   padEnd: false, // 是否需要后续补零
   defaultValue: '', // 默认值, 即当输入值无法被转化时显示的值
   onePercent: 0.01, // 百分之一的数值, 0.01 * 100 = 1, 1 * 100 = 100
-  symbol: '%', // 百分比符号
+  symbol: '%' // 百分比符号
 }
 
 /**
@@ -44,6 +44,6 @@ export const percentage = (value: number | string, options: PercentageOptions = 
     value = Number.parseFloat(value)
   }
 
-  return `${value}${options.symbol}`
+  return `${ value }${ options.symbol }`
 }
 

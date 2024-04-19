@@ -7,7 +7,7 @@ import type { PropObj } from '../types'
  */
 export const objectLength = (obj: PropObj) => {
   if (!isObject(obj)) {
-    console.error(`"${obj}" is not a Object`)
+    console.error(`"${ obj }" is not a Object`)
     return 0
   }
   return Object.keys(obj).length

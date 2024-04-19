@@ -8,7 +8,7 @@ import { isString } from './isString'
  */
 export const downloadFile = (url: string, filename = '') => {
   if (!isString(url)) {
-    console.error(`"${url}" is not a string`)
+    console.error(`"${ url }" is not a string`)
     return
   }
   const $download = document.createElement('a')

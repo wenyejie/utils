@@ -27,7 +27,7 @@ const DEFAULT_OPTIONS: CountdownOptions = {
   delay: 1000,
   decrement: 1,
   autostart: true,
-  end: 0,
+  end: 0
 }
 
 class Countdown {

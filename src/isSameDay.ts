@@ -11,7 +11,7 @@ export const isSameDay = (date1: LikeDate, date2: LikeDate) => {
   date1 = toDate(date1)
   date2 = toDate(date2)
   if (!isDate(date1) || !isDate(date2)) {
-    console.error(`"${date1}" or "${date2}" is not a valid date`)
+    console.error(`"${ date1 }" or "${ date2 }" is not a valid date`)
     return false
   }
   return (
