@@ -1,5 +1,5 @@
 import { isObject } from './isObject'
-import type { PropKey, PropObj } from '../types'
+import type { PropObj } from '../types'
 
 export const arrDelItemByProp: {
   /**
@@ -12,9 +12,9 @@ export const arrDelItemByProp: {
    * @param array 数组
    * @param propKey 属性
    * @param propValue 属性值
-   */<P extends PropObj>(array: P[], propKey: PropKey, propValue: unknown): P[]
-} = <P extends PropObj>(array: P[], propKey: PropKey | PropObj, propValue?: unknown): P[] => {
-  const propObj = isObject(propKey) ? <PropObj>propKey : { [<PropKey>propKey]: propValue }
+   */<P extends PropObj>(array: P[], propKey:  PropertyKey, propValue: unknown): P[]
+} = <P extends PropObj>(array: P[], propKey:  PropertyKey | PropObj, propValue?: unknown): P[] => {
+  const propObj = isObject(propKey) ? <PropObj>propKey : { [< PropertyKey>propKey]: propValue }
   const propEntries = Object.entries(propObj)
   const index = array.findIndex(item => {
     for (const [ key, value ] of propEntries) {

@@ -1,5 +1,5 @@
 import { isObject } from './isObject'
-import type { PropKey, PropObj } from '../types'
+import type { PropObj } from '../types'
 
 export const arrFindItemByProp: {
   /**
@@ -12,8 +12,8 @@ export const arrFindItemByProp: {
    * @param array 数组
    * @param propKey 属性
    * @param propValue 属性值
-   */<R extends PropObj>(array: R[], propKey: PropKey, propValue: unknown): R | undefined
-} = <V extends unknown, P extends PropKey, R extends Record<P, V>>(array: R[], prop: P | PropObj, value?: V) => {
+   */<R extends PropObj>(array: R[], propKey:  PropertyKey, propValue: unknown): R | undefined
+} = <V extends unknown, P extends  PropertyKey, R extends Record<P, V>>(array: R[], prop: P | PropObj, value?: V) => {
   const props: R = isObject(prop) ? <R>prop : <R>{ [<P>prop]: <V>value }
   const propEntries = Object.entries(props)
   return array.find(item => {

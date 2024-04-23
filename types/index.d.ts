@@ -1,5 +1,3 @@
-export type PropKey = string | number | symbol
-
 export type PropObj = Record<string, unknown>
 
 export type LikeDate = Date | string | number

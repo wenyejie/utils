@@ -3,6 +3,7 @@
 ## 2.3.1 `dev`
 
 - 优化`debounce`, `throttle` 等函数的选项规范化
+- add `partial`, `zip`, `zipObject`, `zipObjectList` 方法
 
 ## 2.3.0 `prod`
 
