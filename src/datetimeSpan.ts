@@ -1,25 +1,27 @@
 import isDate from './isDate'
+import padStart from './padStart'
 import { TS_UNIT } from './utils'
 
 export type DatetimeSpanTypes = 'year' | 'week' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond'
 
 export interface DatetimeSpanResult {
-  year?: number
-  week?: number
-  day?: number
-  hour?: number
-  minute?: number
-  second?: number
-  millisecond?: number
+  year?: number | string
+  week?: number | string
+  day?: number | string
+  hour?: number | string
+  minute?: number | string
+  second?: number | string
+  millisecond?: number | string
 }
 
 export interface DatetimeSpanOptions {
   types?: DatetimeSpanTypes[]
   compare?: Date
+  padStart?: boolean
 }
 
 const DEFAULT_OPTIONS: DatetimeSpanOptions = {
-  types: ['year', 'week', 'day', 'hour', 'minute', 'second'],
+  types: ['day', 'hour', 'minute', 'second'],
 }
 
 const normalizedOptions = (options: Date | DatetimeSpanTypes[] | DatetimeSpanOptions): DatetimeSpanOptions => {
@@ -52,7 +54,7 @@ export const datetimeSpan: {
     : Number.parseInt(<string>date)
   const result: DatetimeSpanResult = {}
   for (const type of types) {
-    result[type] = Math.floor(timestamp / TS_UNIT[type.toUpperCase()])
+    result[type] = padStart(Math.floor(timestamp / TS_UNIT[type.toUpperCase()]))
     timestamp %= TS_UNIT[type.toUpperCase()]
   }
   return result

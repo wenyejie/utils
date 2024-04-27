@@ -5,10 +5,11 @@ import isObject from './isObject'
 // 倒计时时间名称
 export type CountdownEventName = 'change' | 'start' | 'stop' | 'finish' | 'continue'
 // 倒计时回调
-export type CountdownCallback = (value: number) => void
+export type CountdownCallback = (timestamp: number) => void
 
 // 倒计时选项
 export interface CountdownOptions {
+  immediate?: boolean // 立即返回渲染
   // 循环间隔时间
   delay?: number
   // 每次循环减少数
@@ -24,6 +25,7 @@ export interface CountdownOptions {
 }
 
 const DEFAULT_OPTIONS: CountdownOptions = {
+  immediate: true,
   delay: 1000,
   decrement: 1,
   autostart: true,
@@ -53,10 +55,10 @@ class Countdown {
 
   /**
    * 创建倒计时实例
-   * @param value 倒计时
+   * @param timer 倒计时
    * @param callback 回调
    */
-  static create(value: number, callback: CountdownCallback): Countdown
+  static create(timer: number, callback: CountdownCallback): Countdown
   /**
    * 创建倒计时实例
    * @param options 选项
@@ -64,16 +66,16 @@ class Countdown {
   static create(options: CountdownOptions): Countdown
   /**
    * 创建倒计时实例
-   * @param value 倒计时
+   * @param timer 倒计时
    * @param options 选项
    */
-  static create(value: number, options: CountdownOptions): Countdown
-  static create(value: number | CountdownOptions, options?: CountdownOptions | CountdownCallback) {
+  static create(timer: number, options: CountdownOptions): Countdown
+  static create(timer: number | CountdownOptions, options?: CountdownOptions | CountdownCallback) {
     const innerOptions: CountdownOptions = {}
-    if (typeof value === 'number') {
-      innerOptions.value = value
-    } else if (isObject(value)) {
-      Object.assign(innerOptions, value)
+    if (typeof timer === 'number') {
+      innerOptions.value = timer
+    } else if (isObject(timer)) {
+      Object.assign(innerOptions, timer)
     }
     if (isFunction(options)) {
       innerOptions.change = <CountdownOptions['change']>options
@@ -92,6 +94,9 @@ class Countdown {
     const queue = this.callbackQueues[eventName] ?? []
     queue.push(callback)
     this.callbackQueues[eventName] = queue
+    if (this?.options?.immediate && eventName === 'change') {
+      callback.call(this, this.value)
+    }
   }
 
   /**
@@ -113,6 +118,9 @@ class Countdown {
     }
     this.loop()
     this.trigger('start')
+    if (this.options.immediate) {
+      this.trigger('change')
+    }
   }
 
   // 停止

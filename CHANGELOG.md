@@ -1,5 +1,14 @@
 # 版本记录
 
+## 2.2.0
+
+- `countdown`新增参数`immediate`
+- `datetimeSpan`
+  - 新增参数`padStart`
+  - 修改默认参数`types` ~~`['year', 'week', 'day', 'hour', 'minute', 'second']`~~ -> **`['day',
+    'hour', 'minute', 'second']`**
+- `setOnInterval`新增准时定时器
+
 ## 2.1.2
 
 - 调整相关引用由`@/`改为`./`

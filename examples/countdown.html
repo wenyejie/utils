@@ -5,9 +5,10 @@
   <title>Countdown</title>
 </head>
 <body>
-<div class='view'></div>
+<div class='view'>00:00:00</div>
 <button class='stop'>stop</button>
 <button class='continue'>continue</button>
+<div class='clock'></div>
 <script type='module'>
   import countdown from '../src/countdown'
 
@@ -15,10 +16,17 @@
   const $stop = document.querySelector('.stop')
   const $continue = document.querySelector('.continue')
 
-  const instance = countdown(30)
-  instance.on('change', (value) => {
-    console.log(value)
-    $view.innerHTML = value
+  const time = new Date(2024, 3, 20, 10, 0, 0, 0) - Date.now()
+  const now = new Date()
+
+  const instance = countdown(time, {
+    immediate: true,
+    decrement: 1000,
+  })
+  instance.on('change', () => {
+    const compared = new Date()
+    $view.innerHTML = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()} <br /> ${compared.getHours()}:${compared.getMinutes()}:${compared.getSeconds()}`
+    now.setSeconds(now.getSeconds() + 1)
   })
 
   $stop.addEventListener('click', instance.stop.bind(instance))

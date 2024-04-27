@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang='zh-cn'>
+<head>
+  <meta charset='utf-8'>
+  <title>setOnInterval</title>
+</head>
+<body>
+<div class='clock'></div>
+<script type='module'>
+  import setOnInterval from '../src/setOnInterval'
+  const now = new Date()
+  const $clock = document.querySelector('.clock')
+  const handle = () => {
+    const compared = new Date()
+    $clock.innerHTML = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()} <br /> ${compared.getHours()}:${compared.getMinutes()}:${compared.getSeconds()}`
+    now.setSeconds(now.getSeconds() + 1)
+  }
+  handle()
+  setOnInterval(handle, 1000)
+</script>
+</body>
+</html>
