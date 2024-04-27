@@ -4,4 +4,3 @@
  */
 export const isPositiveInteger = (obj: number) => Number.isInteger(obj) && obj > 0
 
-export default isPositiveInteger

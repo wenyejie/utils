@@ -1,7 +1,19 @@
-import { isString as i } from "./isString.js";
-import { isNumber as p } from "./isNumber.js";
-const u = (r, o, f = 0, m = "") => i(r) ? (!p(f) && m === "" && (m = f, f = 0), o < 0 || r.length < o || f < 0 ? r : r.substring(0, o) + m + r.substring(o + f, r.length)) : (console.error(`"${r}" is not a string`), "");
+import { isString } from "./isString.js";
+import { isNumber } from "./isNumber.js";
+const spliceString = (string, start, deleteCount = 0, insertString = "") => {
+  if (!isString(string)) {
+    console.error(`"${string}" is not a string`);
+    return "";
+  }
+  if (!isNumber(deleteCount) && insertString === "") {
+    insertString = deleteCount;
+    deleteCount = 0;
+  }
+  if (start < 0 || string.length < start || deleteCount < 0) {
+    return string;
+  }
+  return string.substring(0, start) + insertString + string.substring(start + deleteCount, string.length);
+};
 export {
-  u as default,
-  u as spliceString
+  spliceString
 };

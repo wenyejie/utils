@@ -1,6 +1,6 @@
-import isNumber from './isNumber.js'
-import toNumber from './toNumber.js'
-import nullProtoObject from './nullProtoObject'
+import { isNumber } from './isNumber.js'
+import { toNumber } from './toNumber.js'
+import { nullProtoObject } from './nullProtoObject'
 
 export interface MoneyFormatOptions {
   decimal?: number // 小数点长度
@@ -17,7 +17,7 @@ const defaultOptions: MoneyFormatOptions = {
   default: '', // 默认值
   split: ',', // 分隔符号
   length: 3, // 分割长度
-  padEnd: true, // 是否尾部填充
+  padEnd: true // 是否尾部填充
 }
 
 /**
@@ -45,4 +45,3 @@ export const moneyFormat = (number: number | string, options?: MoneyFormatOption
   )
 }
 
-export default moneyFormat

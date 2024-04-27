@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isDate from '../src/isDate'
+import { isDate } from '../src/isDate'
 
 test('isDate', () => {
   expect(isDate(new Date())).toBe(true)

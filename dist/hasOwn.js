@@ -1,7 +1,13 @@
-import { isVoid as e } from "./isVoid.js";
-const o = Object.prototype.hasOwnProperty, a = (r, t) => e(r) ? (console.error(`"${r}" is not a valid type`), !1) : o.call(r, t);
+import { isVoid } from "./isVoid.js";
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+const hasOwn = (obj, prop) => {
+  if (isVoid(obj)) {
+    console.error(`"${obj}" is not a valid type`);
+    return false;
+  }
+  return hasOwnProperty.call(obj, prop);
+};
 export {
-  a as default,
-  a as hasOwn,
-  o as hasOwnProperty
+  hasOwn,
+  hasOwnProperty
 };

@@ -1,5 +1,4 @@
-const r = (e) => typeof e == "number" && !Number.isNaN(e);
+const isNumber = (obj) => typeof obj === "number" && !Number.isNaN(obj);
 export {
-  r as default,
-  r as isNumber
+  isNumber
 };

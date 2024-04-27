@@ -1,5 +1,4 @@
-const i = (t) => typeof t == "bigint";
+const isBigint = (obj) => typeof obj === "bigint";
 export {
-  i as default,
-  i as isBigint
+  isBigint
 };

@@ -1,5 +1,6 @@
-import isPrimitive from './isPrimitive'
-import toRawType from './toRawType'
+import { isPrimitive } from './isPrimitive'
+import { toRawType } from './toRawType'
+import type { PropObj } from '../types'
 
 type ArrayOrObject = unknown[] | PropObj
 
@@ -7,7 +8,7 @@ const linkIterableObj = {
   set: Set,
   map: Map,
   weakSet: WeakSet,
-  weakMap: WeakMap,
+  weakMap: WeakMap
 }
 
 /**
@@ -41,4 +42,3 @@ export const clone = <T>(obj: T, deep = true, weakMap = new WeakMap()): T => {
   return <T>result
 }
 
-export default clone

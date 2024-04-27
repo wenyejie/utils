@@ -1,7 +1,7 @@
-import downloadFile from './downloadFile'
-import isBlob from './isBlob'
-import suffix from './suffix'
-import globalThis from './globalThis'
+import { downloadFile } from './downloadFile'
+import { isBlob } from './isBlob'
+import { suffix } from './suffix'
+import { globalThis } from './globalThis'
 
 /**
  * 下载blob文件
@@ -11,7 +11,7 @@ import globalThis from './globalThis'
  */
 export const downloadBlob = (blob: Blob, filename: string) => {
   if (!isBlob(blob)) {
-    console.error(`"${blob}" is not a Blob`)
+    console.error(`"${ blob }" is not a Blob`)
     return
   }
   if (!suffix(filename)) {
@@ -27,4 +27,3 @@ export const downloadBlob = (blob: Blob, filename: string) => {
   globalThis.URL.revokeObjectURL(url)
 }
 
-export default downloadBlob

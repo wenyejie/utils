@@ -1,1 +1,6 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=t=>document.hasFocus()&&document.activeElement===t;exports.default=e;exports.hasFocus=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const hasFocus = (element) => {
+  return document.hasFocus() && document.activeElement === element;
+};
+exports.hasFocus = hasFocus;

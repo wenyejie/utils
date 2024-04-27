@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import cached from '../src/cached'
+import { cached } from '../src/cached'
 
 test('cached', () => {
   const add = cached((a: number, b: number) => {

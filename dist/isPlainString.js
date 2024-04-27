@@ -1,5 +1,4 @@
-const i = (t) => typeof t == "string";
+const isPlainString = (obj) => typeof obj === "string";
 export {
-  i as default,
-  i as isPlainString
+  isPlainString
 };

@@ -1,1 +1,41 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const c=require("./isString.cjs"),u=require("./isNumber.cjs"),a=require("./isNumberString.cjs"),m=require("./toMultiKeyOneValue.cjs"),r=require("./utils.cjs"),T=m.toMultiKeyOneValue([[["s","sec","second"],r.TS_UNIT.SECOND],[["m","min","minute"],r.TS_UNIT.MINUTE],[["h","hour"],r.TS_UNIT.HOUR],[["d","day"],r.TS_UNIT.DAY],[["w","week"],r.TS_UNIT.WEEK],[["y","year"],r.TS_UNIT.YEAR]]),S=/^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(ay)?|w(eek)?|y(ear)?)$/i,i=(e,o="millisecond")=>{if(!u.isNumber(e)&&!c.isString(e))return console.error(`"${e}" is not a number or string`),null;if(u.isNumber(e))return e;if(e=e.trim(),a.isNumberString(e))return Math.floor(+e);const t=e.match(S);if(!t)return console.error(`getTsByStr: Incorrect timestamp string parameter => "${e}"`),null;let{num:s,unit:l}=t.groups;const n=+s*T[l.toLowerCase()];return Math.floor(o==="second"?n/1e3:n)};exports.default=i;exports.getTsByStr=i;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const isNumber = require("./isNumber.cjs");
+const isNumberString = require("./isNumberString.cjs");
+const toMultiKeyOneValue = require("./toMultiKeyOneValue.cjs");
+const utils = require("./utils.cjs");
+const strMap = toMultiKeyOneValue.toMultiKeyOneValue([
+  [["s", "sec", "second"], utils.TS_UNIT.SECOND],
+  [["m", "min", "minute"], utils.TS_UNIT.MINUTE],
+  [["h", "hour"], utils.TS_UNIT.HOUR],
+  [["d", "day"], utils.TS_UNIT.DAY],
+  [["w", "week"], utils.TS_UNIT.WEEK],
+  [["y", "year"], utils.TS_UNIT.YEAR]
+]);
+const rTsStr = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(ay)?|w(eek)?|y(ear)?)$/i;
+const getTsByStr = (str, rtnType = "millisecond") => {
+  if (!isNumber.isNumber(str) && !isString.isString(str)) {
+    console.error(`"${str}" is not a number or string`);
+    return null;
+  }
+  if (isNumber.isNumber(str)) {
+    return str;
+  }
+  str = str.trim();
+  if (isNumberString.isNumberString(str)) {
+    return Math.floor(+str);
+  }
+  const result = str.match(rTsStr);
+  if (!result) {
+    console.error(`getTsByStr: Incorrect timestamp string parameter => "${str}"`);
+    return null;
+  }
+  let { num, unit } = result.groups;
+  const rtnValue = +num * strMap[unit.toLowerCase()];
+  if (rtnType === "second") {
+    return Math.floor(rtnValue / 1e3);
+  }
+  return Math.floor(rtnValue);
+};
+exports.getTsByStr = getTsByStr;

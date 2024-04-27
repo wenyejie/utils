@@ -1,1 +1,13 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("./hasOwn.cjs");require("./isVoid.cjs");const u=(e,t,r)=>{if(!s.hasOwn(e,t)||!s.hasOwn(e,r))return e;const n=e[t];return e[t]=e[r],e[r]=n,e};exports.default=u;exports.swap=u;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const hasOwn = require("./hasOwn.cjs");
+const swap = (obj, i, j) => {
+  if (!hasOwn.hasOwn(obj, i) || !hasOwn.hasOwn(obj, j)) {
+    return obj;
+  }
+  const temp = obj[i];
+  obj[i] = obj[j];
+  obj[j] = temp;
+  return obj;
+};
+exports.swap = swap;

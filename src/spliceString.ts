@@ -1,5 +1,5 @@
-import isString from './isString'
-import isNumber from './isNumber'
+import { isString } from './isString'
+import { isNumber } from './isNumber'
 
 /**
  * 模拟数组的Array.prototype.splice方法
@@ -10,7 +10,7 @@ import isNumber from './isNumber'
  */
 export const spliceString = (string: string, start: number, deleteCount: number | string = 0, insertString = '') => {
   if (!isString(string)) {
-    console.error(`"${string}" is not a string`)
+    console.error(`"${ string }" is not a string`)
     return ''
   }
 
@@ -27,4 +27,3 @@ export const spliceString = (string: string, start: number, deleteCount: number 
   return string.substring(0, start) + insertString + string.substring(start + <number>deleteCount, string.length)
 }
 
-export default spliceString

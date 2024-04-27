@@ -1,1 +1,80 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("./isFunction.cjs"),l=require("./arrDelItemByProp.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");require("./isObject.cjs");class c{callbackMap={};static create(){return new c}trigger(e,i){if(!e)return;const r=this.callbackMap[e]??{queue:[]},{queue:t}=r;if(r.data=i,t.length===0){this.callbackMap[e]=r;return}t.forEach(({callback:u})=>u(i)),r.queue=t.filter(({once:u})=>!u),this.callbackMap[e]=r}on(e,i,r){if(!e||!s.isFunction(i()))return;const t=this.callbackMap[e]??{queue:[]},{data:u,queue:a}=t;r?.immediate&&i(u),a.push({once:r?.once??!1,callback:i}),this.callbackMap[e]=t}off(e,i){if(!e)return;const r=this.callbackMap[e];if(!r)return;const{queue:t}=r;s.isFunction(i)?l.arrDelItemByProp(t,"callback",i):delete this.callbackMap[e]}}exports.PublishSubscribe=c;exports.default=c;
+"use strict";
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isFunction = require("./isFunction.cjs");
+const arrDelItemByProp = require("./arrDelItemByProp.cjs");
+class PublishSubscribe {
+  constructor() {
+    __publicField(this, "callbackMap", {});
+  }
+  static create() {
+    return new PublishSubscribe();
+  }
+  /**
+   * 触发订阅
+   * @param eventName 事件名称
+   * @param data 数据
+   */
+  trigger(eventName, data) {
+    if (!eventName) {
+      return;
+    }
+    const item = this.callbackMap[eventName] ?? { queue: [] };
+    const { queue } = item;
+    item.data = data;
+    if (queue.length === 0) {
+      this.callbackMap[eventName] = item;
+      return;
+    }
+    queue.forEach(({ callback }) => callback(data));
+    item.queue = queue.filter(({ once }) => !once);
+    this.callbackMap[eventName] = item;
+  }
+  /**
+   * 订阅事件
+   * @param eventName 事件名称
+   * @param callback 回调
+   * @param options 选项
+   */
+  on(eventName, callback, options) {
+    if (!eventName || !isFunction.isFunction(callback())) {
+      return;
+    }
+    const item = this.callbackMap[eventName] ?? { queue: [] };
+    const { data, queue } = item;
+    if (options == null ? void 0 : options.immediate) {
+      callback(data);
+    }
+    queue.push({
+      once: (options == null ? void 0 : options.once) ?? false,
+      callback
+    });
+    this.callbackMap[eventName] = item;
+  }
+  /**
+   * 移除订阅/频道
+   * @param eventName 事件名称
+   * @param callback 回调
+   */
+  off(eventName, callback) {
+    if (!eventName) {
+      return;
+    }
+    const item = this.callbackMap[eventName];
+    if (!item) {
+      return;
+    }
+    const { queue } = item;
+    if (isFunction.isFunction(callback)) {
+      arrDelItemByProp.arrDelItemByProp(queue, "callback", callback);
+    } else {
+      delete this.callbackMap[eventName];
+    }
+  }
+}
+exports.PublishSubscribe = PublishSubscribe;

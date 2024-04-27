@@ -1,15 +1,26 @@
-import o from "./globalThis.js";
-const l = {
+import { globalThis as gt } from "./globalThis.js";
+import { normalizeOptions } from "./normalizeOptions.js";
+const DEBOUNCE_DEFAULT_OPTIONS = {
   timeout: 500,
-  immediate: !1
-}, f = (i, e) => {
-  let m;
-  const t = Object.assign({ ...l }, e);
-  return typeof e == "boolean" ? t.immediate = e : typeof e == "number" && (t.timeout = e), function(...a) {
-    clearTimeout(m), t.immediate && (i.apply(this, a), t.immediate = !1), m = o.setTimeout(i.bind(this, a), t.timeout);
+  immediate: false
+};
+const DEBOUNCE_TYPES = {
+  "number": "timeout",
+  "boolean": "immediate"
+};
+const debounce = (fn, options) => {
+  let timer = 0;
+  const { immediate, timeout } = normalizeOptions(options, DEBOUNCE_TYPES, DEBOUNCE_DEFAULT_OPTIONS);
+  let innerImmediate = immediate;
+  return function(...rest) {
+    clearTimeout(timer);
+    if (innerImmediate) {
+      fn.apply(this, rest);
+      innerImmediate = false;
+    }
+    timer = gt.setTimeout(fn.bind(this, rest), timeout);
   };
 };
 export {
-  f as debounce,
-  f as default
+  debounce
 };

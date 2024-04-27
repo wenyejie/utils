@@ -1,1 +1,17 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const l=require("./globalThis.cjs"),n=require("./hasSuffix.cjs"),u=(i,t)=>{const r=i.split(","),s=r[0].match(/:(.*?);/)[1],o=l.default.atob(r[1]);let e=o.length;const a=new Uint8Array(e);for(;e--;)a[e]=o.charCodeAt(e);return t=n.hasSuffix(t)?t:`${t}.${s.substring(6)}`,new File([a],t,{type:s})};exports.base642file=u;exports.default=u;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const globalThis = require("./globalThis.cjs");
+const hasSuffix = require("./hasSuffix.cjs");
+const base642file = (base64, filename) => {
+  const array = base64.split(",");
+  const type = array[0].match(/:(.*?);/)[1];
+  const decodedData = globalThis.globalThis.atob(array[1]);
+  let length = decodedData.length;
+  const uint8Array = new Uint8Array(length);
+  while (length--) {
+    uint8Array[length] = decodedData.charCodeAt(length);
+  }
+  filename = hasSuffix.hasSuffix(filename) ? filename : `${filename}.${type.substring(6)}`;
+  return new File([uint8Array], filename, { type });
+};
+exports.base642file = base642file;

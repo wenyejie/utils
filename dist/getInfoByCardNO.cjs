@@ -1,1 +1,23 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./isOddNumber.cjs"),n=require("./checkIDNO.cjs");require("./regexp.cjs");const t=e=>{const s={};return n.checkIDNO(e)&&Object.assign(s,{province:e.substring(0,2),city:e.substring(2,4),area:e.substring(4,6),address:e.substring(0,6),year:e.substring(6,10),month:e.substring(10,12),day:e.substring(12,14),date:e.substring(6,14),sex:i.isOddNumber(+e.substring(16,17))?"1":"2"}),s};exports.default=t;exports.getInfoByCardNO=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isOddNumber = require("./isOddNumber.cjs");
+const checkIDNO = require("./checkIDNO.cjs");
+const getInfoByCardNO = (card) => {
+  const cardInfo = {};
+  if (checkIDNO.checkIDNO(card)) {
+    Object.assign(cardInfo, {
+      province: card.substring(0, 2),
+      city: card.substring(2, 4),
+      area: card.substring(4, 6),
+      address: card.substring(0, 6),
+      year: card.substring(6, 10),
+      month: card.substring(10, 12),
+      day: card.substring(12, 14),
+      date: card.substring(6, 14),
+      sex: isOddNumber.isOddNumber(+card.substring(16, 17)) ? "1" : "2"
+      // male, female
+    });
+  }
+  return cardInfo;
+};
+exports.getInfoByCardNO = getInfoByCardNO;

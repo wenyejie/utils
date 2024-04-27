@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 
 /**
  * 手机号码中间四位隐藏
@@ -14,4 +14,3 @@ export const phoneNumFormat = (phone: string) => {
   return ''
 }
 
-export default phoneNumFormat

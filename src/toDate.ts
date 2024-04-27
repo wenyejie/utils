@@ -1,10 +1,11 @@
-import isDate from './isDate'
-import isNumber from './isNumber'
-import isString from './isString'
+import { isDate } from './isDate'
+import { isNumber } from './isNumber'
+import { isString } from './isString'
 import { rInteger, rIOSDateStringFormat } from './regexp'
-import isInvalidDate from './isInvalidDate'
-import isObject from './isObject'
-import nullProtoObject from './nullProtoObject'
+import { isInvalidDate } from './isInvalidDate'
+import { isObject } from './isObject'
+import { nullProtoObject } from './nullProtoObject'
+import type { LikeDate } from '../types'
 
 export interface ToDateOptions<D = undefined> {
   // 是否转换成新的对象
@@ -38,7 +39,7 @@ export const toDate: {
 } = <D, T extends ToDateOptions<D>>(date: LikeDate, options?: T['toNew'] | T['defaultValue'] | T) => {
   const innerOptions = normalizedOptions(options)
   if (!date || isInvalidDate(date)) {
-    console.error(`"${date}" is not valid date`)
+    console.error(`"${ date }" is not valid date`)
     return <D>innerOptions.defaultValue
   }
   if (isDate(date)) {
@@ -73,4 +74,3 @@ export const toDate: {
   return date
 }
 
-export default toDate

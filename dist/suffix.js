@@ -1,14 +1,15 @@
-import { isString as r } from "./isString.js";
-const t = (f) => {
-  if (!r(f))
-    return console.error(`"${f}" is not a string`), "";
-  f = f.trim();
+import { isString } from "./isString.js";
+const suffix = (string) => {
+  if (!isString(string)) {
+    console.error(`"${string}" is not a string`);
+    return "";
+  }
+  string = string.trim();
   const {
-    groups: { suffix: o }
-  } = f.match(/(?<=\.)(?<suffix>\w+)+$/);
-  return o;
+    groups: { suffix: suffix2 }
+  } = string.match(new RegExp("(?<=\\.)(?<suffix>\\w+)+$"));
+  return suffix2;
 };
 export {
-  t as default,
-  t as suffix
+  suffix
 };

@@ -1,3 +1,5 @@
+import type { AnyFn } from '../types'
+
 export interface LoadOptions {
   before?: AnyFn
   mode?: string
@@ -7,7 +9,7 @@ export interface LoadOptions {
 const DEFAULT_OPTIONS: LoadOptions = {
   before: _ => _,
   mode: 'src',
-  attrs: {},
+  attrs: {}
 }
 
 /**
@@ -19,7 +21,7 @@ const DEFAULT_OPTIONS: LoadOptions = {
 export const load = (
   tagName: keyof HTMLElementTagNameMap,
   url: string,
-  options?: LoadOptions,
+  options?: LoadOptions
 ): Promise<HTMLElement> => {
   options = Object.assign({}, DEFAULT_OPTIONS, options)
   return new Promise((resolve, reject) => {
@@ -30,7 +32,7 @@ export const load = (
 
     $element[mode] = url
 
-    for (const [key, value] of Object.entries(attrs)) {
+    for (const [ key, value ] of Object.entries(attrs)) {
       $element.setAttribute(key, <string>value)
     }
     $element.onload = () => {
@@ -46,4 +48,3 @@ export const load = (
   })
 }
 
-export default load

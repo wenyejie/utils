@@ -1,1 +1,12 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isString.cjs"),o=/\s+/g,r=e=>t.isString(e)?e.replace(o,""):(console.error(`"${e}" is not a string`),"");exports.default=r;exports.removeSpace=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const rSpace = /\s+/g;
+const removeSpace = (string) => {
+  if (!isString.isString(string)) {
+    console.error(`"${string}" is not a string`);
+    return "";
+  }
+  return string.replace(rSpace, "");
+};
+exports.removeSpace = removeSpace;

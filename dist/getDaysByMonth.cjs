@@ -1,1 +1,8 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./toDate.cjs");require("./isDate.cjs");require("./isNumber.cjs");require("./isString.cjs");require("./regexp.cjs");require("./isInvalidDate.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");require("./isObject.cjs");require("./nullProtoObject.cjs");const r=e=>(e=t.toDate(e),new Date(e.getFullYear(),e.getMonth()+1,0).getDate());exports.default=r;exports.getDaysByMonth=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toDate = require("./toDate.cjs");
+const getDaysByMonth = (date) => {
+  date = toDate.toDate(date);
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+};
+exports.getDaysByMonth = getDaysByMonth;

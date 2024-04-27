@@ -1,4 +1,4 @@
-import ban from '../src/ban'
+import { ban } from '../src/ban'
 import { expect, test } from 'vitest'
 
 test('ban', () => {

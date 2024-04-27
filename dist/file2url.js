@@ -1,5 +1,4 @@
-const t = (e) => URL.createObjectURL(e);
+const file2url = (file) => URL.createObjectURL(file);
 export {
-  t as default,
-  t as file2url
+  file2url
 };

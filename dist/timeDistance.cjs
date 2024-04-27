@@ -1,1 +1,41 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./toDate.cjs"),o=require("./datetimeSpan.cjs"),u=require("./dateFormat.cjs"),s=require("./isDate.cjs");require("./isNumber.cjs");require("./isString.cjs");require("./regexp.cjs");require("./isInvalidDate.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");require("./isObject.cjs");require("./nullProtoObject.cjs");require("./utils.cjs");require("./padStart.cjs");require("./isUndefined.cjs");const a=(r,e)=>{if(r=i.toDate(r),!s.isDate(r))return console.error(`"${r}" is not a valid date`),"";e=Object.assign({yearFormat:"YYYY-MM-DD",dayFormat:"MM-DD",hoursAgo:"小时前",minutesAgo:"分前",daysAgo:"天前",days:31,just:"刚刚",compare:new Date},e);const t=o.datetimeSpan(r,{compare:e.compare});return t.year>0?u.dateFormat(r,e.yearFormat):t.day>0&&t.day<=e.days?u.dateFormat(r,e.dayFormat):t.hour>0?t.hour+e.hoursAgo:t.minute>0?t.minute+e.minutesAgo:e.just};exports.default=a;exports.timeDistance=a;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toDate = require("./toDate.cjs");
+const datetimeSpan = require("./datetimeSpan.cjs");
+const dateFormat = require("./dateFormat.cjs");
+const isDate = require("./isDate.cjs");
+const timeDistance = (date, options) => {
+  date = toDate.toDate(date);
+  if (!isDate.isDate(date)) {
+    console.error(`"${date}" is not a valid date`);
+    return "";
+  }
+  options = Object.assign(
+    {
+      yearFormat: "YYYY-MM-DD",
+      dayFormat: "MM-DD",
+      hoursAgo: "小时前",
+      minutesAgo: "分前",
+      daysAgo: "天前",
+      days: 31,
+      just: "刚刚",
+      compare: /* @__PURE__ */ new Date()
+    },
+    options
+  );
+  const span = datetimeSpan.datetimeSpan(date, { compare: options.compare });
+  if (span.year > 0) {
+    return dateFormat.dateFormat(date, options.yearFormat);
+  }
+  if (span.day > 0 && span.day <= options.days) {
+    return dateFormat.dateFormat(date, options.dayFormat);
+  }
+  if (span.hour > 0) {
+    return span.hour + options.hoursAgo;
+  }
+  if (span.minute > 0) {
+    return span.minute + options.minutesAgo;
+  }
+  return options.just;
+};
+exports.timeDistance = timeDistance;

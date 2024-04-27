@@ -1,8 +1,11 @@
-import { isObject as e } from "./isObject.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-const c = (t) => e(t) ? Object.keys(t).length : (console.error(`"${t}" is not a Object`), 0);
+import { isObject } from "./isObject.js";
+const objectLength = (obj) => {
+  if (!isObject(obj)) {
+    console.error(`"${obj}" is not a Object`);
+    return 0;
+  }
+  return Object.keys(obj).length;
+};
 export {
-  c as default,
-  c as objectLength
+  objectLength
 };

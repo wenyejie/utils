@@ -2,7 +2,7 @@
   "name": "wenyejie",
   "sideEffects": false,
   "description": "utils tools",
-  "version": "2.2.0",
+  "version": "2.3.1",
   "private": false,
   "type": "module",
   "license": "ISC",
@@ -17,26 +17,20 @@
   "main": "./dist/wenyejie.cjs",
   "module": "./dist/wenyejie.js",
   "types": "./src/wenyejie.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/wenyejie.js",
-      "require": "./dist/wenyejie.cjs"
-    }
-  },
   "scripts": {
     "test": "vitest",
     "dev": "vite",
     "build": "vitest run && vite build",
-    "publish": "npm run build && npm publish"
+    "package": "npm run build && npm publish"
   },
   "devDependencies": {
-    "@types/node": "^20.11.4",
-    "@vitest/coverage-v8": "^1.2.0",
-    "happy-dom": "^13.1.4",
-    "prettier": "^3.2.2",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.11",
-    "vitest": "^1.2.0"
+    "@types/node": "^20.12.3",
+    "@vitest/coverage-v8": "^1.4.0",
+    "happy-dom": "^14.3.10",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7",
+    "vitest": "^1.4.0"
   },
   "repository": {
     "type": "git",
@@ -45,5 +39,6 @@
   "bugs": {
     "url": "https://github.com/wenyejie/utils/issues"
   },
-  "homepage": "https://github.com/wenyejie/utils#readme"
+  "homepage": "https://github.com/wenyejie/utils#readme",
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

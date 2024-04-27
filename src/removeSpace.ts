@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 
 const rSpace = /\s+/g
 
@@ -8,10 +8,9 @@ const rSpace = /\s+/g
  */
 export const removeSpace = (string: string) => {
   if (!isString(string)) {
-    console.error(`"${string}" is not a string`)
+    console.error(`"${ string }" is not a string`)
     return ''
   }
   return string.replace(rSpace, '')
 }
 
-export default removeSpace

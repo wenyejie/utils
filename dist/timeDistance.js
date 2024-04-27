@@ -1,22 +1,14 @@
-import { toDate as a } from "./toDate.js";
-import { datetimeSpan as e } from "./datetimeSpan.js";
-import { dateFormat as o } from "./dateFormat.js";
-import { isDate as i } from "./isDate.js";
-import "./isNumber.js";
-import "./isString.js";
-import "./regexp.js";
-import "./isInvalidDate.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-import "./isObject.js";
-import "./nullProtoObject.js";
-import "./utils.js";
-import "./padStart.js";
-import "./isUndefined.js";
-const j = (t, r) => {
-  if (t = a(t), !i(t))
-    return console.error(`"${t}" is not a valid date`), "";
-  r = Object.assign(
+import { toDate } from "./toDate.js";
+import { datetimeSpan } from "./datetimeSpan.js";
+import { dateFormat } from "./dateFormat.js";
+import { isDate } from "./isDate.js";
+const timeDistance = (date, options) => {
+  date = toDate(date);
+  if (!isDate(date)) {
+    console.error(`"${date}" is not a valid date`);
+    return "";
+  }
+  options = Object.assign(
     {
       yearFormat: "YYYY-MM-DD",
       dayFormat: "MM-DD",
@@ -27,12 +19,23 @@ const j = (t, r) => {
       just: "刚刚",
       compare: /* @__PURE__ */ new Date()
     },
-    r
+    options
   );
-  const m = e(t, { compare: r.compare });
-  return m.year > 0 ? o(t, r.yearFormat) : m.day > 0 && m.day <= r.days ? o(t, r.dayFormat) : m.hour > 0 ? m.hour + r.hoursAgo : m.minute > 0 ? m.minute + r.minutesAgo : r.just;
+  const span = datetimeSpan(date, { compare: options.compare });
+  if (span.year > 0) {
+    return dateFormat(date, options.yearFormat);
+  }
+  if (span.day > 0 && span.day <= options.days) {
+    return dateFormat(date, options.dayFormat);
+  }
+  if (span.hour > 0) {
+    return span.hour + options.hoursAgo;
+  }
+  if (span.minute > 0) {
+    return span.minute + options.minutesAgo;
+  }
+  return options.just;
 };
 export {
-  j as default,
-  j as timeDistance
+  timeDistance
 };

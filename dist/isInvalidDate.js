@@ -1,7 +1,5 @@
-import { toRawType as a } from "./toRawType.js";
-import "./decapitalize.js";
-const o = (t) => a(t) === "date" && t.toString() === "Invalid Date";
+import { toRawType } from "./toRawType.js";
+const isInvalidDate = (obj) => toRawType(obj) === "date" && obj.toString() === "Invalid Date";
 export {
-  o as default,
-  o as isInvalidDate
+  isInvalidDate
 };

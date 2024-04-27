@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 import { window } from './utils'
-import local from '../src/local'
-import globalThis from '../src/globalThis'
+import { local } from '../src/local'
+import { globalThis } from '../src/globalThis'
 
 test('local', () => {
   // @ts-ignore

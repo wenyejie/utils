@@ -1,8 +1,8 @@
-const r = (t, a = 0) => {
-  const o = Math.max(t, a), n = Math.min(t, a);
-  return Math.random() * (o - n) + n;
+const randomNumber = (max, min = 0) => {
+  const cMax = Math.max(max, min);
+  const cMin = Math.min(max, min);
+  return Math.random() * (cMax - cMin) + cMin;
 };
 export {
-  r as default,
-  r as randomNumber
+  randomNumber
 };

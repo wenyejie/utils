@@ -1,5 +1,4 @@
-const e = Number.isInteger;
+const isInteger = Number.isInteger;
 export {
-  e as default,
-  e as isInteger
+  isInteger
 };

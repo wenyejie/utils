@@ -1,10 +1,13 @@
-const n = (r) => new Promise((a, o) => {
-  const e = new FileReader();
-  e.onload = () => {
-    a(e.result);
-  }, e.onerror = o, e.readAsDataURL(r);
-});
+const file2base64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      resolve(reader.result);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
 export {
-  n as default,
-  n as file2base64
+  file2base64
 };

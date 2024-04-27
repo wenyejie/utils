@@ -4,4 +4,3 @@
  */
 export const isNaturalNumber = (obj: number) => Number.isInteger(obj) && obj >= 0
 
-export default isNaturalNumber

@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isBoolean from '../src/isBoolean'
+import { isBoolean } from '../src/isBoolean'
 
 test('isBoolean', () => {
   expect(isBoolean(true)).toBe(true)

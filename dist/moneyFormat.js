@@ -1,8 +1,7 @@
-import { isNumber as r } from "./isNumber.js";
-import { toNumber as a } from "./toNumber.js";
-import { nullProtoObject as d } from "./nullProtoObject.js";
-import "./isString.js";
-const m = {
+import { isNumber } from "./isNumber.js";
+import { toNumber } from "./toNumber.js";
+import { nullProtoObject } from "./nullProtoObject.js";
+const defaultOptions = {
   decimal: 2,
   // 小数点长度
   symbol: "",
@@ -13,15 +12,22 @@ const m = {
   // 分隔符号
   length: 3,
   // 分割长度
-  padEnd: !0
+  padEnd: true
   // 是否尾部填充
-}, p = (l, e) => {
-  if (e = Object.assign(d(), m, e), l = a(l), !r(l))
-    return e.default;
-  const t = l.toFixed(e.decimal).split(".");
-  return !e.padEnd && t[1] && (t[1] = t[1].replace(/0+$/, "")), e.symbol + t[0].replace(new RegExp("\\B(?=(\\d{" + e.length + "})+(?!\\d))", "g"), e.split) + (t[1] ? "." + t[1] : "");
+};
+const moneyFormat = (number, options) => {
+  options = Object.assign(nullProtoObject(), defaultOptions, options);
+  number = toNumber(number);
+  if (!isNumber(number)) {
+    return options.default;
+  }
+  const result = number.toFixed(options.decimal);
+  const numberSplit = result.split(".");
+  if (!options.padEnd && numberSplit[1]) {
+    numberSplit[1] = numberSplit[1].replace(/0+$/, "");
+  }
+  return options.symbol + numberSplit[0].replace(new RegExp("\\B(?=(\\d{" + options.length + "})+(?!\\d))", "g"), options.split) + (numberSplit[1] ? "." + numberSplit[1] : "");
 };
 export {
-  p as default,
-  p as moneyFormat
+  moneyFormat
 };

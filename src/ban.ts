@@ -1,4 +1,5 @@
-import isObject from './isObject'
+import { isObject } from './isObject'
+import type { PropObj } from '../types'
 
 /**
  * 从对象中选中一些属性移除, 剩下的属性组成新的对象并返回,不影响原有对象
@@ -7,7 +8,7 @@ import isObject from './isObject'
  */
 export const ban = <T extends PropObj>(obj: T, ...rest: string[]) => {
   if (!isObject(obj)) {
-    console.error(`"${obj}" is not a object`)
+    console.error(`"${ obj }" is not a object`)
     return
   }
   let result: PropObj = {}
@@ -18,4 +19,3 @@ export const ban = <T extends PropObj>(obj: T, ...rest: string[]) => {
   return result
 }
 
-export default ban

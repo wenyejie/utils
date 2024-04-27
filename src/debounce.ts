@@ -1,13 +1,19 @@
-import globalThis from './globalThis'
+import { globalThis } from './globalThis'
+import { normalizeOptions } from '@/normalizeOptions'
 
 export interface DebounceOptions {
-  timeout?: number
-  immediate?: boolean
+  timeout: number
+  immediate: boolean
 }
 
-const DEFAULT_OPTIONS: DebounceOptions = {
+const DEBOUNCE_DEFAULT_OPTIONS: DebounceOptions = {
   timeout: 500,
-  immediate: false,
+  immediate: false
+}
+
+const DEBOUNCE_TYPES = {
+  'number': 'timeout',
+  'boolean': 'immediate'
 }
 
 /**
@@ -16,29 +22,25 @@ const DEFAULT_OPTIONS: DebounceOptions = {
  * @param options 选项
  */
 export const debounce: {
-  <T, R>(fn: (...rest: T[]) => R, options?: DebounceOptions): (...rest: T[]) => void
-  <T, R>(fn: (...rest: T[]) => R, timeout?: DebounceOptions['timeout']): (...rest: T[]) => void
-  <T, R>(fn: (...rest: T[]) => R, immediate?: DebounceOptions['immediate']): (...rest: T[]) => void
+  <T, R>(fn: (...rest: T[]) => R): (...rest: T[]) => void
+  <T, R>(fn: (...rest: T[]) => R, options: Partial<DebounceOptions>): (...rest: T[]) => void
+  <T, R>(fn: (...rest: T[]) => R, timeout: DebounceOptions['timeout']): (...rest: T[]) => void
+  <T, R>(fn: (...rest: T[]) => R, immediate: DebounceOptions['immediate']): (...rest: T[]) => void
 } = <T, R>(
   fn: (...rest: T[]) => R,
-  options?: DebounceOptions | DebounceOptions['timeout'] | DebounceOptions['immediate'],
+  options?: Partial<DebounceOptions> | DebounceOptions['timeout'] | DebounceOptions['immediate']
 ) => {
-  let timer: number
-  const innerOptions: DebounceOptions = Object.assign({ ...DEFAULT_OPTIONS }, options)
-  if (typeof options === 'boolean') {
-    innerOptions.immediate = options
-  } else if (typeof options === 'number') {
-    innerOptions.timeout = options
-  }
-  return function (...rest: T[]) {
+  let timer: number = 0
+  const { immediate, timeout } = normalizeOptions(options, DEBOUNCE_TYPES, DEBOUNCE_DEFAULT_OPTIONS)
+  let innerImmediate = immediate
+  return function(...rest: T[]) {
     clearTimeout(timer)
-    if (innerOptions.immediate) {
+    if (innerImmediate) {
       fn.apply(this, rest)
-      innerOptions.immediate = false
+      innerImmediate = false
     }
 
-    timer = globalThis.setTimeout(fn.bind(this, rest), innerOptions.timeout)
+    timer = globalThis.setTimeout(fn.bind(this, rest), timeout)
   }
 }
 
-export default debounce

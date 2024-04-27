@@ -1,1 +1,15 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./isString.cjs"),u=e=>{if(!t.isString(e))return console.error(`"${e}" is not a string`),"";e=e.trim();const{groups:{suffix:r}}=e.match(/(?<=\.)(?<suffix>\w+)+$/);return r};exports.default=u;exports.suffix=u;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const suffix = (string) => {
+  if (!isString.isString(string)) {
+    console.error(`"${string}" is not a string`);
+    return "";
+  }
+  string = string.trim();
+  const {
+    groups: { suffix: suffix2 }
+  } = string.match(new RegExp("(?<=\\.)(?<suffix>\\w+)+$"));
+  return suffix2;
+};
+exports.suffix = suffix;

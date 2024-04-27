@@ -1,19 +1,29 @@
-import { isDate as n } from "./isDate.js";
-import { TS_UNIT as o } from "./utils.js";
-const i = {
+import { isDate } from "./isDate.js";
+import { TS_UNIT } from "./utils.js";
+const DEFAULT_OPTIONS = {
   types: ["year", "week", "day", "hour", "minute", "second"]
-}, c = (e) => {
-  const t = { ...i };
-  return n(e) ? t.compare = e : Array.isArray(e) ? t.types = e : Object.assign(t, e), t;
-}, l = (e, t) => {
-  const { compare: m, types: p } = c(t);
-  let s = n(e) ? Math.abs(e.getTime() - (m ?? /* @__PURE__ */ new Date()).getTime()) : Number.parseInt(e);
-  const a = {};
-  for (const r of p)
-    a[r] = Math.floor(s / o[r.toUpperCase()]), s %= o[r.toUpperCase()];
-  return a;
+};
+const normalizedOptions = (options) => {
+  const innerOptions = { ...DEFAULT_OPTIONS };
+  if (isDate(options)) {
+    innerOptions.compare = options;
+  } else if (Array.isArray(options)) {
+    innerOptions.types = options;
+  } else {
+    Object.assign(innerOptions, options);
+  }
+  return innerOptions;
+};
+const datetimeSpan = (date, options) => {
+  const { compare, types } = normalizedOptions(options);
+  let timestamp = isDate(date) ? Math.abs(date.getTime() - (compare ?? /* @__PURE__ */ new Date()).getTime()) : Number.parseInt(date);
+  const result = {};
+  for (const type of types) {
+    result[type] = Math.floor(timestamp / TS_UNIT[type.toUpperCase()]);
+    timestamp %= TS_UNIT[type.toUpperCase()];
+  }
+  return result;
 };
 export {
-  l as datetimeSpan,
-  l as default
+  datetimeSpan
 };

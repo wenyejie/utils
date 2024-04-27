@@ -1,1 +1,6 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=t=>/[0-9A-HJ-NPQRTUWXY]{2}\d{6}[0-9A-HJ-NPQRTUWXY]{10}/.test(t);exports.checkTaxpayerIDNO=e;exports.default=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const checkTaxpayerIDNO = (taxId) => {
+  return /[0-9A-HJ-NPQRTUWXY]{2}\d{6}[0-9A-HJ-NPQRTUWXY]{10}/.test(taxId);
+};
+exports.checkTaxpayerIDNO = checkTaxpayerIDNO;

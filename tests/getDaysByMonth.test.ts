@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import getDaysByMonth from '../src/getDaysByMonth'
+import { getDaysByMonth } from '../src/getDaysByMonth'
 
 test('getDaysByMonth', () => {
   const date = new Date('2023-09-13')

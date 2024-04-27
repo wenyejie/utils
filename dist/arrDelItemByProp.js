@@ -1,16 +1,20 @@
-import { isObject as p } from "./isObject.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-const d = (t, e, n) => {
-  const o = p(e) ? e : { [e]: n }, i = Object.entries(o), r = t.findIndex((s) => {
-    for (const [c, f] of i)
-      if (s[c] !== f)
-        return !1;
-    return !0;
+import { isObject } from "./isObject.js";
+const arrDelItemByProp = (array, propKey, propValue) => {
+  const propObj = isObject(propKey) ? propKey : { [propKey]: propValue };
+  const propEntries = Object.entries(propObj);
+  const index = array.findIndex((item) => {
+    for (const [key, value] of propEntries) {
+      if (item[key] !== value) {
+        return false;
+      }
+    }
+    return true;
   });
-  return r >= 0 && t.splice(r, 1), t;
+  if (index >= 0) {
+    array.splice(index, 1);
+  }
+  return array;
 };
 export {
-  d as arrDelItemByProp,
-  d as default
+  arrDelItemByProp
 };

@@ -1,1 +1,11 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./isObject.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");const t=e=>r.isObject(e)?Object.keys(e).length:(console.error(`"${e}" is not a Object`),0);exports.default=t;exports.objectLength=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isObject = require("./isObject.cjs");
+const objectLength = (obj) => {
+  if (!isObject.isObject(obj)) {
+    console.error(`"${obj}" is not a Object`);
+    return 0;
+  }
+  return Object.keys(obj).length;
+};
+exports.objectLength = objectLength;

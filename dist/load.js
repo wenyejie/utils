@@ -1,19 +1,30 @@
-const u = {
-  before: (t) => t,
+const DEFAULT_OPTIONS = {
+  before: (_) => _,
   mode: "src",
   attrs: {}
-}, f = (t, n, o) => (o = Object.assign({}, u, o), new Promise((d, s) => {
-  const e = document.createElement(t), r = document.body, { mode: c, attrs: a, before: l } = o;
-  e[c] = n;
-  for (const [m, b] of Object.entries(a))
-    e.setAttribute(m, b);
-  e.onload = () => {
-    d(e), r.removeChild(e);
-  }, e.onerror = () => {
-    s(e), r.removeChild(e);
-  }, l(e), r.appendChild(e);
-}));
+};
+const load = (tagName, url, options) => {
+  options = Object.assign({}, DEFAULT_OPTIONS, options);
+  return new Promise((resolve, reject) => {
+    const $element = document.createElement(tagName);
+    const $body = document.body;
+    const { mode, attrs, before } = options;
+    $element[mode] = url;
+    for (const [key, value] of Object.entries(attrs)) {
+      $element.setAttribute(key, value);
+    }
+    $element.onload = () => {
+      resolve($element);
+      $body.removeChild($element);
+    };
+    $element.onerror = () => {
+      reject($element);
+      $body.removeChild($element);
+    };
+    before($element);
+    $body.appendChild($element);
+  });
+};
 export {
-  f as default,
-  f as load
+  load
 };

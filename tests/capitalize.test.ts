@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import capitalize from '../src/capitalize'
+import { capitalize } from '../src/capitalize'
 
 test('capitalize', () => {
   expect(capitalize('demo')).toEqual('Demo')

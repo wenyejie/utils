@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import { toRawType } from './toRawType'
 
 /**
  * 判断是否为blob类型
@@ -6,4 +6,3 @@ import toRawType from './toRawType'
  */
 export const isBlob = (obj: unknown) => toRawType(obj) === 'blob'
 
-export default isBlob

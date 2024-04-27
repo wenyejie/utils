@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import { toRawType } from './toRawType'
 
 /**
  * 判断是否为函数
@@ -6,4 +6,3 @@ import toRawType from './toRawType'
  */
 export const isFunction = (obj: unknown) => toRawType(obj) === 'function'
 
-export default isFunction

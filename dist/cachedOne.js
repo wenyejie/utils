@@ -1,6 +1,5 @@
-import { once as e } from "./once.js";
-const c = e;
+import { once } from "./once.js";
+const cachedOne = once;
 export {
-  c as cachedOne,
-  c as default
+  cachedOne
 };

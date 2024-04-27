@@ -1,20 +1,23 @@
-import { isObject as s } from "./isObject.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-const t = (r, o) => {
-  if (!Array.isArray(r) && !s(r)) {
-    console.error(`"${r}" is not array or object`);
+import { isObject } from "./isObject.js";
+const each = (data, fn) => {
+  if (!Array.isArray(data) && !isObject(data)) {
+    console.error(`"${data}" is not array or object`);
     return;
   }
-  if (Array.isArray(r))
-    for (let e = 0; e < r.length && o(r[e], e, r) !== !1; e++)
-      ;
-  else
-    for (const [e, i] of Object.entries(r))
-      if (o(i, e, r) === !1)
+  if (Array.isArray(data)) {
+    for (let i = 0; i < data.length; i++) {
+      if (fn(data[i], i, data) === false) {
         break;
+      }
+    }
+  } else {
+    for (const [key, value] of Object.entries(data)) {
+      if (fn(value, key, data) === false) {
+        break;
+      }
+    }
+  }
 };
 export {
-  t as default,
-  t as each
+  each
 };

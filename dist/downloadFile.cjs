@@ -1,1 +1,20 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const d=require("./isString.cjs"),o=(t,n="")=>{if(!d.isString(t)){console.error(`"${t}" is not a string`);return}const e=document.createElement("a");e.style.display="none",e.href=t,e.setAttribute("download",n),e.download||e.setAttribute("target","_blank"),document.body.appendChild(e),e.click(),document.body.removeChild(e)};exports.default=o;exports.downloadFile=o;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const downloadFile = (url, filename = "") => {
+  if (!isString.isString(url)) {
+    console.error(`"${url}" is not a string`);
+    return;
+  }
+  const $download = document.createElement("a");
+  $download.style.display = "none";
+  $download.href = url;
+  $download.setAttribute("download", filename);
+  if (!$download.download) {
+    $download.setAttribute("target", "_blank");
+  }
+  document.body.appendChild($download);
+  $download.click();
+  document.body.removeChild($download);
+};
+exports.downloadFile = downloadFile;

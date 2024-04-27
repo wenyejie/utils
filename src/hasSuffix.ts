@@ -4,4 +4,3 @@
  */
 export const hasSuffix = (name: string) => /\.\w+$/.test(name)
 
-export default hasSuffix

@@ -1,5 +1,4 @@
-const e = Object.freeze({});
+const emptyObject = Object.freeze({});
 export {
-  e as default,
-  e as emptyObject
+  emptyObject
 };

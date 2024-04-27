@@ -1,1 +1,7 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=e=>(e.setHours(0,0,0,0),e);exports.dayStart=t;exports.default=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const dayStart = (date) => {
+  date.setHours(0, 0, 0, 0);
+  return date;
+};
+exports.dayStart = dayStart;

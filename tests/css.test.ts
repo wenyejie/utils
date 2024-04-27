@@ -1,9 +1,9 @@
 import { expect, test } from 'vitest'
 import { CSSStyleDeclaration } from 'happy-dom'
-import getCSS from '../src/getCSS'
-import setCSS from '../src/setCSS'
-import supportCSS from '../src/supportCSS'
-import globalThis from '../src/globalThis'
+import { getCSS } from '../src/getCSS'
+import { setCSS } from '../src/setCSS'
+import { supportCSS } from '../src/supportCSS'
+import { globalThis } from '../src/globalThis'
 import { document, window } from './utils'
 
 const $div = document.createElement('div')
@@ -20,7 +20,7 @@ test('setCSS', () => {
   expect(getCSS($div, 'display')).toBe('flex')
   setCSS($div, {
     display: 'block',
-    margin: '1px',
+    margin: '1px'
   })
   expect(getCSS($div, 'display')).toBe('block')
   expect(getCSS($div, 'margin')).toBe('1px')

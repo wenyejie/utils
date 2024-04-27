@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import { toRawType } from './toRawType'
 
 /**
  * 判断是否为原始类型
@@ -20,4 +20,3 @@ export const isPrimitive = (obj: unknown) => {
   }
 }
 
-export default isPrimitive

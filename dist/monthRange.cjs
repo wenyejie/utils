@@ -1,1 +1,35 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./toDate.cjs"),o=require("./isDate.cjs");require("./isNumber.cjs");require("./isString.cjs");require("./regexp.cjs");require("./isInvalidDate.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");require("./isObject.cjs");require("./nullProtoObject.cjs");const s=(e,r="range")=>{e=i.toDate(e);const n={start:null,end:null};if(!o.isDate(e))return console.error(`"${e}" is not a valid date`),r==="range"?n:null;const u=new Date(e);if(r!=="end"&&(u.setDate(1),u.setHours(0,0,0,0),r==="start"))return u;const t=new Date(e);return r!=="start"&&(t.setMonth(t.getMonth()+1,0),t.setHours(23,59,59,999),r==="end")?t:(n.start=u,n.end=t,n)};exports.default=s;exports.monthRange=s;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toDate = require("./toDate.cjs");
+const isDate = require("./isDate.cjs");
+const monthRange = (date, type = "range") => {
+  date = toDate.toDate(date);
+  const result = {
+    start: null,
+    end: null
+  };
+  if (!isDate.isDate(date)) {
+    console.error(`"${date}" is not a valid date`);
+    return type === "range" ? result : null;
+  }
+  const start = new Date(date);
+  if (type !== "end") {
+    start.setDate(1);
+    start.setHours(0, 0, 0, 0);
+    if (type === "start") {
+      return start;
+    }
+  }
+  const end = new Date(date);
+  if (type !== "start") {
+    end.setMonth(end.getMonth() + 1, 0);
+    end.setHours(23, 59, 59, 999);
+    if (type === "end") {
+      return end;
+    }
+  }
+  result.start = start;
+  result.end = end;
+  return result;
+};
+exports.monthRange = monthRange;

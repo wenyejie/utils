@@ -4,4 +4,3 @@
  */
 export const isPromise = (obj: unknown) => obj instanceof Promise
 
-export default isPromise

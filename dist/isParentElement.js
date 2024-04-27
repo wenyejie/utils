@@ -1,17 +1,24 @@
-import { isElement as t } from "./isElement.js";
-const s = (r, e, n = !0) => {
-  if (!t(r))
-    return console.error(`"${r}" is not a HTMLElement`), !1;
-  if (!t(e))
-    return console.error(`"${e}" is not a HTMLElement`), !1;
-  for (n || (e = e.parentElement); e !== null; ) {
-    if (e === r)
-      return !0;
-    e = e.parentElement;
+import { isElement } from "./isElement.js";
+const isParentElement = (parent, child, selfParent = true) => {
+  if (!isElement(parent)) {
+    console.error(`"${parent}" is not a HTMLElement`);
+    return false;
   }
-  return !1;
+  if (!isElement(child)) {
+    console.error(`"${child}" is not a HTMLElement`);
+    return false;
+  }
+  if (!selfParent) {
+    child = child.parentElement;
+  }
+  while (child !== null) {
+    if (child === parent) {
+      return true;
+    }
+    child = child.parentElement;
+  }
+  return false;
 };
 export {
-  s as default,
-  s as isParentElement
+  isParentElement
 };

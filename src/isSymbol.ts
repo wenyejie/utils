@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import { toRawType } from './toRawType'
 
 /**
  * 判断是否为symbol类型
@@ -6,4 +6,3 @@ import toRawType from './toRawType'
  */
 export const isSymbol = (obj: unknown) => toRawType(obj) === 'symbol'
 
-export default isSymbol

@@ -1,20 +1,27 @@
-const u = {
-  get: (r, e) => r[e]?.value,
-  set: (r, e, o) => (r[e] = o, !0)
-}, a = (r) => {
-  const e = new Proxy({}, u);
-  if (!Array.isArray(r)) {
-    console.error(`"${r}" is not a array`);
+const handler = {
+  get: (target, prop) => {
+    var _a;
+    return (_a = target[prop]) == null ? void 0 : _a.value;
+  },
+  set: (obj, prop, value) => {
+    obj[prop] = value;
+    return true;
+  }
+};
+const toMultiKeyOneValue = (data) => {
+  const proxy = new Proxy({}, handler);
+  if (!Array.isArray(data)) {
+    console.error(`"${data}" is not a array`);
     return;
   }
-  for (const [o, n] of r) {
-    const t = { value: n };
-    for (const s of o)
-      e[s] = t;
+  for (const [keys, value] of data) {
+    const innerValue = { value };
+    for (const key of keys) {
+      proxy[key] = innerValue;
+    }
   }
-  return e;
+  return proxy;
 };
 export {
-  a as default,
-  a as toMultiKeyOneValue
+  toMultiKeyOneValue
 };

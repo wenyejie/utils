@@ -1,5 +1,6 @@
-import isFunction from './isFunction'
-import arrDelItemByProp from './arrDelItemByProp'
+import { isFunction } from './isFunction'
+import { arrDelItemByProp } from './arrDelItemByProp'
+import type { AnyFn } from '../types'
 
 // 发布订阅的订阅选项
 export interface PublishSubscribeOnOptions {
@@ -72,7 +73,7 @@ export class PublishSubscribe {
     }
     queue.push({
       once: options?.once ?? false,
-      callback,
+      callback
     })
     this.callbackMap[eventName] = item
   }
@@ -102,4 +103,3 @@ export class PublishSubscribe {
   }
 }
 
-export default PublishSubscribe

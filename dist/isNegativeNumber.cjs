@@ -1,1 +1,5 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("./isNumber.cjs"),t=e=>u.isNumber(e)&&e<0;exports.default=t;exports.isNegativeNumber=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isNumber = require("./isNumber.cjs");
+const isNegativeNumber = (obj) => isNumber.isNumber(obj) && obj < 0;
+exports.isNegativeNumber = isNegativeNumber;

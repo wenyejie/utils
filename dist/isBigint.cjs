@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=t=>typeof t=="bigint";exports.default=e;exports.isBigint=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isBigint = (obj) => typeof obj === "bigint";
+exports.isBigint = isBigint;

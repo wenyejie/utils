@@ -1,5 +1,4 @@
-const t = (e) => e === !0;
+const isTrue = (obj) => obj === true;
 export {
-  t as default,
-  t as isTrue
+  isTrue
 };

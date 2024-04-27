@@ -1,4 +1,5 @@
-import isObject from './isObject'
+import { isObject } from './isObject'
+import type { PropObj } from '../types'
 
 /**
  * 获取对象长度
@@ -6,10 +7,9 @@ import isObject from './isObject'
  */
 export const objectLength = (obj: PropObj) => {
   if (!isObject(obj)) {
-    console.error(`"${obj}" is not a Object`)
+    console.error(`"${ obj }" is not a Object`)
     return 0
   }
   return Object.keys(obj).length
 }
 
-export default objectLength

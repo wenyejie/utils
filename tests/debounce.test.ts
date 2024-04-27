@@ -1,5 +1,5 @@
 import { expect, test, vi } from 'vitest'
-import debounce from '../src/debounce'
+import { debounce } from '../src/debounce'
 
 test('debounce', () => {
   let counter = 0

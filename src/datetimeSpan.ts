@@ -1,6 +1,7 @@
-import isDate from './isDate'
-import padStart from './padStart'
+import { isDate } from './isDate'
 import { TS_UNIT } from './utils'
+import { padStart } from './padStart'
+import type { LikeDate } from '../types'
 
 export type DatetimeSpanTypes = 'year' | 'week' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond'
 
@@ -21,7 +22,7 @@ export interface DatetimeSpanOptions {
 }
 
 const DEFAULT_OPTIONS: DatetimeSpanOptions = {
-  types: ['day', 'hour', 'minute', 'second'],
+  types: [ 'year', 'week', 'day', 'hour', 'minute', 'second' ]
 }
 
 const normalizedOptions = (options: Date | DatetimeSpanTypes[] | DatetimeSpanOptions): DatetimeSpanOptions => {
@@ -60,4 +61,3 @@ export const datetimeSpan: {
   return result
 }
 
-export default datetimeSpan

@@ -1,1 +1,14 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./isNumber.cjs"),s=require("./isString.cjs"),r=(e,t=0)=>(s.isString(e)&&(e=Number.parseFloat(e)),i.isNumber(e)?e:t);exports.default=r;exports.toNumber=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isNumber = require("./isNumber.cjs");
+const isString = require("./isString.cjs");
+const toNumber = (num, defaultValue = 0) => {
+  if (isString.isString(num)) {
+    num = Number.parseFloat(num);
+  }
+  if (isNumber.isNumber(num)) {
+    return num;
+  }
+  return defaultValue;
+};
+exports.toNumber = toNumber;

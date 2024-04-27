@@ -1,5 +1,4 @@
-const r = (e) => Number.isInteger(e) && e % 2 === 0;
+const isEvenNumber = (obj) => Number.isInteger(obj) && obj % 2 === 0;
 export {
-  r as default,
-  r as isEvenNumber
+  isEvenNumber
 };

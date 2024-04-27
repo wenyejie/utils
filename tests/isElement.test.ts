@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isElement from '../src/isElement'
+import { isElement } from '../src/isElement'
 import { document } from './utils'
 
 test('isElement', () => {

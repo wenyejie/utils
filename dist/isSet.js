@@ -1,7 +1,5 @@
-import { toRawType as o } from "./toRawType.js";
-import "./decapitalize.js";
-const r = (t) => o(t) === "set";
+import { toRawType } from "./toRawType.js";
+const isSet = (obj) => toRawType(obj) === "set";
 export {
-  r as default,
-  r as isSet
+  isSet
 };

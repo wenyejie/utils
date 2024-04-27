@@ -6,6 +6,7 @@ export const TS_MINUTE = 6e4
 export const TS_SECOND = 1e3
 export const TS_MILLISECOND = 1
 
+// 时间单位
 export enum TS_UNIT {
   YEAR = TS_YEAR,
   WEEK = TS_WEEK,

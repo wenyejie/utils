@@ -4,10 +4,9 @@
  */
 export const unique = <T>(array: T[]): T[] => {
   if (!Array.isArray(array)) {
-    console.error(`"${array}" is not a array`)
+    console.error(`"${ array }" is not a array`)
     return array
   }
   return Array.from(new Set(array))
 }
 
-export default unique

@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isComment from '../src/isComment'
+import { isComment } from '../src/isComment'
 import { document } from './utils'
 
 test('isComment', () => {

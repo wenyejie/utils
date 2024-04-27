@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isEvenNumber from '../src/isEvenNumber'
+import { isEvenNumber } from '../src/isEvenNumber'
 
 test('isEvenNumber', () => {
   expect(isEvenNumber(0)).toBe(true)

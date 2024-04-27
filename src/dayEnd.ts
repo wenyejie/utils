@@ -7,4 +7,3 @@ export const dayEnd = (date: Date) => {
   return date
 }
 
-export default dayEnd

@@ -1,1 +1,13 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const c=require("./isObject.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");const i=(e,...u)=>{const r={};return c.isObject(e)&&u.forEach(t=>{r[t]=e[t]}),r};exports.default=i;exports.pick=i;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isObject = require("./isObject.cjs");
+const pick = (obj, ...rest) => {
+  const result = {};
+  if (isObject.isObject(obj)) {
+    rest.forEach((key) => {
+      result[key] = obj[key];
+    });
+  }
+  return result;
+};
+exports.pick = pick;

@@ -1,7 +1,5 @@
-import { phoneNumFormat as o } from "./phoneNumFormat.js";
-import "./isString.js";
-const r = o;
+import { phoneNumFormat } from "./phoneNumFormat.js";
+const mobilePhoneFormat = phoneNumFormat;
 export {
-  r as default,
-  r as mobilePhoneFormat
+  mobilePhoneFormat
 };

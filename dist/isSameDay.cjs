@@ -1,1 +1,14 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./toDate.cjs"),t=require("./isDate.cjs");require("./isNumber.cjs");require("./isString.cjs");require("./regexp.cjs");require("./isInvalidDate.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");require("./isObject.cjs");require("./nullProtoObject.cjs");const u=(e,r)=>(e=i.toDate(e),r=i.toDate(r),!t.isDate(e)||!t.isDate(r)?(console.error(`"${e}" or "${r}" is not a valid date`),!1):e.getFullYear()===r.getFullYear()&&e.getMonth()===r.getMonth()&&e.getDate()===r.getDate());exports.default=u;exports.isSameDay=u;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toDate = require("./toDate.cjs");
+const isDate = require("./isDate.cjs");
+const isSameDay = (date1, date2) => {
+  date1 = toDate.toDate(date1);
+  date2 = toDate.toDate(date2);
+  if (!isDate.isDate(date1) || !isDate.isDate(date2)) {
+    console.error(`"${date1}" or "${date2}" is not a valid date`);
+    return false;
+  }
+  return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth() && date1.getDate() === date2.getDate();
+};
+exports.isSameDay = isSameDay;

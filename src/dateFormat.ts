@@ -1,5 +1,6 @@
-import toDate from './toDate'
-import padStart from './padStart'
+import { toDate } from './toDate'
+import { padStart } from './padStart'
+import type { LikeDate } from '../types'
 
 /**
  * 把相关数据转换成
@@ -10,11 +11,11 @@ import padStart from './padStart'
 export const dateFormat = (date: LikeDate, format = 'YYYY-MM-DD hh:mm:ss', defaultValue = '') => {
   const newDate = toDate(date)
   if (!newDate) {
-    console.error(`"${date}" is not valid date`)
+    console.error(`"${ date }" is not valid date`)
     return defaultValue
   }
 
-  return format.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, str => {
+  return format.replace(/\[(.*?)\]|YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, str => {
     switch (str) {
       case 'YYYY':
         return newDate.getFullYear() + ''
@@ -46,8 +47,9 @@ export const dateFormat = (date: LikeDate, format = 'YYYY-MM-DD hh:mm:ss', defau
         return padStart(Math.floor(newDate.getMilliseconds() / 10))
       case 'S':
         return Math.floor(newDate.getMilliseconds() / 100) + ''
+      default:
+        return str.replace(/\[(.*?)\]/g, '$1')
     }
   })
 }
 
-export default dateFormat

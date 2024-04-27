@@ -1,13 +1,13 @@
-import { isObject as c } from "./isObject.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-const f = (t, ...i) => {
-  const r = {};
-  return c(t) && i.forEach((o) => {
-    r[o] = t[o];
-  }), r;
+import { isObject } from "./isObject.js";
+const pick = (obj, ...rest) => {
+  const result = {};
+  if (isObject(obj)) {
+    rest.forEach((key) => {
+      result[key] = obj[key];
+    });
+  }
+  return result;
 };
 export {
-  f as default,
-  f as pick
+  pick
 };

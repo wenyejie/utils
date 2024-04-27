@@ -1,4 +1,4 @@
-import camelize from './camelize'
+import { camelize } from './camelize'
 
 export const setCSS: {
   /**
@@ -37,4 +37,3 @@ export const setCSS: {
   }
 }
 
-export default setCSS

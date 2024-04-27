@@ -1,7 +1,5 @@
-import { toRawType as o } from "./toRawType.js";
-import "./decapitalize.js";
-const e = (a) => o(a) === "weakMap";
+import { toRawType } from "./toRawType.js";
+const isWeakMap = (obj) => toRawType(obj) === "weakMap";
 export {
-  e as default,
-  e as isWeakMap
+  isWeakMap
 };

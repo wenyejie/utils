@@ -1,1 +1,6 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=a=>a.replace(/(\w+)/gi,e=>e.charAt(0).toUpperCase()+e.slice(1));exports.capitalize=t;exports.default=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const capitalize = (str) => {
+  return str.replace(/(\w+)/gi, (substr) => substr.charAt(0).toUpperCase() + substr.slice(1));
+};
+exports.capitalize = capitalize;

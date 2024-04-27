@@ -8,4 +8,3 @@ export const camelize = (str: string) => {
   return str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : ''))
 }
 
-export default camelize

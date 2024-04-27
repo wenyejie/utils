@@ -1,4 +1,4 @@
-import isNumber from './isNumber'
+import { isNumber } from './isNumber'
 
 /**
  * 判断是否为正数
@@ -6,4 +6,3 @@ import isNumber from './isNumber'
  */
 export const isPositiveNumber = (obj: unknown) => isNumber(obj) && <number>obj > 0
 
-export default isPositiveNumber

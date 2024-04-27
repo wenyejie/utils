@@ -1,5 +1,4 @@
-const s = (l) => l === null;
+const isNull = (value) => value === null;
 export {
-  s as default,
-  s as isNull
+  isNull
 };

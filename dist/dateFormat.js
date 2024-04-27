@@ -1,53 +1,48 @@
-import { toDate as n } from "./toDate.js";
-import { padStart as t } from "./padStart.js";
-import "./isDate.js";
-import "./isNumber.js";
-import "./isString.js";
-import "./regexp.js";
-import "./isInvalidDate.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-import "./isObject.js";
-import "./nullProtoObject.js";
-import "./isUndefined.js";
-const d = (r, s = "YYYY-MM-DD hh:mm:ss", o = "") => {
-  const e = n(r);
-  return e ? s.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (a) => {
-    switch (a) {
+import { toDate } from "./toDate.js";
+import { padStart } from "./padStart.js";
+const dateFormat = (date, format = "YYYY-MM-DD hh:mm:ss", defaultValue = "") => {
+  const newDate = toDate(date);
+  if (!newDate) {
+    console.error(`"${date}" is not valid date`);
+    return defaultValue;
+  }
+  return format.replace(/\[(.*?)\]|YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (str) => {
+    switch (str) {
       case "YYYY":
-        return e.getFullYear() + "";
+        return newDate.getFullYear() + "";
       case "YY":
-        return e.getFullYear() % 100 + "";
+        return newDate.getFullYear() % 100 + "";
       case "MM":
-        return t(e.getMonth() + 1);
+        return padStart(newDate.getMonth() + 1);
       case "M":
-        return e.getMonth() + 1 + "";
+        return newDate.getMonth() + 1 + "";
       case "DD":
-        return t(e.getDate());
+        return padStart(newDate.getDate());
       case "D":
-        return e.getDate() + "";
+        return newDate.getDate() + "";
       case "hh":
-        return t(e.getHours());
+        return padStart(newDate.getHours());
       case "h":
-        return e.getHours() + "";
+        return newDate.getHours() + "";
       case "mm":
-        return t(e.getMinutes());
+        return padStart(newDate.getMinutes());
       case "m":
-        return e.getMinutes() + "";
+        return newDate.getMinutes() + "";
       case "ss":
-        return t(e.getSeconds());
+        return padStart(newDate.getSeconds());
       case "s":
-        return e.getSeconds() + "";
+        return newDate.getSeconds() + "";
       case "SSS":
-        return t(e.getMilliseconds(), 3);
+        return padStart(newDate.getMilliseconds(), 3);
       case "SS":
-        return t(Math.floor(e.getMilliseconds() / 10));
+        return padStart(Math.floor(newDate.getMilliseconds() / 10));
       case "S":
-        return Math.floor(e.getMilliseconds() / 100) + "";
+        return Math.floor(newDate.getMilliseconds() / 100) + "";
+      default:
+        return str.replace(/\[(.*?)\]/g, "$1");
     }
-  }) : (console.error(`"${r}" is not valid date`), o);
+  });
 };
 export {
-  d as dateFormat,
-  d as default
+  dateFormat
 };

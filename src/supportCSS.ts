@@ -1,5 +1,5 @@
-import hyphenate from './hyphenate'
-import globalThis from './globalThis'
+import { hyphenate } from './hyphenate'
+import { globalThis } from './globalThis'
 
 type SupportCSS = {
   /**
@@ -14,8 +14,7 @@ type SupportCSS = {
    */
   (prop: string, value: string): boolean
 }
-export const supportCSS: SupportCSS = (prop: string, value?: unknown) => {
+export const supportCSS: SupportCSS = (prop: string, value?: string) => {
   return globalThis?.CSS?.supports?.(hyphenate(prop), value)
 }
 
-export default supportCSS

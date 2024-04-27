@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import bankCardFormat from '../src/bankCardFormat'
+import { bankCardFormat } from '../src/bankCardFormat'
 
 test('bankCardFormat', () => {
   const no = '6225985462112713'

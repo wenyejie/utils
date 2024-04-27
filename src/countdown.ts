@@ -1,6 +1,6 @@
-import globalThis from './globalThis'
-import isFunction from './isFunction'
-import isObject from './isObject'
+import { globalThis } from './globalThis'
+import { isFunction } from './isFunction'
+import { isObject } from './isObject'
 
 // 倒计时时间名称
 export type CountdownEventName = 'change' | 'start' | 'stop' | 'finish' | 'continue'
@@ -29,7 +29,7 @@ const DEFAULT_OPTIONS: CountdownOptions = {
   delay: 1000,
   decrement: 1,
   autostart: true,
-  end: 0,
+  end: 0
 }
 
 class Countdown {
@@ -166,4 +166,3 @@ class Countdown {
 
 export const countdown = Countdown.create
 
-export default countdown

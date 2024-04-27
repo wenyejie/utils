@@ -6,4 +6,3 @@ export const isVoid = (obj: unknown) => {
   return obj === undefined || obj === null || Number.isNaN(obj)
 }
 
-export default isVoid

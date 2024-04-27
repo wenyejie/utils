@@ -1,1 +1,5 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const a=/\B([A-Z])/g,e=t=>t.replace(a,"-$1").toLowerCase();exports.default=e;exports.hyphenate=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const hyphenateRE = /\B([A-Z])/g;
+const hyphenate = (str) => str.replace(hyphenateRE, "-$1").toLowerCase();
+exports.hyphenate = hyphenate;

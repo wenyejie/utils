@@ -1,1 +1,5 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const o=require("./toRawType.cjs");require("./decapitalize.cjs");const e=t=>o.toRawType(t)==="set";exports.default=e;exports.isSet=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toRawType = require("./toRawType.cjs");
+const isSet = (obj) => toRawType.toRawType(obj) === "set";
+exports.isSet = isSet;

@@ -1,1 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=e=>Number.isInteger(e)&&e>0;exports.default=t;exports.isPositiveInteger=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isPositiveInteger = (obj) => Number.isInteger(obj) && obj > 0;
+exports.isPositiveInteger = isPositiveInteger;

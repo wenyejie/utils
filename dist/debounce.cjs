@@ -1,1 +1,26 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const m=require("./globalThis.cjs"),o={timeout:500,immediate:!1},l=(i,e)=>{let u;const t=Object.assign({...o},e);return typeof e=="boolean"?t.immediate=e:typeof e=="number"&&(t.timeout=e),function(...a){clearTimeout(u),t.immediate&&(i.apply(this,a),t.immediate=!1),u=m.default.setTimeout(i.bind(this,a),t.timeout)}};exports.debounce=l;exports.default=l;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const globalThis = require("./globalThis.cjs");
+const normalizeOptions = require("./normalizeOptions.cjs");
+const DEBOUNCE_DEFAULT_OPTIONS = {
+  timeout: 500,
+  immediate: false
+};
+const DEBOUNCE_TYPES = {
+  "number": "timeout",
+  "boolean": "immediate"
+};
+const debounce = (fn, options) => {
+  let timer = 0;
+  const { immediate, timeout } = normalizeOptions.normalizeOptions(options, DEBOUNCE_TYPES, DEBOUNCE_DEFAULT_OPTIONS);
+  let innerImmediate = immediate;
+  return function(...rest) {
+    clearTimeout(timer);
+    if (innerImmediate) {
+      fn.apply(this, rest);
+      innerImmediate = false;
+    }
+    timer = globalThis.globalThis.setTimeout(fn.bind(this, rest), timeout);
+  };
+};
+exports.debounce = debounce;

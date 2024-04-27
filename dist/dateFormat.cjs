@@ -1,1 +1,48 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const o=require("./toDate.cjs"),r=require("./padStart.cjs");require("./isDate.cjs");require("./isNumber.cjs");require("./isString.cjs");require("./regexp.cjs");require("./isInvalidDate.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");require("./isObject.cjs");require("./nullProtoObject.cjs");require("./isUndefined.cjs");const a=(t,s="YYYY-MM-DD hh:mm:ss",u="")=>{const e=o.toDate(t);return e?s.replace(/YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g,n=>{switch(n){case"YYYY":return e.getFullYear()+"";case"YY":return e.getFullYear()%100+"";case"MM":return r.padStart(e.getMonth()+1);case"M":return e.getMonth()+1+"";case"DD":return r.padStart(e.getDate());case"D":return e.getDate()+"";case"hh":return r.padStart(e.getHours());case"h":return e.getHours()+"";case"mm":return r.padStart(e.getMinutes());case"m":return e.getMinutes()+"";case"ss":return r.padStart(e.getSeconds());case"s":return e.getSeconds()+"";case"SSS":return r.padStart(e.getMilliseconds(),3);case"SS":return r.padStart(Math.floor(e.getMilliseconds()/10));case"S":return Math.floor(e.getMilliseconds()/100)+""}}):(console.error(`"${t}" is not valid date`),u)};exports.dateFormat=a;exports.default=a;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toDate = require("./toDate.cjs");
+const padStart = require("./padStart.cjs");
+const dateFormat = (date, format = "YYYY-MM-DD hh:mm:ss", defaultValue = "") => {
+  const newDate = toDate.toDate(date);
+  if (!newDate) {
+    console.error(`"${date}" is not valid date`);
+    return defaultValue;
+  }
+  return format.replace(/\[(.*?)\]|YY(YY)?|MM?|DD?|hh?|mm?|ss?|SS?S?/g, (str) => {
+    switch (str) {
+      case "YYYY":
+        return newDate.getFullYear() + "";
+      case "YY":
+        return newDate.getFullYear() % 100 + "";
+      case "MM":
+        return padStart.padStart(newDate.getMonth() + 1);
+      case "M":
+        return newDate.getMonth() + 1 + "";
+      case "DD":
+        return padStart.padStart(newDate.getDate());
+      case "D":
+        return newDate.getDate() + "";
+      case "hh":
+        return padStart.padStart(newDate.getHours());
+      case "h":
+        return newDate.getHours() + "";
+      case "mm":
+        return padStart.padStart(newDate.getMinutes());
+      case "m":
+        return newDate.getMinutes() + "";
+      case "ss":
+        return padStart.padStart(newDate.getSeconds());
+      case "s":
+        return newDate.getSeconds() + "";
+      case "SSS":
+        return padStart.padStart(newDate.getMilliseconds(), 3);
+      case "SS":
+        return padStart.padStart(Math.floor(newDate.getMilliseconds() / 10));
+      case "S":
+        return Math.floor(newDate.getMilliseconds() / 100) + "";
+      default:
+        return str.replace(/\[(.*?)\]/g, "$1");
+    }
+  });
+};
+exports.dateFormat = dateFormat;

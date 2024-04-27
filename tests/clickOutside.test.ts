@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import clickOutside from '../src/clickOutside'
+import { clickOutside } from '../src/clickOutside'
 import { document } from './utils'
 
 test('clickOutside', () => {

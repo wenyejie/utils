@@ -1,1 +1,5 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const a=require("./toRawType.cjs");require("./decapitalize.cjs");const t=e=>a.toRawType(e)==="date"&&e.toString()==="Invalid Date";exports.default=t;exports.isInvalidDate=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toRawType = require("./toRawType.cjs");
+const isInvalidDate = (obj) => toRawType.toRawType(obj) === "date" && obj.toString() === "Invalid Date";
+exports.isInvalidDate = isInvalidDate;

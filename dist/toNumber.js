@@ -1,7 +1,14 @@
-import { isNumber as e } from "./isNumber.js";
-import { isString as o } from "./isString.js";
-const s = (r, t = 0) => (o(r) && (r = Number.parseFloat(r)), e(r) ? r : t);
+import { isNumber } from "./isNumber.js";
+import { isString } from "./isString.js";
+const toNumber = (num, defaultValue = 0) => {
+  if (isString(num)) {
+    num = Number.parseFloat(num);
+  }
+  if (isNumber(num)) {
+    return num;
+  }
+  return defaultValue;
+};
 export {
-  s as default,
-  s as toNumber
+  toNumber
 };

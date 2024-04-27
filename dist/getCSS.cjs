@@ -1,1 +1,11 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./isString.cjs"),n=require("./camelize.cjs"),i=(e,t,u)=>r.isString(t)?document.defaultView.getComputedStyle(e,u)[n.camelize(t)]:document.defaultView.getComputedStyle(e,u);exports.default=i;exports.getCSS=i;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const camelize = require("./camelize.cjs");
+const getCSS = (elt, prop, pseudoElt) => {
+  if (!isString.isString(prop)) {
+    return document.defaultView.getComputedStyle(elt, pseudoElt);
+  }
+  return document.defaultView.getComputedStyle(elt, pseudoElt)[camelize.camelize(prop)];
+};
+exports.getCSS = getCSS;

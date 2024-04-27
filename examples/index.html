@@ -5,8 +5,24 @@
   <title>Utils</title>
 </head>
 <body>
+<fieldset>
+  <legend>输入你的姓名:</legend>
+  <label>
+    <input class='input' />
+  </label>
+</fieldset>
+<button type='button'>button</button>
+<pre>
+  console.log(document.activeElement)
+</pre>
 <script type='module'>
+  import { hasFocus } from '@/hasFocus'
 
+  const elInput = document.querySelector('.input')
+
+  setInterval(() => {
+    console.log(hasFocus(elInput))
+  }, 1000)
 </script>
 </body>
 </html>

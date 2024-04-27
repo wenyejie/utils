@@ -9,4 +9,3 @@ export const arrUpItem = <T>(arr: T[], inx: number) => {
   return arr
 }
 
-export default arrUpItem

@@ -1,1 +1,10 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=t=>{try{return JSON.stringify(t)&&!0}catch{return!1}};exports.default=e;exports.isJson=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isJson = (obj) => {
+  try {
+    return JSON.stringify(obj) && true;
+  } catch (e) {
+    return false;
+  }
+};
+exports.isJson = isJson;

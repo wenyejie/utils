@@ -1,5 +1,5 @@
-import isOddNumber from './isOddNumber'
-import checkIDNO from './checkIDNO'
+import { isOddNumber } from './isOddNumber'
+import { checkIDNO } from './checkIDNO'
 
 export interface CardInfo {
   province?: string
@@ -29,10 +29,9 @@ export const getInfoByCardNO = (card: string) => {
       month: card.substring(10, 12),
       day: card.substring(12, 14),
       date: card.substring(6, 14),
-      sex: isOddNumber(+card.substring(16, 17)) ? '1' : '2', // male, female
+      sex: isOddNumber(+card.substring(16, 17)) ? '1' : '2' // male, female
     })
   }
   return cardInfo
 }
 
-export default getInfoByCardNO

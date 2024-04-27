@@ -11,4 +11,3 @@ export const arrDelItemByVal = <A extends unknown>(array: A[], ...values: A[]) =
   return array
 }
 
-export default arrDelItemByVal

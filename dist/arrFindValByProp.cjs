@@ -1,1 +1,16 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const n=require("./isObject.cjs"),o=require("./arrFindItemByProp.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");const s=(u,e,t,i)=>{let r;return n.isObject(e)?(r=e,i=t):r={[e]:t},o.arrFindItemByProp(u,r)?.[i]};exports.arrFindValByProp=s;exports.default=s;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isObject = require("./isObject.cjs");
+const arrFindItemByProp = require("./arrFindItemByProp.cjs");
+const arrFindValByProp = (array, propKey, propValue, rtnPropKey) => {
+  let props;
+  if (isObject.isObject(propKey)) {
+    props = propKey;
+    rtnPropKey = propValue;
+  } else {
+    props = { [propKey]: propValue };
+  }
+  const item = arrFindItemByProp.arrFindItemByProp(array, props);
+  return item == null ? void 0 : item[rtnPropKey];
+};
+exports.arrFindValByProp = arrFindValByProp;

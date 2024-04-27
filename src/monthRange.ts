@@ -1,5 +1,6 @@
-import toDate from './toDate'
-import isDate from './isDate'
+import { toDate } from './toDate'
+import { isDate } from './isDate'
+import type { LikeDate } from '../types'
 
 /**
  * 获取月份范围
@@ -10,10 +11,10 @@ export const monthRange = (date: LikeDate, type = 'range') => {
   date = toDate(date)
   const result = {
     start: null,
-    end: null,
+    end: null
   }
   if (!isDate(date)) {
-    console.error(`"${date}" is not a valid date`)
+    console.error(`"${ date }" is not a valid date`)
     return type === 'range' ? result : null
   }
 
@@ -43,4 +44,3 @@ export const monthRange = (date: LikeDate, type = 'range') => {
   return result
 }
 
-export default monthRange

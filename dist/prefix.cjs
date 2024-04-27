@@ -1,1 +1,15 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./isString.cjs"),r=e=>{if(!i.isString(e))return console.error(`"${e}" is not a string`),"";e=e.trim();const{groups:{prefix:t}}=e.match(/^(?<prefix>\w+)+(?=\.)/);return t};exports.default=r;exports.prefix=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isString = require("./isString.cjs");
+const prefix = (string) => {
+  if (!isString.isString(string)) {
+    console.error(`"${string}" is not a string`);
+    return "";
+  }
+  string = string.trim();
+  const {
+    groups: { prefix: prefix2 }
+  } = string.match(/^(?<prefix>\w+)+(?=\.)/);
+  return prefix2;
+};
+exports.prefix = prefix;

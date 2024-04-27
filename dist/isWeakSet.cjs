@@ -1,1 +1,5 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const a=require("./toRawType.cjs");require("./decapitalize.cjs");const e=t=>a.toRawType(t)==="weakSet";exports.default=e;exports.isWeakSet=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toRawType = require("./toRawType.cjs");
+const isWeakSet = (obj) => toRawType.toRawType(obj) === "weakSet";
+exports.isWeakSet = isWeakSet;

@@ -1,4 +1,4 @@
-import isObject from './isObject'
+import { isObject } from './isObject'
 
 /**
  * 遍历
@@ -10,10 +10,10 @@ export const each: {
   <K extends string, V, O = Record<K, V>>(data: O, fn: (value: V, key: K, data: O) => unknown): void
 } = <V, K extends string, O = Record<K, V>>(
   data: V[] | O,
-  fn: (value: V, index: K | number, data: V[] | O) => unknown,
+  fn: (value: V, index: K | number, data: V[] | O) => unknown
 ) => {
   if (!Array.isArray(data) && !isObject(data)) {
-    console.error(`"${data}" is not array or object`)
+    console.error(`"${ data }" is not array or object`)
     return
   }
 
@@ -24,7 +24,7 @@ export const each: {
       }
     }
   } else {
-    for (const [key, value] of Object.entries(data)) {
+    for (const [ key, value ] of Object.entries(data)) {
       if (fn(value, <K>key, data) === false) {
         break
       }
@@ -32,4 +32,3 @@ export const each: {
   }
 }
 
-export default each

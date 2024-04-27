@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 
 /**
  * 断数据是否为JSON String
@@ -16,4 +16,3 @@ export const isJsonString = (obj: unknown) => {
   }
 }
 
-export default isJsonString

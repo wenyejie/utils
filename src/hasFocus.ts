@@ -6,4 +6,3 @@ export const hasFocus = (element: Element) => {
   return document.hasFocus() && document.activeElement === element
 }
 
-export default hasFocus

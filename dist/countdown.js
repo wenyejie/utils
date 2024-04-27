@@ -1,74 +1,117 @@
-import n from "./globalThis.js";
-import { isFunction as r } from "./isFunction.js";
-import { isObject as a } from "./isObject.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-const h = {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { globalThis as gt } from "./globalThis.js";
+import { isFunction } from "./isFunction.js";
+import { isObject } from "./isObject.js";
+const DEFAULT_OPTIONS = {
   delay: 1e3,
   decrement: 1,
-  autostart: !0,
+  autostart: true,
   end: 0
 };
-class s {
-  // 倒计时的值
-  value;
-  // 倒计时计时器ID
-  intervalId;
-  // 选项
-  options;
-  // 回调队列
-  callbackQueues = {};
-  constructor(t) {
-    r(t.change) && this.on("change", t.change), this.options = Object.assign({ ...h }, t), this.value = this.options.value, this.options.autostart && this.start();
+class Countdown {
+  constructor(options) {
+    // 倒计时的值
+    __publicField(this, "value");
+    // 倒计时计时器ID
+    __publicField(this, "intervalId");
+    // 选项
+    __publicField(this, "options");
+    // 回调队列
+    __publicField(this, "callbackQueues", {});
+    if (isFunction(options.change)) {
+      this.on("change", options.change);
+    }
+    this.options = Object.assign({ ...DEFAULT_OPTIONS }, options);
+    this.value = this.options.value;
+    if (this.options.autostart) {
+      this.start();
+    }
   }
-  static create(t, i) {
-    const e = {};
-    return typeof t == "number" ? e.value = t : a(t) && Object.assign(e, t), r(i) ? e.change = i : a(i) && Object.assign(e, i), new s(e);
+  static create(value, options) {
+    const innerOptions = {};
+    if (typeof value === "number") {
+      innerOptions.value = value;
+    } else if (isObject(value)) {
+      Object.assign(innerOptions, value);
+    }
+    if (isFunction(options)) {
+      innerOptions.change = options;
+    } else if (isObject(options)) {
+      Object.assign(innerOptions, options);
+    }
+    return new Countdown(innerOptions);
   }
   /**
    * 监听事件
    * @param eventName 事件名称
    * @param callback // 事件回调
    */
-  on(t, i) {
-    const e = this.callbackQueues[t] ?? [];
-    e.push(i), this.callbackQueues[t] = e;
+  on(eventName, callback) {
+    const queue = this.callbackQueues[eventName] ?? [];
+    queue.push(callback);
+    this.callbackQueues[eventName] = queue;
   }
   /**
    * 触发事件
    * @param eventName 事件名称
    */
-  trigger(t) {
-    const i = this.callbackQueues[t];
-    Array.isArray(i) && i.forEach((e) => e.call(this, this.value));
+  trigger(eventName) {
+    const queue = this.callbackQueues[eventName];
+    if (!Array.isArray(queue)) {
+      return;
+    }
+    queue.forEach((cb) => cb.call(this, this.value));
   }
   // 开始
   start() {
-    this.options.value > this.value || (this.loop(), this.trigger("start"));
+    if (this.options.value > this.value) {
+      return;
+    }
+    this.loop();
+    this.trigger("start");
   }
   // 停止
   stop() {
-    this.intervalId !== 0 && (this.clear(), this.trigger("stop"));
+    if (this.intervalId === 0) {
+      return;
+    }
+    this.clear();
+    this.trigger("stop");
   }
   // 继续
   continue() {
-    this.intervalId === 0 && (this.loop(), this.trigger("continue"));
+    if (this.intervalId !== 0) {
+      return;
+    }
+    this.loop();
+    this.trigger("continue");
   }
   // 倒计时
   decrease() {
-    this.value = this.value - this.options.decrement, this.value <= this.options.end && (clearInterval(this.intervalId), this.trigger("finish")), this.trigger("change");
+    this.value = this.value - this.options.decrement;
+    if (this.value <= this.options.end) {
+      clearInterval(this.intervalId);
+      this.trigger("finish");
+    }
+    this.trigger("change");
   }
   // 循环
   loop() {
-    this.clear(), this.intervalId = n.setInterval(this.decrease.bind(this), this.options.delay);
+    this.clear();
+    this.intervalId = gt.setInterval(this.decrease.bind(this), this.options.delay);
   }
   // 清除倒计时
   clear() {
-    clearInterval(this.intervalId), this.intervalId = 0;
+    clearInterval(this.intervalId);
+    this.intervalId = 0;
   }
 }
-const d = s.create;
+const countdown = Countdown.create;
 export {
-  d as countdown,
-  d as default
+  countdown
 };

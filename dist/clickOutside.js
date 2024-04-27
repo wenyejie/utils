@@ -1,14 +1,16 @@
-import { isParentElement as i } from "./isParentElement.js";
-import "./isElement.js";
-const m = (t, r, c) => {
-  const e = (n) => {
-    i(t, n?.target) || r();
+import { isParentElement } from "./isParentElement.js";
+const clickOutside = (element, callback, once) => {
+  const docClick = (event) => {
+    if (isParentElement(element, event == null ? void 0 : event.target)) {
+      return;
+    }
+    callback();
   };
-  return document.addEventListener("click", e, { once: c }), () => {
-    document.removeEventListener("click", e);
+  document.addEventListener("click", docClick, { once });
+  return () => {
+    document.removeEventListener("click", docClick);
   };
 };
 export {
-  m as clickOutside,
-  m as default
+  clickOutside
 };

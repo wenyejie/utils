@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import toNumber from '../src/toNumber'
+import { toNumber } from '../src/toNumber'
 
 test('toNumber', () => {
   expect(toNumber(1)).toBe(1)

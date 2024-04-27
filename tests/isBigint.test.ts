@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isBigint from '../src/isBigint'
+import { isBigint } from '../src/isBigint'
 
 test('isBigint', () => {
   expect(isBigint(BigInt(1))).toBe(true)

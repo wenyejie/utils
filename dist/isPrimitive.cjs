@@ -1,1 +1,19 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("./toRawType.cjs");require("./decapitalize.cjs");const e=t=>{switch(s.toRawType(t)){case"string":case"number":case"boolean":case"bigint":case"symbol":case"undefined":case"null":return!0;default:return!1}};exports.default=e;exports.isPrimitive=e;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toRawType = require("./toRawType.cjs");
+const isPrimitive = (obj) => {
+  const type = toRawType.toRawType(obj);
+  switch (type) {
+    case "string":
+    case "number":
+    case "boolean":
+    case "bigint":
+    case "symbol":
+    case "undefined":
+    case "null":
+      return true;
+    default:
+      return false;
+  }
+};
+exports.isPrimitive = isPrimitive;

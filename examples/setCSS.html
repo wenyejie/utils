@@ -12,9 +12,10 @@
   </style>
 </head>
 <body>
-  <div class='demo' style='background-color: blueviolet;'></div>
+<div class='demo' style='background-color: blueviolet;'></div>
 <script type='module'>
-  import setCSS from '@/setCSS'
+  import { setCSS } from '@/setCSS'
+
   const elDemo = document.querySelector('.demo')
   console.log('before', elDemo.style.cssText)
   setCSS(elDemo, 'background-color: red')

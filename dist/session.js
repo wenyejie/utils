@@ -1,7 +1,7 @@
-import o from "./globalThis.js";
-import { storage as s } from "./storage.js";
-const e = s(o?.sessionStorage);
+var _a;
+import { globalThis as gt } from "./globalThis.js";
+import { storage } from "./storage.js";
+const session = storage((_a = gt) == null ? void 0 : _a.sessionStorage);
 export {
-  e as default,
-  e as session
+  session
 };

@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 
 /**
  * 获取字符串中的后缀
@@ -6,14 +6,13 @@ import isString from './isString'
  */
 export const suffix = (string: string) => {
   if (!isString(string)) {
-    console.error(`"${string}" is not a string`)
+    console.error(`"${ string }" is not a string`)
     return ''
   }
   string = string.trim()
   const {
-    groups: { suffix },
+    groups: { suffix }
   } = string.match(/(?<=\.)(?<suffix>\w+)+$/)
   return suffix
 }
 
-export default suffix

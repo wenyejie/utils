@@ -1,1 +1,10 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=e=>Array.isArray(e)?Array.from(new Set(e)):(console.error(`"${e}" is not a array`),e);exports.default=r;exports.unique=r;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const unique = (array) => {
+  if (!Array.isArray(array)) {
+    console.error(`"${array}" is not a array`);
+    return array;
+  }
+  return Array.from(new Set(array));
+};
+exports.unique = unique;

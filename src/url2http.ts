@@ -1,4 +1,4 @@
-import isString from './isString'
+import { isString } from './isString'
 import { rHttp, rHttps } from './regexp'
 
 /**
@@ -7,7 +7,7 @@ import { rHttp, rHttps } from './regexp'
  */
 export const url2http = (url: string) => {
   if (!isString(url)) {
-    console.error(`"${url}" is not a string`)
+    console.error(`"${ url }" is not a string`)
     return ''
   }
   if (!rHttp.test(url)) {
@@ -16,4 +16,3 @@ export const url2http = (url: string) => {
   return url.replace(rHttps, 'http')
 }
 
-export default url2http

@@ -1,9 +1,9 @@
 import { rIDCardNO } from './regexp'
 
 // 加权因子
-const weightFactor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
+const weightFactor = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 ]
 // 校验码
-const checkCode = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2']
+const checkCode = [ '1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2' ]
 
 /**
  * 检验身份证号码是否正确,
@@ -26,4 +26,3 @@ export const checkIDNO = (id: string) => {
   return checkCode[num % 11] === code[17]
 }
 
-export default checkIDNO

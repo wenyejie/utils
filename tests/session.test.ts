@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 import { window } from './utils'
-import session from '../src/session'
-import globalThis from '../src/globalThis'
+import { session } from '../src/session'
+import { globalThis } from '../src/globalThis'
 
 test('session', () => {
   // @ts-ignore

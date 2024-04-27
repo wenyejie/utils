@@ -1,4 +1,4 @@
-import isUndefined from './isUndefined'
+import { isUndefined } from './isUndefined'
 
 /**
  * 后置填充
@@ -8,10 +8,9 @@ import isUndefined from './isUndefined'
  */
 export const padEnd = (obj: string | number, maxLength: number = 2, fillString: string = '0'): string => {
   if (isUndefined(obj) || Number.isNaN(obj)) {
-    console.error(`"${obj}" is not a string or number`)
+    console.error(`"${ obj }" is not a string or number`)
     obj = ''
   }
-  return `${obj}`.padEnd(maxLength, fillString)
+  return `${ obj }`.padEnd(maxLength, fillString)
 }
 
-export default padEnd

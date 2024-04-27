@@ -1,5 +1,4 @@
-const r = Array.isArray;
+const isArray = Array.isArray;
 export {
-  r as default,
-  r as isArray
+  isArray
 };

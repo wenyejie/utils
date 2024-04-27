@@ -1,10 +1,9 @@
-import { isArray as t } from "./isArray.js";
-import { isObject as i } from "./isObject.js";
-import { objectLength as m } from "./objectLength.js";
-import "./toRawType.js";
-import "./decapitalize.js";
-const n = (r) => r == null || r === "" || Number.isNaN(r) || t(r) && r.length === 0 || i(r) && m(r) === 0;
+import { isArray } from "./isArray.js";
+import { isObject } from "./isObject.js";
+import { objectLength } from "./objectLength.js";
+const isEmptyValue = (obj) => {
+  return obj === void 0 || obj === null || obj === "" || Number.isNaN(obj) || isArray(obj) && obj.length === 0 || isObject(obj) && objectLength(obj) === 0;
+};
 export {
-  n as default,
-  n as isEmptyValue
+  isEmptyValue
 };

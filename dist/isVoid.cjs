@@ -1,1 +1,6 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=e=>e==null||Number.isNaN(e);exports.default=i;exports.isVoid=i;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isVoid = (obj) => {
+  return obj === void 0 || obj === null || Number.isNaN(obj);
+};
+exports.isVoid = isVoid;

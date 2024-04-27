@@ -1,7 +1,7 @@
-import isString from './isString'
-import isNumber from './isNumber'
-import isNumberString from './isNumberString'
-import toMultiKeyOneValue from './toMultiKeyOneValue'
+import { isString } from './isString'
+import { isNumber } from './isNumber'
+import { isNumberString } from './isNumberString'
+import { toMultiKeyOneValue } from './toMultiKeyOneValue'
 import { TS_UNIT } from './utils'
 
 /**
@@ -15,12 +15,12 @@ import { TS_UNIT } from './utils'
  * 1y(365d) = 31536000000 31536e6 = 86400000 365
  */
 const strMap = toMultiKeyOneValue([
-  [['s', 'sec', 'second'], TS_UNIT.SECOND],
-  [['m', 'min', 'minute'], TS_UNIT.MINUTE],
-  [['h', 'hour'], TS_UNIT.HOUR],
-  [['d', 'day'], TS_UNIT.DAY],
-  [['w', 'week'], TS_UNIT.WEEK],
-  [['y', 'year'], TS_UNIT.YEAR],
+  [ [ 's', 'sec', 'second' ], TS_UNIT.SECOND ],
+  [ [ 'm', 'min', 'minute' ], TS_UNIT.MINUTE ],
+  [ [ 'h', 'hour' ], TS_UNIT.HOUR ],
+  [ [ 'd', 'day' ], TS_UNIT.DAY ],
+  [ [ 'w', 'week' ], TS_UNIT.WEEK ],
+  [ [ 'y', 'year' ], TS_UNIT.YEAR ]
 ])
 
 // 时间单位正则
@@ -35,7 +35,7 @@ const rTsStr = /^(?<num>\d+(\.\d+)?)(?<unit>s(ec(ond)?)?|m(in(ute)?)?|h(our)?|d(
 export const getTsByStr = (str: string | number, rtnType: 'second' | 'millisecond' = 'millisecond') => {
   if (!isNumber(str) && !isString(str)) {
     // 当参数即不是正常的数字也不是正常的字符串返回错误
-    console.error(`"${str}" is not a number or string`)
+    console.error(`"${ str }" is not a number or string`)
     return null
   }
   if (isNumber(str)) {
@@ -48,7 +48,7 @@ export const getTsByStr = (str: string | number, rtnType: 'second' | 'millisecon
   }
   const result = str.match(rTsStr)
   if (!result) {
-    console.error(`getTsByStr: Incorrect timestamp string parameter => "${str}"`)
+    console.error(`getTsByStr: Incorrect timestamp string parameter => "${ str }"`)
     return null
   }
   let { num, unit } = result.groups
@@ -59,4 +59,3 @@ export const getTsByStr = (str: string | number, rtnType: 'second' | 'millisecon
   return Math.floor(rtnValue) // 时间戳不能为小数
 }
 
-export default getTsByStr

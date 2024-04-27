@@ -1,7 +1,5 @@
-import { toRawType as o } from "./toRawType.js";
-import "./decapitalize.js";
-const r = (t) => o(t) === "object";
+import { toRawType } from "./toRawType.js";
+const isObject = (obj) => toRawType(obj) === "object";
 export {
-  r as default,
-  r as isObject
+  isObject
 };

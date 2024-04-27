@@ -9,6 +9,32 @@
     'hour', 'minute', 'second']`**
 - `setOnInterval`新增准时定时器
 
+## 2.3.1 `dev`
+
+- 优化`debounce`, `throttle` 等函数的选项规范化
+- add `partial`, `zip`, `zipObject`, `zipObjectList` 方法
+
+## 2.3.0 `prod`
+
+- 修复并调整`intervalExec`会缓存Promise值的bug, 加入识别Promise返回值的功能, 加入参数`abort`, `rtnVal`
+- 新增`retryIncorrect`
+- `dateFormat` 新增识别`[]`内容使其不格式化
+- add `normalizeOptions` 序列化选项
+
+## 2.2.2
+
+- 修复ts文档声明
+
+## 2.2.0
+
+- 新增`intervalExec`方法
+- `countdown`新增参数`immediate`
+- `datetimeSpan`
+  - 新增参数`padStart`
+  - 修改默认参数`types` ~~`['year', 'week', 'day', 'hour', 'minute', 'second']`~~ -> **`['day',
+    'hour', 'minute', 'second']`**
+- `setOnInterval`新增准时定时器
+
 ## 2.1.2
 
 - 调整相关引用由`@/`改为`./`
@@ -74,8 +100,11 @@
 - 完善`moneyFormat`的ts声明
 
 ## 1.19.5
+
 ## 1.19.4
+
 ## 1.19.3
+
 ## 1.19.2
 
 - 完善`ts`

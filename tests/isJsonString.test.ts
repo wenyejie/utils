@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import isJsonString from '../src/isJsonString'
+import { isJsonString } from '../src/isJsonString'
 
 test('isJsonString', () => {
   expect(isJsonString('{}')).toBe(true)

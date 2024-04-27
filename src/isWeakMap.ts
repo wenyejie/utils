@@ -1,4 +1,4 @@
-import toRawType from './toRawType'
+import { toRawType } from './toRawType'
 
 /**
  * 判断一个数据是否为正确的date类型
@@ -6,4 +6,3 @@ import toRawType from './toRawType'
  */
 export const isWeakMap = (obj: unknown) => toRawType(obj) === 'weakMap'
 
-export default isWeakMap

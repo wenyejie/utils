@@ -10,4 +10,3 @@ export const isJson = (obj: unknown) => {
   }
 }
 
-export default isJson

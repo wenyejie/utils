@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import getTsByStr from '../src/getTsByStr'
+import { getTsByStr } from '../src/getTsByStr'
 
 test('getTsByStr', () => {
   expect(getTsByStr(1000)).toBe(1000)

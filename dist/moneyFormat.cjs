@@ -1,1 +1,33 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("./isNumber.cjs"),a=require("./toNumber.cjs"),c=require("./nullProtoObject.cjs");require("./isString.cjs");const d={decimal:2,symbol:"",default:"",split:",",length:3,padEnd:!0},l=(r,e)=>{if(e=Object.assign(c.nullProtoObject(),d,e),r=a.toNumber(r),!u.isNumber(r))return e.default;const t=r.toFixed(e.decimal).split(".");return!e.padEnd&&t[1]&&(t[1]=t[1].replace(/0+$/,"")),e.symbol+t[0].replace(new RegExp("\\B(?=(\\d{"+e.length+"})+(?!\\d))","g"),e.split)+(t[1]?"."+t[1]:"")};exports.default=l;exports.moneyFormat=l;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const isNumber = require("./isNumber.cjs");
+const toNumber = require("./toNumber.cjs");
+const nullProtoObject = require("./nullProtoObject.cjs");
+const defaultOptions = {
+  decimal: 2,
+  // 小数点长度
+  symbol: "",
+  // 钱币符号
+  default: "",
+  // 默认值
+  split: ",",
+  // 分隔符号
+  length: 3,
+  // 分割长度
+  padEnd: true
+  // 是否尾部填充
+};
+const moneyFormat = (number, options) => {
+  options = Object.assign(nullProtoObject.nullProtoObject(), defaultOptions, options);
+  number = toNumber.toNumber(number);
+  if (!isNumber.isNumber(number)) {
+    return options.default;
+  }
+  const result = number.toFixed(options.decimal);
+  const numberSplit = result.split(".");
+  if (!options.padEnd && numberSplit[1]) {
+    numberSplit[1] = numberSplit[1].replace(/0+$/, "");
+  }
+  return options.symbol + numberSplit[0].replace(new RegExp("\\B(?=(\\d{" + options.length + "})+(?!\\d))", "g"), options.split) + (numberSplit[1] ? "." + numberSplit[1] : "");
+};
+exports.moneyFormat = moneyFormat;

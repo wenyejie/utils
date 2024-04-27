@@ -1,7 +1,8 @@
-import toDate from './toDate'
-import datetimeSpan from './datetimeSpan'
-import dateFormat from './dateFormat'
-import isDate from './isDate'
+import { toDate } from './toDate'
+import { datetimeSpan } from './datetimeSpan'
+import { dateFormat } from './dateFormat'
+import { isDate } from './isDate'
+import type { LikeDate } from '../types'
 
 export interface TimeDistanceOptions {
   yearFormat?: string
@@ -22,7 +23,7 @@ export interface TimeDistanceOptions {
 export const timeDistance = (date: LikeDate, options?: TimeDistanceOptions) => {
   date = toDate(date)
   if (!isDate(date)) {
-    console.error(`"${date}" is not a valid date`)
+    console.error(`"${ date }" is not a valid date`)
     return ''
   }
   options = Object.assign(
@@ -34,9 +35,9 @@ export const timeDistance = (date: LikeDate, options?: TimeDistanceOptions) => {
       daysAgo: '天前',
       days: 31,
       just: '刚刚',
-      compare: new Date(),
+      compare: new Date()
     },
-    options,
+    options
   )
 
   const span = datetimeSpan(date, { compare: options.compare })
@@ -60,4 +61,3 @@ export const timeDistance = (date: LikeDate, options?: TimeDistanceOptions) => {
   return options.just
 }
 
-export default timeDistance

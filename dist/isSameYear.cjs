@@ -1,1 +1,14 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./toDate.cjs"),u=require("./isDate.cjs");require("./isNumber.cjs");require("./isString.cjs");require("./regexp.cjs");require("./isInvalidDate.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");require("./isObject.cjs");require("./nullProtoObject.cjs");const t=(e,r)=>(e=i.toDate(e),r=i.toDate(r),!u.isDate(e)||!u.isDate(r)?(console.error(`"${e}" or "${r}" is not a valid date`),!1):e.getFullYear()===r.getFullYear());exports.default=t;exports.isSameYear=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toDate = require("./toDate.cjs");
+const isDate = require("./isDate.cjs");
+const isSameYear = (date1, date2) => {
+  date1 = toDate.toDate(date1);
+  date2 = toDate.toDate(date2);
+  if (!isDate.isDate(date1) || !isDate.isDate(date2)) {
+    console.error(`"${date1}" or "${date2}" is not a valid date`);
+    return false;
+  }
+  return date1.getFullYear() === date2.getFullYear();
+};
+exports.isSameYear = isSameYear;

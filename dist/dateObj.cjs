@@ -1,1 +1,25 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("./toDate.cjs"),u=require("./isDate.cjs");require("./isNumber.cjs");require("./isString.cjs");require("./regexp.cjs");require("./isInvalidDate.cjs");require("./toRawType.cjs");require("./decapitalize.cjs");require("./isObject.cjs");require("./nullProtoObject.cjs");const t=(e=new Date)=>{let r={};return e=i.toDate(e),u.isDate(e)&&(r={year:e.getFullYear(),month:e.getMonth()+1,day:e.getDate(),week:e.getDay(),hour:e.getHours(),minute:e.getMinutes(),second:e.getSeconds(),millisecond:e.getMilliseconds(),time:e.getTime()}),r};exports.dateObj=t;exports.default=t;
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const toDate = require("./toDate.cjs");
+const isDate = require("./isDate.cjs");
+const dateObj = (date = /* @__PURE__ */ new Date()) => {
+  let result = {};
+  date = toDate.toDate(date);
+  if (isDate.isDate(date)) {
+    result = {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+      week: date.getDay(),
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      second: date.getSeconds(),
+      millisecond: date.getMilliseconds(),
+      time: date.getTime()
+    };
+  } else {
+    console.error("dateObj params error", date);
+  }
+  return result;
+};
+exports.dateObj = dateObj;

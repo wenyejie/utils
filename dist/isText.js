@@ -1,5 +1,4 @@
-const t = (e) => e?.nodeType === 3;
+const isText = (obj) => (obj == null ? void 0 : obj["nodeType"]) === 3;
 export {
-  t as default,
-  t as isText
+  isText
 };

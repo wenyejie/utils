@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import camelize from '../src/camelize'
+import { camelize } from '../src/camelize'
 
 test('camelize', () => {
   const str = 'demo-name'

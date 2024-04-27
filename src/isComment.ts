@@ -4,4 +4,3 @@
  */
 export const isComment = (obj: unknown) => obj?.['nodeType'] === 8
 
-export default isComment
