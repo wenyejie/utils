@@ -22,7 +22,8 @@ export interface DatetimeSpanOptions {
 }
 
 const DEFAULT_OPTIONS: DatetimeSpanOptions = {
-  types: [ 'year', 'week', 'day', 'hour', 'minute', 'second' ]
+  types: [ 'year', 'week', 'day', 'hour', 'minute', 'second' ],
+  padStart: false
 }
 
 const normalizedOptions = (options: Date | DatetimeSpanTypes[] | DatetimeSpanOptions): DatetimeSpanOptions => {
@@ -49,13 +50,14 @@ export const datetimeSpan: {
   (date: LikeDate, types: DatetimeSpanTypes[]): DatetimeSpanResult
   (date: LikeDate, options: DatetimeSpanOptions): DatetimeSpanResult
 } = (date: LikeDate, options?: Date | DatetimeSpanTypes[] | DatetimeSpanOptions) => {
-  const { compare, types } = normalizedOptions(options)
+  const { compare, types, padStart: padResult } = normalizedOptions(options)
   let timestamp = isDate(date)
     ? Math.abs((<Date>date).getTime() - (compare ?? new Date()).getTime())
     : Number.parseInt(<string>date)
   const result: DatetimeSpanResult = {}
   for (const type of types) {
-    result[type] = padStart(Math.floor(timestamp / TS_UNIT[type.toUpperCase()]))
+    const data = Math.floor(timestamp / TS_UNIT[type.toUpperCase()]);
+    result[type] = padResult ? padStart(data) : data
     timestamp %= TS_UNIT[type.toUpperCase()]
   }
   return result

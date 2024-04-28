@@ -1,4 +1,5 @@
-import { toRawType } from './toRawType'
+import { ToRawType, toRawType } from './toRawType'
+import { PartialValueOf, valueOf } from '../types'
 
 
 /**
@@ -7,7 +8,7 @@ import { toRawType } from './toRawType'
  * @param types 类型
  * @param defaultOptions 默认选项
  */
-export const normalizeOptions = <T extends Record<string, any>>(options: any, types: Record<string, string>, defaultOptions: T) => {
+export const normalizeOptions = <T extends Record<string, any>>(options:  PartialValueOf<T>, types: Partial<Record<ToRawType, string>>, defaultOptions: T) => {
   const type = toRawType(options)
   if (type === 'undefined') {
     return { ...defaultOptions }
@@ -16,7 +17,7 @@ export const normalizeOptions = <T extends Record<string, any>>(options: any, ty
     return { ...<T>options }
   }
   const innerOptions = { ...defaultOptions }
-  innerOptions[types[type] as keyof T] = options
+  innerOptions[types[type] as keyof T] = <valueOf<T>>options
   return innerOptions
 }
 

@@ -1,105 +1,168 @@
+import { isString } from './isString'
 import { isFunction } from './isFunction'
-import { arrDelItemByProp } from './arrDelItemByProp'
-import type { AnyFn } from '../types'
+import { normalizeOptions } from './normalizeOptions'
+import { AnyFn, PartialToRawTypeKeyof, PartialValueOf } from '../types'
 
-// 发布订阅的订阅选项
+// 选项
+export interface IPublishSubscribeOptions {
+  cache: boolean;
+}
+
+// 监听类型
+export enum PublishSubscribeType {
+  ON = 'on',
+  ONCE = 'once'
+}
+
+// 实例化默认选项
+const PublishSubscribeDefaultOptions: IPublishSubscribeOptions = {
+  cache: false, // 缓存
+};
+
+// 实例化选项类型
+const PublishSubscribeOptionsType: PartialToRawTypeKeyof<IPublishSubscribeOptions> = { 'boolean': 'cache' };
+
+// 监听默认选项
 export interface PublishSubscribeOnOptions {
-  immediate?: boolean
-  once?: boolean
+  type: PublishSubscribeType,
+  immediate: boolean
 }
 
-// 发布订阅回调Map队列
-export interface PublishSubscribeCallbackMapQueue {
-  once?: boolean
+// 监听选项类型
+const PublishSubscribeOnOptionsTypes: PartialToRawTypeKeyof<PublishSubscribeOnOptions> = { 'string': 'type', 'boolean': 'immediate' };
+
+// 回调队列子项
+export interface PublishSubscribeQueuesItem {
+  type: PublishSubscribeType,
   callback: AnyFn
-
-  [key: string]: unknown
 }
 
-//发布订阅的回调Map子项
-export interface PublishSubscribeCallbackMapItem {
-  data?: unknown
-  queue: PublishSubscribeCallbackMapQueue[]
+// 消息MAP子项
+export interface PublishSubscribeMessageItem {
+  queues: PublishSubscribeQueuesItem[],
+  result?: any
 }
 
-// 发布订阅的回调Map
-export interface PublishSubscribeCallbackMap {
-  [key: string]: PublishSubscribeCallbackMapItem
-}
+// 监听选项
+const PublishSubscribeOnDefaultOptions: PublishSubscribeOnOptions = {
+  type: PublishSubscribeType.ON, // 类型
+  immediate: false, // 是否立即执行
+};
 
 export class PublishSubscribe {
-  private readonly callbackMap: PublishSubscribeCallbackMap = {}
+  #messages: Map<string, PublishSubscribeMessageItem> = new Map();
+  #options: Partial<IPublishSubscribeOptions> = {};
 
-  static create() {
-    return new PublishSubscribe()
+  constructor(options?: PartialValueOf<IPublishSubscribeOptions>) {
+    this.#options = normalizeOptions(options, PublishSubscribeOptionsType, PublishSubscribeDefaultOptions);
   }
 
   /**
-   * 触发订阅
-   * @param eventName 事件名称
-   * @param data 数据
+   * 监听事件
+   * @param name 事件名称
+   * @param callback 事件回调
+   * @param options 事件选项
    */
-  trigger(eventName: string, data?: unknown[]) {
-    if (!eventName) {
-      return
+  on(name: string, callback: AnyFn, options?: PartialValueOf<PublishSubscribeOnOptions>) {
+    if (!isString(name)) {
+      console.warn('The parameter `name` must be a string:', name);
+      return;
     }
-    const item = this.callbackMap[eventName] ?? { queue: [] }
-    const { queue } = item
-    item.data = data
-    // 没有订阅
-    if (queue.length === 0) {
-      this.callbackMap[eventName] = item
-      return
+    if (!isFunction(callback)) {
+      console.warn('The parameter `callback` must be a function:', callback);
+      return;
     }
-    queue.forEach(({ callback }) => callback(data))
-    item.queue = queue.filter(({ once }) => !once)
-    this.callbackMap[eventName] = item
-  }
+    const {
+      type,
+      immediate
+    } = normalizeOptions(options, PublishSubscribeOnOptionsTypes, PublishSubscribeOnDefaultOptions);
+    if (!this.#messages.has(name)) {
+      this.#messages.set(name, { queues: [] });
+    }
+    const message = this.#messages.get(name);
 
-  /**
-   * 订阅事件
-   * @param eventName 事件名称
-   * @param callback 回调
-   * @param options 选项
-   */
-  on(eventName: string, callback: AnyFn, options?: PublishSubscribeOnOptions) {
-    if (!eventName || !isFunction(callback())) {
-      return
+    const { result, queues } = message;
+
+    if (queues.find(item => item.callback === callback)) {
+      console.log(`The callback: ${ callback } already exists under name: ${ name }`);
+      return;
     }
-    const item = this.callbackMap[eventName] ?? { queue: [] }
-    const { data, queue } = item
-    if (options?.immediate) {
-      callback(data)
-    }
-    queue.push({
-      once: options?.once ?? false,
+
+    queues.push({
+      type,
       callback
-    })
-    this.callbackMap[eventName] = item
+    });
+
+    if (immediate && result?.length > 0) {
+      callback(...result);
+    }
   }
 
   /**
-   * 移除订阅/频道
-   * @param eventName 事件名称
-   * @param callback 回调
+   * 监听
+   * @param name
+   * @param callback
+   * @param immediate
    */
-  off(eventName: string, callback?: AnyFn) {
-    // 参数为空
-    if (!eventName) {
-      return
-    }
-    const item = this.callbackMap[eventName]
-
-    // 不存在该订阅
-    if (!item) {
-      return
-    }
-    const { queue } = item
-    if (isFunction(callback)) {
-      arrDelItemByProp(queue, 'callback', callback)
-    } else {
-      delete this.callbackMap[eventName]
-    }
+  once(name: string, callback:AnyFn, immediate: PublishSubscribeOnOptions['immediate'] = false) {
+    this.on(name, callback, { type: PublishSubscribeType.ONCE, immediate });
   }
-}
 
+  /**
+   * 解除订阅
+   * @param name
+   * @param callback
+   */
+  off(name: string, callback: AnyFn | null) {
+    if (name === null) {
+      this.#messages.clear();
+      return;
+    }
+    if (!this.#messages.has(name)) {
+      console.warn('No callback for this event `name`:', name);
+      return;
+    }
+    // 释放所有
+    if (callback === null) {
+      this.#messages.delete(name);
+      return;
+    }
+
+    if (!isFunction(callback)) {
+      console.warn('The parameter `callback` must be a function:', callback);
+      return;
+    }
+
+    const message = this.#messages.get(name);
+    message.queues = message.queues.filter(item => item.callback !== callback);
+  }
+
+  /**
+   * 触发事件
+   * @param name
+   * @param args
+   */
+  emit(name: string, ...args: any[]) {
+    if (!isString(name)) {
+      console.warn('The parameter `name` must be a string:', name);
+      return;
+    }
+    const message = this.#messages.get(name) ?? { queues: [] };
+    const { queues } = message;
+    if (queues.length > 0) {
+      queues.forEach(({ callback }) => callback(...args));
+      message.queues = queues.filter(({ type }) => type !== 'once');
+    }
+    // 没有监听回调
+    else {
+      console.warn('No callback for this event `name`:', name);
+    }
+
+    if (this.#options.cache) {
+      message.result = args;
+    }
+
+    this.#messages.set(name, message);
+  }
+
+}

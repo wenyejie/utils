@@ -1,4 +1,4 @@
-import globalThis from './globalThis'
+import { globalThis } from './globalThis'
 
 /**
  * 修复setInterval在js中的不准时问题
@@ -19,4 +19,3 @@ export const setOnInterval = (handle: Function, timeout: number) => {
     }
   }, nextTime)
 }
-export default setOnInterval

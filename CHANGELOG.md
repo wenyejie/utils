@@ -1,18 +1,10 @@
 # 版本记录
 
-## 2.2.0
-
-- `countdown`新增参数`immediate`
-- `datetimeSpan`
-  - 新增参数`padStart`
-  - 修改默认参数`types` ~~`['year', 'week', 'day', 'hour', 'minute', 'second']`~~ -> **`['day',
-    'hour', 'minute', 'second']`**
-- `setOnInterval`新增准时定时器
-
 ## 2.3.1 `dev`
 
 - 优化`debounce`, `throttle` 等函数的选项规范化
-- add `partial`, `zip`, `zipObject`, `zipObjectList` 方法
+- add `partial`, `zip`, `zipObject`, `zipObjectList`, `beforeHook`, `afterHook` 方法
+- `hasOwn` 重构, 改用系统自带`Object.hasOwn`
 
 ## 2.3.0 `prod`
 

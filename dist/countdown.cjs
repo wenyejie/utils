@@ -10,6 +10,7 @@ const globalThis = require("./globalThis.cjs");
 const isFunction = require("./isFunction.cjs");
 const isObject = require("./isObject.cjs");
 const DEFAULT_OPTIONS = {
+  immediate: true,
   delay: 1e3,
   decrement: 1,
   autostart: true,
@@ -34,12 +35,12 @@ class Countdown {
       this.start();
     }
   }
-  static create(value, options) {
+  static create(timer, options) {
     const innerOptions = {};
-    if (typeof value === "number") {
-      innerOptions.value = value;
-    } else if (isObject.isObject(value)) {
-      Object.assign(innerOptions, value);
+    if (typeof timer === "number") {
+      innerOptions.value = timer;
+    } else if (isObject.isObject(timer)) {
+      Object.assign(innerOptions, timer);
     }
     if (isFunction.isFunction(options)) {
       innerOptions.change = options;
@@ -54,9 +55,13 @@ class Countdown {
    * @param callback // 事件回调
    */
   on(eventName, callback) {
+    var _a;
     const queue = this.callbackQueues[eventName] ?? [];
     queue.push(callback);
     this.callbackQueues[eventName] = queue;
+    if (((_a = this == null ? void 0 : this.options) == null ? void 0 : _a.immediate) && eventName === "change") {
+      callback.call(this, this.value);
+    }
   }
   /**
    * 触发事件
@@ -76,6 +81,9 @@ class Countdown {
     }
     this.loop();
     this.trigger("start");
+    if (this.options.immediate) {
+      this.trigger("change");
+    }
   }
   // 停止
   stop() {

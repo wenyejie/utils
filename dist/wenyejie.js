@@ -1,3 +1,4 @@
+import { afterHook } from "./afterHook.js";
 import { arrDelItemByProp } from "./arrDelItemByProp.js";
 import { arrDelItemByVal } from "./arrDelItemByVal.js";
 import { arrDownItem } from "./arrDownItem.js";
@@ -7,6 +8,7 @@ import { arrUpItem } from "./arrUpItem.js";
 import { ban } from "./ban.js";
 import { bankCardFormat } from "./bankCardFormat.js";
 import { base642file } from "./base642file.js";
+import { beforeHook } from "./beforeHook.js";
 import { cached } from "./cached.js";
 import { cachedOne } from "./cachedOne.js";
 import { calcTextareaHeight } from "./calcTextareaHeight.js";
@@ -41,7 +43,7 @@ import { getInfoByCardNO } from "./getInfoByCardNO.js";
 import { getTsByStr } from "./getTsByStr.js";
 import { globalThis } from "./globalThis.js";
 import { hasFocus } from "./hasFocus.js";
-import { hasOwn, hasOwnProperty } from "./hasOwn.js";
+import { hasOwn } from "./hasOwn.js";
 import { hasSuffix } from "./hasSuffix.js";
 import { hyphenate } from "./hyphenate.js";
 import { imageCompress } from "./imageCompress.js";
@@ -109,11 +111,12 @@ import { objectLength } from "./objectLength.js";
 import { once } from "./once.js";
 import { padEnd } from "./padEnd.js";
 import { padStart } from "./padStart.js";
+import { PARTIAL_PLACEHOLDER, partial } from "./partial.js";
 import { percentage } from "./percentage.js";
 import { phoneNumFormat } from "./phoneNumFormat.js";
 import { pick } from "./pick.js";
 import { prefix } from "./prefix.js";
-import { PublishSubscribe } from "./publishSubscribe.js";
+import { PublishSubscribe, PublishSubscribeType } from "./publishSubscribe.js";
 import { randomInteger } from "./randomInteger.js";
 import { randomNumber } from "./randomNumber.js";
 import { rAmount, rBankCardNO, rChinese, rChineseName, rEmail, rEmoji, rHttp, rHttps, rIDCardNO, rIOSDateStringFormat, rInteger, rMobilePhone, rPhone, rPostcode, rTelephone, rUrl } from "./regexp.js";
@@ -121,6 +124,7 @@ import { removeSpace } from "./removeSpace.js";
 import { retryIncorrect } from "./retryIncorrect.js";
 import { session } from "./session.js";
 import { setCSS } from "./setCSS.js";
+import { setOnInterval } from "./setOnInterval.js";
 import { spliceString } from "./spliceString.js";
 import { storage } from "./storage.js";
 import { suffix } from "./suffix.js";
@@ -137,9 +141,14 @@ import { unique } from "./unique.js";
 import { url2http } from "./url2http.js";
 import { url2https } from "./url2https.js";
 import { TS_DAY, TS_HOUR, TS_MILLISECOND, TS_MINUTE, TS_SECOND, TS_UNIT, TS_WEEK, TS_YEAR } from "./utils.js";
+import { zip } from "./zip.js";
+import { zipObject } from "./zipObject.js";
+import { zipObjectList } from "./zipObjectList.js";
 const VERSION = "2.3.1";
 export {
+  PARTIAL_PLACEHOLDER,
   PublishSubscribe,
+  PublishSubscribeType,
   TS_DAY,
   TS_HOUR,
   TS_MILLISECOND,
@@ -150,6 +159,7 @@ export {
   TS_YEAR,
   VERSION,
   add,
+  afterHook,
   arithmetic,
   arrDelItemByProp,
   arrDelItemByVal,
@@ -160,6 +170,7 @@ export {
   ban,
   bankCardFormat,
   base642file,
+  beforeHook,
   cached,
   cachedOne,
   calcTextareaHeight,
@@ -195,7 +206,6 @@ export {
   globalThis,
   hasFocus,
   hasOwn,
-  hasOwnProperty,
   hasSuffix,
   hyphenate,
   imageCompress,
@@ -289,6 +299,7 @@ export {
   once,
   padEnd,
   padStart,
+  partial,
   percentage,
   phoneNumFormat,
   pick,
@@ -316,6 +327,7 @@ export {
   retryIncorrect,
   session,
   setCSS,
+  setOnInterval,
   spliceString,
   storage,
   subtract,
@@ -333,5 +345,8 @@ export {
   unique,
   url2http,
   url2https,
-  useragent
+  useragent,
+  zip,
+  zipObject,
+  zipObjectList
 };
