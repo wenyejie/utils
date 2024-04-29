@@ -26,11 +26,6 @@ const RETRY_INCORRECT_DEFAULT_OPTIONS: IRetryIncorrectOptions = {
   }
 }
 
-const RETRY_INCORRECT_TYPES = {
-  'number': 'retry',
-  'function': 'check'
-}
-
 /**
  * 当返回错误/不是想要的数据的时候进行重试
  * @param execute 执行函数
@@ -42,7 +37,7 @@ export const retryIncorrect = <T>(execute: (...args: any[]) => T, options?: Like
     base,
     rtnVal,
     check
-  } = normalizeOptions(options, RETRY_INCORRECT_TYPES, RETRY_INCORRECT_DEFAULT_OPTIONS)
+  } = normalizeOptions(options, RETRY_INCORRECT_DEFAULT_OPTIONS)
   const { resolve, promise } = Promise.withResolvers<T>()
   let timer = 0
   let retryCount = 0 // 重试次数

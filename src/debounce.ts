@@ -1,5 +1,6 @@
 import { globalThis } from './globalThis'
 import { normalizeOptions } from '@/normalizeOptions'
+import { PartialValueOf } from '../types'
 
 export interface DebounceOptions {
   timeout: number
@@ -11,36 +12,22 @@ const DEBOUNCE_DEFAULT_OPTIONS: DebounceOptions = {
   immediate: false
 }
 
-const DEBOUNCE_TYPES = {
-  'number': 'timeout',
-  'boolean': 'immediate'
-}
-
 /**
  * 函数防抖 - 当一定时间之后没有重新调用则执行, 电梯
  * @param fn 函数
  * @param options 选项
  */
-export const debounce: {
-  <T, R>(fn: (...rest: T[]) => R): (...rest: T[]) => void
-  <T, R>(fn: (...rest: T[]) => R, options: Partial<DebounceOptions>): (...rest: T[]) => void
-  <T, R>(fn: (...rest: T[]) => R, timeout: DebounceOptions['timeout']): (...rest: T[]) => void
-  <T, R>(fn: (...rest: T[]) => R, immediate: DebounceOptions['immediate']): (...rest: T[]) => void
-} = <T, R>(
-  fn: (...rest: T[]) => R,
-  options?: Partial<DebounceOptions> | DebounceOptions['timeout'] | DebounceOptions['immediate']
-) => {
+export const debounce = <T, R>(fn: (...args: T[]) => R, options?: PartialValueOf<DebounceOptions>) => {
   let timer: number = 0
-  const { immediate, timeout } = normalizeOptions(options, DEBOUNCE_TYPES, DEBOUNCE_DEFAULT_OPTIONS)
-  let innerImmediate = immediate
-  return function(...rest: T[]) {
+  let { immediate, timeout } = normalizeOptions(options, DEBOUNCE_DEFAULT_OPTIONS)
+  return function(...args: T[]) {
     clearTimeout(timer)
-    if (innerImmediate) {
-      fn.apply(this, rest)
-      innerImmediate = false
+    if (immediate) {
+      fn.apply(this, args)
+      immediate = false
     }
 
-    timer = globalThis.setTimeout(fn.bind(this, rest), timeout)
+    timer = globalThis.setTimeout(fn.bind(this, args), timeout)
   }
 }
 

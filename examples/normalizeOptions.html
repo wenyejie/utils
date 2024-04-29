@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang='zh-cn'>
+<head>
+  <meta charset='utf-8'>
+  <title>normalizeOptions</title>
+</head>
+<body>
+
+<script type='module'>
+  import { normalizeOptions } from '@/normalizeOptions'
+
+  const DEFAULT_OPTIONS = {
+    retry: 5, // 重试次数
+    base: 2,
+    rtnVal: null,
+    check: (result) => {
+      if (result?.error) {
+        return false
+      }
+      return result
+    }
+  }
+
+  console.log(Object.entries(DEFAULT_OPTIONS))
+
+  let options = 6
+  console.log(normalizeOptions(options, DEFAULT_OPTIONS))
+</script>
+</body>
+</html>

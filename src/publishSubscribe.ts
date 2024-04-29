@@ -1,7 +1,7 @@
 import { isString } from './isString'
 import { isFunction } from './isFunction'
 import { normalizeOptions } from './normalizeOptions'
-import { AnyFn, PartialToRawTypeKeyof, PartialValueOf } from '../types'
+import { AnyFn, PartialValueOf } from '../types'
 
 // 选项
 export interface IPublishSubscribeOptions {
@@ -19,17 +19,11 @@ const PublishSubscribeDefaultOptions: IPublishSubscribeOptions = {
   cache: false, // 缓存
 };
 
-// 实例化选项类型
-const PublishSubscribeOptionsType: PartialToRawTypeKeyof<IPublishSubscribeOptions> = { 'boolean': 'cache' };
-
 // 监听默认选项
 export interface PublishSubscribeOnOptions {
   type: PublishSubscribeType,
   immediate: boolean
 }
-
-// 监听选项类型
-const PublishSubscribeOnOptionsTypes: PartialToRawTypeKeyof<PublishSubscribeOnOptions> = { 'string': 'type', 'boolean': 'immediate' };
 
 // 回调队列子项
 export interface PublishSubscribeQueuesItem {
@@ -54,7 +48,7 @@ export class PublishSubscribe {
   #options: Partial<IPublishSubscribeOptions> = {};
 
   constructor(options?: PartialValueOf<IPublishSubscribeOptions>) {
-    this.#options = normalizeOptions(options, PublishSubscribeOptionsType, PublishSubscribeDefaultOptions);
+    this.#options = normalizeOptions(options, PublishSubscribeDefaultOptions)
   }
 
   /**
@@ -75,7 +69,7 @@ export class PublishSubscribe {
     const {
       type,
       immediate
-    } = normalizeOptions(options, PublishSubscribeOnOptionsTypes, PublishSubscribeOnDefaultOptions);
+    } = normalizeOptions(options, PublishSubscribeOnDefaultOptions);
     if (!this.#messages.has(name)) {
       this.#messages.set(name, { queues: [] });
     }
@@ -113,7 +107,7 @@ export class PublishSubscribe {
    * @param name
    * @param callback
    */
-  off(name: string, callback: AnyFn | null) {
+  off(name: string | null, callback: AnyFn | null) {
     if (name === null) {
       this.#messages.clear();
       return;

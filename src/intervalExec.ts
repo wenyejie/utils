@@ -23,11 +23,6 @@ const DEFAULT_OPTIONS = {
   abort: -1
 }
 
-const intervalExecTypes = {
-  'number': 'timeout',
-  'boolean': 'immediate'
-}
-
 
 /**
  * 一个辅助函数，用于以指定的时间间隔重复执行回调，直到满足特定条件。
@@ -51,7 +46,7 @@ export const intervalExec: {
    * @param options 选项
    */<T>(execute: (...args: any[]) => T, options: IntervalExecOptions): () => Promise<T>
 } = <T>(execute: (...args: any[]) => T, options?: IntervalExecLikeOptions): () => Promise<T> => {
-  const { timeout, immediate, rtnVal, abort } = normalizeOptions(options, intervalExecTypes, DEFAULT_OPTIONS)
+  const { timeout, immediate, rtnVal, abort } = normalizeOptions(options, DEFAULT_OPTIONS)
   return (...args) => {
     const { resolve, promise }: IntervalExecResolvers<T> = Promise.withResolvers()
     let innerAbort = abort

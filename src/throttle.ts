@@ -1,5 +1,6 @@
 import { globalThis } from './globalThis'
 import { normalizeOptions } from '@/normalizeOptions'
+import { PartialValueOf } from '../types'
 
 export interface ThrottleOptions {
   timeout: number
@@ -11,32 +12,18 @@ const DEFAULT_OPTIONS: ThrottleOptions = {
   immediate: false
 }
 
-const THROTTLE_TYPES = {
-  'number': 'timeout',
-  'boolean': 'immediate'
-}
-
 /**
  * 函数节流 - 间隔一定时间后执行, 地铁
  * @param fn 函数
  * @param options 选项
  */
-export const throttle: {
-  <T, R>(fn: (...rest: T[]) => R): (...rest: T[]) => void
-  <T, R>(fn: (...rest: T[]) => R, options?: Partial<ThrottleOptions>): (...rest: T[]) => void
-  <T, R>(fn: (...rest: T[]) => R, timeout?: ThrottleOptions['timeout']): (...rest: T[]) => void
-  <T, R>(fn: (...rest: T[]) => R, immediate?: ThrottleOptions['immediate']): (...rest: T[]) => void
-} = <T, R>(
-  fn: (...rest: T[]) => R,
-  options?: Partial<ThrottleOptions> | ThrottleOptions['timeout'] | ThrottleOptions['immediate']
-) => {
+export const throttle= <T, R>(fn: (...args: T[]) => R, options?: PartialValueOf<ThrottleOptions>) => {
   let timer: number = 0
-  const { immediate, timeout } = normalizeOptions(options, THROTTLE_TYPES, DEFAULT_OPTIONS)
-  let innerImmediate = immediate
-  return function(...rest: T[]) {
-    if (innerImmediate) {
-      fn.apply(this, rest)
-      innerImmediate = false
+  let { immediate, timeout } = normalizeOptions(options, DEFAULT_OPTIONS)
+  return function(...args: T[]) {
+    if (immediate) {
+      fn.apply(this, args)
+      immediate = false
       return
     }
     if (timer) {
@@ -44,8 +31,8 @@ export const throttle: {
     }
     timer = globalThis.setTimeout(() => {
       clearTimeout(timer)
-
-      fn.apply(this, rest)
+      timer = 0
+      fn.apply(this, args)
     }, timeout)
   }
 }
