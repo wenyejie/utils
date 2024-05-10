@@ -1,6 +1,6 @@
 # 版本记录
 
-## 2.3.1 `dev`
+## 2.4.0 `dev`
 
 - 优化`debounce`, `throttle` 等函数的选项规范化
 - add `partial`, `zip`, `zipObject`, `zipObjectList`, `beforeHook`, `afterHook` 方法

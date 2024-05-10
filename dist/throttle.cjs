@@ -6,18 +6,13 @@ const DEFAULT_OPTIONS = {
   timeout: 500,
   immediate: false
 };
-const THROTTLE_TYPES = {
-  "number": "timeout",
-  "boolean": "immediate"
-};
 const throttle = (fn, options) => {
   let timer = 0;
-  const { immediate, timeout } = normalizeOptions.normalizeOptions(options, THROTTLE_TYPES, DEFAULT_OPTIONS);
-  let innerImmediate = immediate;
-  return function(...rest) {
-    if (innerImmediate) {
-      fn.apply(this, rest);
-      innerImmediate = false;
+  let { immediate, timeout } = normalizeOptions.normalizeOptions(options, DEFAULT_OPTIONS);
+  return function(...args) {
+    if (immediate) {
+      fn.apply(this, args);
+      immediate = false;
       return;
     }
     if (timer) {
@@ -25,7 +20,8 @@ const throttle = (fn, options) => {
     }
     timer = globalThis.globalThis.setTimeout(() => {
       clearTimeout(timer);
-      fn.apply(this, rest);
+      timer = 0;
+      fn.apply(this, args);
     }, timeout);
   };
 };

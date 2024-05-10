@@ -144,7 +144,7 @@ import { TS_DAY, TS_HOUR, TS_MILLISECOND, TS_MINUTE, TS_SECOND, TS_UNIT, TS_WEEK
 import { zip } from "./zip.js";
 import { zipObject } from "./zipObject.js";
 import { zipObjectList } from "./zipObjectList.js";
-const VERSION = "2.3.1";
+const VERSION = "2.4.0";
 export {
   PARTIAL_PLACEHOLDER,
   PublishSubscribe,

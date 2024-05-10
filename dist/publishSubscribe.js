@@ -29,8 +29,6 @@ const PublishSubscribeDefaultOptions = {
   cache: false
   // 缓存
 };
-const PublishSubscribeOptionsType = { "boolean": "cache" };
-const PublishSubscribeOnOptionsTypes = { "string": "type", "boolean": "immediate" };
 const PublishSubscribeOnDefaultOptions = {
   type: "on",
   // 类型
@@ -41,7 +39,7 @@ class PublishSubscribe {
   constructor(options) {
     __privateAdd(this, _messages, /* @__PURE__ */ new Map());
     __privateAdd(this, _options, {});
-    __privateSet(this, _options, normalizeOptions(options, PublishSubscribeOptionsType, PublishSubscribeDefaultOptions));
+    __privateSet(this, _options, normalizeOptions(options, PublishSubscribeDefaultOptions));
   }
   /**
    * 监听事件
@@ -61,7 +59,7 @@ class PublishSubscribe {
     const {
       type,
       immediate
-    } = normalizeOptions(options, PublishSubscribeOnOptionsTypes, PublishSubscribeOnDefaultOptions);
+    } = normalizeOptions(options, PublishSubscribeOnDefaultOptions);
     if (!__privateGet(this, _messages).has(name)) {
       __privateGet(this, _messages).set(name, { queues: [] });
     }

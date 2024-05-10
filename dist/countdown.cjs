@@ -9,23 +9,26 @@ Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const globalThis = require("./globalThis.cjs");
 const isFunction = require("./isFunction.cjs");
 const isObject = require("./isObject.cjs");
+const publishSubscribe = require("./publishSubscribe.cjs");
+const noop = require("./noop.cjs");
 const DEFAULT_OPTIONS = {
+  value: 0,
+  change: noop.noop,
   immediate: true,
   delay: 1e3,
   decrement: 1,
   autostart: true,
   end: 0
 };
-class Countdown {
+class Countdown extends publishSubscribe.PublishSubscribe {
   constructor(options) {
+    super();
     // 倒计时的值
-    __publicField(this, "value");
+    __publicField(this, "value", 0);
     // 倒计时计时器ID
-    __publicField(this, "intervalId");
+    __publicField(this, "intervalId", 0);
     // 选项
     __publicField(this, "options");
-    // 回调队列
-    __publicField(this, "callbackQueues", {});
     if (isFunction.isFunction(options.change)) {
       this.on("change", options.change);
     }
@@ -49,40 +52,15 @@ class Countdown {
     }
     return new Countdown(innerOptions);
   }
-  /**
-   * 监听事件
-   * @param eventName 事件名称
-   * @param callback // 事件回调
-   */
-  on(eventName, callback) {
-    var _a;
-    const queue = this.callbackQueues[eventName] ?? [];
-    queue.push(callback);
-    this.callbackQueues[eventName] = queue;
-    if (((_a = this == null ? void 0 : this.options) == null ? void 0 : _a.immediate) && eventName === "change") {
-      callback.call(this, this.value);
-    }
-  }
-  /**
-   * 触发事件
-   * @param eventName 事件名称
-   */
-  trigger(eventName) {
-    const queue = this.callbackQueues[eventName];
-    if (!Array.isArray(queue)) {
-      return;
-    }
-    queue.forEach((cb) => cb.call(this, this.value));
-  }
   // 开始
   start() {
     if (this.options.value > this.value) {
       return;
     }
     this.loop();
-    this.trigger("start");
+    this.emit("start");
     if (this.options.immediate) {
-      this.trigger("change");
+      this.emit("change");
     }
   }
   // 停止
@@ -91,7 +69,7 @@ class Countdown {
       return;
     }
     this.clear();
-    this.trigger("stop");
+    this.emit("stop");
   }
   // 继续
   continue() {
@@ -99,16 +77,16 @@ class Countdown {
       return;
     }
     this.loop();
-    this.trigger("continue");
+    this.emit("continue");
   }
   // 倒计时
   decrease() {
     this.value = this.value - this.options.decrement;
     if (this.value <= this.options.end) {
       clearInterval(this.intervalId);
-      this.trigger("finish");
+      this.emit("finish");
     }
-    this.trigger("change");
+    this.emit("change");
   }
   // 循环
   loop() {

@@ -1,5 +1,5 @@
 // @Copyright by https://github.com/wenyejie/utils
-export const VERSION = '2.3.1'
+export const VERSION = '2.4.0'
 export * from './afterHook'
 export * from './arrDelItemByProp'
 export * from './arrDelItemByVal'

@@ -2,12 +2,13 @@
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const cached = (fn) => {
   const caches = {};
-  return function() {
-    const args = Array.prototype.join.call(arguments, ",");
-    if (args in caches) {
-      return caches[args];
+  return function(...args) {
+    const argsStr = args.join(",");
+    if (argsStr in caches) {
+      return caches[argsStr];
     }
-    return caches[args] = fn.apply(this, arguments);
+    caches[argsStr] = fn.apply(this, args);
+    return caches[argsStr];
   };
 };
 exports.cached = cached;

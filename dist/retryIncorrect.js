@@ -12,17 +12,13 @@ const RETRY_INCORRECT_DEFAULT_OPTIONS = {
     return result;
   }
 };
-const RETRY_INCORRECT_TYPES = {
-  "number": "retry",
-  "function": "check"
-};
 const retryIncorrect = (execute, options) => {
   const {
     retry,
     base,
     rtnVal,
     check
-  } = normalizeOptions(options, RETRY_INCORRECT_TYPES, RETRY_INCORRECT_DEFAULT_OPTIONS);
+  } = normalizeOptions(options, RETRY_INCORRECT_DEFAULT_OPTIONS);
   const { resolve, promise } = Promise.withResolvers();
   let timer = 0;
   let retryCount = 0;

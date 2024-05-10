@@ -11,7 +11,7 @@ const clone = (obj, deep = true, weakMap = /* @__PURE__ */ new WeakMap()) => {
   if (isPrimitive(obj) || type === "function") {
     return obj;
   }
-  if (type in linkIterableObj) {
+  if (Object.hasOwn(linkIterableObj, type)) {
     return new linkIterableObj[type](obj);
   }
   if (weakMap.get(obj)) {

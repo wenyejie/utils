@@ -7,12 +7,8 @@ const DEFAULT_OPTIONS = {
   rtnVal: null,
   abort: -1
 };
-const intervalExecTypes = {
-  "number": "timeout",
-  "boolean": "immediate"
-};
 const intervalExec = (execute, options) => {
-  const { timeout, immediate, rtnVal, abort } = normalizeOptions(options, intervalExecTypes, DEFAULT_OPTIONS);
+  const { timeout, immediate, rtnVal, abort } = normalizeOptions(options, DEFAULT_OPTIONS);
   return (...args) => {
     const { resolve, promise } = Promise.withResolvers();
     let innerAbort = abort;
