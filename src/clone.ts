@@ -23,7 +23,7 @@ export const clone = <T>(obj: T, deep = true, weakMap = new WeakMap()): T => {
     return obj
   }
 
-  if (type in linkIterableObj) {
+  if (Object.hasOwn(linkIterableObj, type)) {
     return new linkIterableObj[type](obj)
   }
 

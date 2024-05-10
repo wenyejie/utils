@@ -5,6 +5,7 @@
 - 优化`debounce`, `throttle` 等函数的选项规范化
 - add `partial`, `zip`, `zipObject`, `zipObjectList`, `beforeHook`, `afterHook` 方法
 - `hasOwn` 重构, 改用系统自带`Object.hasOwn`
+- `countdown` 重构, 移除自带事件分发, 改用`PublishSubscribe`
 
 ## 2.3.0 `prod`
 
