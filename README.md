@@ -25,6 +25,15 @@
   前提是抛出的错误要和预期一样, 对后续代码的影响在预料之中
 - 如果程序本身无法对某些代码或者逻辑报错, 那么一定要主动输入错误
 
+## 因为当前包不做babel转义, 所以引用当前包要做转义
+
+```javascript
+// vue.config.js
+module.exports = {
+  transpileDependencies: [ 'wenyejie' ], // 添加你需要编译的依赖包名称
+}
+```
+
 ## Prettier
 
 program: $ProjectFileDir$/node_modules/.bin/prettier
