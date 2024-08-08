@@ -166,8 +166,4 @@ export class PublishSubscribe {
     this.#messages.set(name, message);
   }
 
-  static create(options: PartialValueOf<IPublishSubscribeOptions>) {
-    return new PublishSubscribe(options)
-  }
-
 }
