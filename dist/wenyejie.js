@@ -1,10 +1,10 @@
 import { afterHook } from "./afterHook.js";
 import { arrDelItemByProp } from "./arrDelItemByProp.js";
 import { arrDelItemByVal } from "./arrDelItemByVal.js";
-import { arrDownItem } from "./arrDownItem.js";
+import { arrDownItem, arrDownItemByValue } from "./arrDownItem.js";
 import { arrFindItemByProp } from "./arrFindItemByProp.js";
 import { arrFindValByProp } from "./arrFindValByProp.js";
-import { arrUpItem } from "./arrUpItem.js";
+import { arrUpItem, arrUpItemByValue } from "./arrUpItem.js";
 import { ban } from "./ban.js";
 import { bankCardFormat } from "./bankCardFormat.js";
 import { base642file } from "./base642file.js";
@@ -164,9 +164,11 @@ export {
   arrDelItemByProp,
   arrDelItemByVal,
   arrDownItem,
+  arrDownItemByValue,
   arrFindItemByProp,
   arrFindValByProp,
   arrUpItem,
+  arrUpItemByValue,
   ban,
   bankCardFormat,
   base642file,

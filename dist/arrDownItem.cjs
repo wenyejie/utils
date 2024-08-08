@@ -5,4 +5,13 @@ const arrDownItem = (arr, inx) => {
   arr.splice(inx + 1, 0, delArr == null ? void 0 : delArr[0]);
   return arr;
 };
+const arrDownItemByValue = (arr, value) => {
+  const index = arr.indexOf(value);
+  if (index <= -1) {
+    console.warn(`The value '${value}' is not included in the array '${arr}'`);
+    return arr;
+  }
+  return arrDownItem(arr, index);
+};
 exports.arrDownItem = arrDownItem;
+exports.arrDownItemByValue = arrDownItemByValue;
