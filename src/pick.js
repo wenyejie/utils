@@ -8,7 +8,7 @@ import isObject from './isObject.js'
 export const pick = (data, ...rest) => {
   const result = {}
   if (isObject(data)) {
-    rest.forEach(key => {
+    rest.flat().forEach(key => {
       result[key] = data[key]
     })
   }

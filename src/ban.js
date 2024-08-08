@@ -2,8 +2,8 @@ import isObject from './isObject.js'
 
 /**
  * 从对象中选中一些属性移除, 剩下的属性组成新的对象并返回,不影响原有对象
- * @param data
- * @param rest
+ * @param data { any[] }
+ * @param rest { string[] | string[][] }
  */
 export const ban = (data, ...rest) => {
   let result = {}
@@ -11,7 +11,7 @@ export const ban = (data, ...rest) => {
     return result
   }
   result = { ...data }
-  rest.forEach(key => {
+  rest.flat().forEach(key => {
     delete result[key]
   })
   return result
