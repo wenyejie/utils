@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title>toRawType</title>
+</head>
+<body>
+
+<script type="module">
+  import { toRawType } from '@/toRawType'
+
+  console.log(toRawType(null))
+  console.log(toRawType(''))
+  console.log(toRawType(() => {
+  }))
+  console.log(toRawType({}))
+  console.log(toRawType(undefined))
+  console.log(toRawType(Symbol('111')))
+  console.log(toRawType(new Set()))
+  console.log(toRawType(new Map()))
+  console.log(toRawType(new WeakMap()))
+  console.log(toRawType(new WeakSet()))
+  console.log(toRawType(new Date()))
+  console.log(toRawType(/\d+/g))
+  console.log(toRawType(new Blob(['text'], { type: 'text/plain' })))
+</script>
+</body>
+</html>

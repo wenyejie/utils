@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='zh-cn'>
+<head>
+  <meta charset='utf-8'>
+  <title>Image Compress</title>
+</head>
+<body>
+<fieldset>
+  <legend>Upload Image</legend>
+  <input type='file' />
+</fieldset>
+<script type='module'>
+  import { imageCompress } from '@/imageCompress'
+  import { file2url } from '@/file2url'
+
+  const elFile = document.querySelector('input')
+
+  elFile.addEventListener('change', event => {
+    const file = event.target?.files?.[0]
+    imageCompress(file).then(result => {
+      console.log('before:', file.size)
+      console.log('after:', result.size)
+      const img = document.createElement('img')
+      img.src = file2url(result)
+      document.body.appendChild(img)
+      console.log('压缩率:', (1 - result.size / file.size) * 100 + '%')
+    })
+  })
+</script>
+</body>
+</html>

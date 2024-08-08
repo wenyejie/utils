@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='zh-cn'>
+<head>
+  <meta charset='utf-8'>
+  <title>Countdown</title>
+</head>
+<body>
+<div class='view'>00:00:00</div>
+<button class='stop'>stop</button>
+<button class='continue'>continue</button>
+<div class='clock'></div>
+<script type='module'>
+  import { countdown } from '../src/countdown'
+
+  const $view = document.querySelector('.view')
+  const $stop = document.querySelector('.stop')
+  const $continue = document.querySelector('.continue')
+
+  const time = new Date(2024, 3, 20, 10, 0, 0, 0) - Date.now()
+  const now = new Date()
+
+  const instance = countdown(time, {
+    immediate: true,
+    decrement: 1000,
+  })
+  instance.on('change', () => {
+    const compared = new Date()
+    $view.innerHTML = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()} <br /> ${compared.getHours()}:${compared.getMinutes()}:${compared.getSeconds()}`
+    now.setSeconds(now.getSeconds() + 1)
+  })
+
+  $stop.addEventListener('click', instance.stop.bind(instance))
+  $continue.addEventListener('click', instance.continue.bind(instance))
+
+</script>
+</body>
+</html>
