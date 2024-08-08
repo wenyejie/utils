@@ -24,13 +24,13 @@
     "package": "npm run build && npm publish"
   },
   "devDependencies": {
-    "@types/node": "^20.12.7",
-    "@vitest/coverage-v8": "^1.5.2",
-    "happy-dom": "^14.7.1",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.10",
-    "vitest": "^1.5.2"
+    "@types/node": "^22.1.0",
+    "@vitest/coverage-v8": "^2.0.5",
+    "happy-dom": "^14.12.3",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0",
+    "vitest": "^2.0.5"
   },
   "repository": {
     "type": "git",
