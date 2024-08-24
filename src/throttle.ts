@@ -1,5 +1,5 @@
 import { globalThis } from './globalThis'
-import { normalizeOptions } from '@/normalizeOptions'
+import { normalizeOptions } from './normalizeOptions'
 import { PartialValueOf } from '../types'
 
 export interface ThrottleOptions {
