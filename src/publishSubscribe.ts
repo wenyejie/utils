@@ -114,7 +114,7 @@ export class PublishSubscribe {
    * @param name
    * @param callback
    */
-  off(name: string | null, callback: AnyFn | null) {
+  off(name: string | null, callback?: AnyFn | null) {
     if (name === null) {
       this.#messages.clear();
       return;
