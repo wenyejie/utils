@@ -1,5 +1,5 @@
 import { globalThis } from './globalThis'
-import { normalizeOptions } from '@/normalizeOptions'
+import { normalizeOptions } from './normalizeOptions'
 import { PartialValueOf } from '../types'
 
 export interface DebounceOptions {
@@ -27,7 +27,7 @@ export const debounce = <T, R>(fn: (...args: T[]) => R, options?: PartialValueOf
       immediate = false
     }
 
-    timer = globalThis.setTimeout(fn.bind(this, args), timeout)
+    timer = globalThis.setTimeout(fn.bind(this, ...args), timeout)
   }
 }
 
