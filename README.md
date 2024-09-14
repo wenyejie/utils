@@ -2,6 +2,20 @@
 
 > 工具类
 
+## 引用注意项
+
+> 项目本身不做babel转义, 如果要做转移请自行配置
+
+```javascript
+// vue.config.js
+transpileDependencies: ['wenyejie']
+
+// vite.config.js
+optimizeDeps: {
+  include: [ 'wenyejie' ],
+},
+```
+
 ## change log
 
 [详见 CHANGELOG.md](./CHANGELOG.md)

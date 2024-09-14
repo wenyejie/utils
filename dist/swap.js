@@ -1,6 +1,5 @@
-import { hasOwn } from "./hasOwn.js";
 const swap = (obj, i, j) => {
-  if (!hasOwn(obj, i) || !hasOwn(obj, j)) {
+  if (!Object.hasOwn(obj, i) || !Object.hasOwn(obj, j)) {
     return obj;
   }
   const temp = obj[i];

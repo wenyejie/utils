@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
-const hasOwn = require("./hasOwn.cjs");
 const swap = (obj, i, j) => {
-  if (!hasOwn.hasOwn(obj, i) || !hasOwn.hasOwn(obj, j)) {
+  if (!Object.hasOwn(obj, i) || !Object.hasOwn(obj, j)) {
     return obj;
   }
   const temp = obj[i];

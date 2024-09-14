@@ -8,7 +8,11 @@ import { PartialValueOf, valueOf } from '../types'
  * @param defaultOptions 默认选项
  * @param types 类型
  */
-export const normalizeOptions = <T extends Record<PropertyKey, any>>(options:  PartialValueOf<T>, defaultOptions: T, types?: Partial<Record<ToRawType, string>>) => {
+export const normalizeOptions = <T extends Record<PropertyKey, any>>(
+  options: PartialValueOf<T> | undefined,
+  defaultOptions: T,
+  types?: Partial<Record<ToRawType, string>>
+) => {
   const type = toRawType(options)
   if (type === 'undefined') {
     return { ...defaultOptions }
@@ -19,7 +23,7 @@ export const normalizeOptions = <T extends Record<PropertyKey, any>>(options:  P
   const innerOptions = { ...defaultOptions }
   if (toRawType(types) === 'object') {
     innerOptions[types[type] as keyof T] = <valueOf<T>>options
-  }else {
+  } else {
     for (const [key, value] of Object.entries(defaultOptions)) {
       if (toRawType(value) === type) {
         innerOptions[key as keyof T] = <valueOf<T>>options

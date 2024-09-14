@@ -1,6 +1,11 @@
 # 版本记录
 
-## 2.4.0 `dev`
+## 2.5.0 `dev`
+- 优化`normalizeOptions` `options`参数, 允许为`undefined`
+- 新增`monthStart`, `monthEnd`方法
+- 优化`moneyFormat`, 并且也可以使用`numberFormat`来调用
+
+## 2.4.0 `prod`
 
 - 优化`debounce`, `throttle` 等函数的选项规范化
 - add `partial`, `zip`, `zipObject`, `zipObjectList`, `beforeHook`, `afterHook` 方法

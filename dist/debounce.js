@@ -13,7 +13,7 @@ const debounce = (fn, options) => {
       fn.apply(this, args);
       immediate = false;
     }
-    timer = gt.setTimeout(fn.bind(this, args), timeout);
+    timer = gt.setTimeout(fn.bind(this, ...args), timeout);
   };
 };
 export {
