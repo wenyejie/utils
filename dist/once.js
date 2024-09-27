@@ -1,7 +1,12 @@
+const CACHED_PLACEHOLDER = Symbol("CACHED_PLACEHOLDER");
 const once = (fn) => {
-  let cached;
+  let cached = CACHED_PLACEHOLDER;
   return function() {
-    return cached || (cached = fn.apply(this, arguments));
+    if (cached !== CACHED_PLACEHOLDER) {
+      return cached;
+    }
+    cached = fn.apply(this, arguments);
+    return cached;
   };
 };
 export {

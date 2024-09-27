@@ -132,6 +132,7 @@ import { storage } from "./storage.js";
 import { suffix } from "./suffix.js";
 import { supportCSS } from "./supportCSS.js";
 import { swap } from "./swap.js";
+import { temporary } from "./temporary.js";
 import { throttle } from "./throttle.js";
 import { timeDistance } from "./timeDistance.js";
 import { toCSSUnit } from "./toCSSUnit.js";
@@ -146,7 +147,7 @@ import { TS_DAY, TS_HOUR, TS_MILLISECOND, TS_MINUTE, TS_SECOND, TS_UNIT, TS_WEEK
 import { zip } from "./zip.js";
 import { zipObject } from "./zipObject.js";
 import { zipObjectList } from "./zipObjectList.js";
-const VERSION = "2.5.0";
+const VERSION = "2.6.0";
 export {
   PARTIAL_PLACEHOLDER,
   PublishSubscribe,
@@ -341,6 +342,7 @@ export {
   suffix,
   supportCSS,
   swap,
+  temporary,
   throttle,
   timeDistance,
   toCSSUnit,
