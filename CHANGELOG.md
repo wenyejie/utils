@@ -1,11 +1,13 @@
 # 版本记录
 
-## 2.5.0 `dev`
+# 2.6.0 `prod`
+- 新增`temporary`临时缓存功能
+- 优化`once`别名:`cacheOne`: 不适用假值为判断条件, 使用`symbol`
+
+## 2.5.0 `prod`
 - 优化`normalizeOptions` `options`参数, 允许为`undefined`
 - 新增`monthStart`, `monthEnd`方法
 - 优化`moneyFormat`, 并且也可以使用`numberFormat`来调用
-- 新增`temporary`临时缓存功能
-- 优化`once`别名:`cacheOne`: 不适用假值为判断条件, 使用`symbol`
 
 ## 2.4.0 `prod`
 
