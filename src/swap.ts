@@ -1,5 +1,3 @@
-import { hasOwn } from './hasOwn'
-
 /**
  * 交换对象中的两个属性值
  * @param obj 对象
@@ -7,7 +5,7 @@ import { hasOwn } from './hasOwn'
  * @param j key值
  */
 export const swap = <T extends  PropertyKey, K>(obj: Record<T, K>, i: string, j: string) => {
-  if (!hasOwn(obj, i) || !hasOwn(obj, j)) {
+  if (!Object.hasOwn(obj, i) || !Object.hasOwn(obj, j)) {
     return obj
   }
   const temp = obj[i]

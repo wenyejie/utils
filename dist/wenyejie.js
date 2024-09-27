@@ -1,10 +1,10 @@
 import { afterHook } from "./afterHook.js";
 import { arrDelItemByProp } from "./arrDelItemByProp.js";
 import { arrDelItemByVal } from "./arrDelItemByVal.js";
-import { arrDownItem } from "./arrDownItem.js";
+import { arrDownItem, arrDownItemByValue } from "./arrDownItem.js";
 import { arrFindItemByProp } from "./arrFindItemByProp.js";
 import { arrFindValByProp } from "./arrFindValByProp.js";
-import { arrUpItem } from "./arrUpItem.js";
+import { arrUpItem, arrUpItemByValue } from "./arrUpItem.js";
 import { ban } from "./ban.js";
 import { bankCardFormat } from "./bankCardFormat.js";
 import { base642file } from "./base642file.js";
@@ -102,8 +102,10 @@ import { loadScript } from "./loadScript.js";
 import { local } from "./local.js";
 import { mobilePhoneFormat } from "./mobilePhoneFormat.js";
 import { money2cn } from "./money2cn.js";
-import { moneyFormat } from "./moneyFormat.js";
+import { moneyFormat, numberFormat } from "./moneyFormat.js";
+import { monthEnd } from "./monthEnd.js";
 import { monthRange } from "./monthRange.js";
+import { monthStart } from "./monthStart.js";
 import { noop } from "./noop.js";
 import { normalizeOptions } from "./normalizeOptions.js";
 import { nullProtoObject } from "./nullProtoObject.js";
@@ -144,7 +146,7 @@ import { TS_DAY, TS_HOUR, TS_MILLISECOND, TS_MINUTE, TS_SECOND, TS_UNIT, TS_WEEK
 import { zip } from "./zip.js";
 import { zipObject } from "./zipObject.js";
 import { zipObjectList } from "./zipObjectList.js";
-const VERSION = "2.4.0";
+const VERSION = "2.5.0";
 export {
   PARTIAL_PLACEHOLDER,
   PublishSubscribe,
@@ -164,9 +166,11 @@ export {
   arrDelItemByProp,
   arrDelItemByVal,
   arrDownItem,
+  arrDownItemByValue,
   arrFindItemByProp,
   arrFindValByProp,
   arrUpItem,
+  arrUpItemByValue,
   ban,
   bankCardFormat,
   base642file,
@@ -285,7 +289,9 @@ export {
   mobilePhoneFormat,
   money2cn,
   moneyFormat,
+  monthEnd,
   monthRange,
+  monthStart,
   multiAdd,
   multiDivide,
   multiMultiply,
@@ -294,6 +300,7 @@ export {
   noop,
   normalizeOptions,
   nullProtoObject,
+  numberFormat,
   objectLength,
   objectToString,
   once,

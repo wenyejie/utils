@@ -9,3 +9,11 @@ export const arrUpItem = <T>(arr: T[], inx: number) => {
   return arr
 }
 
+export const arrUpItemByValue = <T>(arr: T[], value: T) => {
+  const index = arr.indexOf(value)
+  if (index <= -1) {
+    console.warn(`The value '${value}' is not included in the array '${arr}'`)
+    return arr
+  }
+  return arrUpItem(arr, index)
+}

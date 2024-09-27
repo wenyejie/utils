@@ -43,10 +43,17 @@ const PublishSubscribeOnDefaultOptions: PublishSubscribeOnOptions = {
   immediate: false, // 是否立即执行
 };
 
+/**
+ * 发布订阅模式
+ */
 export class PublishSubscribe {
   #messages: Map<string, PublishSubscribeMessageItem> = new Map();
   #options: Partial<IPublishSubscribeOptions> = {};
 
+  /**
+   * 构造函数
+   * @param options 选项
+   */
   constructor(options?: PartialValueOf<IPublishSubscribeOptions>) {
     this.#options = normalizeOptions(options, PublishSubscribeDefaultOptions)
   }
@@ -107,7 +114,7 @@ export class PublishSubscribe {
    * @param name
    * @param callback
    */
-  off(name: string | null, callback: AnyFn | null) {
+  off(name: string | null, callback?: AnyFn | null) {
     if (name === null) {
       this.#messages.clear();
       return;

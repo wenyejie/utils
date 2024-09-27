@@ -15,7 +15,7 @@ const debounce = (fn, options) => {
       fn.apply(this, args);
       immediate = false;
     }
-    timer = globalThis.globalThis.setTimeout(fn.bind(this, args), timeout);
+    timer = globalThis.globalThis.setTimeout(fn.bind(this, ...args), timeout);
   };
 };
 exports.debounce = debounce;

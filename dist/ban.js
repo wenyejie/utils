@@ -4,9 +4,8 @@ const ban = (obj, ...rest) => {
     console.error(`"${obj}" is not a object`);
     return;
   }
-  let result = {};
-  result = { ...obj };
-  rest.forEach((key) => {
+  const result = { ...obj };
+  rest.flat().forEach((key) => {
     delete result[key];
   });
   return result;

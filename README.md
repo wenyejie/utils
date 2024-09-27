@@ -2,6 +2,20 @@
 
 > 工具类
 
+## 引用注意项
+
+> 项目本身不做babel转义, 如果要做转移请自行配置
+
+```javascript
+// vue.config.js
+transpileDependencies: ['wenyejie']
+
+// vite.config.js
+optimizeDeps: {
+  include: [ 'wenyejie' ],
+},
+```
+
 ## change log
 
 [详见 CHANGELOG.md](./CHANGELOG.md)
@@ -24,6 +38,15 @@
 - 如果代码本身可以抛出错误, 那么不必`console.error`/`throw`(PS: 因为代码中报错信息太多可能不那么美观???),
   前提是抛出的错误要和预期一样, 对后续代码的影响在预料之中
 - 如果程序本身无法对某些代码或者逻辑报错, 那么一定要主动输入错误
+
+## 因为当前包不做babel转义, 所以引用当前包要做转义
+
+```javascript
+// vue.config.js
+module.exports = {
+  transpileDependencies: [ 'wenyejie' ], // 添加你需要编译的依赖包名称
+}
+```
 
 ## Prettier
 
