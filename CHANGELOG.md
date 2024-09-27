@@ -1,6 +1,10 @@
 # 版本记录
 
-## 2.4.0 `dev`
+## 2.5.0 `dev`
+- 新增`temporary`临时缓存功能
+- 优化`once`别名:`cacheOne`: 不适用假值为判断条件, 使用`symbol`
+
+## 2.4.0 `prod`
 
 - 优化`debounce`, `throttle` 等函数的选项规范化
 - add `partial`, `zip`, `zipObject`, `zipObjectList`, `beforeHook`, `afterHook` 方法
