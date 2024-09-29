@@ -1,4 +1,5 @@
-const PARTIAL_PLACEHOLDER = Symbol();
+import { PLACEHOLDER } from "./utils.js";
+const PARTIAL_PLACEHOLDER = PLACEHOLDER;
 const partial = (fn, ...partials) => {
   return function(...args) {
     var _a;

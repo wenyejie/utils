@@ -1,5 +1,10 @@
 # 版本记录
 
+# 2.6.1 `dev`
+- 提取封装`PLACEHOLDER`
+- `once`方法带上移除功能，通过参数控制
+- `temporary`方法带上移除功能，通过参数控制，优化传参
+
 # 2.6.0 `prod`
 - 新增`temporary`临时缓存功能
 - 优化`once`别名:`cacheOne`: 不适用假值为判断条件, 使用`symbol`

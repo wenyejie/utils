@@ -25,3 +25,5 @@ export enum TS_UNIT {
   SECOND = TS_SECOND,
   MILLISECOND = TS_MILLISECOND,
 }
+
+export const PLACEHOLDER = Symbol()

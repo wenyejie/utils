@@ -1,5 +1,7 @@
+import { PLACEHOLDER } from './utils'
+
 // 占位符
-export const PARTIAL_PLACEHOLDER = Symbol()
+export const PARTIAL_PLACEHOLDER = PLACEHOLDER
 
 /**
  * 让有多个参数的函数, 写死几个参数, 让函数调用更简单

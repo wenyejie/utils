@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
-const PARTIAL_PLACEHOLDER = Symbol();
+const utils = require("./utils.cjs");
+const PARTIAL_PLACEHOLDER = utils.PLACEHOLDER;
 const partial = (fn, ...partials) => {
   return function(...args) {
     var _a;

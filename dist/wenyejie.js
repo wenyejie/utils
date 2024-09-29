@@ -143,13 +143,15 @@ import { objectToString, toRawType, toTypeString } from "./toRawType.js";
 import { unique } from "./unique.js";
 import { url2http } from "./url2http.js";
 import { url2https } from "./url2https.js";
-import { TS_DAY, TS_HOUR, TS_MILLISECOND, TS_MINUTE, TS_SECOND, TS_UNIT, TS_WEEK, TS_YEAR } from "./utils.js";
+import { PLACEHOLDER, TS_DAY, TS_HOUR, TS_MILLISECOND, TS_MINUTE, TS_SECOND, TS_UNIT, TS_WEEK, TS_YEAR } from "./utils.js";
+import { wait } from "./wait.js";
 import { zip } from "./zip.js";
 import { zipObject } from "./zipObject.js";
 import { zipObjectList } from "./zipObjectList.js";
 const VERSION = "2.6.0";
 export {
   PARTIAL_PLACEHOLDER,
+  PLACEHOLDER,
   PublishSubscribe,
   PublishSubscribeType,
   TS_DAY,
@@ -355,6 +357,7 @@ export {
   url2http,
   url2https,
   useragent,
+  wait,
   zip,
   zipObject,
   zipObjectList

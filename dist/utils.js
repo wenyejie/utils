@@ -15,7 +15,9 @@ var TS_UNIT = /* @__PURE__ */ ((TS_UNIT2) => {
   TS_UNIT2[TS_UNIT2["MILLISECOND"] = TS_MILLISECOND] = "MILLISECOND";
   return TS_UNIT2;
 })(TS_UNIT || {});
+const PLACEHOLDER = Symbol();
 export {
+  PLACEHOLDER,
   TS_DAY,
   TS_HOUR,
   TS_MILLISECOND,

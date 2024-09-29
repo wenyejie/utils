@@ -2,7 +2,7 @@
   "name": "wenyejie",
   "sideEffects": false,
   "description": "utils tools",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "private": false,
   "type": "module",
   "license": "ISC",
