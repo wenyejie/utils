@@ -51,5 +51,3 @@ export const temporary: {
     return rtnFn
   }
 }
-
-export default temporary

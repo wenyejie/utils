@@ -9,5 +9,3 @@ export const monthStart = (date: Date) => {
   dayStart(date)
   return date
 }
-
-export default monthStart

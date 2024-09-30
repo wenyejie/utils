@@ -9,5 +9,3 @@ export const monthEnd = (date: Date) => {
   dayEnd(date)
   return date
 }
-
-export default monthEnd
