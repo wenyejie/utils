@@ -1,5 +1,5 @@
 import { isNumber } from './isNumber'
-import { isString } from './isString'
+import { toNumber } from './toNumber'
 
 const INTEGER_BIT = /^\d+\.?/
 
@@ -8,9 +8,7 @@ const INTEGER_BIT = /^\d+\.?/
  * @param number
  */
 export const decimalLength = (number: number | string) => {
-  if (isString(number)) {
-    number = +number
-  }
+  number = toNumber(number)
   if (!isNumber(number)) {
     console.error(`"${ number }" is not a number`)
     return 0

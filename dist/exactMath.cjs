@@ -2,72 +2,78 @@
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const decimalLength = require("./decimalLength.cjs");
 const toNumber = require("./toNumber.cjs");
-const spliceString = require("./spliceString.cjs");
 const isString = require("./isString.cjs");
-const rightPad = (n, len) => {
-  if (len === 0) {
-    return n;
-  }
-  const dl = decimalLength.decimalLength(+n);
-  let sn = n.toString();
-  if (dl === 0) {
-    sn += "".padEnd(len, "0");
-  } else {
-    sn = sn.replace(".", "");
-    sn += "".padEnd(len - dl, "0");
-  }
-  return Number.parseFloat(sn);
+const toInteger = (num, length) => {
+  return Math.ceil(num * Math.pow(10, length));
 };
-const leftPad = (n, len) => {
-  if (len === 0) {
-    return n;
-  }
-  let sn = n.toString();
-  const il = sn.length;
-  if (len - il + 1 > 0) {
-    sn = "".padEnd(len > il ? len - il + 1 : len - il, "0") + sn;
-  }
-  sn = spliceString.spliceString(sn, Math.abs(il - len), ".");
-  return Number.parseFloat(sn);
+const toDecimal = (num, length) => {
+  return num / Math.pow(10, length);
 };
 const operationInit = (num1, num2) => {
-  const raise = Math.max(decimalLength.decimalLength(+num1), decimalLength.decimalLength(+num2));
+  const length = Math.max(decimalLength.decimalLength(+num1), decimalLength.decimalLength(+num2));
   return {
-    n1: rightPad(toNumber.toNumber(num1), raise),
-    n2: rightPad(toNumber.toNumber(num2), raise),
-    raise
+    n1: toInteger(toNumber.toNumber(num1), length),
+    n2: toInteger(toNumber.toNumber(num2), length),
+    length
   };
 };
 const add = (num1, num2) => {
-  const { n1, n2, raise } = operationInit(num1, num2);
-  return leftPad(n1 + n2, raise);
+  const { n1, n2, length } = operationInit(num1, num2);
+  return toDecimal(n1 + n2, length);
 };
+const plus = add;
 const multiAdd = (...nums) => nums.reduce((accumulator, currentValue) => add(accumulator, currentValue));
+const multiPlus = multiAdd;
 const subtract = (num1, num2) => {
-  const { n1, n2, raise } = operationInit(num1, num2);
-  return leftPad(n1 - n2, raise);
+  const { n1, n2, length } = operationInit(num1, num2);
+  return toDecimal(n1 - n2, length);
 };
+const minus = subtract;
 const multiSubtract = (...nums) => nums.reduce((accumulator, currentValue) => subtract(accumulator, currentValue));
+const multiMinus = multiSubtract;
 const multiply = (num1, num2) => {
-  const { n1, n2, raise } = operationInit(num1, num2);
-  return leftPad(n1 * n2, raise * 2);
+  const n1Len = decimalLength.decimalLength(num1);
+  const n2Len = decimalLength.decimalLength(num2);
+  const n1 = toInteger(+num1, n1Len);
+  const n2 = toInteger(+num2, n2Len);
+  return toDecimal(n1 * n2, n1Len + n2Len);
 };
+const times = multiply;
 const multiMultiply = (...nums) => nums.reduce((accumulator, currentValue) => multiply(accumulator, currentValue), 1);
+const multiTimes = multiMultiply;
 const divide = (num1, num2) => {
   const { n1, n2 } = operationInit(num1, num2);
   return n1 / n2;
 };
+const div = divide;
 const multiDivide = (...nums) => nums.reduce((accumulator, currentValue) => divide(accumulator, currentValue));
+const multiDiv = multiDivide;
 const remain = (num1, num2) => {
   const result = divide(num1, num2);
   const r1 = multiply(result - Math.floor(result), num2);
   const r2 = +num1 % +num2;
   return r1.toString().length <= r2.toString().length ? r1 : r2;
 };
+const toFloor = (num, length = 0) => {
+  num = toNumber.toNumber(num);
+  if (length <= 0) {
+    return num;
+  }
+  const base = Math.pow(10, length);
+  return divide(Math.floor(times(num, base)), base);
+};
+const toCeil = (num, length = 0) => {
+  num = toNumber.toNumber(num);
+  if (length <= 0) {
+    return num;
+  }
+  const base = Math.pow(10, length);
+  return divide(Math.ceil(times(num, base)), base);
+};
 const operates = Object.freeze({
-  "+": add,
-  "-": subtract,
-  "*": multiply,
+  "+": plus,
+  "-": minus,
+  "*": times,
   "/": divide,
   "%": remain
 });
@@ -118,12 +124,24 @@ const exactMath = (arithmeticStr) => {
 };
 exports.add = add;
 exports.arithmetic = arithmetic;
+exports.div = div;
 exports.divide = divide;
 exports.exactMath = exactMath;
+exports.minus = minus;
 exports.multiAdd = multiAdd;
+exports.multiDiv = multiDiv;
 exports.multiDivide = multiDivide;
+exports.multiMinus = multiMinus;
 exports.multiMultiply = multiMultiply;
+exports.multiPlus = multiPlus;
 exports.multiSubtract = multiSubtract;
+exports.multiTimes = multiTimes;
 exports.multiply = multiply;
+exports.plus = plus;
 exports.remain = remain;
 exports.subtract = subtract;
+exports.times = times;
+exports.toCeil = toCeil;
+exports.toDecimal = toDecimal;
+exports.toFloor = toFloor;
+exports.toInteger = toInteger;

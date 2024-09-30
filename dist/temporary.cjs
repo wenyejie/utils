@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const utils = require("./utils.cjs");
 const normalizeOptions = require("./normalizeOptions.cjs");
 const isPositiveNumber = require("./isPositiveNumber.cjs");
@@ -33,5 +33,4 @@ const temporary = (fn, options) => {
     return rtnFn;
   }
 };
-exports.default = temporary;
 exports.temporary = temporary;

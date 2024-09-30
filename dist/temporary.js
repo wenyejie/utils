@@ -32,6 +32,5 @@ const temporary = (fn, options) => {
   }
 };
 export {
-  temporary as default,
   temporary
 };

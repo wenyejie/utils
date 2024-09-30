@@ -1,6 +1,6 @@
 import { temporary } from '../src/wenyejie'
 import { expect, test } from 'vitest'
-import wait from '../src/wait'
+import { wait } from '../src/wait'
 
 test('temporary', async () => {
   const demo = temporary(() => {

@@ -1,42 +1,31 @@
 import { decimalLength } from './decimalLength'
 import { toNumber } from './toNumber'
-import { spliceString } from './spliceString'
 import { isString } from './isString'
 
-const rightPad = (n: number, len: number) => {
-  if (len === 0) {
-    return n
-  }
-  const dl = decimalLength(+n)
-  let sn = n.toString()
-  if (dl === 0) {
-    sn += ''.padEnd(len, '0')
-  } else {
-    sn = sn.replace('.', '')
-    sn += ''.padEnd(len - dl, '0')
-  }
-  return Number.parseFloat(sn)
+/**
+ * 小数转整数
+ * @param num
+ * @param length
+ */
+export const toInteger = (num: number, length: number) => {
+  return Math.ceil(num * Math.pow(10, length))
 }
 
-const leftPad = (n: number, len: number) => {
-  if (len === 0) {
-    return n
-  }
-  let sn = n.toString()
-  const il = sn.length
-  if (len - il + 1 > 0) {
-    sn = ''.padEnd(len > il ? len - il + 1 : len - il, '0') + sn
-  }
-  sn = spliceString(sn, Math.abs(il - len), '.')
-  return Number.parseFloat(sn)
+/**
+ * 整数转小数
+ * @param num
+ * @param length
+ */
+export const toDecimal = (num: number, length: number) => {
+  return num / Math.pow(10, length)
 }
 
 const operationInit = (num1: number | string, num2: number | string) => {
-  const raise = Math.max(decimalLength(+num1), decimalLength(+num2))
+  const length = Math.max(decimalLength(+num1), decimalLength(+num2))
   return {
-    n1: rightPad(toNumber(num1), raise),
-    n2: rightPad(toNumber(num2), raise),
-    raise
+    n1: toInteger(toNumber(num1), length),
+    n2: toInteger(toNumber(num2), length),
+    length,
   }
 }
 
@@ -46,9 +35,11 @@ const operationInit = (num1: number | string, num2: number | string) => {
  * @param num2 被加数
  */
 export const add = (num1: number | string, num2: number | string) => {
-  const { n1, n2, raise } = operationInit(num1, num2)
-  return leftPad(n1 + n2, raise)
+  const { n1, n2, length } = operationInit(num1, num2)
+  return toDecimal(n1 + n2, length)
 }
+
+export const plus = add
 
 /**
  * 累加
@@ -57,15 +48,19 @@ export const add = (num1: number | string, num2: number | string) => {
 export const multiAdd = (...nums: (number | string)[]) =>
   nums.reduce((accumulator, currentValue) => add(accumulator, currentValue)) as number
 
+export const multiPlus = multiAdd
+
 /**
  * 减
  * @param num1 减数
  * @param num2 被减数
  */
 export const subtract = (num1: number | string, num2: number | string) => {
-  const { n1, n2, raise } = operationInit(num1, num2)
-  return leftPad(n1 - n2, raise)
+  const { n1, n2, length } = operationInit(num1, num2)
+  return toDecimal(n1 - n2, length)
 }
+
+export const minus = subtract
 
 /**
  * 累减
@@ -74,15 +69,23 @@ export const subtract = (num1: number | string, num2: number | string) => {
 export const multiSubtract = (...nums: (number | string)[]) =>
   nums.reduce((accumulator, currentValue) => subtract(accumulator, currentValue)) as number
 
+export const multiMinus = multiSubtract
+
 /**
  * 乘
  * @param num1 乘数
  * @param num2 被乘数
  */
 export const multiply = (num1: number | string, num2: number | string) => {
-  const { n1, n2, raise } = operationInit(num1, num2)
-  return leftPad(n1 * n2, raise * 2)
+  // const { n1, n2, length } = operationInit(num1, num2)
+  const n1Len = decimalLength(num1)
+  const n2Len = decimalLength(num2)
+  const n1 = toInteger(+num1, n1Len)
+  const n2 = toInteger(+num2, n2Len)
+  return toDecimal(n1 * n2, n1Len + n2Len)
 }
+
+export const times = multiply
 
 /**
  * 累乘
@@ -90,6 +93,8 @@ export const multiply = (num1: number | string, num2: number | string) => {
  */
 export const multiMultiply = (...nums: (number | string)[]) =>
   nums.reduce((accumulator, currentValue) => multiply(accumulator, currentValue), 1) as number
+
+export const multiTimes = multiMultiply
 
 /**
  * 除
@@ -101,12 +106,16 @@ export const divide = (num1: number | string, num2: number | string) => {
   return n1 / n2
 }
 
+export const div = divide
+
 /**
  * 累除
  * @param nums 除数和被除数
  */
 export const multiDivide = (...nums: (number | string)[]) =>
   nums.reduce((accumulator, currentValue) => divide(accumulator, currentValue)) as number
+
+export const multiDiv = multiDivide
 
 /**
  * 求余
@@ -120,12 +129,40 @@ export const remain = (num1: number | string, num2: number | string) => {
   return r1.toString().length <= r2.toString().length ? r1 : r2
 }
 
+/**
+ * 向下取整小数
+ * @param num
+ * @param length
+ */
+export const toFloor = (num: number | string, length: number = 0) => {
+  num = toNumber(num)
+  if (length <= 0) {
+    return num
+  }
+  const base = Math.pow(10, length)
+  return divide(Math.floor(times(num, base)), base)
+}
+
+/**
+ * 向上取整小数
+ * @param num
+ * @param length
+ */
+export const toCeil = (num: number | string, length: number = 0) => {
+  num = toNumber(num)
+  if (length <= 0) {
+    return num
+  }
+  const base = Math.pow(10, length)
+  return divide(Math.ceil(times(num, base)), base)
+}
+
 const operates = Object.freeze({
-  '+': add,
-  '-': subtract,
-  '*': multiply,
+  '+': plus,
+  '-': minus,
+  '*': times,
   '/': divide,
-  '%': remain
+  '%': remain,
 })
 
 // 匹配包括花括号的表达式
@@ -153,12 +190,12 @@ export const arithmetic = (expression: string) => {
   let index = -1
   let result: number
   do {
-    index = arr.findIndex(item => [ '*', '/', '%' ].includes(item))
+    index = arr.findIndex(item => ['*', '/', '%'].includes(item))
     if (index < 0) {
       break
     }
     result = operates[arr[index]](arr[index - 1], arr[index + 1])
-    arr.splice(index - 1, 3, `${ result }`)
+    arr.splice(index - 1, 3, `${result}`)
   } while (true)
 
   result = +arr[0]
@@ -193,4 +230,3 @@ export const exactMath = (arithmeticStr: string) => {
     return 0
   }
 }
-

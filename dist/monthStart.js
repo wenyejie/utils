@@ -5,6 +5,5 @@ const monthStart = (date) => {
   return date;
 };
 export {
-  monthStart as default,
   monthStart
 };

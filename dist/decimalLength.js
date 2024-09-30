@@ -1,10 +1,8 @@
 import { isNumber } from "./isNumber.js";
-import { isString } from "./isString.js";
+import { toNumber } from "./toNumber.js";
 const INTEGER_BIT = /^\d+\.?/;
 const decimalLength = (number) => {
-  if (isString(number)) {
-    number = +number;
-  }
+  number = toNumber(number);
   if (!isNumber(number)) {
     console.error(`"${number}" is not a number`);
     return 0;

@@ -5,6 +5,5 @@ const monthEnd = (date) => {
   return date;
 };
 export {
-  monthEnd as default,
   monthEnd
 };

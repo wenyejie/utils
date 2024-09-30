@@ -32,7 +32,7 @@ import { downloadFile } from "./downloadFile.js";
 import { each } from "./each.js";
 import { emptyObject } from "./emptyObject.js";
 import { inBrowser, inNode, isAndroid, isChrome, isEdge, isFirefox, isIE, isIE9, isIOS, isIPad, isIPhone, isLinux, isMac, isMobile, isPC, isPhantom, isSafari, isUbuntu, isWeChat, isWindows, useragent } from "./env.js";
-import { add, arithmetic, divide, exactMath, multiAdd, multiDivide, multiMultiply, multiSubtract, multiply, remain, subtract } from "./exactMath.js";
+import { add, arithmetic, div, divide, exactMath, minus, multiAdd, multiDiv, multiDivide, multiMinus, multiMultiply, multiPlus, multiSubtract, multiTimes, multiply, plus, remain, subtract, times, toCeil, toDecimal, toFloor, toInteger } from "./exactMath.js";
 import { file2base64 } from "./file2base64.js";
 import { file2image } from "./file2image.js";
 import { file2url } from "./file2url.js";
@@ -148,7 +148,7 @@ import { wait } from "./wait.js";
 import { zip } from "./zip.js";
 import { zipObject } from "./zipObject.js";
 import { zipObjectList } from "./zipObjectList.js";
-const VERSION = "2.6.0";
+const VERSION = "2.7.0";
 export {
   PARTIAL_PLACEHOLDER,
   PLACEHOLDER,
@@ -196,6 +196,7 @@ export {
   debounce,
   decapitalize,
   decimalLength,
+  div,
   divide,
   downloadBlob,
   downloadFile,
@@ -289,6 +290,7 @@ export {
   load,
   loadScript,
   local,
+  minus,
   mobilePhoneFormat,
   money2cn,
   moneyFormat,
@@ -296,9 +298,13 @@ export {
   monthRange,
   monthStart,
   multiAdd,
+  multiDiv,
   multiDivide,
+  multiMinus,
   multiMultiply,
+  multiPlus,
   multiSubtract,
+  multiTimes,
   multiply,
   noop,
   normalizeOptions,
@@ -313,6 +319,7 @@ export {
   percentage,
   phoneNumFormat,
   pick,
+  plus,
   prefix,
   rAmount,
   rBankCardNO,
@@ -347,8 +354,13 @@ export {
   temporary,
   throttle,
   timeDistance,
+  times,
   toCSSUnit,
+  toCeil,
   toDate,
+  toDecimal,
+  toFloor,
+  toInteger,
   toMultiKeyOneValue,
   toNumber,
   toRawType,
