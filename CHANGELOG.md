@@ -1,6 +1,10 @@
 # 版本记录
 
-## 2.7.0 `div`
+## 2.8。0
+- 优化`toFloor`, `toCeil`方法：避免`length`字段传输错误
+- 重构`once`, `temporary`
+
+## 2.7.0 `prod`
 - 优化`exactMath`方法
 - 新增`toFloor`, `toCeil`方法
 

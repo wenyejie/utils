@@ -1,53 +1,15 @@
-import { type AnyFn, PartialValueOf } from '../types'
-import { PLACEHOLDER } from './utils'
-import { normalizeOptions } from './normalizeOptions'
-import { isPositiveNumber } from './isPositiveNumber'
+import { once, type OnceOptions, RemoveFn } from './once'
+import type { AnyFn, PartialValueOf } from '../types'
+import { normalizeOptions } from '@/normalizeOptions'
 
-interface TemporaryOptions {
-  timeout: number
-  needRemove: boolean
-}
-
-const TEMPORARY_DEFAULT_OPTIONS: TemporaryOptions = {
+const TEMPORARY_DEFAULT_OPTIONS: OnceOptions = {
   timeout: 500,
-  needRemove: false
+  needRemove: false,
 }
 
-type RemoveFn = () => void
-
-/**
- * 临时缓存
- * @param fn
- * @param options
- */
 export const temporary: {
-  <T extends AnyFn>(fn: T): T,
-  <T extends AnyFn>(fn: T, timeout: TemporaryOptions['timeout']): T
-  <T extends AnyFn>(fn: T, needRemove: TemporaryOptions['needRemove']): [T, RemoveFn]
-  <T extends AnyFn>(fn: T, options: Partial<TemporaryOptions>): [T, RemoveFn]
-} = <T extends AnyFn>(fn: T, options?: PartialValueOf<TemporaryOptions>): T | [T, RemoveFn] => {
-  const { timeout, needRemove } = normalizeOptions(options, TEMPORARY_DEFAULT_OPTIONS)
-  let cached = PLACEHOLDER
-  let timer = 0
-  const rtnFn = function () {
-    if (cached !== PLACEHOLDER) {
-      return cached
-    }
-    cached = fn.apply(this, arguments)
-    if (isPositiveNumber(timeout)) {
-      timer = window.setTimeout(() => cached = PLACEHOLDER, timeout)
-    }
-    return cached
-  } as T
-  if (needRemove) {
-    return [
-      rtnFn,
-      () => {
-        clearTimeout(timer)
-        cached = PLACEHOLDER
-      },
-    ]
-  } else {
-    return rtnFn
-  }
-}
+  <T extends AnyFn>(fn: T): T
+  <T extends AnyFn>(fn: T, timeout: OnceOptions['timeout']): T
+  <T extends AnyFn>(fn: T, needRemove: OnceOptions['needRemove']): [T, RemoveFn]
+  <T extends AnyFn>(fn: T, options: Partial<OnceOptions>): [T, RemoveFn]
+} = <T extends AnyFn>(fn: T, options?: PartialValueOf<OnceOptions>): T | [T, RemoveFn] => once(fn, normalizeOptions(options, TEMPORARY_DEFAULT_OPTIONS))

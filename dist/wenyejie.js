@@ -148,7 +148,7 @@ import { wait } from "./wait.js";
 import { zip } from "./zip.js";
 import { zipObject } from "./zipObject.js";
 import { zipObjectList } from "./zipObjectList.js";
-const VERSION = "2.7.0";
+const VERSION = "2.8.0";
 export {
   PARTIAL_PLACEHOLDER,
   PLACEHOLDER,

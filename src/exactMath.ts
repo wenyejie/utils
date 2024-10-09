@@ -136,9 +136,10 @@ export const remain = (num1: number | string, num2: number | string) => {
  */
 export const toFloor = (num: number | string, length: number = 0) => {
   num = toNumber(num)
-  if (length <= 0) {
-    return num
+  if (length < 0) {
+    length = 0
   }
+  length = Math.floor(length)
   const base = Math.pow(10, length)
   return divide(Math.floor(times(num, base)), base)
 }
@@ -150,9 +151,10 @@ export const toFloor = (num: number | string, length: number = 0) => {
  */
 export const toCeil = (num: number | string, length: number = 0) => {
   num = toNumber(num)
-  if (length <= 0) {
-    return num
+  if (length < 0) {
+    length = 0
   }
+  length = Math.floor(length)
   const base = Math.pow(10, length)
   return divide(Math.ceil(times(num, base)), base)
 }

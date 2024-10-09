@@ -54,17 +54,19 @@ const remain = (num1, num2) => {
 };
 const toFloor = (num, length = 0) => {
   num = toNumber(num);
-  if (length <= 0) {
-    return num;
+  if (length < 0) {
+    length = 0;
   }
+  length = Math.floor(length);
   const base = Math.pow(10, length);
   return divide(Math.floor(times(num, base)), base);
 };
 const toCeil = (num, length = 0) => {
   num = toNumber(num);
-  if (length <= 0) {
-    return num;
+  if (length < 0) {
+    length = 0;
   }
+  length = Math.floor(length);
   const base = Math.pow(10, length);
   return divide(Math.ceil(times(num, base)), base);
 };

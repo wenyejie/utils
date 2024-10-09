@@ -7,6 +7,6 @@
 export const beforeHook = <T, R>(fn: (...args: T[]) => R, callback: (...args: T[]) => T[]) => {
   return function (...args: T[]) {
     const newArgs = callback(...args)
-    return fn.apply(this, newArgs)
-  } as R
+    return fn.apply(this, newArgs) as R
+  }
 }
