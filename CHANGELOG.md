@@ -1,6 +1,6 @@
 # 版本记录
 
-## 2.8。0
+## 2.8.0 `prod`
 - 优化`toFloor`, `toCeil`方法：避免`length`字段传输错误
 - 重构`once`, `temporary`
 
