@@ -16,9 +16,11 @@ const ONCE_DEFAULT_OPTIONS: OnceOptions = {
 export type RemoveFn = () => void
 
 /**
- * 临时缓存
- * @param fn
- * @param options
+ * 临时缓存数据
+ * @param fn 执行函数
+ * @param [options] 选项
+ * @param [options.timeout = 0] 缓存数据过期时间
+ * @param [options.needRemove = false] 立即移除数据
  */
 export const once: {
   <T extends AnyFn>(fn: T): T,
@@ -51,3 +53,10 @@ export const once: {
     return rtnFn
   }
 }
+
+/**
+ * 缓存执行结果, 只有一次
+ * @param fn
+ */
+export const cachedOne = once
+

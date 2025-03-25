@@ -7,6 +7,13 @@ const TEMPORARY_DEFAULT_OPTIONS: OnceOptions = {
   needRemove: false,
 }
 
+/**
+ * 临时缓存数据
+ * @param fn 执行函数
+ * @param [options] 选项
+ * @param [options.timeout = 500] 缓存数据过期时间
+ * @param [options.needRemove = false] 立即移除数据
+ */
 export const temporary: {
   <T extends AnyFn>(fn: T): T
   <T extends AnyFn>(fn: T, timeout: OnceOptions['timeout']): T
