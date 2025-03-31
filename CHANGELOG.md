@@ -1,5 +1,10 @@
 # 版本记录
 
+## 2.9.0 `dev`
+- 新增`compareDate`,优化`isSameYear`, `isSameMonth`, `isSameDay`
+- 多并发请求队列
+- big number
+
 ## 2.8.0 `prod`
 - 优化`toFloor`, `toCeil`方法：避免`length`字段传输错误
 - 重构`once`, `temporary`
